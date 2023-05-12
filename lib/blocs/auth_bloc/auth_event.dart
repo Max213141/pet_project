@@ -2,11 +2,15 @@ part of 'auth_bloc.dart';
 
 @freezed
 class AuthEvent with _$AuthEvent {
-  const factory AuthEvent.started() = _Started;
+  const factory AuthEvent.createUser({
+    required String email,
+    required String password,
+  }) = CreateUserEvent;
 
-  const factory AuthEvent.createUser() = CreateUserEvent;
+  const factory AuthEvent.logIn({
+    required String email,
+    required String password,
+  }) = LogInEvent;
 
-  const factory AuthEvent.logIn() = LogInEvent;
-
-  const factory AuthEvent.logOut() = LogOutevent;
+  const factory AuthEvent.logOut() = LogOutEvent;
 }

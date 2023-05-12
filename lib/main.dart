@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:pet_project/auth_screen.dart';
+import 'package:pet_project/blocs/blocs.dart';
 import 'package:pet_project/main_screen.dart';
 
 import 'firebase_options.dart';
@@ -7,7 +7,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pet_project/blocs/theme_bloc/theme_bloc.dart';
 import 'package:pet_project/details_screen.dart';
 import 'package:pet_project/initial_page.dart';
 import 'package:pet_project/utils/loger.dart';
@@ -71,8 +70,11 @@ class MyApp extends StatelessWidget {
         // ),
       ],
     );
-    return BlocProvider(
-      create: (context) => ThemeBloc(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<ThemeBloc>(create: (context) => ThemeBloc()),
+        BlocProvider<AuthBloc>(create: (context) => AuthBloc(auth: auth)),
+      ],
       child: BlocBuilder<ThemeBloc, ThemeState>(
         builder: (context, state) {
           _log('is dark theme - ${state.isDarkTheme}');

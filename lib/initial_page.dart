@@ -23,9 +23,7 @@ class _InitialPageState extends State<InitialPage> {
         if (snapshot.hasData) {
           return const MainScreen();
         }
-        return AuthScreen(
-          auth: widget.auth,
-        );
+        return const AuthScreen();
       },
     );
   }
