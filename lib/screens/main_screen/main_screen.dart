@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pet_project/blocs/auth_bloc/auth_bloc.dart';
 import 'package:pet_project/blocs/theme_bloc/theme_bloc.dart';
-import 'package:pet_project/error_dialog.dart';
+import 'package:pet_project/common_widgets/error_dialog.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -52,6 +52,9 @@ class _MainScreenState extends State<MainScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Text(
+                  '${BlocProvider.of<AuthBloc>(context).auth.currentUser?.email ?? 'Email not found'}'),
+              SizedBox(height: 12),
               SizedBox(
                 width: 100,
                 child: ElevatedButton(

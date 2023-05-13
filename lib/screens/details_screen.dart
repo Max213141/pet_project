@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pet_project/spining_widget.dart';
+import 'package:pet_project/common_widgets/spining_widget.dart';
 
 class DetailsScreen extends StatelessWidget {
   /// Constructs a [DetailsScreen]
@@ -14,9 +14,9 @@ class DetailsScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Spacer(),
+            const Spacer(),
             RotatingContainer(),
-            Spacer(),
+            const Spacer(),
             ElevatedButton(
               onPressed: () => context.go('/'),
               child: const Text('Go back to the Home screen'),

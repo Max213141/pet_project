@@ -1,30 +1,9 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pet_project/blocs/blocs.dart';
-import 'package:pet_project/error_dialog.dart';
-import 'package:pet_project/loader_widget.dart';
-
-// class AuthScreen extends StatelessWidget {
-//   final FirebaseAuth auth;
-
-//   const AuthScreen({super.key, required this.auth});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//       ),
-//       body: Center(
-//         child: ElevatedButton(
-//           onPressed: () => context.pushReplacement('/main'),
-//           child: const Text('Go to the Details screen'),
-//         ),
-//       ),
-//     );
-//   }
-// }
+import 'package:pet_project/common_widgets/error_dialog.dart';
+import 'package:pet_project/common_widgets/loader_widget.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({
@@ -144,7 +123,7 @@ class _AuthScreenState extends State<AuthScreen> {
                 ),
               ),
             ),
-            if (_showLoader) Loader()
+            if (_showLoader) const RepaintBoundary(child: Loader())
           ],
         ),
       ),

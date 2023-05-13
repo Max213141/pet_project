@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:pet_project/auth_screen.dart';
-import 'package:pet_project/main_screen.dart';
+import 'package:pet_project/screens/auth_screen.dart';
+import 'package:pet_project/screens/main_screen/main_screen.dart';
 
 class InitialPage extends StatefulWidget {
   final FirebaseAuth auth;

@@ -7,6 +7,7 @@ class Loader extends StatelessWidget {
   final String message;
 
   const Loader({
+    super.key,
     this.size = 50,
     this.color = Colors.white,
     this.backgroundColor = Colors.black54,

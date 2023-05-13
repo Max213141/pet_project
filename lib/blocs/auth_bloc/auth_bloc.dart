@@ -62,6 +62,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     emit(const AuthState.loading());
 
     try {
+      _log('User login: ${event.email.trim()}');
+      _log('User password: ${event.password.trim()}');
+
       final userCredential = await auth.signInWithEmailAndPassword(
         email: event.email.trim(),
         password: event.password.trim(),
