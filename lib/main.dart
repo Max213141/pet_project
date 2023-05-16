@@ -1,23 +1,18 @@
 import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:firebase_messaging/firebase_messaging.dart';
-// import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:pet_project/blocs/blocs.dart';
-import 'package:pet_project/screens/main_screen/main_screen.dart';
-
-import 'dart:async';
-
 import 'package:firebase_core/firebase_core.dart';
-
-// import 'utils/utils.dart';
-
-import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pet_project/screens/details_screen.dart';
-import 'package:pet_project/screens/initial_screen.dart';
+import 'package:pet_project/blocs/blocs.dart';
+import 'package:pet_project/entities/hive_store.dart';
+import 'package:pet_project/screens/initial_hive_page.dart';
+import 'package:pet_project/screens/initial_page.dart';
+import 'package:pet_project/screens/main_screen/main_screen.dart';
 import 'package:pet_project/utils/loger.dart';
 import 'package:pet_project/utils/theme_data.dart';
+
+import 'firebase_options.dart';
 
 void _log(dynamic message) => Logger.projectLog(message, name: 'main');
 
@@ -26,10 +21,10 @@ void main() async {
   FirebaseApp app = await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  print('Initialized default app $app');
+  _log('Initialized default app $app');
 
   FirebaseAuth auth = FirebaseAuth.instanceFor(app: app);
-  print('Initialized auth $auth');
+  _log('Initialized auth $auth');
 
   // await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
   //   alert: true,
@@ -126,6 +121,7 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   final FirebaseAuth auth;
+  final HiveStore hiveStore = HiveStore();
 
   MyApp({Key? key, required this.auth}) : super(key: key);
 
@@ -134,9 +130,28 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final router = GoRouter(
       routes: [
+        // GoRoute(
+        //   path: '/',
+        //   builder: (BuildContext context, GoRouterState state) {
+        //     return IntroScreen();
+        //   },
+        // ),
         GoRoute(
           path: '/',
           builder: (BuildContext context, GoRouterState state) {
+            // return SplashScreen();
+
+            return InitialHivePage(
+              auth: auth,
+            );
+          },
+        ),
+
+        GoRoute(
+          path: '/initial_page',
+          builder: (BuildContext context, GoRouterState state) {
+            // return SplashScreen();
+
             return InitialPage(
               auth: auth,
             );
