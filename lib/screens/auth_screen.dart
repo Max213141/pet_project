@@ -32,7 +32,7 @@ class _AuthScreenState extends State<AuthScreen> {
               setState(() {
                 _showLoader = false;
               });
-              context.go('/main');
+              GoRouter.of(context).go('/main');
             },
             authError: (errorText) {
               setState(() {

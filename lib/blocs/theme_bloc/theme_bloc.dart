@@ -11,24 +11,22 @@ part 'theme_state.dart';
 void _log(dynamic message) => Logger.projectLog(message, name: 'theme_bloc');
 
 class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
-  ThemeBloc() : super(ThemeState(isDarkTheme: true)) {
+  ThemeBloc() : super(ThemeState(isDarkTheme: false)) {
     on<ChangeTheme>(
       (event, emit) async {
         Box<AppPreferences> preferencesBox =
             await HiveStore().getAppPreferencesBox();
-        AppPreferences? appPreferences = preferencesBox.get('isDarkTheme');
-        _log('app preferences box: $preferencesBox');
+        AppPreferences? appPreferences = preferencesBox.getAt(0);
+        bool isDarkTheme = await HiveStore().getAppTheme() ?? false;
 
-        _log('app preference: $appPreferences');
-        if (appPreferences?.isDarkTheme ?? false) {
-          emit(state.copyWith(isDarkTheme: false));
-          appPreferences!.isDarkTheme = false;
-          await appPreferences.save();
-        } else {
-          emit(state.copyWith(isDarkTheme: true));
-          appPreferences!.isDarkTheme = true;
+        _log('app preference theme: ${appPreferences?.isDarkTheme}');
+
+        if (appPreferences != null) {
+          appPreferences.isDarkTheme = event.isDarkTheme;
           await appPreferences.save();
         }
+        emit(state.copyWith(isDarkTheme: isDarkTheme));
+        _log('app preference theme: $isDarkTheme');
       },
     );
   }

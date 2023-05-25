@@ -15,19 +15,21 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
-    bool themeState = false;
+    bool isDartkTheme = false;
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Switch theme'),
         actions: [
           Switch(
-            value: themeState,
+            value: BlocProvider.of<ThemeBloc>(context).state.isDarkTheme,
             onChanged: (value) {
               setState(() {
-                themeState = value;
+                isDartkTheme = value;
               });
-              BlocProvider.of<ThemeBloc>(context).add(ChangeTheme());
+
+              BlocProvider.of<ThemeBloc>(context)
+                  .add(ChangeTheme(isDarkTheme: isDartkTheme));
             },
           )
         ],
@@ -36,7 +38,7 @@ class _MainScreenState extends State<MainScreen> {
         listener: (context, state) {
           state.whenOrNull(
             logOutSuccess: () {
-              context.go('/');
+              GoRouter.of(context).go('/initial_page');
             },
             authError: (errorText) => showDialog(
               context: context,
@@ -67,7 +69,7 @@ class _MainScreenState extends State<MainScreen> {
                 ),
               ),
               ElevatedButton(
-                onPressed: () => context.go('/details'),
+                onPressed: () => GoRouter.of(context).go('/main/details'),
                 child: const Text('Go to the Details screen'),
               ),
             ],

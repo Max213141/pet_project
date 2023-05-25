@@ -1,3 +1,3 @@
 class HiveIndex {
-  static const appPreferences = 1;
+  static const appPreferences = 0;
 }

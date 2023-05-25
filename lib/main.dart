@@ -3,12 +3,15 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pet_project/entities/hive_entities/app_preferences.dart';
 import 'package:pet_project/screens/details_screen.dart';
 import 'package:pet_project/blocs/blocs.dart';
 import 'package:pet_project/entities/hive_store.dart';
+import 'package:pet_project/screens/error_screen/error_screen.dart';
 import 'package:pet_project/screens/initial_hive_page.dart';
 import 'package:pet_project/screens/initial_page.dart';
 import 'package:pet_project/screens/main_screen/main_screen.dart';
+import 'package:pet_project/screens/splash_screen/splash_screen.dart';
 import 'package:pet_project/utils/loger.dart';
 import 'package:pet_project/utils/theme_data.dart';
 
@@ -122,6 +125,30 @@ void main() async {
 class MyApp extends StatelessWidget {
   final FirebaseAuth auth;
   final HiveStore hiveStore = HiveStore();
+  bool isFirstLaunch = true;
+
+  Future<void> _initHive() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    await hiveStore.init();
+    final appPreferencesBox = await hiveStore.getAppPreferencesBox();
+    _log('app preferences box: $appPreferencesBox');
+    _log('app preferences box is empty: ${appPreferencesBox.isEmpty}');
+
+    if (appPreferencesBox.isEmpty) {
+      await HiveStore().setInitialPreferences();
+      final appPreferencesBox = await hiveStore.getAppPreferencesBox();
+
+      _log(
+          'app preferences box is empty after setting to initial: ${appPreferencesBox.isEmpty}');
+    } else {
+      final appPreferences = appPreferencesBox.getAt(0);
+      if (appPreferences != null) {
+        // App has been launched before
+        appPreferences.isFirstLaunch = false;
+        await appPreferences.save();
+      }
+    }
+  }
 
   MyApp({Key? key, required this.auth}) : super(key: key);
 
@@ -180,23 +207,32 @@ class MyApp extends StatelessWidget {
         //   },
         // ),
       ],
+      errorBuilder: (context, state) => const ErrorScreen(),
+      debugLogDiagnostics: true,
     );
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider<ThemeBloc>(create: (context) => ThemeBloc()),
-        BlocProvider<AuthBloc>(create: (context) => AuthBloc(auth: auth)),
-      ],
-      child: BlocBuilder<ThemeBloc, ThemeState>(
-        builder: (context, state) {
-          _log('is dark theme - ${state.isDarkTheme}');
-          return MaterialApp.router(
-            title: 'Flutter Demo',
-            routerConfig: router,
-            theme: state.isDarkTheme ? darkTheme : lightTheme,
-            // home: const Home(),
-          );
-        },
-      ),
+// final    isDarkTheme = await HiveStore().getAppTheme() ?? false;
+
+    return FutureBuilder(
+      future: _initHive(),
+      builder: (context, snapshot) {
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider<ThemeBloc>(create: (context) => ThemeBloc()),
+            BlocProvider<AuthBloc>(create: (context) => AuthBloc(auth: auth)),
+          ],
+          child: BlocBuilder<ThemeBloc, ThemeState>(
+            builder: (context, state) {
+              _log('is dark theme - ${state.isDarkTheme}');
+              return MaterialApp.router(
+                title: 'Flutter Demo',
+                routerConfig: router,
+                theme: state.isDarkTheme ? darkTheme : lightTheme,
+                // home: const Home(),
+              );
+            },
+          ),
+        );
+      },
     );
   }
 }

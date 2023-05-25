@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pet_project/blocs/auth_bloc/auth_bloc.dart';
 import 'package:pet_project/screens/auth_screen.dart';
 import 'package:pet_project/screens/main_screen/main_screen.dart';
 
@@ -18,7 +20,7 @@ class _InitialPageState extends State<InitialPage> {
     bool val = true;
 
     return StreamBuilder<User?>(
-      stream: widget.auth.authStateChanges(),
+      stream: BlocProvider.of<AuthBloc>(context).auth.authStateChanges(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return const MainScreen();

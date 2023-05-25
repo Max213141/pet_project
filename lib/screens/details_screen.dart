@@ -18,7 +18,7 @@ class DetailsScreen extends StatelessWidget {
             RotatingContainer(),
             const Spacer(),
             ElevatedButton(
-              onPressed: () => context.go('/'),
+              onPressed: () => GoRouter.of(context).go('/main'),
               child: const Text('Go back to the Home screen'),
             ),
           ],
