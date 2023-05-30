@@ -8,31 +8,31 @@ void _log(dynamic message) => Logger.projectLog(message, name: 'hice_store');
 class HiveStore {
   Future<void> init() async {
     final directory = await getApplicationDocumentsDirectory();
-    Hive.init(directory.path);
+    await Hive.initFlutter(directory.path);
     Hive.registerAdapter(AppPreferencesAdapter());
   }
 
   Future<void> setInitialPreferences() async {
     var box = await Hive.openBox<AppPreferences>('app_preferences');
-    _log('hive box: $box');
+    //_log('hive box: $box');
     var appPrefs = AppPreferences.initial();
     await box.add(appPrefs);
   }
 
-  Future<Box<AppPreferences>> getAppPreferencesBox() async {
-    return await Hive.openBox<AppPreferences>('app_preferences');
+  Box<AppPreferences> getAppPreferencesBox() {
+    return Hive.box<AppPreferences>('app_preferences');
   }
 
-  Future<bool?> getAppTheme() async {
+  bool? getAppTheme() {
     Box<AppPreferences> appPrefsBox =
-        await Hive.openBox<AppPreferences>('app_preferences');
+        Hive.box<AppPreferences>('app_preferences');
     AppPreferences? appPrefs = appPrefsBox.get(0);
     return appPrefs?.isDarkTheme;
   }
 
-  Future<bool?> getFirstLaunch() async {
+  bool? getFirstLaunch() {
     Box<AppPreferences> appPrefsBox =
-        await Hive.openBox<AppPreferences>('app_preferences');
+        Hive.box<AppPreferences>('app_preferences');
     AppPreferences? appPrefs = appPrefsBox.get(0);
     return appPrefs?.isFirstLaunch;
   }

@@ -4,6 +4,9 @@ import 'package:go_router/go_router.dart';
 import 'package:pet_project/blocs/auth_bloc/auth_bloc.dart';
 import 'package:pet_project/blocs/theme_bloc/theme_bloc.dart';
 import 'package:pet_project/common_widgets/error_dialog.dart';
+import 'package:pet_project/utils/loger.dart';
+
+void _log(dynamic message) => Logger.projectLog(message, name: 'main_screen');
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -15,21 +18,21 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
-    bool isDartkTheme = false;
+    bool isDarkTheme = BlocProvider.of<ThemeBloc>(context).state.isDarkTheme;
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Switch theme'),
         actions: [
           Switch(
-            value: BlocProvider.of<ThemeBloc>(context).state.isDarkTheme,
+            value: isDarkTheme,
             onChanged: (value) {
               setState(() {
-                isDartkTheme = value;
+                isDarkTheme = value;
               });
-
+              _log('Is dark theme - $value');
               BlocProvider.of<ThemeBloc>(context)
-                  .add(ChangeTheme(isDarkTheme: isDartkTheme));
+                  .add(ChangeTheme(isDarkTheme: isDarkTheme));
             },
           )
         ],

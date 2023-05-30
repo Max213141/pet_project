@@ -18,7 +18,7 @@ class AppColor {
 // import 'package:pet_project/utils/loger.dart';
 // import 'package:pet_project/utils/theme_data.dart';
 
-// void _log(dynamic message) => Logger.projectLog(message, name: 'main');
+// void //_log(dynamic message) => Logger.projectLog(message, name: 'main');
 
 // void main() => runApp(MyApp());
 

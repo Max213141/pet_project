@@ -5,9 +5,7 @@ import 'package:intro_slider/intro_slider.dart';
 import 'package:pet_project/screens/intro_screen/widgets/intro_screen_part.dart';
 
 class IntroScreen extends StatefulWidget {
-  final FirebaseAuth auth;
-
-  const IntroScreen({super.key, required this.auth});
+  const IntroScreen({super.key});
 
   @override
   _IntroScreenState createState() => _IntroScreenState();

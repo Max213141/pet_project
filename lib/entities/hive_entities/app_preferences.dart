@@ -19,6 +19,6 @@ class AppPreferences extends HiveObject {
   });
 
   AppPreferences.initial()
-      : isFirstLaunch = false,
+      : isFirstLaunch = true,
         isDarkTheme = true;
 }

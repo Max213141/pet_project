@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:pet_project/entities/hive_entities/app_preferences.dart';
 import 'package:pet_project/screens/details_screen.dart';
 import 'package:pet_project/blocs/blocs.dart';
@@ -24,10 +25,10 @@ void main() async {
   FirebaseApp app = await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  _log('Initialized default app $app');
+  //_log('Initialized default app $app');
 
   FirebaseAuth auth = FirebaseAuth.instanceFor(app: app);
-  _log('Initialized auth $auth');
+  //_log('Initialized auth $auth');
 
   // await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
   //   alert: true,
@@ -130,16 +131,17 @@ class MyApp extends StatelessWidget {
   Future<void> _initHive() async {
     WidgetsFlutterBinding.ensureInitialized();
     await hiveStore.init();
-    final appPreferencesBox = await hiveStore.getAppPreferencesBox();
-    _log('app preferences box: $appPreferencesBox');
-    _log('app preferences box is empty: ${appPreferencesBox.isEmpty}');
+    final appPreferencesBox =
+        await Hive.openBox<AppPreferences>('app_preferences');
+    //_log('app preferences box: $appPreferencesBox');
+    //_log('app preferences box is empty: ${appPreferencesBox.isEmpty}');
 
     if (appPreferencesBox.isEmpty) {
       await HiveStore().setInitialPreferences();
-      final appPreferencesBox = await hiveStore.getAppPreferencesBox();
+      // final appPreferencesBox = hiveStore.getAppPreferencesBox();
 
-      _log(
-          'app preferences box is empty after setting to initial: ${appPreferencesBox.isEmpty}');
+      //_log(
+      // 'app preferences box is empty after setting to initial: ${appPreferencesBox.isEmpty}');
     } else {
       final appPreferences = appPreferencesBox.getAt(0);
       if (appPreferences != null) {
@@ -215,23 +217,26 @@ class MyApp extends StatelessWidget {
     return FutureBuilder(
       future: _initHive(),
       builder: (context, snapshot) {
-        return MultiBlocProvider(
-          providers: [
-            BlocProvider<ThemeBloc>(create: (context) => ThemeBloc()),
-            BlocProvider<AuthBloc>(create: (context) => AuthBloc(auth: auth)),
-          ],
-          child: BlocBuilder<ThemeBloc, ThemeState>(
-            builder: (context, state) {
-              _log('is dark theme - ${state.isDarkTheme}');
-              return MaterialApp.router(
-                title: 'Flutter Demo',
-                routerConfig: router,
-                theme: state.isDarkTheme ? darkTheme : lightTheme,
-                // home: const Home(),
-              );
-            },
-          ),
-        );
+        if (snapshot.connectionState == ConnectionState.done) {
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider<ThemeBloc>(create: (context) => ThemeBloc()),
+              BlocProvider<AuthBloc>(create: (context) => AuthBloc(auth: auth)),
+            ],
+            child: BlocBuilder<ThemeBloc, ThemeState>(
+              builder: (context, state) {
+                return MaterialApp.router(
+                  title: 'Flutter Demo',
+                  routerConfig: router,
+                  theme: state.isDarkTheme ? darkTheme : lightTheme,
+                  // home: const Home(),
+                );
+              },
+            ),
+          );
+        } else {
+          return MaterialApp();
+        }
       },
     );
   }
