@@ -8,7 +8,7 @@ final ThemeData lightTheme = ThemeData(
       background: AppColor.backgroundColorLight,
       secondary: AppColor.accentColorLight),
   textTheme: const TextTheme(
-    bodyText2: TextStyle(color: AppColor.textColorLight),
+    bodyMedium: TextStyle(color: AppColor.textColorLight),
   ),
 );
 
@@ -20,6 +20,6 @@ final ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
   ),
   textTheme: const TextTheme(
-    bodyText2: TextStyle(color: AppColor.textColorDark),
+    bodyMedium: TextStyle(color: AppColor.textColorDark),
   ),
 );

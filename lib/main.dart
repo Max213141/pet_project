@@ -7,6 +7,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:pet_project/entities/hive_entities/app_preferences.dart';
 import 'package:pet_project/screens/details_screen.dart';
 import 'package:pet_project/blocs/blocs.dart';
+import 'package:pet_project/screens/breathing_screen/breathing_screen.dart';
 import 'package:pet_project/entities/hive_store.dart';
 import 'package:pet_project/screens/error_screen/error_screen.dart';
 import 'package:pet_project/screens/initial_hive_page.dart';
@@ -195,7 +196,9 @@ class MyApp extends StatelessWidget {
             GoRoute(
               path: 'details',
               builder: (BuildContext context, GoRouterState state) {
-                return const DetailsScreen();
+                return const BreathingPracticeScreen(
+                  title: 'Breathing Practice',
+                );
               },
             ),
           ],

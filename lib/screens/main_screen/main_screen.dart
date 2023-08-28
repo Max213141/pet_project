@@ -1,10 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pet_project/blocs/auth_bloc/auth_bloc.dart';
 import 'package:pet_project/blocs/theme_bloc/theme_bloc.dart';
+import 'package:pet_project/common_widgets/bottom_navigation_bar.dart';
 import 'package:pet_project/common_widgets/error_dialog.dart';
 import 'package:pet_project/utils/loger.dart';
+import 'package:pet_project/utils/styles/styles.dart';
 
 void _log(dynamic message) => Logger.projectLog(message, name: 'main_screen');
 
@@ -37,6 +40,20 @@ class _MainScreenState extends State<MainScreen> {
           )
         ],
       ),
+      bottomNavigationBar: BottomNavBar(),
+      // navigationBar: CupertinoNavigationBar(
+      //     middle: const Text('Switch theme'),
+      //     trailing: CupertinoSwitch(
+      //       value: isDarkTheme,
+      //       onChanged: (value) {
+      //         setState(() {
+      //           isDarkTheme = value;
+      //         });
+      //         _log('Is dark theme - $value');
+      //         BlocProvider.of<ThemeBloc>(context)
+      //             .add(ChangeTheme(isDarkTheme: isDarkTheme));
+      //       },
+      //     )),
       body: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
           state.whenOrNull(
@@ -58,7 +75,9 @@ class _MainScreenState extends State<MainScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                  '${BlocProvider.of<AuthBloc>(context).auth.currentUser?.email ?? 'Email not found'}'),
+                '${BlocProvider.of<AuthBloc>(context).auth.currentUser?.email ?? 'Email not found'}',
+                style: MentalHealthTextStyles.text.mainCommonF14,
+              ),
               SizedBox(height: 12),
               SizedBox(
                 width: 100,

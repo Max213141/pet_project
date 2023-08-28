@@ -370,9 +370,10 @@ class _$LogInEvent implements LogInEvent {
 }
 
 abstract class LogInEvent implements AuthEvent {
-  const factory LogInEvent(
-      {required final String email,
-      required final String password}) = _$LogInEvent;
+  const factory LogInEvent({
+    required final String email,
+    required final String password,
+  }) = _$LogInEvent;
 
   String get email;
   String get password;

@@ -78,11 +78,11 @@ class _InitialHivePageState extends State<InitialHivePage> {
           if (isFirstLaunch) {
             return IntroScreen();
           } else {
-            if (widget.auth.currentUser != null) {
-              return const MainScreen();
-            } else {
-              return const AuthScreen();
-            }
+            // if (widget.auth.currentUser != null) {
+            return const MainScreen();
+            // } else {
+            //   return const AuthScreen();
+            // }
           }
         }
         return const SplashScreen();
