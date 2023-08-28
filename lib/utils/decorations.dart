@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:pet_project/utils/app_colors.dart';
 
 // import 'package:slivki/res/colors.dart';

@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:pet_project/utils/decorations.dart';
 import 'package:pet_project/utils/styles/styles.dart';
 
@@ -49,7 +46,7 @@ class _SearchFieldState extends State<SearchField> {
         maxLines: 1,
         autocorrect: true,
         textAlign: TextAlign.start,
-        style: MentalHealthTextStyles.text.mainTitleTextStyle,
+        style: MentalHealthTextStyles.text.mainCommonF18,
         decoration: InputDecoration(
           filled: true,
 

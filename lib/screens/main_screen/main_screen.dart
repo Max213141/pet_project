@@ -40,7 +40,7 @@ class _MainScreenState extends State<MainScreen> {
           )
         ],
       ),
-      bottomNavigationBar: BottomNavBar(),
+      bottomNavigationBar: const BottomNavBar(),
       // navigationBar: CupertinoNavigationBar(
       //     middle: const Text('Switch theme'),
       //     trailing: CupertinoSwitch(
@@ -78,7 +78,7 @@ class _MainScreenState extends State<MainScreen> {
                 '${BlocProvider.of<AuthBloc>(context).auth.currentUser?.email ?? 'Email not found'}',
                 style: MentalHealthTextStyles.text.mainCommonF14,
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               SizedBox(
                 width: 100,
                 child: ElevatedButton(
@@ -91,8 +91,16 @@ class _MainScreenState extends State<MainScreen> {
                 ),
               ),
               ElevatedButton(
-                onPressed: () => GoRouter.of(context).go('/main/details'),
+                onPressed: () => GoRouter.of(context).go('/main/breathing'),
                 child: const Text('Go to the Details screen'),
+              ),
+              ElevatedButton(
+                onPressed: () => GoRouter.of(context).go('/main/tests'),
+                child: const Text('Go to the Tests screen'),
+              ),
+              ElevatedButton(
+                onPressed: () => GoRouter.of(context).go('/main/meditation'),
+                child: const Text('Go to the Meditation screen'),
               ),
             ],
           ),

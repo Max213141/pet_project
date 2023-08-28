@@ -1,7 +1,7 @@
 part of 'styles.dart';
 
 class _TextTextStyle {
-  get mainTitleTextStyle => GoogleFonts.dosis(
+  get mainCommonF18 => GoogleFonts.dosis(
         fontSize: 18,
         height: 18 / 18,
         letterSpacing: -.41,
@@ -20,6 +20,13 @@ class _TextTextStyle {
         height: 16 / 18,
         letterSpacing: -.41,
         fontWeight: FontWeight.w300,
+      );
+
+  get mainTitleF24 => GoogleFonts.sansita(
+        fontSize: 24,
+        color: AppColor.mainDarkColor,
+        height: 24 / 18,
+        letterSpacing: -.51,
       );
 
   const _TextTextStyle();

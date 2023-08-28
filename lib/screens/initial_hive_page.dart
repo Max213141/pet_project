@@ -65,7 +65,7 @@ class _InitialHivePageState extends State<InitialHivePage> {
 
   @override
   Widget build(BuildContext context) {
-    bool val = true;
+    // bool val = true;
     // return IntroScreen(
     //   auth: widget.auth,
     // );
@@ -78,7 +78,7 @@ class _InitialHivePageState extends State<InitialHivePage> {
           if (isFirstLaunch) {
             return IntroScreen();
           } else {
-            // if (widget.auth.currentUser != null) {
+            // if (widget.auth.currentUser != null) {  //TODO uncomment for uth porper flow
             return const MainScreen();
             // } else {
             //   return const AuthScreen();

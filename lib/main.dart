@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:pet_project/entities/hive_entities/app_preferences.dart';
+import 'package:pet_project/navigation/navigation_observer.dart';
 import 'package:pet_project/screens/details_screen.dart';
 import 'package:pet_project/blocs/blocs.dart';
 import 'package:pet_project/screens/breathing_screen/breathing_screen.dart';
@@ -13,7 +14,9 @@ import 'package:pet_project/screens/error_screen/error_screen.dart';
 import 'package:pet_project/screens/initial_hive_page.dart';
 import 'package:pet_project/screens/initial_page.dart';
 import 'package:pet_project/screens/main_screen/main_screen.dart';
+import 'package:pet_project/screens/meditation_screen/meditation_screen.dart';
 import 'package:pet_project/screens/splash_screen/splash_screen.dart';
+import 'package:pet_project/screens/tests_screen/tests_screen.dart';
 import 'package:pet_project/utils/loger.dart';
 import 'package:pet_project/utils/theme_data.dart';
 
@@ -159,6 +162,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final router = GoRouter(
+      observers: [MyNavigatorObserver()],
       routes: [
         // GoRoute(
         //   path: '/',
@@ -167,6 +171,7 @@ class MyApp extends StatelessWidget {
         //   },
         // ),
         GoRoute(
+          name: 'initial_settings',
           path: '/',
           builder: (BuildContext context, GoRouterState state) {
             // return SplashScreen();
@@ -178,26 +183,49 @@ class MyApp extends StatelessWidget {
         ),
 
         GoRoute(
+          name: 'initial_page',
           path: '/initial_page',
           builder: (BuildContext context, GoRouterState state) {
             // return SplashScreen();
-
             return InitialPage(
               auth: auth,
             );
           },
         ),
         GoRoute(
+          name: 'main',
           path: '/main',
           builder: (BuildContext context, GoRouterState state) {
             return const MainScreen();
           },
-          routes: [
+          routes: <RouteBase>[
             GoRoute(
-              path: 'details',
+                name: 'breathing',
+                path: 'breathing',
+                builder: (BuildContext context, GoRouterState state) {
+                  return const BreathingPracticeScreen(
+                    title: 'Breathing Practice',
+                  );
+                },
+                routes: [
+// specific_category_item
+// meditations_list
+                ]),
+            GoRoute(
+              name: 'tests',
+              path: 'tests',
               builder: (BuildContext context, GoRouterState state) {
-                return const BreathingPracticeScreen(
-                  title: 'Breathing Practice',
+                return const TestsScreen(
+                  title: 'Psychological tests',
+                );
+              },
+            ),
+            GoRoute(
+              name: 'meditation',
+              path: 'meditation',
+              builder: (BuildContext context, GoRouterState state) {
+                return const MeditationScreen(
+                  title: 'Psychological tests',
                 );
               },
             ),
@@ -230,6 +258,7 @@ class MyApp extends StatelessWidget {
               builder: (context, state) {
                 return MaterialApp.router(
                   title: 'Flutter Demo',
+
                   routerConfig: router,
                   theme: state.isDarkTheme ? darkTheme : lightTheme,
                   // home: const Home(),

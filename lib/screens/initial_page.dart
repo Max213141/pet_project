@@ -22,10 +22,10 @@ class _InitialPageState extends State<InitialPage> {
     return StreamBuilder<User?>(
       stream: BlocProvider.of<AuthBloc>(context).auth.authStateChanges(),
       builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return const MainScreen();
-        }
-        return const AuthScreen();
+        // if (snapshot.hasData) { //Uncomment for proper workflow
+        return const MainScreen();
+        // }
+        // return const AuthScreen();
       },
     );
   }

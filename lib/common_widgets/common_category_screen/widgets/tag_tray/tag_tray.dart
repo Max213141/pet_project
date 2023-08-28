@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:pet_project/common_widgets/tag_tray/widgets/tag_tray_item.dart';
+import 'package:pet_project/common_widgets/common_category_screen/widgets/tag_tray/widgets/tag_tray_item.dart';
 
 class TagTray extends StatefulWidget {
   const TagTray({super.key});

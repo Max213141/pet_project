@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pet_project/utils/app_colors.dart';
 
 part 'text.dart';
 
