@@ -1,30 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pet_project/utils/app_colors.dart';
+import 'package:pet_project/common_widgets/common_category_items_screen/widgets/category_description.dart';
+import 'package:pet_project/common_widgets/common_category_screen/widgets/widgets.dart';
+import 'package:pet_project/utils/utils.dart';
 
-import 'widgets/widgets.dart';
-
-class CommonCategoryScreen extends StatefulWidget {
-  final Widget child;
+class CommonCategoryItemsScreen extends StatefulWidget {
   final String title;
-  const CommonCategoryScreen({
-    super.key,
-    required this.title,
-    required this.child,
-  });
+  final Widget child;
+  const CommonCategoryItemsScreen(
+      {super.key, required this.title, required this.child});
+
   @override
-  State<CommonCategoryScreen> createState() => _CommonCategoryScreenState();
+  State<CommonCategoryItemsScreen> createState() =>
+      _CommonCategoryItemsScreenState();
 }
 
-class _CommonCategoryScreenState extends State<CommonCategoryScreen> {
+class _CommonCategoryItemsScreenState extends State<CommonCategoryItemsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       // backgroundColor: Colors.green,
       appBar: AppBar(
         leading: GestureDetector(
-          onTap: () => GoRouter.of(context).go('/main'),
+          onTap: () => GoRouter.of(context).pop(),
           child: const Icon(
             Icons.arrow_back,
             color: AppColor.mainDarkColor,
@@ -49,16 +50,17 @@ class _CommonCategoryScreenState extends State<CommonCategoryScreen> {
         child: CustomScrollView(
           slivers: <Widget>[
             SliverPersistentHeader(
-              pinned: true,
+              pinned: false,
               delegate: _SliverFiltersDelegate(
-                minHeight: 110,
-                maxHeight: 115,
+                minHeight: MediaQuery.of(context).size.height / 4 + 12 + 95,
+                maxHeight: MediaQuery.of(context).size.height / 4 + 12 + 95,
                 child: DecoratedBox(
-                  decoration: BoxDecoration(color: Colors.white),
+                  decoration: const BoxDecoration(color: Colors.white),
                   child: Column(
                     children: <Widget>[
-                      SearchField(),
+                      // SearchField(),
                       TagTray(),
+                      CategoryDescription(),
                     ],
                   ),
                 ),
@@ -67,12 +69,20 @@ class _CommonCategoryScreenState extends State<CommonCategoryScreen> {
             SliverList(
               delegate: SliverChildBuilderDelegate(
                 (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: widget.child,
+                  return DecoratedBox(
+                    decoration: BoxDecoration(
+                        color: Color(0xFFFFD7A6).withOpacity(.35),
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(20),
+                          topRight: Radius.circular(20),
+                        )),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: widget.child,
+                    ),
                   );
                 },
-                childCount: 4,
+                childCount: 10,
               ),
             ),
           ],

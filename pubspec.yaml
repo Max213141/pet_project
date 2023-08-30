@@ -45,5 +45,6 @@ flutter:
   assets:
     - assets/icons/
     - assets/backgrounds/
+    - assets/images/
   # assets:
   #   -assets/notification_icon.png

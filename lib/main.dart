@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:pet_project/entities/hive_entities/app_preferences.dart';
 import 'package:pet_project/navigation/navigation_observer.dart';
+import 'package:pet_project/screens/breathing_items_screen/breathing_items_screen.dart';
 import 'package:pet_project/screens/details_screen.dart';
 import 'package:pet_project/blocs/blocs.dart';
 import 'package:pet_project/screens/breathing_screen/breathing_screen.dart';
@@ -208,6 +209,16 @@ class MyApp extends StatelessWidget {
                   );
                 },
                 routes: [
+                  GoRoute(
+                    name: 'breathing_items',
+                    path: 'breathing_items',
+                    builder: (BuildContext context, GoRouterState state) {
+                      return const BreathingItemsScreen(
+                        title: 'Meta Meditation',
+                      );
+                    },
+                  ),
+
 // specific_category_item
 // meditations_list
                 ]),

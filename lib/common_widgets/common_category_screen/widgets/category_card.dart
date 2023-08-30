@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pet_project/common_widgets/common_category_screen/widgets/category_card_item.dart';
-import 'package:pet_project/utils/styles/styles.dart';
+import 'package:pet_project/common_widgets/common_category_screen/widgets/category_item.dart';
+import 'package:pet_project/utils/utils.dart';
+
+void _log(dynamic message) => Logger.projectLog(message, name: 'category_card');
 
 class CategoryCard extends StatefulWidget {
   const CategoryCard({super.key});
@@ -27,7 +29,10 @@ class _CategoryCardState extends State<CategoryCard> {
             ClipRRect(
           borderRadius: const BorderRadius.all(Radius.circular(20)),
           child: GestureDetector(
-            onTap: () => GoRouter.of(context).go('/meditations_list'),
+            onTap: () {
+              _log('pressed navigation on card');
+              GoRouter.of(context).go('/main/breathing/breathing_items');
+            },
             //  () => showDialog(
             //   context: context,
             //   builder: (
