@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pet_project/common_widgets/common_category_items_screen/widgets/category_description.dart';
@@ -43,61 +42,63 @@ class _CommonCategoryItemsScreenState extends State<CommonCategoryItemsScreen> {
         elevation: 0,
       ),
       // bottomNavigationBar: const BottomNavBar(),
-      body: Padding(
-        padding: const EdgeInsets.only(
-          bottom: 16,
-        ),
-        child: CustomScrollView(
-          slivers: <Widget>[
-            SliverPersistentHeader(
-              pinned: false,
-              delegate: _SliverFiltersDelegate(
-                minHeight: MediaQuery.of(context).size.height / 4 + 12 + 95,
-                maxHeight: MediaQuery.of(context).size.height / 4 + 12 + 95,
-                child: DecoratedBox(
-                  decoration: const BoxDecoration(color: Colors.white),
-                  child: Column(
-                    children: <Widget>[
-                      // SearchField(),
-                      TagTray(),
-                      CategoryDescription(),
-                    ],
-                  ),
+      body: CustomScrollView(
+        slivers: [
+          SliverPersistentHeader(
+            pinned: true,
+            delegate: _SlivergridDelegate(
+              minHeight: 42,
+              maxHeight: 42,
+              child: const DecoratedBox(
+                decoration: BoxDecoration(color: Colors.white),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  child: TagTray(),
                 ),
               ),
             ),
-            SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (context, index) {
-                  return DecoratedBox(
-                    decoration: BoxDecoration(
-                        color: Color(0xFFFFD7A6).withOpacity(.35),
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20),
-                          topRight: Radius.circular(20),
-                        )),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: widget.child,
-                    ),
+          ),
+          const SliverToBoxAdapter(
+            child: CategoryDescription(),
+          ),
+          SliverToBoxAdapter(
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                color: const Color(0xFFFFD7A6).withOpacity(.35),
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
+                ),
+              ),
+              child: GridView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: 10,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                ),
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    onTap: () => GoRouter.of(context)
+                        .go('/main/breathing/breathing_item_screen'),
+                    child: Center(child: widget.child),
                   );
                 },
-                childCount: 10,
               ),
             ),
-          ],
-        ),
+          )
+        ],
       ),
     );
   }
 }
 
-class _SliverFiltersDelegate extends SliverPersistentHeaderDelegate {
+class _SlivergridDelegate extends SliverPersistentHeaderDelegate {
   final double minHeight;
   final double maxHeight;
   final Widget child;
 
-  _SliverFiltersDelegate({
+  _SlivergridDelegate({
     required this.minHeight,
     required this.maxHeight,
     required this.child,
@@ -119,7 +120,7 @@ class _SliverFiltersDelegate extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  bool shouldRebuild(_SliverFiltersDelegate oldDelegate) {
+  bool shouldRebuild(_SlivergridDelegate oldDelegate) {
     return maxHeight != oldDelegate.maxHeight ||
         minHeight != oldDelegate.minHeight ||
         child != oldDelegate.child;

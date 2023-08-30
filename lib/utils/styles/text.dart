@@ -10,7 +10,7 @@ class _TextTextStyle {
 
   get mainCommonF14 => GoogleFonts.dosis(
         fontSize: 14,
-        height: 14 / 18,
+        height: 14 / 12,
         letterSpacing: -.41,
         fontWeight: FontWeight.w400,
       );

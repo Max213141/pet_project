@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:pet_project/entities/hive_entities/app_preferences.dart';
 import 'package:pet_project/navigation/navigation_observer.dart';
+import 'package:pet_project/screens/breathing_item_screen/breathing_item_screen.dart';
 import 'package:pet_project/screens/breathing_items_screen/breathing_items_screen.dart';
 import 'package:pet_project/screens/details_screen.dart';
 import 'package:pet_project/blocs/blocs.dart';
@@ -201,27 +202,45 @@ class MyApp extends StatelessWidget {
           },
           routes: <RouteBase>[
             GoRoute(
-                name: 'breathing',
-                path: 'breathing',
-                builder: (BuildContext context, GoRouterState state) {
-                  return const BreathingPracticeScreen(
-                    title: 'Breathing Practice',
-                  );
-                },
-                routes: [
-                  GoRoute(
-                    name: 'breathing_items',
-                    path: 'breathing_items',
-                    builder: (BuildContext context, GoRouterState state) {
-                      return const BreathingItemsScreen(
-                        title: 'Meta Meditation',
-                      );
-                    },
-                  ),
-
-// specific_category_item
-// meditations_list
-                ]),
+              name: 'breathing',
+              path: 'breathing',
+              builder: (BuildContext context, GoRouterState state) {
+                return const BreathingPracticeScreen(
+                  title: 'Breathing Practice',
+                );
+              },
+              routes: [
+                GoRoute(
+                  name: 'breathing_items',
+                  path: 'breathing_items',
+                  builder: (BuildContext context, GoRouterState state) {
+                    return const BreathingItemsScreen(
+                      title: 'Meta Meditation',
+                    );
+                  },
+                  routes: [
+                    GoRoute(
+                      // name: 'breathing_item_screen',
+                      path: 'breathing_item_screen',
+                      builder: (BuildContext context, GoRouterState state) {
+                        return const BreathingItemScreen(
+                          title: 'Meta Meditation',
+                        );
+                      },
+                    ),
+                  ],
+                ),
+                GoRoute(
+                  // name: 'breathing_item_screen',
+                  path: 'breathing_item_screen',
+                  builder: (BuildContext context, GoRouterState state) {
+                    return const BreathingItemScreen(
+                      title: 'Meta Meditation',
+                    );
+                  },
+                ),
+              ],
+            ),
             GoRoute(
               name: 'tests',
               path: 'tests',

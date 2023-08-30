@@ -3,14 +3,14 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pet_project/utils/styles/styles.dart';
 
-class CategoryCardItem extends StatefulWidget {
-  const CategoryCardItem({super.key});
+class CategoryItem extends StatefulWidget {
+  const CategoryItem({super.key});
 
   @override
-  State<CategoryCardItem> createState() => _CategoryCardItemState();
+  State<CategoryItem> createState() => _CategoryItemState();
 }
 
-class _CategoryCardItemState extends State<CategoryCardItem> {
+class _CategoryItemState extends State<CategoryItem> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
