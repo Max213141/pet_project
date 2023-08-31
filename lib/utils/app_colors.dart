@@ -6,12 +6,13 @@ class AppColor {
   static const Color backgroundColorLight = Color(0xFFF5F5F5);
   static const Color textColorLight = Color(0xFF212121);
 
-  static const Color primaryColorDark = Color(0xFFBB86FC);
+  static const Color primaryColorDark = Color(0xFFFFFFFF);
   static const Color accentColorDark = Color(0xFF03DAC6);
   static const Color backgroundColorDark = Color(0xFF121212);
-  static const Color textColorDark = Color(0xFFFFFFFF);
+  static const Color textColorDark = Color(0xFF111111);
 
   static const Color mainDarkColor = Color(0xFF373737);
+  static const Color buttonsColor = Color(0xFFFF8B72);
 }
 
 

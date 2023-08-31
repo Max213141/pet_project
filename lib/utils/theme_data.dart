@@ -5,6 +5,8 @@ final ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,
   colorScheme: ColorScheme.fromSwatch().copyWith(
       primary: AppColor.primaryColorLight,
+      // onPrimary: AppColor.mainDarkColor,
+
       background: AppColor.backgroundColorLight,
       secondary: AppColor.accentColorLight),
   textTheme: const TextTheme(
@@ -15,7 +17,8 @@ final ThemeData lightTheme = ThemeData(
 final ThemeData darkTheme = ThemeData(
   colorScheme: ColorScheme.fromSwatch().copyWith(
     primary: AppColor.primaryColorDark,
-    background: AppColor.backgroundColorDark,
+    onPrimary: AppColor.mainDarkColor,
+    background: AppColor.mainDarkColor,
     secondary: AppColor.accentColorDark,
     brightness: Brightness.dark,
   ),

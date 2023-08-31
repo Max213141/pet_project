@@ -33,6 +33,12 @@ class _TagTrayItemState extends State<TagTrayItem> {
           decoration: BoxDecoration(
             borderRadius: MentalHealthDecorations.borders.radiusC8,
             border: MentalHealthDecorations.borders.coloredSmall,
+            // Border.fromBorderSide( //TODO for theme feature
+            //   BorderSide(
+            //     width: 1,
+            //     color: Theme.of(context).colorScheme.background,
+            //   ),
+            // ),
           ),
           child: Center(
             child: Padding(

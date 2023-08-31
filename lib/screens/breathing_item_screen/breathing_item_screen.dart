@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pet_project/screens/breathing_item_screen/widgets/breathing_timer_widget.dart';
 import 'package:pet_project/screens/breathing_item_screen/widgets/widgets.dart';
 
 import 'package:pet_project/utils/utils.dart';
@@ -54,14 +55,13 @@ class _BreathingItemScreenState extends State<BreathingItemScreen> {
             Padding(
               padding: const EdgeInsets.only(top: 20.0, bottom: 10),
               child: SizedBox(
-                height: MediaQuery.of(context).size.height / 3,
+                height: MediaQuery.of(context).size.height / 3.5,
                 width: MediaQuery.of(context).size.width - 92,
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                      borderRadius: MentalHealthDecorations.borders.radiusC20),
+                child: ClipRRect(
+                  borderRadius: MentalHealthDecorations.borders.radiusC20,
                   child: SvgPicture.asset(
                     'assets/backgrounds/card_backgound.svg',
-                    height: MediaQuery.of(context).size.height / 4,
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
@@ -82,6 +82,8 @@ class _BreathingItemScreenState extends State<BreathingItemScreen> {
             ),
             SizedBox(height: 4),
             BreathingGuide(),
+            SizedBox(height: 4),
+            BreathingTimerWidget(),
           ],
         ),
       ),

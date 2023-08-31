@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pet_project/utils/app_colors.dart';
 
 import 'widgets/widgets.dart';
 
@@ -25,9 +24,9 @@ class _CommonCategoryScreenState extends State<CommonCategoryScreen> {
       appBar: AppBar(
         leading: GestureDetector(
           onTap: () => GoRouter.of(context).go('/main'),
-          child: const Icon(
+          child: Icon(
             Icons.arrow_back,
-            color: AppColor.mainDarkColor,
+            color: Theme.of(context).textTheme.bodyMedium?.color,
             size: 24,
           ),
         ),
@@ -37,7 +36,8 @@ class _CommonCategoryScreenState extends State<CommonCategoryScreen> {
             widget.title,
           ),
         ),
-        titleTextStyle: GoogleFonts.sansita(fontSize: 24, color: Colors.black),
+        titleTextStyle: GoogleFonts.sansita(
+            fontSize: 24, color: Theme.of(context).textTheme.bodyMedium?.color),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
@@ -54,7 +54,8 @@ class _CommonCategoryScreenState extends State<CommonCategoryScreen> {
                 minHeight: 110,
                 maxHeight: 115,
                 child: DecoratedBox(
-                  decoration: BoxDecoration(color: Colors.white),
+                  decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.background),
                   child: Column(
                     children: <Widget>[
                       SearchField(),
