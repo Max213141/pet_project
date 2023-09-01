@@ -28,6 +28,8 @@ class _TextTextStyle {
         fontWeight: FontWeight.w400,
       );
 
+  get mainCommonF20White => mainCommonF20.copyWith(color: Colors.white);
+
   get mainTitleF24 => GoogleFonts.sansita(
         fontSize: 24,
         color: AppColor.mainDarkColor,

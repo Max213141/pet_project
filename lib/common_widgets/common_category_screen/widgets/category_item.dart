@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:pet_project/utils/decorations.dart';
 import 'package:pet_project/utils/styles/styles.dart';
 
 class CategoryItem extends StatefulWidget {
@@ -63,7 +64,7 @@ class _CategoryItemState extends State<CategoryItem> {
               height: 120,
               width: 130,
               child: ClipRRect(
-                borderRadius: const BorderRadius.all(Radius.circular(20)),
+                borderRadius: MentalHealthDecorations.borders.radiusC20,
                 child: RotatedBox(
                   quarterTurns: 1,
                   child: SvgPicture.asset(

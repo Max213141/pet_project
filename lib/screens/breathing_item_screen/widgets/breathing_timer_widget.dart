@@ -36,7 +36,9 @@ class _BreathingTimerWidgetState extends State<BreathingTimerWidget> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    BreathingTimerSwitcher(),
+                    SizedBox(
+                        width: MediaQuery.of(context).size.width / 2 - 20,
+                        child: BreathingTimerSwitcher()),
                     BreathingTimer()
                   ],
                 ),

@@ -82,7 +82,7 @@ class _BreathingItemScreenState extends State<BreathingItemScreen> {
             ),
             SizedBox(height: 4),
             BreathingGuide(),
-            SizedBox(height: 4),
+            SizedBox(height: 45),
             BreathingTimerWidget(),
           ],
         ),

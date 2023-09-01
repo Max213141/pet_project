@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:pet_project/utils/app_colors.dart';
 import 'package:pet_project/utils/decorations.dart';
+import 'package:pet_project/utils/styles/styles.dart';
 
 class BreathingTimerSwitcher extends StatefulWidget {
   const BreathingTimerSwitcher({super.key});
@@ -10,30 +12,68 @@ class BreathingTimerSwitcher extends StatefulWidget {
 class _BreathingTimerSwitcherState extends State<BreathingTimerSwitcher> {
   DateTime date1 = DateTime.now();
   DateTime date2 = DateTime.now().add(Duration(days: 7));
-  bool isDate1Selected = true;
-  bool _isAnimated = true;
+  bool isSelected = true;
+  // bool _isAnimated = true;
 
   void toggleDates() {
     setState(() {
-      isDate1Selected = !isDate1Selected;
+      isSelected = !isSelected;
     });
   }
 
-  String formatDate(DateTime date) {
-    return "${date.day}.${date.month}.${date.year}";
-  }
+  final List<int> _list = List.generate(3, (i) => i);
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-    initState(); // Состояние для управления анимацией
     return SizedBox(
       width: MediaQuery.of(context).size.width / 2 - 20,
+      height: 50,
       child: DecoratedBox(
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: MentalHealthDecorations.borders.radiusC10),
-        child: Row(
-          children: [],
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 5),
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: _list.length,
+            itemBuilder: (_, index) {
+              return SizedBox(
+                width: (MediaQuery.of(context).size.width / 2 - 20) / 2 - 8,
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    borderRadius: MentalHealthDecorations.borders.radiusC10,
+                    color: selectedIndex == index
+                        ? AppColor.mainDarkColor
+                        : Colors.transparent,
+                  ),
+                  child: Center(
+                    child: ListTile(
+                      onTap: () {
+                        setState(() {
+                          selectedIndex = index;
+                        });
+                      },
+                      // contentPadding: const EdgeInsets.symmetric(
+                      //   vertical: 4,
+                      //   horizontal: 13,
+                      // ),
+                      title: Align(
+                        alignment: Alignment.topCenter,
+                        child: Text(
+                          '12.35', //TODO _list[index].title
+                          style: selectedIndex == index
+                              ? MentalHealthTextStyles.text.mainCommonF20White
+                              : MentalHealthTextStyles.text.mainCommonF20,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
         ),
       ),
     );
@@ -41,40 +81,54 @@ class _BreathingTimerSwitcherState extends State<BreathingTimerSwitcher> {
 }
 
 // Row(
-//         mainAxisAlignment: MainAxisAlignment.center,
-//         children: [
-//           AnimatedContainer(
-//             duration: Duration(milliseconds: 300), // Длительность анимации
-//             color: _isAnimated ? Colors.blue : Colors.transparent,
-//             padding: EdgeInsets.all(8.0),
-//             child: GestureDetector(
-//               onTap: () {
-//                 setState(() {
-//                   _isAnimated = !_isAnimated;
-//                 });
-//               },
-//               child: Text(
-//                 'Hello',
-//                 style: TextStyle(color: Colors.white),
+//             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//             children: [
+//               GestureDetector(
+//                 onTap: () => toggleDates(),
+//                 child: SizedBox(
+//                   child: DecoratedBox(
+//                     decoration: BoxDecoration(
+//                       borderRadius: MentalHealthDecorations.borders.radiusC10,
+//                       color:
+//                           isSelected ? AppColor.mainDarkColor : Colors.white,
+//                     ),
+//                     child: Center(
+//                       child: Padding(
+                      
+//                         child: Text(
+//                           '12.35',
+//                           style: isSelected
+//                               ? MentalHealthTextStyles.text.mainCommonF20White
+//                               : MentalHealthTextStyles.text.mainCommonF20,
+//                         ),
+//                       ),
+//                     ),
+//                   ),
+//                 ),
 //               ),
-//             ),
-//           ),
-//           SizedBox(width: 10), // Пространство между виджетами
-//           AnimatedContainer(
-//             duration: Duration(milliseconds: 300), // Длительность анимации
-//             color: _isAnimated ? Colors.transparent : Colors.blue,
-//             padding: EdgeInsets.all(8.0),
-//             child: GestureDetector(
-//               onTap: () {
-//                 setState(() {
-//                   _isAnimated = !_isAnimated;
-//                 });
-//               },
-//               child: Text(
-//                 'Decorated Text',
-//                 style: TextStyle(color: Colors.white),
+//               GestureDetector(
+//                 onTap: () => toggleDates(),
+//                 child: SizedBox(
+//                   width: (MediaQuery.of(context).size.width / 2 - 20) / 2 - 8,
+//                   child: DecoratedBox(
+                   
+//                         color: isSelected
+//                             ? AppColor.mainDarkColor
+//                             : Colors.white),
+//                     child: Center(
+//                       child: Padding(
+//                         padding: const EdgeInsets.symmetric(
+//                             vertical: 4.0, horizontal: 4),
+//                         child: Text(
+//                           '13.35',
+//                           style: isSelected
+//                               ? MentalHealthTextStyles.text.mainCommonF20White
+//                               : MentalHealthTextStyles.text.mainCommonF20,
+//                         ),
+//                       ),
+//                     ),
+//                   ),
+//                 ),
 //               ),
-//             ),
+//             ],
 //           ),
-//         ],
-//       ),

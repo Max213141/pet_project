@@ -12,9 +12,12 @@ class CategoryDescription extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 55.0, vertical: 6.0),
-          child: SvgPicture.asset(
-            'assets/backgrounds/card_backgound.svg',
-            height: MediaQuery.of(context).size.height / 4,
+          child: ClipRRect(
+            borderRadius: MentalHealthDecorations.borders.radiusC20,
+            child: SvgPicture.asset(
+              'assets/backgrounds/card_backgound.svg',
+              height: MediaQuery.of(context).size.height / 4,
+            ),
           ),
         ),
         Padding(
