@@ -28,6 +28,7 @@ void _log(dynamic message) => Logger.projectLog(message, name: 'main');
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   FirebaseApp app = await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
