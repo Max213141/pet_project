@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:pet_project/utils/angle_curver.dart';
 import 'package:pet_project/utils/decorations.dart';
 import 'package:pet_project/utils/styles/styles.dart';
 
@@ -15,8 +16,8 @@ class _CategoryItemState extends State<CategoryItem> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 169,
-      width: 130,
+      height: 165,
+      width: 125,
       child: DecoratedBox(
         decoration: const BoxDecoration(
             // color: Colors.white,
@@ -61,25 +62,42 @@ class _CategoryItemState extends State<CategoryItem> {
               ),
             ),
             SizedBox(
-              height: 120,
-              width: 130,
+              height: 125,
+              width: 125,
               child: ClipRRect(
                 borderRadius: MentalHealthDecorations.borders.radiusC20,
-                child: RotatedBox(
-                  quarterTurns: 1,
-                  child: SvgPicture.asset(
-                    'assets/backgrounds/card_backgound.svg',
-                    fit: BoxFit.cover,
-                  ),
+                child: Image(
+                  fit: BoxFit.fill,
+                  image: AssetImage('assets/images/lotus.jpg'),
                 ),
               ),
             ),
-            const Positioned(
-              top: 10,
-              right: 10,
-              child: Icon(
-                Icons.heart_broken_rounded,
-                color: Color(0xFFFF8B72),
+            Positioned(
+              top: 0,
+              right: 0,
+              child: SizedBox(
+                width: 35,
+                height: 35,
+                child: CustomPaint(
+                  painter: InvertedRoundedRectanglePainter(
+                      radius: 20.0, color: Color(0xFFFFD7A6)),
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      color: Color(0xFFFFD7A6),
+                      borderRadius: MentalHealthDecorations.borders.radiusC10,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 5, left: 5),
+                      child: Center(
+                        child: Icon(
+                          Icons.heart_broken_rounded,
+                          color: Color(0xFFFF8B72),
+                          size: 25,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
               ),
             ),
             // Positioned(

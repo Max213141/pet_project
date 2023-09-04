@@ -168,6 +168,13 @@ class _Borders {
         bottomRight: Radius.circular(10),
       );
 
+  BorderRadius get radiusC15 => const BorderRadius.only(
+        topLeft: Radius.circular(15),
+        topRight: Radius.circular(15),
+        bottomLeft: Radius.circular(15),
+        bottomRight: Radius.circular(15),
+      );
+
   /// 8
   BorderRadius get radiusC8 => const BorderRadius.only(
         topLeft: Radius.circular(8),

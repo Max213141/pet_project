@@ -10,10 +10,7 @@ class BreathingTimerSwitcher extends StatefulWidget {
 }
 
 class _BreathingTimerSwitcherState extends State<BreathingTimerSwitcher> {
-  DateTime date1 = DateTime.now();
-  DateTime date2 = DateTime.now().add(Duration(days: 7));
   bool isSelected = true;
-  // bool _isAnimated = true;
 
   void toggleDates() {
     setState(() {

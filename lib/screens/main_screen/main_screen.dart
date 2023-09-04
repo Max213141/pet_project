@@ -5,8 +5,10 @@ import 'package:pet_project/blocs/auth_bloc/auth_bloc.dart';
 import 'package:pet_project/blocs/theme_bloc/theme_bloc.dart';
 import 'package:pet_project/common_widgets/bottom_navigation_bar.dart';
 import 'package:pet_project/common_widgets/error_dialog.dart';
+import 'package:pet_project/utils/angle_curver.dart';
 import 'package:pet_project/utils/loger.dart';
 import 'package:pet_project/utils/styles/styles.dart';
+import 'package:pet_project/utils/utils.dart';
 
 void _log(dynamic message) => Logger.projectLog(message, name: 'main_screen');
 
@@ -24,7 +26,30 @@ class _MainScreenState extends State<MainScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Switch theme'),
+        title: Align(
+          alignment: Alignment.centerLeft,
+          child: Padding(
+            padding: const EdgeInsets.only(left: 18.0),
+            child: RichText(
+              text: TextSpan(
+                children: [
+                  TextSpan(
+                    text: 'Good day, ',
+                    style: MentalHealthTextStyles.text.mainCommonF20N
+                        .copyWith(color: AppColor.oneMoreDarkColor),
+                  ),
+                  TextSpan(
+                    text: 'Melany ',
+                    style: MentalHealthTextStyles.text.userName,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        elevation: 0,
+        backgroundColor: AppColor.primaryBackgroundColor,
+        automaticallyImplyLeading: false,
         actions: [
           Switch(
             value: isDarkTheme,
@@ -38,6 +63,15 @@ class _MainScreenState extends State<MainScreen> {
             },
           )
         ],
+      ),
+      floatingActionButton: ElevatedButton(
+        onPressed: () => showDialog(
+          context: context,
+          builder: (context) {
+            return const Center(child: DevMenuWidget());
+          },
+        ),
+        child: Text('M'),
       ),
       bottomNavigationBar: const BottomNavBar(),
       // navigationBar: CupertinoNavigationBar(
@@ -78,29 +112,6 @@ class _MainScreenState extends State<MainScreen> {
                 style: MentalHealthTextStyles.text.mainCommonF14,
               ),
               const SizedBox(height: 12),
-              SizedBox(
-                width: 100,
-                child: ElevatedButton(
-                  onPressed: () {
-                    BlocProvider.of<AuthBloc>(context).add(
-                      const LogOutEvent(),
-                    );
-                  },
-                  child: const Text('Log Out'),
-                ),
-              ),
-              ElevatedButton(
-                onPressed: () => GoRouter.of(context).go('/main/breathing'),
-                child: const Text('Go to the Details screen'),
-              ),
-              ElevatedButton(
-                onPressed: () => GoRouter.of(context).go('/main/tests'),
-                child: const Text('Go to the Tests screen'),
-              ),
-              ElevatedButton(
-                onPressed: () => GoRouter.of(context).go('/main/meditation'),
-                child: const Text('Go to the Meditation screen'),
-              ),
             ],
           ),
         ),
