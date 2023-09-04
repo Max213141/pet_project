@@ -1,18 +1,34 @@
 part of 'styles.dart';
 
 class _TextTextStyle {
-  get mainCommonF20N => GoogleFonts.signika(
+  get mainPrimaryFontF20N => GoogleFonts.signika(
         fontSize: 28,
         height: 28 / 24,
         letterSpacing: -.5,
         fontWeight: FontWeight.w400,
       );
+
+  get mainPrimaryFontF22N => GoogleFonts.signika(
+        fontSize: 22,
+        height: 22 / 20,
+        letterSpacing: -.41,
+        color: AppColor.primaryColor,
+        fontWeight: FontWeight.w800,
+      );
+
+  get mainSecondaryFontF16 => GoogleFonts.poppins(
+        fontSize: 16,
+        height: 16 / 14,
+        letterSpacing: -.41,
+        color: AppColor.oneMoreDarkColor,
+        fontWeight: FontWeight.w200,
+      );
   get userName => GoogleFonts.signika(
         fontSize: 28,
         height: 28 / 24,
         letterSpacing: -.5,
-        color: AppColor.userNameColor,
-        fontWeight: FontWeight.w800,
+        color: AppColor.primaryColor,
+        fontWeight: FontWeight.w300,
       );
 
   get mainCommonF14 => GoogleFonts.dosis(

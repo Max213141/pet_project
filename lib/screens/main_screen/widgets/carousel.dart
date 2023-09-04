@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pet_project/utils/utils.dart';
 
-class _CarouselWidgetState extends StatefulWidget {
-  const _CarouselWidgetState({super.key});
+class CarouselWidget extends StatefulWidget {
+  const CarouselWidget({super.key});
 
   @override
-  State<_CarouselWidgetState> createState() => __CarouselWidgetStateState();
+  State<CarouselWidget> createState() => _CarouselWidgetState();
 }
 
-class __CarouselWidgetStateState extends State<_CarouselWidgetState> {
+class _CarouselWidgetState extends State<CarouselWidget> {
   bool isSelected = true;
 
   void toggleDates() {
@@ -25,50 +25,91 @@ class __CarouselWidgetStateState extends State<_CarouselWidgetState> {
   @override
   Widget build(BuildContext context) {
     final expandedWidth = (MediaQuery.of(context).size.width - 36 - 32) / 2;
-    return SizedBox(
-      height: 200,
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          color: AppColor.primaryBackgroundColor,
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(20),
+    return DecoratedBox(
+      decoration: const BoxDecoration(color: AppColor.primaryColor),
+      child: SizedBox(
+        height: MediaQuery.of(context).size.height / 5,
+        child: DecoratedBox(
+          decoration: const BoxDecoration(
+            color: AppColor.primaryBackgroundColor,
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(40),
+            ),
           ),
-        ),
-        child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: _list.length,
-          itemBuilder: (_, index) {
-            return SizedBox(
-              width: (MediaQuery.of(context).size.width / 2 - 20) / 2 - 8,
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  borderRadius: MentalHealthDecorations.borders.radiusC15,
-                ),
-                child: Center(
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        selectedIndex = index;
-                      });
-                    },
-                    child: AnimatedContainer(
-                      duration: Duration(milliseconds: 500),
-                      height: 100,
-                      width: selectedIndex == index
-                          ? expandedWidth
-                          : expandedWidth / 2,
-                      child: Text(
-                        '12.35', //TODO _list[index].title
-                        style: selectedIndex == index
-                            ? MentalHealthTextStyles.text.mainCommonF20White
-                            : MentalHealthTextStyles.text.mainCommonF20,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 12),
+            child: Center(
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: _list.length,
+                itemBuilder: (_, index) {
+                  return DecoratedBox(
+                    decoration: BoxDecoration(
+                      borderRadius: MentalHealthDecorations.borders.radiusC15,
+                    ),
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          selectedIndex = index;
+                        });
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: AnimatedContainer(
+                          duration: Duration(milliseconds: 700),
+                          curve: Curves.easeIn,
+                          width: selectedIndex == index
+                              ? expandedWidth
+                              : expandedWidth / 2,
+                          child: Stack(
+                            children: [
+                              Positioned.fill(
+                                child: ClipRRect(
+                                  borderRadius:
+                                      MentalHealthDecorations.borders.radiusC20,
+                                  child: SvgPicture.asset(
+                                    'assets/backgrounds/card_backgound.svg',
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
+                              ),
+                              selectedIndex == index
+                                  ? Positioned(
+                                      bottom: 0,
+                                      left: 0,
+                                      child: DecoratedBox(
+                                        decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.only(
+                                              topRight: Radius.circular(8),
+                                              bottomLeft: Radius.circular(18),
+                                            ),
+                                            color: AppColor
+                                                .secondaryBackgroundColor
+                                                .withOpacity(.5)),
+                                        child: Padding(
+                                          padding: EdgeInsets.symmetric(
+                                            vertical: 1,
+                                            horizontal: 8,
+                                          ),
+                                          child: Text(
+                                            'Meditation',
+                                            style: MentalHealthTextStyles
+                                                .text.mainPrimaryFontF22N,
+                                          ),
+                                        ),
+                                      ),
+                                    )
+                                  : SizedBox.shrink()
+                            ],
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                ),
+                  );
+                },
               ),
-            );
-          },
+            ),
+          ),
         ),
       ),
     );

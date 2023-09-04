@@ -5,7 +5,8 @@ import 'package:pet_project/blocs/auth_bloc/auth_bloc.dart';
 import 'package:pet_project/blocs/theme_bloc/theme_bloc.dart';
 import 'package:pet_project/common_widgets/bottom_navigation_bar.dart';
 import 'package:pet_project/common_widgets/error_dialog.dart';
-import 'package:pet_project/utils/angle_curver.dart';
+import 'package:pet_project/screens/main_screen/widgets/widgets.dart';
+// import 'package:pet_project/utils/angle_curver.dart';
 import 'package:pet_project/utils/loger.dart';
 import 'package:pet_project/utils/styles/styles.dart';
 import 'package:pet_project/utils/utils.dart';
@@ -28,22 +29,19 @@ class _MainScreenState extends State<MainScreen> {
       appBar: AppBar(
         title: Align(
           alignment: Alignment.centerLeft,
-          child: Padding(
-            padding: const EdgeInsets.only(left: 18.0),
-            child: RichText(
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                    text: 'Good day, ',
-                    style: MentalHealthTextStyles.text.mainCommonF20N
-                        .copyWith(color: AppColor.oneMoreDarkColor),
-                  ),
-                  TextSpan(
-                    text: 'Melany ',
-                    style: MentalHealthTextStyles.text.userName,
-                  ),
-                ],
-              ),
+          child: RichText(
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: 'Good day, ',
+                  style: MentalHealthTextStyles.text.mainPrimaryFontF20N
+                      .copyWith(color: AppColor.oneMoreDarkColor),
+                ),
+                TextSpan(
+                  text: 'Melany ',
+                  style: MentalHealthTextStyles.text.userName,
+                ),
+              ],
             ),
           ),
         ),
@@ -105,8 +103,23 @@ class _MainScreenState extends State<MainScreen> {
         },
         child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            // mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              SizedBox(
+                width: MediaQuery.of(context).size.width,
+                child: DecoratedBox(
+                  decoration:
+                      BoxDecoration(color: AppColor.primaryBackgroundColor),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 18.0),
+                    child: Text('What are you up to today?',
+                        style:
+                            MentalHealthTextStyles.text.mainSecondaryFontF16),
+                  ),
+                ),
+              ),
+              CarouselWidget(),
+              ToDoListWidget(),
               Text(
                 '${BlocProvider.of<AuthBloc>(context).auth.currentUser?.email ?? 'Email not found'}',
                 style: MentalHealthTextStyles.text.mainCommonF14,
