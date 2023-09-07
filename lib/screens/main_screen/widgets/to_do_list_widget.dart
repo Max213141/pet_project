@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pet_project/screens/habbits_screen/widgets/habbits_item.dart';
 import 'package:pet_project/utils/app_colors.dart';
 import 'package:pet_project/utils/decorations.dart';
 import 'package:pet_project/utils/styles/styles.dart';
@@ -17,8 +18,9 @@ class _ToDoListWidgetState extends State<ToDoListWidget> {
       decoration: BoxDecoration(color: AppColor.primaryBackgroundColor),
       child: SizedBox(
         height: MediaQuery.of(context).size.height / 4,
+        width: MediaQuery.of(context).size.width,
         child: DecoratedBox(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             borderRadius: BorderRadius.only(
               topRight: Radius.circular(40),
               bottomRight: Radius.circular(40),
@@ -32,14 +34,24 @@ class _ToDoListWidgetState extends State<ToDoListWidget> {
                 border: Border.all(color: Colors.white),
                 borderRadius: MentalHealthDecorations.borders.radiusC20,
               ),
-              child: Center(
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 8, horizontal: 14),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text(
-                      'Check out your habbits',
-                      style: MentalHealthTextStyles.text.mainSecondaryFontF16
-                          .copyWith(fontWeight: FontWeight.w600),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Check out your habbits',
+                        style:
+                            MentalHealthTextStyles.text.signikaSecondaryFontF16,
+                      ),
+                    ),
+                    Expanded(
+                      child: ListView.builder(
+                        itemCount: 3,
+                        itemBuilder: (context, index) => HabbitsItem(),
+                        physics: const NeverScrollableScrollPhysics(),
+                      ),
                     ),
                   ],
                 ),

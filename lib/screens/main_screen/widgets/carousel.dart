@@ -94,7 +94,7 @@ class _CarouselWidgetState extends State<CarouselWidget> {
                                           child: Text(
                                             'Meditation',
                                             style: MentalHealthTextStyles
-                                                .text.mainPrimaryFontF22N,
+                                                .text.signikaPrimaryFontF22N,
                                           ),
                                         ),
                                       ),

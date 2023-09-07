@@ -34,7 +34,7 @@ class _MainScreenState extends State<MainScreen> {
               children: [
                 TextSpan(
                   text: 'Good day, ',
-                  style: MentalHealthTextStyles.text.mainPrimaryFontF20N
+                  style: MentalHealthTextStyles.text.signikaPrimaryFontF20N
                       .copyWith(color: AppColor.oneMoreDarkColor),
                 ),
                 TextSpan(
@@ -102,7 +102,9 @@ class _MainScreenState extends State<MainScreen> {
           );
         },
         child: Center(
-          child: Column(
+          child: ListView(
+            padding: EdgeInsets.zero,
+
             // mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
@@ -114,17 +116,19 @@ class _MainScreenState extends State<MainScreen> {
                     padding: const EdgeInsets.only(left: 18.0),
                     child: Text('What are you up to today?',
                         style:
-                            MentalHealthTextStyles.text.mainSecondaryFontF16),
+                            MentalHealthTextStyles.text.popinsSecondaryFontF16),
                   ),
                 ),
               ),
               CarouselWidget(),
               ToDoListWidget(),
-              Text(
-                '${BlocProvider.of<AuthBloc>(context).auth.currentUser?.email ?? 'Email not found'}',
-                style: MentalHealthTextStyles.text.mainCommonF14,
-              ),
-              const SizedBox(height: 12),
+              QuoteWidget(),
+              CalendarWidget(),
+              // Text(
+              //   '${BlocProvider.of<AuthBloc>(context).auth.currentUser?.email ?? 'Email not found'}',
+              //   style: MentalHealthTextStyles.text.mainCommonF14,
+              // ),
+              // const SizedBox(height: 12),
             ],
           ),
         ),

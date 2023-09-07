@@ -17,6 +17,7 @@ class AppColor {
   static const Color mainDarkColor = Color(0xFF373737);
   static const Color buttonsColor = Color(0xFFFF8B72);
   static const Color oneMoreDarkColor = Color(0xFF252525);
+  static const Color habbitsTileBackground = Color(0xFFFAFAFA);
 }
 
 
