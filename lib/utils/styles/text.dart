@@ -30,6 +30,14 @@ class _TextTextStyle {
         color: AppColor.oneMoreDarkColor,
         fontWeight: FontWeight.w400,
       );
+
+  get popinsSecondaryFontF12 => GoogleFonts.poppins(
+        fontSize: 12,
+        height: 12 / 12,
+        letterSpacing: -.41,
+        color: AppColor.oneMoreDarkColor,
+        fontWeight: FontWeight.w200,
+      );
   get popinsSecondaryFontF14 => GoogleFonts.poppins(
         fontSize: 14,
         height: 14 / 12,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pet_project/common_widgets/common_category_screen/widgets/tag_tray/widgets/tag_tray_item.dart';
+import 'package:pet_project/utils/utils.dart';
 
 class TagTray extends StatefulWidget {
   const TagTray({super.key});
@@ -13,21 +14,32 @@ class _TagTrayState extends State<TagTray> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 40,
-      width: MediaQuery.of(context).size.width - 32,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 5),
-        child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: titles.length,
-          itemBuilder: (BuildContext context, int index) {
-            return TagTrayItem(
-              title: titles[index],
-              changeFirstPadding: index == 0,
-              changeLastPadding: index == titles.length,
-            );
-          },
+    return DecoratedBox(
+      decoration: BoxDecoration(color: AppColor.primaryColor),
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          color: AppColor.primaryBackgroundColor,
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(40),
+          ),
+        ),
+        child: SizedBox(
+          height: 40,
+          width: MediaQuery.of(context).size.width,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 16),
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: titles.length,
+              itemBuilder: (BuildContext context, int index) {
+                return TagTrayItem(
+                  title: titles[index],
+                  changeFirstPadding: index == 0,
+                  changeLastPadding: index == titles.length,
+                );
+              },
+            ),
+          ),
         ),
       ),
     );

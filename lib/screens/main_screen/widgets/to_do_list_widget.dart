@@ -17,7 +17,7 @@ class _ToDoListWidgetState extends State<ToDoListWidget> {
     return DecoratedBox(
       decoration: BoxDecoration(color: AppColor.primaryBackgroundColor),
       child: SizedBox(
-        height: MediaQuery.of(context).size.height / 4,
+        height: MediaQuery.of(context).size.height / 3.5,
         width: MediaQuery.of(context).size.width,
         child: DecoratedBox(
           decoration: const BoxDecoration(
@@ -28,11 +28,11 @@ class _ToDoListWidgetState extends State<ToDoListWidget> {
             color: AppColor.primaryColor,
           ),
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 18, vertical: 10),
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             child: DecoratedBox(
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.white),
-                borderRadius: MentalHealthDecorations.borders.radiusC20,
+                borderRadius: MentalHealthDecorations.borders.radiusBTRightC40,
               ),
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 8, horizontal: 14),

@@ -136,6 +136,35 @@ class _Borders {
   /// 20
   BorderRadius get radiusC20 => BorderRadius.circular(20);
 
+  BorderRadius get radiusBLeftC40 => const BorderRadius.only(
+        bottomLeft: Radius.circular(40),
+      );
+
+  BorderRadius get categoryItemRadius => const BorderRadius.only(
+        topLeft: Radius.circular(20),
+        topRight: Radius.circular(40),
+        bottomRight: Radius.circular(20),
+        bottomLeft: Radius.circular(20),
+      );
+
+  BorderRadius get radiusTopC20 => const BorderRadius.only(
+        topRight: Radius.circular(20),
+        topLeft: Radius.circular(20),
+      );
+
+  BorderRadius get radiusBTRightC40 => const BorderRadius.only(
+        topLeft: Radius.circular(20),
+        topRight: Radius.circular(40),
+        bottomRight: Radius.circular(40),
+        bottomLeft: Radius.circular(20),
+      );
+  BorderRadius get radiusLeftC40 => const BorderRadius.only(
+        topLeft: Radius.circular(40),
+        topRight: Radius.circular(20),
+        bottomRight: Radius.circular(20),
+        bottomLeft: Radius.circular(20),
+      );
+
   /// 25
   BorderRadius get radiusC25 => const BorderRadius.only(
         topLeft: Radius.circular(25),

@@ -9,8 +9,11 @@ import 'package:pet_project/utils/utils.dart';
 class CommonCategoryItemsScreen extends StatefulWidget {
   final String title;
   final Widget child;
-  const CommonCategoryItemsScreen(
-      {super.key, required this.title, required this.child});
+  const CommonCategoryItemsScreen({
+    super.key,
+    required this.title,
+    required this.child,
+  });
 
   @override
   State<CommonCategoryItemsScreen> createState() =>
@@ -38,7 +41,7 @@ class _CommonCategoryItemsScreenState extends State<CommonCategoryItemsScreen> {
           ),
         ),
         titleTextStyle: GoogleFonts.sansita(fontSize: 24, color: Colors.black),
-        backgroundColor: Colors.transparent,
+        backgroundColor: AppColor.primaryBackgroundColor,
         elevation: 0,
       ),
       // bottomNavigationBar: const BottomNavBar(),
@@ -46,42 +49,64 @@ class _CommonCategoryItemsScreenState extends State<CommonCategoryItemsScreen> {
         slivers: [
           SliverPersistentHeader(
             pinned: true,
-            delegate: _SlivergridDelegate(
-              minHeight: 42,
-              maxHeight: 42,
+            delegate: _SliverGridDelegate(
+              minHeight: 0,
+              maxHeight: MediaQuery.of(context).size.height / 6,
               child: const DecoratedBox(
                 decoration: BoxDecoration(color: Colors.white),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: TagTray(),
+                child: CategoryDescription(),
+              ),
+            ),
+          ),
+          SliverPersistentHeader(
+            pinned: true,
+            delegate: _SliverGridDelegate(
+              minHeight: 56,
+              maxHeight: 56,
+              child: const DecoratedBox(
+                decoration: BoxDecoration(color: Colors.white),
+                child: TagTray(),
+              ),
+            ),
+          ),
+          SliverPersistentHeader(
+            pinned: true,
+            delegate: _SliverGridDelegate(
+              minHeight: 20,
+              maxHeight: 20,
+              child: const DecoratedBox(
+                decoration:
+                    BoxDecoration(color: AppColor.primaryBackgroundColor),
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: AppColor.primaryColor,
+                    borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(40),
+                    ),
+                  ),
                 ),
               ),
             ),
           ),
-          const SliverToBoxAdapter(
-            child: CategoryDescription(),
-          ),
           SliverToBoxAdapter(
             child: DecoratedBox(
-              decoration: BoxDecoration(
-                color: const Color(0xFFFFD7A6).withOpacity(.35),
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(20),
-                  topRight: Radius.circular(20),
-                ),
-              ),
+              decoration: BoxDecoration(color: AppColor.primaryColor),
               child: GridView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: 10,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  mainAxisExtent: 230.0,
                   crossAxisCount: 2,
                 ),
                 itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: () => GoRouter.of(context)
-                        .go('/main/breathing/breathing_item_screen'),
-                    child: Center(child: widget.child),
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: GestureDetector(
+                      onTap: () => GoRouter.of(context)
+                          .go('/main/breathing/breathing_item_screen'),
+                      child: Center(child: widget.child),
+                    ),
                   );
                 },
               ),
@@ -93,12 +118,12 @@ class _CommonCategoryItemsScreenState extends State<CommonCategoryItemsScreen> {
   }
 }
 
-class _SlivergridDelegate extends SliverPersistentHeaderDelegate {
+class _SliverGridDelegate extends SliverPersistentHeaderDelegate {
   final double minHeight;
   final double maxHeight;
   final Widget child;
 
-  _SlivergridDelegate({
+  _SliverGridDelegate({
     required this.minHeight,
     required this.maxHeight,
     required this.child,
@@ -120,7 +145,7 @@ class _SlivergridDelegate extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  bool shouldRebuild(_SlivergridDelegate oldDelegate) {
+  bool shouldRebuild(_SliverGridDelegate oldDelegate) {
     return maxHeight != oldDelegate.maxHeight ||
         minHeight != oldDelegate.minHeight ||
         child != oldDelegate.child;

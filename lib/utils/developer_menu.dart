@@ -29,6 +29,11 @@ class DevMenuWidget extends StatelessWidget {
               child: const Text('Log Out'),
             ),
             ElevatedButton(
+              onPressed: () =>
+                  GoRouter.of(context).go('/main/breathing/breathing_items'),
+              child: const Text('Go to the Breathing items screen'),
+            ),
+            ElevatedButton(
               onPressed: () => GoRouter.of(context).go('/main/breathing'),
               child: const Text('Go to the Details screen'),
             ),

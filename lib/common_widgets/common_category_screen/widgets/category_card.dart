@@ -84,19 +84,16 @@ class _CategoryCardState extends State<CategoryCard> {
                           ],
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            GestureDetector(
-                              onTap: () => GoRouter.of(context)
-                                  .go('/main/breathing/breathing_item_screen'),
-                              child: CategoryItem(),
-                            ),
-                            CategoryItem()
-                          ],
-                        ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          GestureDetector(
+                            onTap: () => GoRouter.of(context)
+                                .go('/main/breathing/breathing_item_screen'),
+                            child: CategoryItem(),
+                          ),
+                          CategoryItem()
+                        ],
                       ),
                     ],
                   ),
