@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pet_project/common_widgets/common_category_screen/widgets/widgets.dart';
 import 'package:pet_project/common_widgets/widgets.dart';
 
 class TestsScreen extends StatefulWidget {
@@ -13,7 +14,7 @@ class _TestsScreenState extends State<TestsScreen> {
   Widget build(BuildContext context) {
     return CommonCategoryScreen(
       title: widget.title,
-      child: CategoryCard(),
+      child: NewCategoryItem(),
     );
   }
 }

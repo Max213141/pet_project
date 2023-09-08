@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pet_project/utils/utils.dart';
 
 class CarouselWidget extends StatefulWidget {
@@ -28,7 +29,7 @@ class _CarouselWidgetState extends State<CarouselWidget> {
     return DecoratedBox(
       decoration: const BoxDecoration(color: AppColor.primaryColor),
       child: SizedBox(
-        height: MediaQuery.of(context).size.height / 5,
+        height: MediaQuery.of(context).size.height / 6,
         child: DecoratedBox(
           decoration: const BoxDecoration(
             color: AppColor.primaryBackgroundColor,
@@ -48,6 +49,25 @@ class _CarouselWidgetState extends State<CarouselWidget> {
                       borderRadius: MentalHealthDecorations.borders.radiusC15,
                     ),
                     child: GestureDetector(
+                      onDoubleTap: () {
+                        setState(() {
+                          selectedIndex = index;
+                        });
+
+                        switch (index) {
+                          case 0:
+                            GoRouter.of(context).go('/main/breathing');
+                            break;
+                          case 1:
+                            GoRouter.of(context).go('/main/tests');
+                            break;
+
+                          case 2:
+                            GoRouter.of(context).go('/main/meditation');
+                            break;
+                          default:
+                        }
+                      },
                       onTap: () {
                         setState(() {
                           selectedIndex = index;

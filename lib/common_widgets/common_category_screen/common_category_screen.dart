@@ -93,6 +93,7 @@ class _CommonCategoryScreenState extends State<CommonCategoryScreen> {
                         child: Row(
                           children: [
                             MainCategoryItem(),
+                            SizedBox(width: 6),
                             Expanded(
                               child: GridView.builder(
                                 // shrinkWrap: true,
@@ -104,13 +105,13 @@ class _CommonCategoryScreenState extends State<CommonCategoryScreen> {
                                   crossAxisCount: 2,
                                 ),
                                 itemBuilder: (context, index) {
-                                  return Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 8.0),
-                                    child: GestureDetector(
-                                      onTap: () => GoRouter.of(context).go(
-                                          '/main/breathing/breathing_item_screen'),
-                                      child: Center(child: widget.child),
+                                  return GestureDetector(
+                                    onTap: () => GoRouter.of(context)
+                                        .go('/main/breathing/breathing_items'),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 4.0, vertical: 4.0),
+                                      child: widget.child,
                                     ),
                                   );
                                 },
@@ -124,6 +125,16 @@ class _CommonCategoryScreenState extends State<CommonCategoryScreen> {
                 ),
               ),
             ),
+            SliverToBoxAdapter(child: SizedBox(height: 8)),
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.0),
+                child: Text(
+                  'Meditations by tags',
+                  style: MentalHealthTextStyles.text.signikaSecondaryFontF16,
+                ),
+              ),
+            )
 
             // SliverPersistentHeader(
             //   pinned: true,
