@@ -19,7 +19,7 @@ class _CategoryItemState extends State<CategoryItem> {
       child: DecoratedBox(
         decoration: BoxDecoration(
           color: AppColor.primaryColor,
-          borderRadius: MentalHealthDecorations.borders.categoryItemRadius,
+          borderRadius: MentalHealthDecorations.borders.radiusC20,
           border: Border.all(color: Colors.white, width: 3),
         ),
         child: Padding(

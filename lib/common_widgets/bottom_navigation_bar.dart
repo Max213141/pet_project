@@ -59,7 +59,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         child: BottomNavigationBar(
           elevation: 0,
           type: BottomNavigationBarType.fixed,
-          backgroundColor: AppColor.primaryBackgroundColor,
+          backgroundColor: AppColor.primaryBackgroundColor.withOpacity(0.2),
           // iconSize: 50,
           showSelectedLabels: false,
           showUnselectedLabels: false,

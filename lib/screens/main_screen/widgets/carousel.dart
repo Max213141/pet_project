@@ -76,8 +76,8 @@ class _CarouselWidgetState extends State<CarouselWidget> {
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         child: AnimatedContainer(
-                          duration: Duration(milliseconds: 700),
-                          curve: Curves.easeIn,
+                          duration: Duration(milliseconds: 400),
+                          curve: Curves.linear,
                           width: selectedIndex == index
                               ? expandedWidth
                               : expandedWidth / 2,
@@ -87,9 +87,13 @@ class _CarouselWidgetState extends State<CarouselWidget> {
                                 child: ClipRRect(
                                   borderRadius:
                                       MentalHealthDecorations.borders.radiusC20,
-                                  child: SvgPicture.asset(
-                                    'assets/backgrounds/card_backgound.svg',
-                                    fit: BoxFit.fill,
+                                  child: DecoratedBox(
+                                    decoration: BoxDecoration(
+                                        color: AppColor.primaryColor),
+                                    child: SvgPicture.asset(
+                                      'assets/backgrounds/carousel_back.svg',
+                                      fit: BoxFit.fill,
+                                    ),
                                   ),
                                 ),
                               ),

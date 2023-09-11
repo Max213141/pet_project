@@ -58,17 +58,17 @@ class _CommonCategoryItemsScreenState extends State<CommonCategoryItemsScreen> {
               ),
             ),
           ),
-          SliverPersistentHeader(
-            pinned: true,
-            delegate: _SliverGridDelegate(
-              minHeight: 56,
-              maxHeight: 56,
-              child: const DecoratedBox(
-                decoration: BoxDecoration(color: Colors.white),
-                child: TagTray(),
-              ),
-            ),
-          ),
+          // SliverPersistentHeader(
+          //   pinned: true,
+          //   delegate: _SliverGridDelegate(
+          //     minHeight: 56,
+          //     maxHeight: 56,
+          //     child: const DecoratedBox(
+          //       decoration: BoxDecoration(color: Colors.white),
+          //       child: TagTray(),
+          //     ),
+          //   ),
+          // ),
           SliverPersistentHeader(
             pinned: true,
             delegate: _SliverGridDelegate(

@@ -51,17 +51,6 @@ class _CommonCategoryScreenState extends State<CommonCategoryScreen> {
             SliverPersistentHeader(
               pinned: true,
               delegate: _SliverFiltersDelegate(
-                minHeight: 56,
-                maxHeight: 56,
-                child: const DecoratedBox(
-                  decoration: BoxDecoration(color: Colors.white),
-                  child: TagTray(),
-                ),
-              ),
-            ),
-            SliverPersistentHeader(
-              pinned: true,
-              delegate: _SliverFiltersDelegate(
                 minHeight: 20,
                 maxHeight: 20,
                 child: const DecoratedBox(
@@ -76,6 +65,14 @@ class _CommonCategoryScreenState extends State<CommonCategoryScreen> {
                     ),
                   ),
                 ),
+              ),
+            ),
+            SliverPersistentHeader(
+              pinned: true,
+              delegate: _SliverFiltersDelegate(
+                minHeight: 56,
+                maxHeight: 56,
+                child: TagTray(),
               ),
             ),
             SliverToBoxAdapter(

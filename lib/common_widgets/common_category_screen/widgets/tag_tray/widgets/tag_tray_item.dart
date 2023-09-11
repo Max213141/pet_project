@@ -48,7 +48,7 @@ class _TagTrayItemState extends State<TagTrayItem> {
                 widget.title,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style: MentalHealthTextStyles.text.mainCommonF16,
+                style: MentalHealthTextStyles.text.popinsSecondaryFontF14,
               ),
             ),
           ),

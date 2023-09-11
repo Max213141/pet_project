@@ -17,7 +17,7 @@ class _ToDoListWidgetState extends State<ToDoListWidget> {
     return DecoratedBox(
       decoration: BoxDecoration(color: AppColor.primaryBackgroundColor),
       child: SizedBox(
-        height: MediaQuery.of(context).size.height / 3.5,
+        height: MediaQuery.of(context).size.height / 4,
         width: MediaQuery.of(context).size.width,
         child: DecoratedBox(
           decoration: const BoxDecoration(

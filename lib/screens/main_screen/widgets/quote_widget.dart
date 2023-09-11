@@ -43,7 +43,9 @@ class _QuoteWidgetState extends State<QuoteWidget> {
           String fixedResponse = response.body
               .replaceAll(r"\'", "'")
               .replaceAll("â", "")
-              .replaceAll("", "");
+              .replaceAll("", "")
+              .replaceAll(".", "");
+          ;
           var res = jsonDecode(fixedResponse);
           _log('response quote - $res');
 
@@ -84,13 +86,41 @@ class _QuoteWidgetState extends State<QuoteWidget> {
             ),
             child: Center(
               child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
-                  child: Text(
-                    '“ $quote ”',
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: RichText(
                     textAlign: TextAlign.center,
-                    style: MentalHealthTextStyles.text.signikaQuoteFontF24,
-                    maxLines: 3,
-                    overflow: TextOverflow.ellipsis,
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                            text: '“ ',
+                            // textAlign: TextAlign.center,
+                            style:
+                                MentalHealthTextStyles.text.signikaQuoteFontF24
+                            // : MentalHealthTextStyles.text.signikaSecondaryFontF16,
+                            // maxLines: 3,
+                            // overflow: TextOverflow.ellipsis,
+                            ),
+                        TextSpan(
+                          text: '$quote',
+                          // textAlign: TextAlign.center,
+                          style: quote.length < 100
+                              ? MentalHealthTextStyles.text.signikaQuoteFontF24
+                              : MentalHealthTextStyles
+                                  .text.signikaSecondaryFontF16,
+                          // maxLines: 3,
+                          // overflow: TextOverflow.ellipsis,
+                        ),
+                        TextSpan(
+                            text: ' ”',
+                            // textAlign: TextAlign.center,
+                            style:
+                                MentalHealthTextStyles.text.signikaQuoteFontF24
+                            // : MentalHealthTextStyles.text.signikaSecondaryFontF16,
+                            // maxLines: 3,
+                            // overflow: TextOverflow.ellipsis,
+                            ),
+                      ],
+                    ),
                   )
 
                   // RichText(

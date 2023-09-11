@@ -13,6 +13,9 @@ class CategoryDescription extends StatelessWidget {
         decoration: BoxDecoration(color: AppColor.primaryColor),
         child: DecoratedBox(
           decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(40),
+            ),
             color: AppColor.primaryBackgroundColor,
             // borderRadius: MentalHealthDecorations.borders.radiusBLeftC40,
           ),

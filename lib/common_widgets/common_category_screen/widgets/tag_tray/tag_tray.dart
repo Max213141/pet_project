@@ -18,7 +18,7 @@ class _TagTrayState extends State<TagTray> {
       decoration: BoxDecoration(color: AppColor.primaryColor),
       child: DecoratedBox(
         decoration: BoxDecoration(
-          color: AppColor.primaryBackgroundColor,
+          color: AppColor.primaryColor,
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(40),
           ),
