@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pet_project/common_widgets/widgets.dart';
 import 'package:pet_project/utils/app_colors.dart';
 import 'package:pet_project/utils/decorations.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -14,9 +15,9 @@ class _CalendarWidgetState extends State<CalendarWidget> {
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
-      decoration: BoxDecoration(color: AppColor.primaryBackgroundColor),
+      decoration: const BoxDecoration(color: AppColor.primaryBackgroundColor),
       child: DecoratedBox(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: AppColor.primaryColor,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(40),
@@ -37,6 +38,22 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                 firstDay: DateTime.utc(2010, 10, 16),
                 lastDay: DateTime.utc(2030, 3, 14),
                 focusedDay: DateTime.now(),
+                onDaySelected: (selectedDay, focusedDay) {
+                  showModalBottomSheet(
+                    useSafeArea: true,
+                    showDragHandle: true,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(40),
+                        topRight: Radius.circular(40),
+                      ),
+                    ),
+                    context: context,
+                    builder: (context) {
+                      return MoodPickerWidget();
+                    },
+                  );
+                },
               ),
             ),
           ),

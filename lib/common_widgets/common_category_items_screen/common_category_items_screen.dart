@@ -3,7 +3,6 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pet_project/common_widgets/common_category_items_screen/widgets/category_description.dart';
-import 'package:pet_project/common_widgets/common_category_screen/widgets/widgets.dart';
 import 'package:pet_project/utils/utils.dart';
 
 class CommonCategoryItemsScreen extends StatefulWidget {
@@ -45,74 +44,77 @@ class _CommonCategoryItemsScreenState extends State<CommonCategoryItemsScreen> {
         elevation: 0,
       ),
       // bottomNavigationBar: const BottomNavBar(),
-      body: CustomScrollView(
-        slivers: [
-          SliverPersistentHeader(
-            pinned: true,
-            delegate: _SliverGridDelegate(
-              minHeight: 0,
-              maxHeight: MediaQuery.of(context).size.height / 6,
-              child: const DecoratedBox(
-                decoration: BoxDecoration(color: Colors.white),
-                child: CategoryDescription(),
+      body: ScrollConfiguration(
+        behavior: CustomBehavior(),
+        child: CustomScrollView(
+          slivers: [
+            SliverPersistentHeader(
+              pinned: true,
+              delegate: _SliverGridDelegate(
+                minHeight: 0,
+                maxHeight: MediaQuery.of(context).size.height / 6,
+                child: const DecoratedBox(
+                  decoration: BoxDecoration(color: Colors.white),
+                  child: CategoryDescription(),
+                ),
               ),
             ),
-          ),
-          // SliverPersistentHeader(
-          //   pinned: true,
-          //   delegate: _SliverGridDelegate(
-          //     minHeight: 56,
-          //     maxHeight: 56,
-          //     child: const DecoratedBox(
-          //       decoration: BoxDecoration(color: Colors.white),
-          //       child: TagTray(),
-          //     ),
-          //   ),
-          // ),
-          SliverPersistentHeader(
-            pinned: true,
-            delegate: _SliverGridDelegate(
-              minHeight: 20,
-              maxHeight: 20,
-              child: const DecoratedBox(
-                decoration:
-                    BoxDecoration(color: AppColor.primaryBackgroundColor),
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    color: AppColor.primaryColor,
-                    borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(40),
+            // SliverPersistentHeader(
+            //   pinned: true,
+            //   delegate: _SliverGridDelegate(
+            //     minHeight: 56,
+            //     maxHeight: 56,
+            //     child: const DecoratedBox(
+            //       decoration: BoxDecoration(color: Colors.white),
+            //       child: TagTray(),
+            //     ),
+            //   ),
+            // ),
+            SliverPersistentHeader(
+              pinned: true,
+              delegate: _SliverGridDelegate(
+                minHeight: 20,
+                maxHeight: 20,
+                child: const DecoratedBox(
+                  decoration:
+                      BoxDecoration(color: AppColor.primaryBackgroundColor),
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      color: AppColor.primaryColor,
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(40),
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
-          ),
-          SliverToBoxAdapter(
-            child: DecoratedBox(
-              decoration: BoxDecoration(color: AppColor.primaryColor),
-              child: GridView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: 10,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  mainAxisExtent: 230.0,
-                  crossAxisCount: 2,
+            SliverToBoxAdapter(
+              child: DecoratedBox(
+                decoration: BoxDecoration(color: AppColor.primaryColor),
+                child: GridView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: 10,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    mainAxisExtent: 230.0,
+                    crossAxisCount: 2,
+                  ),
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: GestureDetector(
+                        onTap: () => GoRouter.of(context)
+                            .go('/main/breathing/breathing_item_screen'),
+                        child: Center(child: widget.child),
+                      ),
+                    );
+                  },
                 ),
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: GestureDetector(
-                      onTap: () => GoRouter.of(context)
-                          .go('/main/breathing/breathing_item_screen'),
-                      child: Center(child: widget.child),
-                    ),
-                  );
-                },
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }

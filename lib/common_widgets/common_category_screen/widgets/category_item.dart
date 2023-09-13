@@ -78,27 +78,31 @@ class _CategoryItemState extends State<CategoryItem> {
               ),
               const SizedBox(height: 4),
               Expanded(
-                child: ListView.builder(
-                  itemCount: 5,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) => Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 2.0),
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: AppColor.primaryBackgroundColor,
+                child: ScrollConfiguration(
+                  behavior: CustomBehavior(),
+                  child: ListView.builder(
+                    itemCount: 5,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) => Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 2.0),
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: AppColor.primaryBackgroundColor,
+                          ),
+                          borderRadius:
+                              MentalHealthDecorations.borders.radiusC10,
                         ),
-                        borderRadius: MentalHealthDecorations.borders.radiusC10,
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 6, vertical: 4),
-                        child: Text(
-                          'Tag',
-                          style: MentalHealthTextStyles
-                              .text.popinsSecondaryFontF12,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 6, vertical: 4),
+                          child: Text(
+                            'Tag',
+                            style: MentalHealthTextStyles
+                                .text.popinsSecondaryFontF12,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
                         ),
                       ),
                     ),

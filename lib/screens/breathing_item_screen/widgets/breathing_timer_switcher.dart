@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pet_project/utils/app_colors.dart';
 import 'package:pet_project/utils/decorations.dart';
 import 'package:pet_project/utils/styles/styles.dart';
+import 'package:pet_project/utils/utils.dart';
 
 class BreathingTimerSwitcher extends StatefulWidget {
   const BreathingTimerSwitcher({super.key});
@@ -32,44 +33,47 @@ class _BreathingTimerSwitcherState extends State<BreathingTimerSwitcher> {
             borderRadius: MentalHealthDecorations.borders.radiusC10),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 5),
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: _list.length,
-            itemBuilder: (_, index) {
-              return SizedBox(
-                width: (MediaQuery.of(context).size.width / 2 - 20) / 2 - 8,
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    borderRadius: MentalHealthDecorations.borders.radiusC10,
-                    color: selectedIndex == index
-                        ? AppColor.mainDarkColor
-                        : Colors.transparent,
-                  ),
-                  child: Center(
-                    child: ListTile(
-                      onTap: () {
-                        setState(() {
-                          selectedIndex = index;
-                        });
-                      },
-                      // contentPadding: const EdgeInsets.symmetric(
-                      //   vertical: 4,
-                      //   horizontal: 13,
-                      // ),
-                      title: Align(
-                        alignment: Alignment.topCenter,
-                        child: Text(
-                          '12.35', //TODO _list[index].title
-                          style: selectedIndex == index
-                              ? MentalHealthTextStyles.text.mainCommonF20White
-                              : MentalHealthTextStyles.text.mainCommonF20,
+          child: ScrollConfiguration(
+            behavior: CustomBehavior(),
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: _list.length,
+              itemBuilder: (_, index) {
+                return SizedBox(
+                  width: (MediaQuery.of(context).size.width / 2 - 20) / 2 - 8,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      borderRadius: MentalHealthDecorations.borders.radiusC10,
+                      color: selectedIndex == index
+                          ? AppColor.mainDarkColor
+                          : Colors.transparent,
+                    ),
+                    child: Center(
+                      child: ListTile(
+                        onTap: () {
+                          setState(() {
+                            selectedIndex = index;
+                          });
+                        },
+                        // contentPadding: const EdgeInsets.symmetric(
+                        //   vertical: 4,
+                        //   horizontal: 13,
+                        // ),
+                        title: Align(
+                          alignment: Alignment.topCenter,
+                          child: Text(
+                            '12.35', //TODO _list[index].title
+                            style: selectedIndex == index
+                                ? MentalHealthTextStyles.text.mainCommonF20White
+                                : MentalHealthTextStyles.text.mainCommonF20,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              );
-            },
+                );
+              },
+            ),
           ),
         ),
       ),

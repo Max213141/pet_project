@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pet_project/blocs/auth_bloc/auth_bloc.dart';
 import 'package:pet_project/screens/auth_screen.dart';
-import 'package:pet_project/screens/main_screen/main_screen.dart';
+import 'package:pet_project/screens/home_screen/main_screen.dart';
 
 class InitialPage extends StatefulWidget {
   final FirebaseAuth auth;
@@ -23,7 +23,7 @@ class _InitialPageState extends State<InitialPage> {
       stream: BlocProvider.of<AuthBloc>(context).auth.authStateChanges(),
       builder: (context, snapshot) {
         // if (snapshot.hasData) { //Uncomment for proper workflow
-        return const MainScreen();
+        return const HomeScreen();
         // }
         // return const AuthScreen();
       },

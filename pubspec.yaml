@@ -26,6 +26,9 @@ dependencies:
   google_fonts: ^4.0.4
   flutter_svg: ^2.0.5
   table_calendar: ^3.0.9
+  bottom_sheet: ^4.0.0
+  fl_chart: ^0.63.0
+  carousel_slider: ^4.2.1
 
   # firebase_messaging: ^14.6.0
   # flutter_local_notifications: ^14.0.0+2
@@ -49,5 +52,7 @@ flutter:
     - assets/backgrounds/
     - assets/images/
     - assets/breathing_images/
+    - assets/emotions/
+
   # assets:
   #   -assets/notification_icon.png

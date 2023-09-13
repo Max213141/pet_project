@@ -5,22 +5,19 @@ import 'package:pet_project/blocs/auth_bloc/auth_bloc.dart';
 import 'package:pet_project/blocs/theme_bloc/theme_bloc.dart';
 import 'package:pet_project/common_widgets/bottom_navigation_bar.dart';
 import 'package:pet_project/common_widgets/error_dialog.dart';
-import 'package:pet_project/screens/main_screen/widgets/widgets.dart';
-// import 'package:pet_project/utils/angle_curver.dart';
-import 'package:pet_project/utils/loger.dart';
-import 'package:pet_project/utils/styles/styles.dart';
+import 'package:pet_project/screens/home_screen/widgets/widgets.dart';
 import 'package:pet_project/utils/utils.dart';
 
 void _log(dynamic message) => Logger.projectLog(message, name: 'main_screen');
 
-class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
   @override
-  State<MainScreen> createState() => _MainScreenState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     bool isDarkTheme = BlocProvider.of<ThemeBloc>(context).state.isDarkTheme;
@@ -34,7 +31,7 @@ class _MainScreenState extends State<MainScreen> {
               children: [
                 TextSpan(
                   text: 'Good day, ',
-                  style: MentalHealthTextStyles.text.signikaPrimaryFontF20N
+                  style: MentalHealthTextStyles.text.signikaPrimaryFontF28
                       .copyWith(color: AppColor.oneMoreDarkColor),
                 ),
                 TextSpan(
@@ -102,34 +99,37 @@ class _MainScreenState extends State<MainScreen> {
           );
         },
         child: Center(
-          child: ListView(
-            padding: EdgeInsets.zero,
+          child: ScrollConfiguration(
+            behavior: CustomBehavior(),
+            child: ListView(
+              padding: EdgeInsets.zero,
 
-            // mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(
-                width: MediaQuery.of(context).size.width,
-                child: DecoratedBox(
-                  decoration:
-                      BoxDecoration(color: AppColor.primaryBackgroundColor),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 18.0),
-                    child: Text('What are you up to today?',
-                        style:
-                            MentalHealthTextStyles.text.popinsSecondaryFontF16),
+              // mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  child: DecoratedBox(
+                    decoration:
+                        BoxDecoration(color: AppColor.primaryBackgroundColor),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 18.0),
+                      child: Text('What are you up to today?',
+                          style: MentalHealthTextStyles
+                              .text.popinsSecondaryFontF16),
+                    ),
                   ),
                 ),
-              ),
-              CarouselWidget(),
-              ToDoListWidget(),
-              QuoteWidget(),
-              CalendarWidget(),
-              // Text(
-              //   '${BlocProvider.of<AuthBloc>(context).auth.currentUser?.email ?? 'Email not found'}',
-              //   style: MentalHealthTextStyles.text.mainCommonF14,
-              // ),
-              // const SizedBox(height: 12),
-            ],
+                CarouselWidget(),
+                ToDoListWidget(),
+                QuoteWidget(),
+                CalendarWidget(),
+                // Text(
+                //   '${BlocProvider.of<AuthBloc>(context).auth.currentUser?.email ?? 'Email not found'}',
+                //   style: MentalHealthTextStyles.text.mainCommonF14,
+                // ),
+                // const SizedBox(height: 12),
+              ],
+            ),
           ),
         ),
       ),

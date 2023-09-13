@@ -6,7 +6,7 @@ import 'package:pet_project/entities/hive_entities/app_preferences.dart';
 import 'package:pet_project/entities/hive_store.dart';
 import 'package:pet_project/screens/auth_screen.dart';
 import 'package:pet_project/screens/intro_screen/intro_screen.dart';
-import 'package:pet_project/screens/main_screen/main_screen.dart';
+import 'package:pet_project/screens/home_screen/main_screen.dart';
 import 'package:pet_project/screens/splash_screen/splash_screen.dart';
 import 'package:pet_project/utils/loger.dart';
 
@@ -79,7 +79,7 @@ class _InitialHivePageState extends State<InitialHivePage> {
             return IntroScreen();
           } else {
             // if (widget.auth.currentUser != null) {  //TODO uncomment for uth porper flow
-            return const MainScreen();
+            return const HomeScreen();
             // } else {
             //   return const AuthScreen();
             // }

@@ -23,6 +23,11 @@ class _CommonCategoryScreenState extends State<CommonCategoryScreen> {
     return Scaffold(
       backgroundColor: AppColor.primaryColor,
       appBar: AppBar(
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(40),
+          ),
+        ),
         leading: GestureDetector(
           onTap: () => GoRouter.of(context).pop(),
           child: const Icon(
@@ -37,7 +42,7 @@ class _CommonCategoryScreenState extends State<CommonCategoryScreen> {
             widget.title,
           ),
         ),
-        titleTextStyle: GoogleFonts.sansita(fontSize: 24, color: Colors.black),
+        titleTextStyle: MentalHealthTextStyles.text.signikaPrimaryFontF28,
         backgroundColor: AppColor.primaryBackgroundColor,
         elevation: 0,
       ),
@@ -46,122 +51,129 @@ class _CommonCategoryScreenState extends State<CommonCategoryScreen> {
         padding: const EdgeInsets.only(
           bottom: 16,
         ),
-        child: CustomScrollView(
-          slivers: <Widget>[
-            SliverPersistentHeader(
-              pinned: true,
-              delegate: _SliverFiltersDelegate(
-                minHeight: 20,
-                maxHeight: 20,
-                child: const DecoratedBox(
-                  decoration:
-                      BoxDecoration(color: AppColor.primaryBackgroundColor),
-                  child: DecoratedBox(
-                    decoration: BoxDecoration(
-                      color: AppColor.primaryColor,
-                      borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(40),
+        child: ScrollConfiguration(
+          behavior: CustomBehavior(),
+          child: CustomScrollView(
+            slivers: <Widget>[
+              SliverPersistentHeader(
+                pinned: true,
+                delegate: _SliverFiltersDelegate(
+                  minHeight: 20,
+                  maxHeight: 20,
+                  child: const DecoratedBox(
+                    decoration:
+                        BoxDecoration(color: AppColor.primaryBackgroundColor),
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        color: AppColor.primaryColor,
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(40),
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
-            ),
-            SliverPersistentHeader(
-              pinned: true,
-              delegate: _SliverFiltersDelegate(
-                minHeight: 56,
-                maxHeight: 56,
-                child: TagTray(),
+              SliverPersistentHeader(
+                pinned: true,
+                delegate: _SliverFiltersDelegate(
+                  minHeight: 56,
+                  maxHeight: 56,
+                  child: TagTray(),
+                ),
               ),
-            ),
-            SliverToBoxAdapter(
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 2.0, horizontal: 16),
-                child: SizedBox(
-                  height: 216,
-                  width: MediaQuery.of(context).size.height - 32,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: [
-                      SizedBox(
-                        width: MediaQuery.of(context).size.height - 32,
-                        child: Row(
-                          children: [
-                            MainCategoryItem(),
-                            SizedBox(width: 6),
-                            Expanded(
-                              child: GridView.builder(
-                                // shrinkWrap: true,
-                                physics: const NeverScrollableScrollPhysics(),
-                                itemCount: 10,
-                                gridDelegate:
-                                    const SliverGridDelegateWithFixedCrossAxisCount(
-                                  mainAxisExtent: 110.0,
-                                  crossAxisCount: 2,
-                                ),
-                                itemBuilder: (context, index) {
-                                  return GestureDetector(
-                                    onTap: () => GoRouter.of(context)
-                                        .go('/main/breathing/breathing_items'),
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 4.0, vertical: 4.0),
-                                      child: widget.child,
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 2.0, horizontal: 16),
+                  child: SizedBox(
+                    height: 216,
+                    width: MediaQuery.of(context).size.height - 32,
+                    child: ScrollConfiguration(
+                      behavior: CustomBehavior(),
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: [
+                          SizedBox(
+                            width: MediaQuery.of(context).size.height - 32,
+                            child: Row(
+                              children: [
+                                MainCategoryItem(),
+                                const SizedBox(width: 6),
+                                Expanded(
+                                  child: GridView.builder(
+                                    // shrinkWrap: true,
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
+                                    itemCount: 10,
+                                    gridDelegate:
+                                        const SliverGridDelegateWithFixedCrossAxisCount(
+                                      mainAxisExtent: 110.0,
+                                      crossAxisCount: 2,
                                     ),
-                                  );
-                                },
-                              ),
-                            )
-                          ],
-                        ),
+                                    itemBuilder: (context, index) {
+                                      return GestureDetector(
+                                        onTap: () => GoRouter.of(context).go(
+                                            '/main/breathing/breathing_items'),
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 4.0, vertical: 4.0),
+                                          child: widget.child,
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
                 ),
               ),
-            ),
-            SliverToBoxAdapter(child: SizedBox(height: 8)),
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.0),
-                child: Text(
-                  'Meditations by tags',
-                  style: MentalHealthTextStyles.text.signikaSecondaryFontF16,
+              SliverToBoxAdapter(child: SizedBox(height: 8)),
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Text(
+                    'Meditations by tags',
+                    style: MentalHealthTextStyles.text.signikaSecondaryFontF16,
+                  ),
                 ),
-              ),
-            )
+              )
 
-            // SliverPersistentHeader(
-            //   pinned: true,
-            //   delegate: _SliverFiltersDelegate(
-            //     minHeight: 110,
-            //     maxHeight: 115,
-            //     child: DecoratedBox(
-            //       decoration: BoxDecoration(
-            //           color: Theme.of(context).colorScheme.background),
-            //       child: Column(
-            //         children: <Widget>[
-            //           SearchField(),
-            //           TagTray(),
-            //         ],
-            //       ),
-            //     ),
-            //   ),
-            // ),
-            // SliverList(
-            //   delegate: SliverChildBuilderDelegate(
-            //     (context, index) {
-            //       return Padding(
-            //         padding: const EdgeInsets.symmetric(horizontal: 16),
-            //         child: widget.child,
-            //       );
-            //     },
-            //     childCount: 4,
-            //   ),
-            // ),
-          ],
+              // SliverPersistentHeader(
+              //   pinned: true,
+              //   delegate: _SliverFiltersDelegate(
+              //     minHeight: 110,
+              //     maxHeight: 115,
+              //     child: DecoratedBox(
+              //       decoration: BoxDecoration(
+              //           color: Theme.of(context).colorScheme.background),
+              //       child: Column(
+              //         children: <Widget>[
+              //           SearchField(),
+              //           TagTray(),
+              //         ],
+              //       ),
+              //     ),
+              //   ),
+              // ),
+              // SliverList(
+              //   delegate: SliverChildBuilderDelegate(
+              //     (context, index) {
+              //       return Padding(
+              //         padding: const EdgeInsets.symmetric(horizontal: 16),
+              //         child: widget.child,
+              //       );
+              //     },
+              //     childCount: 4,
+              //   ),
+              // ),
+            ],
+          ),
         ),
       ),
     );

@@ -28,16 +28,19 @@ class _TagTrayState extends State<TagTray> {
           width: MediaQuery.of(context).size.width,
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 16),
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: titles.length,
-              itemBuilder: (BuildContext context, int index) {
-                return TagTrayItem(
-                  title: titles[index],
-                  changeFirstPadding: index == 0,
-                  changeLastPadding: index == titles.length,
-                );
-              },
+            child: ScrollConfiguration(
+              behavior: CustomBehavior(),
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: titles.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return TagTrayItem(
+                    title: titles[index],
+                    changeFirstPadding: index == 0,
+                    changeLastPadding: index == titles.length,
+                  );
+                },
+              ),
             ),
           ),
         ),

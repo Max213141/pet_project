@@ -15,8 +15,9 @@ import 'package:pet_project/entities/hive_store.dart';
 import 'package:pet_project/screens/error_screen/error_screen.dart';
 import 'package:pet_project/screens/initial_hive_page.dart';
 import 'package:pet_project/screens/initial_page.dart';
-import 'package:pet_project/screens/main_screen/main_screen.dart';
+import 'package:pet_project/screens/home_screen/main_screen.dart';
 import 'package:pet_project/screens/meditation_screen/meditation_screen.dart';
+import 'package:pet_project/screens/mood_screen/mood_screen.dart';
 import 'package:pet_project/screens/splash_screen/splash_screen.dart';
 import 'package:pet_project/screens/tests_screen/tests_screen.dart';
 import 'package:pet_project/utils/loger.dart';
@@ -199,9 +200,16 @@ class MyApp extends StatelessWidget {
           name: 'main',
           path: '/main',
           builder: (BuildContext context, GoRouterState state) {
-            return const MainScreen();
+            return const HomeScreen();
           },
           routes: <RouteBase>[
+            GoRoute(
+              // name: 'breathing_item_screen',
+              path: 'mood_screen',
+              builder: (BuildContext context, GoRouterState state) {
+                return const MoodScreen();
+              },
+            ),
             GoRoute(
               name: 'breathing',
               path: 'breathing',
