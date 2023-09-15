@@ -44,7 +44,7 @@ class _MoodCarouselPickerState extends State<MoodCarouselPicker> {
     return CarouselSlider(
       options: CarouselOptions(
         height: 120.0,
-        viewportFraction: .3,
+        viewportFraction: .2,
         aspectRatio: 9 / 12,
       ),
       items: emotions.map(
@@ -56,31 +56,29 @@ class _MoodCarouselPickerState extends State<MoodCarouselPicker> {
                   selectedEmotion = emotion.emotionTitle;
                 }),
                 child: AnimatedSize(
-                  duration: Duration(milliseconds: 200),
-                  child: SizedBox(
-                    height: selectedEmotion == emotion.emotionTitle ? 200 : 100,
-                    width: selectedEmotion == emotion.emotionTitle
-                        ? MediaQuery.of(context).size.width / 4 + 100
-                        : MediaQuery.of(context).size.width / 4,
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(color: Colors.red),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SvgPicture.asset(
-                            emotion.picturePath,
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            emotion.emotionTitle,
-                            style: MentalHealthTextStyles
-                                .text.popinsSecondaryFontF14,
-                          )
-                        ],
+                  curve: Curves.easeInCirc,
+                  duration: Duration(milliseconds: 20),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        height:
+                            selectedEmotion == emotion.emotionTitle ? 80 : 60,
+                        width:
+                            selectedEmotion == emotion.emotionTitle ? 80 : 60,
+                        child: SvgPicture.asset(
+                          emotion.picturePath,
+                        ),
                       ),
-                    ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        emotion.emotionTitle,
+                        style:
+                            MentalHealthTextStyles.text.popinsSecondaryFontF14,
+                      )
+                    ],
                   ),
                 ),
               );

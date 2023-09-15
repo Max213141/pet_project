@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pet_project/common_widgets/widgets.dart';
 import 'package:pet_project/screens/mood_screen/widgets/widgets.dart';
 import 'package:pet_project/utils/utils.dart';
 
@@ -16,6 +17,7 @@ class _MoodScreenState extends State<MoodScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColor.primaryColor,
       appBar: AppBar(
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
@@ -83,6 +85,8 @@ class _MoodScreenState extends State<MoodScreen> {
               ),
             ),
             MoodCarouselPicker(),
+            SizedBox(height: 22),
+            ActionButton(),
           ],
         ),
       ),

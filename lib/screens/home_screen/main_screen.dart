@@ -23,6 +23,8 @@ class _HomeScreenState extends State<HomeScreen> {
     bool isDarkTheme = BlocProvider.of<ThemeBloc>(context).state.isDarkTheme;
 
     return Scaffold(
+      backgroundColor: AppColor.primaryColor,
+
       appBar: AppBar(
         title: Align(
           alignment: Alignment.centerLeft,
