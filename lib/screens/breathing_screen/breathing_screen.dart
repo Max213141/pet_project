@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:pet_project/common_widgets/common_category_screen/common_category_screen.dart';
-import 'package:pet_project/common_widgets/common_category_screen/widgets/category_card.dart';
 import 'package:pet_project/common_widgets/common_category_screen/widgets/widgets.dart';
 
 class BreathingPracticeScreen extends StatefulWidget {

@@ -61,13 +61,15 @@ class _MoodCarouselPickerState extends State<MoodCarouselPicker> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SizedBox(
-                        height:
-                            selectedEmotion == emotion.emotionTitle ? 80 : 60,
-                        width:
-                            selectedEmotion == emotion.emotionTitle ? 80 : 60,
-                        child: SvgPicture.asset(
-                          emotion.picturePath,
+                      RepaintBoundary(
+                        child: SizedBox(
+                          height:
+                              selectedEmotion == emotion.emotionTitle ? 80 : 60,
+                          width:
+                              selectedEmotion == emotion.emotionTitle ? 80 : 60,
+                          child: SvgPicture.asset(
+                            emotion.picturePath,
+                          ),
                         ),
                       ),
                       SizedBox(

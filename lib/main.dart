@@ -8,7 +8,6 @@ import 'package:pet_project/entities/hive_entities/app_preferences.dart';
 import 'package:pet_project/navigation/navigation_observer.dart';
 import 'package:pet_project/screens/breathing_item_screen/breathing_item_screen.dart';
 import 'package:pet_project/screens/breathing_items_screen/breathing_items_screen.dart';
-import 'package:pet_project/screens/details_screen.dart';
 import 'package:pet_project/blocs/blocs.dart';
 import 'package:pet_project/screens/breathing_screen/breathing_screen.dart';
 import 'package:pet_project/entities/hive_store.dart';
@@ -16,6 +15,7 @@ import 'package:pet_project/screens/error_screen/error_screen.dart';
 import 'package:pet_project/screens/initial_hive_page.dart';
 import 'package:pet_project/screens/initial_page.dart';
 import 'package:pet_project/screens/home_screen/main_screen.dart';
+import 'package:pet_project/screens/intro_screen/intro_screen.dart';
 import 'package:pet_project/screens/meditation_screen/meditation_screen.dart';
 import 'package:pet_project/screens/mood_screen/mood_screen.dart';
 import 'package:pet_project/screens/splash_screen/splash_screen.dart';
@@ -211,6 +211,15 @@ class MyApp extends StatelessWidget {
               },
             ),
             GoRoute(
+              name: 'intro_screen',
+              path: 'intro_screen',
+              builder: (BuildContext context, GoRouterState state) {
+                // return SplashScreen();
+
+                return IntroScreen();
+              },
+            ),
+            GoRoute(
               name: 'breathing',
               path: 'breathing',
               builder: (BuildContext context, GoRouterState state) {
@@ -282,7 +291,6 @@ class MyApp extends StatelessWidget {
       errorBuilder: (context, state) => const ErrorScreen(),
       debugLogDiagnostics: true,
     );
-// final    isDarkTheme = await HiveStore().getAppTheme() ?? false;
 
     return FutureBuilder(
       future: _initHive(),
@@ -297,16 +305,14 @@ class MyApp extends StatelessWidget {
               builder: (context, state) {
                 return MaterialApp.router(
                   title: 'Flutter Demo',
-
                   routerConfig: router,
-                  theme: state.isDarkTheme ? darkTheme : lightTheme,
-                  // home: const Home(),
+                  theme: state.isDarkTheme ? lightTheme : darkTheme,
                 );
               },
             ),
           );
         } else {
-          return MaterialApp();
+          return const MaterialApp();
         }
       },
     );

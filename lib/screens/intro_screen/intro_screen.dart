@@ -1,8 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intro_slider/intro_slider.dart';
-import 'package:pet_project/screens/intro_screen/widgets/intro_screen_part.dart';
+import 'package:pet_project/screens/intro_screen/widgets/widgets.dart';
+import 'package:pet_project/utils/utils.dart';
 
 class IntroScreen extends StatefulWidget {
   const IntroScreen({super.key});
@@ -17,26 +17,45 @@ class _IntroScreenState extends State<IntroScreen> {
   @override
   void initState() {
     super.initState();
-    slides.add(
-      const IntroScreenPart(
-        title: "Slide 1",
-        description: "This is slide 1",
-        color: Colors.blue,
-      ),
-    );
-    slides.add(
-      const IntroScreenPart(
-        title: "Slide 2",
-        description: "This is slide 2",
-        color: Colors.red,
-      ),
-    );
-    slides.add(
-      const IntroScreenPart(
-        title: "Slide 3",
-        description: "This is slide 3",
-        color: Colors.green,
-      ),
+    slides.addAll(
+      [
+        IntroScreenPart(
+          useProvidedChild: true,
+          text: "Helll yeah!!!",
+          image: 'assets/intro/first_slide.svg',
+          providedChild: RichText(
+              text: TextSpan(children: [
+            TextSpan(
+              text: 'Welcome to\n',
+              style: MentalHealthTextStyles.text.signikaFontF24,
+            ),
+            TextSpan(
+              text: 'MentalSync\n',
+              style: MentalHealthTextStyles.text.signikaFontF24Green,
+            ),
+            TextSpan(
+              text: 'our mental health app!\n',
+              style: MentalHealthTextStyles.text.signikaFontF24,
+            ),
+            TextSpan(
+              text: 'We\'re glad to have you here.\n',
+              style: MentalHealthTextStyles.text.signikaFontF24,
+            ),
+          ])),
+        ),
+        const IntroScreenPart(
+          text: 'Discover more about yourself with our psychological tests.',
+          image: 'assets/intro/second_slide.svg',
+        ),
+        const IntroScreenPart(
+          text: 'Engage in daily meditation sessions.',
+          image: 'assets/intro/third_slide.svg',
+        ),
+        const IntroScreenPart(
+          text: "Receive personalized recommendations and tips.",
+          image: 'assets/intro/forth_slide.svg',
+        ),
+      ],
     );
   }
 
@@ -51,38 +70,46 @@ class _IntroScreenState extends State<IntroScreen> {
     // TODO: Navigate to the home screen
   }
 
-  Widget renderNextBtn() {
-    return const Icon(
-      Icons.navigate_next,
-      color: Colors.white,
-      size: 35.0,
-    );
-  }
-
-  Widget renderDoneBtn() {
-    return const Icon(
-      Icons.done,
-      color: Colors.white,
-    );
-  }
-
-  Widget renderSkipBtn() {
-    return Icon(
-      Icons.skip_next,
-      color: Colors.white,
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IntroSlider(
-        listCustomTabs: this.slides,
-        onDonePress: this.onDonePress,
-        onSkipPress: this.onSkipPress,
-        renderNextBtn: this.renderNextBtn(),
-        renderDoneBtn: this.renderDoneBtn(),
-        renderSkipBtn: this.renderSkipBtn(),
+      body: ScrollConfiguration(
+        behavior: CustomBehavior(),
+        child: IntroSlider(
+          indicatorConfig: IndicatorConfig(
+            sizeIndicator: 24,
+            indicatorWidget: Container(
+              width: 24,
+              height: 8,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+                color: AppColor.introButtonColor,
+              ),
+            ),
+            activeIndicatorWidget: Container(
+              width: 24,
+              height: 8,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+                color: AppColor.primaryBackgroundColor,
+              ),
+            ),
+            spaceBetweenIndicator: 10,
+            typeIndicatorAnimation: TypeIndicatorAnimation.sliding,
+          ),
+          listCustomTabs: slides,
+          onDonePress: onDonePress,
+          onSkipPress: onSkipPress,
+          doneButtonStyle:
+              const ButtonStyle(splashFactory: NoSplash.splashFactory),
+          nextButtonStyle:
+              const ButtonStyle(splashFactory: NoSplash.splashFactory),
+          renderNextBtn: const NextButton(),
+          renderDoneBtn: const DoneButton(),
+          isShowSkipBtn: false,
+          isShowPrevBtn: false,
+          // renderSkipBtn: this.renderSkipBtn(),
+        ),
       ),
     );
   }

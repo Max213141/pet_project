@@ -1,10 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:pet_project/entities/hive_entities/app_preferences.dart';
 import 'package:pet_project/entities/hive_store.dart';
-import 'package:pet_project/screens/auth_screen.dart';
+import 'package:pet_project/screens/auth_screen/auth_screen.dart';
 import 'package:pet_project/screens/intro_screen/intro_screen.dart';
 import 'package:pet_project/screens/home_screen/main_screen.dart';
 import 'package:pet_project/screens/splash_screen/splash_screen.dart';
@@ -78,11 +75,12 @@ class _InitialHivePageState extends State<InitialHivePage> {
           if (isFirstLaunch) {
             return IntroScreen();
           } else {
-            // if (widget.auth.currentUser != null) {  //TODO uncomment for uth porper flow
-            return const HomeScreen();
-            // } else {
-            //   return const AuthScreen();
-            // }
+            if (widget.auth.currentUser != null) {
+              //TODO uncomment for uth porper flow
+              return const HomeScreen();
+            } else {
+              return const AuthScreen();
+            }
           }
         }
         return const SplashScreen();

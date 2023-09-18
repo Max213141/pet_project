@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:pet_project/utils/utils.dart';
 
 class ActionButton extends StatelessWidget {
+  final String title;
   // final BuildContext context;
+  final void Function() onPressed;
 
-  const ActionButton({super.key});
+  const ActionButton({
+    super.key,
+    required this.onPressed,
+    required this.title,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -12,9 +18,7 @@ class ActionButton extends StatelessWidget {
       width: MediaQuery.of(context).size.width - 90,
       height: 50,
       child: ElevatedButton(
-        onPressed: () {
-          Navigator.of(context).pop();
-        },
+        onPressed: onPressed,
         style: ButtonStyle(
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
@@ -26,7 +30,7 @@ class ActionButton extends StatelessWidget {
               MaterialStateProperty.all<Color>(AppColor.primaryBackgroundColor),
         ),
         child: Text(
-          'Submit',
+          title,
           style: MentalHealthTextStyles.text.signikaPrimaryFontF22Black,
         ),
       ),

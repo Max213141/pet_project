@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:pet_project/utils/utils.dart';
 
 import 'widgets/widgets.dart';
@@ -142,36 +141,7 @@ class _CommonCategoryScreenState extends State<CommonCategoryScreen> {
                     style: MentalHealthTextStyles.text.signikaSecondaryFontF16,
                   ),
                 ),
-              )
-
-              // SliverPersistentHeader(
-              //   pinned: true,
-              //   delegate: _SliverFiltersDelegate(
-              //     minHeight: 110,
-              //     maxHeight: 115,
-              //     child: DecoratedBox(
-              //       decoration: BoxDecoration(
-              //           color: Theme.of(context).colorScheme.background),
-              //       child: Column(
-              //         children: <Widget>[
-              //           SearchField(),
-              //           TagTray(),
-              //         ],
-              //       ),
-              //     ),
-              //   ),
-              // ),
-              // SliverList(
-              //   delegate: SliverChildBuilderDelegate(
-              //     (context, index) {
-              //       return Padding(
-              //         padding: const EdgeInsets.symmetric(horizontal: 16),
-              //         child: widget.child,
-              //       );
-              //     },
-              //     childCount: 4,
-              //   ),
-              // ),
+              ),
             ],
           ),
         ),

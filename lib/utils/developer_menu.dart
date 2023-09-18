@@ -10,7 +10,7 @@ class DevMenuWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 300,
+      height: 500,
       width: 300,
       child: DecoratedBox(
         decoration: BoxDecoration(
@@ -32,6 +32,10 @@ class DevMenuWidget extends StatelessWidget {
               onPressed: () =>
                   GoRouter.of(context).go('/main/breathing/breathing_items'),
               child: const Text('Go to the Breathing items screen'),
+            ),
+            ElevatedButton(
+              onPressed: () => GoRouter.of(context).go('/main/intro_screen'),
+              child: const Text('Go to the intro screen'),
             ),
             ElevatedButton(
               onPressed: () => GoRouter.of(context).go('/main/mood_screen'),

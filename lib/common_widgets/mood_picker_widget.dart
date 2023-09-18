@@ -42,7 +42,7 @@ class MoodPickerWidget extends StatelessWidget {
           children: [
             Text(
               'How are you today?',
-              style: MentalHealthTextStyles.text.signikaQuoteFontF24,
+              style: MentalHealthTextStyles.text.signikaFontF24,
             ),
             Expanded(
               child: GridView.builder(
@@ -72,7 +72,12 @@ class MoodPickerWidget extends StatelessWidget {
                 },
               ),
             ),
-            ActionButton(),
+            ActionButton(
+              title: 'Submit'.toUpperCase(),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
           ],
         ),
       ),

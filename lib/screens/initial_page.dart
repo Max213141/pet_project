@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pet_project/blocs/auth_bloc/auth_bloc.dart';
-import 'package:pet_project/screens/auth_screen.dart';
+import 'package:pet_project/screens/auth_screen/auth_screen.dart';
 import 'package:pet_project/screens/home_screen/main_screen.dart';
 
 class InitialPage extends StatefulWidget {
@@ -17,15 +17,16 @@ class _InitialPageState extends State<InitialPage> {
   bool themeState = false;
   @override
   Widget build(BuildContext context) {
-    bool val = true;
+    // bool val = true;
 
     return StreamBuilder<User?>(
       stream: BlocProvider.of<AuthBloc>(context).auth.authStateChanges(),
       builder: (context, snapshot) {
-        // if (snapshot.hasData) { //Uncomment for proper workflow
-        return const HomeScreen();
-        // }
-        // return const AuthScreen();
+        if (snapshot.hasData) {
+          //Uncomment for proper workflow
+          return const HomeScreen();
+        }
+        return const AuthScreen();
       },
     );
   }

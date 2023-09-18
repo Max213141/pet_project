@@ -94,8 +94,7 @@ class _QuoteWidgetState extends State<QuoteWidget> {
                         TextSpan(
                             text: '“ ',
                             // textAlign: TextAlign.center,
-                            style:
-                                MentalHealthTextStyles.text.signikaQuoteFontF24
+                            style: MentalHealthTextStyles.text.signikaFontF24
                             // : MentalHealthTextStyles.text.signikaSecondaryFontF16,
                             // maxLines: 3,
                             // overflow: TextOverflow.ellipsis,
@@ -104,7 +103,7 @@ class _QuoteWidgetState extends State<QuoteWidget> {
                           text: '$quote',
                           // textAlign: TextAlign.center,
                           style: quote.length < 100
-                              ? MentalHealthTextStyles.text.signikaQuoteFontF24
+                              ? MentalHealthTextStyles.text.signikaFontF24
                               : MentalHealthTextStyles
                                   .text.signikaSecondaryFontF16,
                           // maxLines: 3,
@@ -113,8 +112,7 @@ class _QuoteWidgetState extends State<QuoteWidget> {
                         TextSpan(
                             text: ' ”',
                             // textAlign: TextAlign.center,
-                            style:
-                                MentalHealthTextStyles.text.signikaQuoteFontF24
+                            style: MentalHealthTextStyles.text.signikaFontF24
                             // : MentalHealthTextStyles.text.signikaSecondaryFontF16,
                             // maxLines: 3,
                             // overflow: TextOverflow.ellipsis,

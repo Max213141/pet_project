@@ -84,9 +84,14 @@ class _MoodScreenState extends State<MoodScreen> {
                 ),
               ),
             ),
-            MoodCarouselPicker(),
-            SizedBox(height: 22),
-            ActionButton(),
+            const MoodCarouselPicker(),
+            const SizedBox(height: 22),
+            ActionButton(
+              title: 'Submit'.toUpperCase(),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
           ],
         ),
       ),

@@ -30,11 +30,18 @@ class _TextTextStyle {
         color: AppColor.oneMoreDarkColor,
         fontWeight: FontWeight.w600,
       );
-  get signikaQuoteFontF24 => GoogleFonts.signika(
+  get signikaFontF24 => GoogleFonts.signika(
         fontSize: 24,
         height: 24 / 20,
         letterSpacing: -.41,
         color: AppColor.oneMoreDarkColor,
+        fontWeight: FontWeight.w400,
+      );
+  get signikaFontF24Green => GoogleFonts.signika(
+        fontSize: 24,
+        height: 24 / 20,
+        letterSpacing: -.41,
+        color: AppColor.primaryBackgroundColor,
         fontWeight: FontWeight.w400,
       );
 

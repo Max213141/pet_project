@@ -53,6 +53,8 @@ flutter:
     - assets/images/
     - assets/breathing_images/
     - assets/emotions/
+    - assets/intro/
+
 
   # assets:
   #   -assets/notification_icon.png
