@@ -62,6 +62,13 @@ class _Borders {
         ),
       );
 
+  Border get chartBorder => const Border.fromBorderSide(
+        BorderSide(
+          width: 1,
+          color: AppColor.primaryBackgroundColor,
+        ),
+      );
+
   // Border get newNoteButton => const Border.fromBorderSide(
   //       BorderSide(
   //         width: 0.3,

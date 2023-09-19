@@ -85,6 +85,10 @@ class _MoodScreenState extends State<MoodScreen> {
               ),
             ),
             const MoodCarouselPicker(),
+            Text(
+              'How are you today?',
+              style: MentalHealthTextStyles.text.signikaFontF24,
+            ),
             const SizedBox(height: 22),
             ActionButton(
               title: 'Submit'.toUpperCase(),
