@@ -45,103 +45,105 @@ class _AuthModalBodyState extends State<AuthModalBody> {
               );
             });
       },
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'How are you today?',
-              style: MentalHealthTextStyles.text.signikaFontF24,
-            ),
-            Stack(
-              children: [
-                Form(
-                  key: _formKey,
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        TextFormField(
-                          controller: _emailController,
-                          validator: (value) {
-                            if (value?.isEmpty ?? true) {
-                              return 'Введите почту';
-                            }
-                            return null;
-                          },
-                          decoration: const InputDecoration(
-                            labelText: 'Email',
+      child: Scaffold(
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'How are you today?',
+                style: MentalHealthTextStyles.text.signikaFontF24,
+              ),
+              Stack(
+                children: [
+                  Form(
+                    key: _formKey,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          TextFormField(
+                            controller: _emailController,
+                            validator: (value) {
+                              if (value?.isEmpty ?? true) {
+                                return 'Введите почту';
+                              }
+                              return null;
+                            },
+                            decoration: const InputDecoration(
+                              labelText: 'Email',
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 16.0),
-                        TextFormField(
-                          controller: _passwordController,
-                          validator: (value) {
-                            if (value?.isEmpty ?? true) {
-                              return 'Введите пароль';
-                            }
-                            return null;
-                          },
-                          decoration: const InputDecoration(
-                            labelText: 'Password',
+                          const SizedBox(height: 16.0),
+                          TextFormField(
+                            controller: _passwordController,
+                            validator: (value) {
+                              if (value?.isEmpty ?? true) {
+                                return 'Введите пароль';
+                              }
+                              return null;
+                            },
+                            decoration: const InputDecoration(
+                              labelText: 'Password',
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 32.0),
-                        // SizedBox(
-                        //   width: 100,
-                        //   child: ElevatedButton(
-                        //     onPressed: () {
+                          const SizedBox(height: 32.0),
+                          // SizedBox(
+                          //   width: 100,
+                          //   child: ElevatedButton(
+                          //     onPressed: () {
 
-                        //     },
-                        //     child: const Text('Register'),
-                        //   ),
-                        // ),
-                        // SizedBox(
-                        //   width: 100,
-                        //   child: ElevatedButton(
-                        //     onPressed: () {
+                          //     },
+                          //     child: const Text('Register'),
+                          //   ),
+                          // ),
+                          // SizedBox(
+                          //   width: 100,
+                          //   child: ElevatedButton(
+                          //     onPressed: () {
 
-                        //     },
-                        //     child: const Text('Log in'),
-                        //   ),
-                        // ),
-                      ],
+                          //     },
+                          //     child: const Text('Log in'),
+                          //   ),
+                          // ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                //  _showLoader? Loader(): ,
-              ],
-            ),
-            ActionButton(
-              title: 'Log in'.toUpperCase(),
-              onPressed: () {
-                if (_formKey.currentState!.validate()) {
-                  final String email = _emailController.text;
-                  final String password = _passwordController.text;
+                  //  _showLoader? Loader(): ,
+                ],
+              ),
+              ActionButton(
+                title: 'Log in'.toUpperCase(),
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    final String email = _emailController.text;
+                    final String password = _passwordController.text;
 
-                  BlocProvider.of<AuthBloc>(context).add(
-                    LogInEvent(email: email, password: password),
-                  );
-                }
-              },
-            ),
-            const SizedBox(height: 10),
-            ActionButton(
-              title: 'Register'.toUpperCase(),
-              onPressed: () {
-                if (_formKey.currentState!.validate()) {
-                  final String email = _emailController.text;
-                  final String password = _passwordController.text;
+                    BlocProvider.of<AuthBloc>(context).add(
+                      LogInEvent(email: email, password: password),
+                    );
+                  }
+                },
+              ),
+              const SizedBox(height: 10),
+              ActionButton(
+                title: 'Register'.toUpperCase(),
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    final String email = _emailController.text;
+                    final String password = _passwordController.text;
 
-                  BlocProvider.of<AuthBloc>(context).add(
-                    CreateUserEvent(email: email, password: password),
-                  );
-                }
-              },
-            ),
-          ],
+                    BlocProvider.of<AuthBloc>(context).add(
+                      CreateUserEvent(email: email, password: password),
+                    );
+                  }
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

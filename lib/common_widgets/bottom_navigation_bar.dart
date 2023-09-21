@@ -3,14 +3,20 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pet_project/utils/utils.dart';
 
 class BottomNavBar extends StatefulWidget {
-  const BottomNavBar({super.key});
+  final int selectedIndex;
+  final void Function(int) onPressed;
+  const BottomNavBar({
+    super.key,
+    required this.selectedIndex,
+    required this.onPressed,
+  });
 
   @override
   State<BottomNavBar> createState() => _BottomNavBarState();
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
-  final List<BottomNavigationBarItem> items = [
+  final List<BottomNavigationBarItem> navIcons = <BottomNavigationBarItem>[
     BottomNavigationBarItem(
         icon: SvgPicture.asset(
           'assets/icons/home.svg',
@@ -63,7 +69,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
           // iconSize: 50,
           showSelectedLabels: false,
           showUnselectedLabels: false,
-          items: items,
+          items: navIcons,
+          currentIndex: widget.selectedIndex,
+          onTap: (index) => widget.onPressed(index),
         ),
       ),
     );

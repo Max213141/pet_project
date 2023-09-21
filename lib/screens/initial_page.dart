@@ -24,7 +24,7 @@ class _InitialPageState extends State<InitialPage> {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           //Uncomment for proper workflow
-          return const HomeScreen();
+          return const MainScreen();
         }
         return const AuthScreen();
       },

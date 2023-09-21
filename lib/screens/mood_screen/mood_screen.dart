@@ -18,39 +18,39 @@ class _MoodScreenState extends State<MoodScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.primaryColor,
-      appBar: AppBar(
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(40),
-          ),
-        ),
-        leading: GestureDetector(
-          onTap: () => GoRouter.of(context).pop(),
-          child: const Icon(
-            Icons.arrow_back,
-            color: AppColor.mainDarkColor,
-            size: 24,
-          ),
-        ),
-        title: Align(
-          alignment: Alignment.centerLeft,
-          child: Text(
-            'Mood statistic',
-          ),
-        ),
-        titleTextStyle: MentalHealthTextStyles.text.signikaPrimaryFontF28,
-        backgroundColor: AppColor.primaryBackgroundColor,
-        elevation: 0,
-      ),
-      floatingActionButton: ElevatedButton(
-        onPressed: () => showDialog(
-          context: context,
-          builder: (context) {
-            return const Center(child: DevMenuWidget());
-          },
-        ),
-        child: Text('M'),
-      ),
+      // appBar: AppBar(
+      //   shape: const RoundedRectangleBorder(
+      //     borderRadius: BorderRadius.only(
+      //       bottomLeft: Radius.circular(40),
+      //     ),
+      //   ),
+      //   // leading: GestureDetector(
+      //   //   onTap: () => GoRouter.of(context).pop(),
+      //   //   child: const Icon(
+      //   //     Icons.arrow_back,
+      //   //     color: AppColor.mainDarkColor,
+      //   //     size: 24,
+      //   //   ),
+      //   // ),
+      //   title: Align(
+      //     alignment: Alignment.centerLeft,
+      //     child: Text(
+      //       'Mood statistic',
+      //       style: MentalHealthTextStyles.text.signikaPrimaryFontF28,
+      //     ),
+      //   ),
+      //   backgroundColor: AppColor.primaryBackgroundColor,
+      //   elevation: 0,
+      // ),
+      // floatingActionButton: ElevatedButton(
+      //   onPressed: () => showDialog(
+      //     context: context,
+      //     builder: (context) {
+      //       return const Center(child: DevMenuWidget());
+      //     },
+      //   ),
+      //   child: Text('M'),
+      // ),
       // bottomNavigationBar: const BottomNavBar(),
       // navigationBar: CupertinoNavigationBar(
       //     middle: const Text('Switch theme'),

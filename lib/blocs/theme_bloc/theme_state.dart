@@ -10,6 +10,6 @@ class ThemeState {
   }
 
   Future<dynamic> getTheme() async {
-    return await HiveStore().getAppTheme() ?? false;
+    return HiveStore().getAppTheme() ?? false;
   }
 }

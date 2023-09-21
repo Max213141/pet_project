@@ -77,7 +77,7 @@ class _InitialHivePageState extends State<InitialHivePage> {
           } else {
             if (widget.auth.currentUser != null) {
               //TODO uncomment for uth porper flow
-              return const HomeScreen();
+              return const MainScreen();
             } else {
               return const AuthScreen();
             }

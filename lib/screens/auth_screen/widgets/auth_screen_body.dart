@@ -69,11 +69,11 @@ class AuthScreenBody extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: 40),
+                const SizedBox(height: 20),
                 SvgPicture.asset(
                   'assets/images/auth_image.svg',
                 ),
-                const SizedBox(height: 40),
+                const SizedBox(height: 20),
                 ActionButton(
                   title: 'Get started'.toUpperCase(),
                   onPressed: () => trigerAuth(context),

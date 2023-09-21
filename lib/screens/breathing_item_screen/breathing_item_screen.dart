@@ -35,9 +35,9 @@ class _BreathingItemScreenState extends State<BreathingItemScreen> {
         ),
         actions: [
           GestureDetector(
-            onTap: () => ScaffoldMessenger.of(context)
-                .showSnackBar(SnackBar(content: Text('Added to favorite!'))),
-            child: Icon(
+            onTap: () => ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Added to favorite!'))),
+            child: const Icon(
               Icons.heart_broken_rounded,
               color: Color(0xFFFF8B72),
             ),

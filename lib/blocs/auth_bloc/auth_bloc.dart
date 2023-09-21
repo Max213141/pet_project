@@ -28,7 +28,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     emit(const AuthState.loading());
 
     try {
-      UserCredential userCredential = await auth.createUserWithEmailAndPassword(
+      // UserCredential userCredential =
+      await auth.createUserWithEmailAndPassword(
         email: event.email,
         password: event.password,
       );
@@ -84,7 +85,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     emit(const AuthState.loading());
 
     try {
-      final userCredential = await auth.signOut();
+      // final userCredential =
+      await auth.signOut();
       _log('User  signed out successfully');
       emit(const AuthState.logOutSuccess());
     } catch (e) {

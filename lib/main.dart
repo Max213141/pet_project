@@ -18,7 +18,6 @@ import 'package:pet_project/screens/home_screen/main_screen.dart';
 import 'package:pet_project/screens/intro_screen/intro_screen.dart';
 import 'package:pet_project/screens/meditation_screen/meditation_screen.dart';
 import 'package:pet_project/screens/mood_screen/mood_screen.dart';
-import 'package:pet_project/screens/splash_screen/splash_screen.dart';
 import 'package:pet_project/screens/tests_screen/tests_screen.dart';
 import 'package:pet_project/utils/loger.dart';
 import 'package:pet_project/utils/theme_data.dart';
@@ -200,7 +199,7 @@ class MyApp extends StatelessWidget {
           name: 'main',
           path: '/main',
           builder: (BuildContext context, GoRouterState state) {
-            return const HomeScreen();
+            return const MainScreen();
           },
           routes: <RouteBase>[
             GoRoute(

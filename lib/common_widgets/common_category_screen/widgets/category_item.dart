@@ -81,10 +81,10 @@ class _CategoryItemState extends State<CategoryItem> {
                 child: ScrollConfiguration(
                   behavior: CustomBehavior(),
                   child: ListView.builder(
-                    itemCount: 5,
+                    itemCount: 2,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) => Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 2.0),
+                      padding: const EdgeInsets.only(right: 4.0),
                       child: DecoratedBox(
                         decoration: BoxDecoration(
                           border: Border.all(
@@ -93,15 +93,17 @@ class _CategoryItemState extends State<CategoryItem> {
                           borderRadius:
                               MentalHealthDecorations.borders.radiusC10,
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 6, vertical: 4),
-                          child: Text(
-                            'Tag',
-                            style: MentalHealthTextStyles
-                                .text.popinsSecondaryFontF12,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
+                        child: Center(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 6, vertical: 4),
+                            child: Text(
+                              'Tag',
+                              style: MentalHealthTextStyles
+                                  .text.popinsSecondaryFontF12,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
                           ),
                         ),
                       ),

@@ -20,7 +20,7 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
         bool? darkThemeFlag = HiveStore().getAppTheme();
         _log('darkThemeFlag from storage: ${darkThemeFlag}');
 
-        bool isDarkTheme = darkThemeFlag ?? false;
+        // bool isDarkTheme = darkThemeFlag ?? false;
 
         _log('app preference is no empty: ${appPreferences}');
 

@@ -12,6 +12,7 @@ class AuthScreen extends StatelessWidget {
     final mediaQuery = MediaQuery.of(context);
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: AppColor.primaryColor,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

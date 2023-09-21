@@ -45,29 +45,26 @@ class _CarouselWidgetState extends State<CarouselWidget> {
                         borderRadius: MentalHealthDecorations.borders.radiusC15,
                       ),
                       child: GestureDetector(
-                        onDoubleTap: () {
-                          setState(() {
-                            selectedIndex = index;
-                          });
-
-                          switch (index) {
-                            case 0:
-                              GoRouter.of(context).go('/main/breathing');
-                              break;
-                            case 1:
-                              GoRouter.of(context).go('/main/tests');
-                              break;
-
-                            case 2:
-                              GoRouter.of(context).go('/main/meditation');
-                              break;
-                            default:
-                          }
-                        },
                         onTap: () {
-                          setState(() {
-                            selectedIndex = index;
-                          });
+                          if (selectedIndex == index) {
+                            switch (index) {
+                              case 0:
+                                GoRouter.of(context).go('/main/breathing');
+                                break;
+                              case 1:
+                                GoRouter.of(context).go('/main/tests');
+                                break;
+
+                              case 2:
+                                GoRouter.of(context).go('/main/meditation');
+                                break;
+                              default:
+                            }
+                          } else {
+                            setState(() {
+                              selectedIndex = index;
+                            });
+                          }
                         },
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
