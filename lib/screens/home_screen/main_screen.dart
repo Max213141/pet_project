@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pet_project/blocs/theme_bloc/theme_bloc.dart';
 import 'package:pet_project/common_widgets/bottom_navigation_bar.dart';
 import 'package:pet_project/common_widgets/widgets.dart';
 import 'package:pet_project/screens/home_screen/home_screen.dart';
@@ -24,9 +22,9 @@ class _MainScreenState extends State<MainScreen> {
     });
   }
 
-  static List<Widget> _screens = [
+  final List<Widget> _screens = [
     HomeScreen(),
-    MoodScreen(),
+    const MoodScreen(),
   ];
   getAppBarTitle() {
     switch (_selectedIndex) {

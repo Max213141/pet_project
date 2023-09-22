@@ -21,11 +21,11 @@ class AppColor {
   static const Color habbitsTileBackground = Color(0xFFFAFAFA);
 
   static const Color chartHappy = Color(0xFFFFC75B);
-  static const Color chartGood = Color(0xFFFAFAFA);
-  static const Color chartMeh = Color(0xFFFAFAFA);
-  static const Color chartBored = Color(0xFFFAFAFA);
-  static const Color chartSad = Color(0xFFFAFAFA);
-  static const Color chartAngry = Color(0xFFFAFAFA);
+  static const Color chartGood = Color(0xFF9BCD8F);
+  static const Color chartMeh = Color(0xFF5C8D9F);
+  static const Color chartBored = Color(0xFFCCA5F2);
+  static const Color chartSad = Color(0xFF8BD5F0);
+  static const Color chartAngry = Color(0xFFFF7374);
 }
 
 

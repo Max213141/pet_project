@@ -31,20 +31,22 @@ class _HabbitsItemState extends State<HabbitsItem> {
             ),
           ),
         ),
-        Transform.scale(
-          scale: 1.4,
-          child: Checkbox(
-            value: isChecked,
-            onChanged: (bool? value) {
-              setState(() {
-                isChecked = value!;
-              });
-            },
-            checkColor: Colors.white,
-            activeColor: AppColor.primaryBackgroundColor,
-            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(3.0),
+        RepaintBoundary(
+          child: Transform.scale(
+            scale: 1.4,
+            child: Checkbox(
+              value: isChecked,
+              onChanged: (bool? value) {
+                setState(() {
+                  isChecked = value!;
+                });
+              },
+              checkColor: Colors.white,
+              activeColor: AppColor.primaryBackgroundColor,
+              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(3.0),
+              ),
             ),
           ),
         ),
