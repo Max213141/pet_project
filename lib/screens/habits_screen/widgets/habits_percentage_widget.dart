@@ -59,7 +59,7 @@ class HabitsPercentageWidget extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 60),
-                  const HabitsPercentageRadialDiagram(),
+                  HabitsPercentageRadialDiagram([2 / 3, 1 / 3]),
                 ],
               )
             ],

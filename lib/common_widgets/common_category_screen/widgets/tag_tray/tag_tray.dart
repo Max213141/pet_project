@@ -15,9 +15,9 @@ class _TagTrayState extends State<TagTray> {
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
-      decoration: BoxDecoration(color: AppColor.primaryColor),
+      decoration: const BoxDecoration(color: AppColor.primaryColor),
       child: DecoratedBox(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: AppColor.primaryColor,
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(40),

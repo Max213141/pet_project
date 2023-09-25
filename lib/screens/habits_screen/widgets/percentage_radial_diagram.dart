@@ -1,69 +1,50 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:pet_project/utils/utils.dart';
+import 'dart:math';
 
-class HabitsPercentageRadialDiagram extends StatefulWidget {
-  const HabitsPercentageRadialDiagram({super.key});
+class HabitsPercentageRadialDiagram extends StatelessWidget {
+  final List<double> data; // Пропорциональные данные (в виде долей)
 
-  @override
-  State<HabitsPercentageRadialDiagram> createState() =>
-      _HabitsPercentageRadialDiagramState();
-}
+  HabitsPercentageRadialDiagram(this.data);
 
-class _HabitsPercentageRadialDiagramState
-    extends State<HabitsPercentageRadialDiagram> {
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 85,
-      height: 85,
-      child: AspectRatio(
-        aspectRatio: .5,
-        child: PieChart(
-          PieChartData(
-            borderData: FlBorderData(
-              show: false,
-            ),
-            sectionsSpace: 0,
-            centerSpaceRadius: 30,
-            sections: showingSections(),
-          ),
-        ),
-      ),
+    return CustomPaint(
+      size: Size(200.0, 200.0),
+      painter: CircleChartPainter(data),
     );
   }
+}
 
-  List<PieChartSectionData> showingSections() {
-    return List.generate(2, (i) {
-      // final isTouched = i == touchedIndex;
-      // final fontSize = isTouched ? 25.0 : 16.0;
-      // final radius = isTouched ? 60.0 : 50.0;
-      // const shadows = [Shadow(color: Colors.black, blurRadius: 2)];
-      switch (i) {
-        case 0:
-          return PieChartSectionData(
-            color: AppColor.chartMeh,
-            // value: 20,
-            // title: '20%',
-            // radius: radius,
-            // titleStyle: MentalHealthTextStyles.text
-          );
-        case 1:
-          return PieChartSectionData(
-            color: AppColor.chartAngry,
-            // value: 30,
-            // title: '30%',
-            // radius: radius,
-            // titleStyle: TextStyle(
-            //   fontSize: fontSize,
-            //   fontWeight: FontWeight.bold,
-            //   color: Colors.black,
-            //   shadows: shadows,
-            // ),
-          );
-        default:
-          throw Error();
-      }
-    });
+class CircleChartPainter extends CustomPainter {
+  final List<double> data;
+  CircleChartPainter(this.data);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    Paint paint = Paint()..style = PaintingStyle.fill;
+
+    double total = data.reduce((a, b) => a + b);
+    double startAngle = 0.0;
+
+    for (var i = 0; i < data.length; i++) {
+      double sweepAngle = 2 * pi * data[i] / total;
+
+      paint.color = Colors.accents[i % Colors.accents.length];
+      canvas.drawArc(
+        Rect.fromLTWH(0.0, 0.0, size.width, size.height),
+        startAngle,
+        sweepAngle,
+        true,
+        paint,
+      );
+
+      startAngle += sweepAngle;
+    }
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) {
+    return false;
   }
 }
