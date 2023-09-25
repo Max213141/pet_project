@@ -21,6 +21,11 @@ class AppColor {
   static const Color habbitsTileBackground = Color(0xFFFAFAFA);
   static const Color chartsColor = Color(0xFFE2E7CB);
 
+  static const List<Color> radialDiagramColors = <Color>[
+    Color(0xFFFFFFFF),
+    Color(0xFF9BCD90),
+  ];
+
   static const Color chartHappy = Color(0xFFFFC75B);
   static const Color chartGood = Color(0xFF9BCD8F);
   static const Color chartMeh = Color(0xFF5C8D9F);

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pet_project/screens/habbits_screen/widgets/habbits_item.dart';
+import 'package:pet_project/screens/habits_screen/widgets/habits_item.dart';
 import 'package:pet_project/utils/app_colors.dart';
 import 'package:pet_project/utils/decorations.dart';
 import 'package:pet_project/utils/styles/styles.dart';
@@ -48,13 +48,10 @@ class _ToDoListWidgetState extends State<ToDoListWidget> {
                       ),
                     ),
                     Expanded(
-                      child: ScrollConfiguration(
-                        behavior: CustomBehavior(),
-                        child: ListView.builder(
-                          itemCount: 3,
-                          itemBuilder: (context, index) => HabbitsItem(),
-                          physics: const NeverScrollableScrollPhysics(),
-                        ),
+                      child: ListView.builder(
+                        itemCount: 3,
+                        itemBuilder: (context, index) => HabbitsItem(),
+                        physics: const NeverScrollableScrollPhysics(),
                       ),
                     ),
                   ],

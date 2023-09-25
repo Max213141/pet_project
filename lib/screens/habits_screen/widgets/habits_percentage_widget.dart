@@ -8,7 +8,7 @@ class HabitsPercentageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 28.0, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 10),
       child: DecoratedBox(
         decoration: BoxDecoration(
           border: Border.all(
@@ -59,7 +59,12 @@ class HabitsPercentageWidget extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 60),
-                  HabitsPercentageRadialDiagram([2 / 3, 1 / 3]),
+                  const HabitsPercentageRadialDiagram(
+                    data: [
+                      5 / 7, // uncomplished
+                      2 / 7, // complited
+                    ],
+                  ),
                 ],
               )
             ],

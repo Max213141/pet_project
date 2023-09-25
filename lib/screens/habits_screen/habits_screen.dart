@@ -53,11 +53,42 @@ class _HabitsScreenState extends State<HabitsScreen> {
           ),
           HabitsPercentageWidget(),
           Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 10),
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height / 3.5,
+              child: Expanded(
+                child: ListView.builder(
+                  itemCount: 6,
+                  itemBuilder: (context, index) => HabbitsItem(),
+                ),
+              ),
+            ),
+          ),
+          Padding(
             padding: const EdgeInsets.symmetric(horizontal: 35.0),
             child: ActionButton(
               title: 'Add new habit'.toUpperCase(),
               onPressed: () {
-                Navigator.of(context).pop();
+                showModalBottomSheet(
+                  useSafeArea: true,
+                  showDragHandle: true,
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(40),
+                      topRight: Radius.circular(40),
+                    ),
+                  ),
+                  context: context,
+                  builder: (context) {
+                    return Center(
+                      child: Text(
+                        ';)',
+                        style:
+                            MentalHealthTextStyles.text.signikaPrimaryFontF28,
+                      ),
+                    );
+                  },
+                );
               },
             ),
           ),

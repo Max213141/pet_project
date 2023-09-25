@@ -66,9 +66,7 @@ class _MoodScreenState extends State<MoodScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 35.0),
               child: ActionButton(
                 title: 'Submit'.toUpperCase(),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
+                onPressed: () {},
               ),
             ),
           ],
