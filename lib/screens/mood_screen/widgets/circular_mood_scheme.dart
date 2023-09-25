@@ -20,7 +20,7 @@ class CircularMoodScheme extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
       child: SizedBox(
-        height: MediaQuery.of(context).size.height / 4,
+        height: MediaQuery.of(context).size.height / 4.5,
         width: MediaQuery.of(context).size.width - 32,
         child: DecoratedBox(
           decoration: BoxDecoration(
@@ -35,8 +35,29 @@ class CircularMoodScheme extends StatelessWidget {
               children: [
                 const Icon(Icons.arrow_back_ios_new_outlined),
                 Padding(
-                  padding: const EdgeInsets.only(left: 17.0, right: 17.0),
-                  child: PieChartSample2(),
+                  padding: EdgeInsets.only(left: 17.0, right: 17.0),
+                  child: Stack(
+                    children: [
+                      const Positioned.fill(child: PieChartSample2()),
+                      SizedBox(
+                        height: 100,
+                        width: 100,
+                        child: DecoratedBox(
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: AppColor.primaryColor,
+                          ),
+                          child: Center(
+                            child: Text(
+                              'August',
+                              style: MentalHealthTextStyles
+                                  .text.signikaSecondaryFontF16,
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 17.0, right: 17),

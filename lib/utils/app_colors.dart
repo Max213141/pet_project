@@ -19,6 +19,7 @@ class AppColor {
   static const Color buttonsColor = Color(0xFFFF8B72);
   static const Color oneMoreDarkColor = Color(0xFF252525);
   static const Color habbitsTileBackground = Color(0xFFFAFAFA);
+  static const Color chartsColor = Color(0xFFE2E7CB);
 
   static const Color chartHappy = Color(0xFFFFC75B);
   static const Color chartGood = Color(0xFF9BCD8F);

@@ -1,4 +1,6 @@
 PODS:
+  - app_utils (0.0.1):
+    - Flutter
   - Firebase/Auth (10.7.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 10.7.0)
@@ -45,6 +47,7 @@ PODS:
   - PromisesObjC (2.3.1)
 
 DEPENDENCIES:
+  - app_utils (from `.symlinks/plugins/app_utils/ios`)
   - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - Flutter (from `Flutter`)
@@ -61,6 +64,8 @@ SPEC REPOS:
     - PromisesObjC
 
 EXTERNAL SOURCES:
+  app_utils:
+    :path: ".symlinks/plugins/app_utils/ios"
   firebase_auth:
     :path: ".symlinks/plugins/firebase_auth/ios"
   firebase_core:
@@ -71,6 +76,7 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/path_provider_foundation/darwin"
 
 SPEC CHECKSUMS:
+  app_utils: 8b420e81898641269ae9d1de7a10f0ec0d9da083
   Firebase: 0219acf760880eeec8ce479895bd7767466d9f81
   firebase_auth: 1eb69de8f57040c5c78bb3267412e9cb395fd08c
   firebase_core: 312d0d81b346ec20540822c8498e626d6918ef48

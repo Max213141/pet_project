@@ -57,7 +57,7 @@ class _MoodCarouselPickerState extends State<MoodCarouselPicker> {
                 }),
                 child: AnimatedSize(
                   curve: Curves.easeInCirc,
-                  duration: Duration(milliseconds: 20),
+                  duration: const Duration(milliseconds: 20),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

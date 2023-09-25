@@ -45,6 +45,14 @@ class _TextTextStyle {
         fontWeight: FontWeight.w400,
       );
 
+  get signikaSecondaryFontF42 => GoogleFonts.signika(
+        fontSize: 42,
+        height: 42 / 36,
+        // letterSpacing: -.41,
+        color: AppColor.oneMoreDarkColor,
+        fontWeight: FontWeight.w400,
+      );
+
   get popinsSecondaryFontF12 => GoogleFonts.poppins(
         fontSize: 12,
         height: 12 / 12,

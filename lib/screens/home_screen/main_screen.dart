@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:pet_project/common_widgets/bottom_navigation_bar.dart';
 import 'package:pet_project/common_widgets/widgets.dart';
+import 'package:pet_project/screens/chat_screen/chat_screen.dart';
+import 'package:pet_project/screens/habits_screen/habits_screen.dart';
 import 'package:pet_project/screens/home_screen/home_screen.dart';
 import 'package:pet_project/screens/mood_screen/mood_screen.dart';
+import 'package:pet_project/screens/wall_screen/wall_screen.dart';
 import 'package:pet_project/utils/utils.dart';
 
 void _log(dynamic message) => Logger.projectLog(message, name: 'main_screen');
@@ -24,7 +27,10 @@ class _MainScreenState extends State<MainScreen> {
 
   final List<Widget> _screens = [
     HomeScreen(),
+    const HabitsScreen(),
+    const ChatScreen(),
     const MoodScreen(),
+    const WallScreen(),
   ];
   getAppBarTitle() {
     switch (_selectedIndex) {
@@ -52,8 +58,36 @@ class _MainScreenState extends State<MainScreen> {
         return Align(
           alignment: Alignment.centerLeft,
           child: Text(
+            'Habits',
+            style: MentalHealthTextStyles.text.signikaPrimaryFontF28
+                .copyWith(color: Colors.black),
+          ),
+        );
+      case 2:
+        return Align(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            'Chat Assistant',
+            style: MentalHealthTextStyles.text.signikaPrimaryFontF28
+                .copyWith(color: Colors.black),
+          ),
+        );
+      case 3:
+        return Align(
+          alignment: Alignment.centerLeft,
+          child: Text(
             'Mood statistic',
-            style: MentalHealthTextStyles.text.signikaPrimaryFontF28,
+            style: MentalHealthTextStyles.text.signikaPrimaryFontF28
+                .copyWith(color: Colors.black),
+          ),
+        );
+      case 4:
+        return Align(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            'Cry',
+            style: MentalHealthTextStyles.text.signikaPrimaryFontF28
+                .copyWith(color: Colors.black),
           ),
         );
     }

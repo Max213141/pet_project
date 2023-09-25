@@ -20,32 +20,84 @@ class _BottomNavBarState extends State<BottomNavBar> {
     BottomNavigationBarItem(
         icon: SvgPicture.asset(
           'assets/icons/home.svg',
-          color: Colors.black,
+          colorFilter: const ColorFilter.mode(
+            Colors.black,
+            BlendMode.srcIn,
+          ),
         ),
-        label: ""),
-    BottomNavigationBarItem(
-        icon: SvgPicture.asset(
-          'assets/icons/habits.svg',
-          color: Colors.black,
-        ),
-        label: ""),
-    BottomNavigationBarItem(
-        icon: SvgPicture.asset(
-          'assets/icons/chat.svg',
-          color: Colors.black,
+        activeIcon: SvgPicture.asset(
+          'assets/icons/home.svg',
+          colorFilter: const ColorFilter.mode(
+            AppColor.primaryBackgroundColor,
+            BlendMode.srcIn,
+          ),
         ),
         label: ""),
     BottomNavigationBarItem(
       icon: SvgPicture.asset(
+        'assets/icons/habits.svg',
+        colorFilter: const ColorFilter.mode(
+          Colors.black,
+          BlendMode.srcIn,
+        ),
+      ),
+      activeIcon: SvgPicture.asset(
+        'assets/icons/habits.svg',
+        colorFilter: const ColorFilter.mode(
+          AppColor.primaryBackgroundColor,
+          BlendMode.srcIn,
+        ),
+      ),
+      label: "",
+    ),
+    BottomNavigationBarItem(
+      icon: SvgPicture.asset(
+        'assets/icons/chat.svg',
+        colorFilter: const ColorFilter.mode(
+          Colors.black,
+          BlendMode.srcIn,
+        ),
+      ),
+      activeIcon: SvgPicture.asset(
+        'assets/icons/chat.svg',
+        colorFilter: const ColorFilter.mode(
+          AppColor.primaryBackgroundColor,
+          BlendMode.srcIn,
+        ),
+      ),
+      label: "",
+    ),
+    BottomNavigationBarItem(
+      icon: SvgPicture.asset(
         'assets/icons/emotions.svg',
-        color: Colors.black,
+        colorFilter: const ColorFilter.mode(
+          Colors.black,
+          BlendMode.srcIn,
+        ),
+      ),
+      activeIcon: SvgPicture.asset(
+        'assets/icons/emotions.svg',
+        colorFilter: const ColorFilter.mode(
+          AppColor.primaryBackgroundColor,
+          BlendMode.srcIn,
+        ),
       ),
       label: "",
     ),
     BottomNavigationBarItem(
       icon: SvgPicture.asset(
         'assets/icons/wall.svg',
-        color: Colors.black,
+        colorFilter: const ColorFilter.mode(
+          Colors.black,
+          BlendMode.srcIn,
+        ),
+      ),
+      activeIcon: SvgPicture.asset(
+        'assets/icons/wall.svg',
+        colorFilter: const ColorFilter.mode(
+          AppColor.primaryBackgroundColor,
+          BlendMode.srcIn,
+        ),
       ),
       label: "",
     ),
@@ -54,7 +106,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: AppColor.primaryColor,
       ),
       child: ClipRRect(
@@ -68,6 +120,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
           backgroundColor: AppColor.primaryBackgroundColor.withOpacity(0.2),
           // iconSize: 50,
           showSelectedLabels: false,
+          selectedIconTheme: const IconThemeData(
+              color: AppColor.primaryBackgroundColor, size: 30),
+          unselectedIconTheme:
+              const IconThemeData(color: Colors.black, size: 30),
           showUnselectedLabels: false,
           items: navIcons,
           currentIndex: widget.selectedIndex,
