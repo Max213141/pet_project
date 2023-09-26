@@ -1,4 +1,4 @@
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/material.dart';
 import 'package:pet_project/common_widgets/common_category_items_screen/common_category_items_screen.dart';
 import 'package:pet_project/common_widgets/common_category_screen/widgets/category_item.dart';
 
@@ -15,7 +15,7 @@ class _BreathingItemsScreenState extends State<BreathingItemsScreen> {
   Widget build(BuildContext context) {
     return CommonCategoryItemsScreen(
       title: widget.title,
-      child: CategoryItem(),
+      child: const CategoryItem(),
     );
   }
 }

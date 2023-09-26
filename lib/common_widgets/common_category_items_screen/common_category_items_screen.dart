@@ -90,7 +90,7 @@ class _CommonCategoryItemsScreenState extends State<CommonCategoryItemsScreen> {
             ),
             SliverToBoxAdapter(
               child: DecoratedBox(
-                decoration: BoxDecoration(color: AppColor.primaryColor),
+                decoration: const BoxDecoration(color: AppColor.primaryColor),
                 child: GridView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),

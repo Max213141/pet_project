@@ -123,7 +123,7 @@ class AuthScreenBody extends StatelessWidget {
       ),
       context: context,
       builder: (context) {
-        return AuthModalBody();
+        return const AuthModalBody();
       },
     );
   }

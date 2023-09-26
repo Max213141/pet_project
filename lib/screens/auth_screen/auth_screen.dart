@@ -15,13 +15,13 @@ class AuthScreen extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       backgroundColor: AppColor.primaryColor,
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Align(
             alignment: Alignment.centerRight,
             child: SizedBox(
               width: mediaQuery.size.width / 1.3,
-              height: mediaQuery.viewInsets.top + 70,
+              height: mediaQuery.viewPadding.top + 70,
               child: const DecoratedBox(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
@@ -32,14 +32,14 @@ class AuthScreen extends StatelessWidget {
               ),
             ),
           ),
-          Expanded(
+          const Expanded(
             child: AuthScreenBody(),
           ),
           Align(
             alignment: Alignment.centerLeft,
             child: SizedBox(
               width: mediaQuery.size.width / 1.3,
-              height: mediaQuery.viewInsets.bottom + 70,
+              height: mediaQuery.viewPadding.bottom + 70,
               child: const DecoratedBox(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(

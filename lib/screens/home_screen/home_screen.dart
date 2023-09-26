@@ -7,6 +7,8 @@ import 'package:pet_project/screens/home_screen/widgets/widgets.dart';
 import 'package:pet_project/utils/utils.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -40,8 +42,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(
                   width: MediaQuery.of(context).size.width,
                   child: DecoratedBox(
-                    decoration:
-                        BoxDecoration(color: AppColor.primaryBackgroundColor),
+                    decoration: const BoxDecoration(
+                        color: AppColor.primaryBackgroundColor),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 18.0),
                       child: Text('What are you up to today?',
@@ -50,10 +52,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
-                CarouselWidget(),
-                ToDoListWidget(),
-                QuoteWidget(),
-                CalendarWidget(),
+                const CarouselWidget(),
+                const ToDoListWidget(),
+                const QuoteWidget(),
+                const CalendarWidget(),
                 // Text(
                 //   '${BlocProvider.of<AuthBloc>(context).auth.currentUser?.email ?? 'Email not found'}',
                 //   style: MentalHealthTextStyles.text.mainCommonF14,

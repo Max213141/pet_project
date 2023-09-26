@@ -14,7 +14,7 @@ class _MeditationScreenState extends State<MeditationScreen> {
   Widget build(BuildContext context) {
     return CommonCategoryScreen(
       title: widget.title,
-      child: NewCategoryItem(),
+      child: const NewCategoryItem(),
     );
   }
 }

@@ -31,7 +31,7 @@ class IntroScreenPart extends StatelessWidget {
               fit: BoxFit.fill,
             ),
           ),
-          SizedBox(height: 100),
+          const SizedBox(height: 100),
           Padding(
             padding: EdgeInsets.only(right: size.width / 6),
             child: useProvidedChild

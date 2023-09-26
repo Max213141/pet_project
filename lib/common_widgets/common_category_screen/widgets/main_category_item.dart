@@ -4,6 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:pet_project/utils/utils.dart';
 
 class MainCategoryItem extends StatelessWidget {
+  const MainCategoryItem({super.key});
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -20,6 +22,7 @@ class MainCategoryItem extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 6.0, vertical: 8.0),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
                   padding: const EdgeInsets.symmetric(
@@ -35,15 +38,21 @@ class MainCategoryItem extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 4),
-                Text(
-                  'For beginners',
-                  style: MentalHealthTextStyles.text.signikaSecondaryFontF16,
+                const SizedBox(height: 4),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Text(
+                    'For beginners',
+                    style: MentalHealthTextStyles.text.signikaSecondaryFontF16,
+                  ),
                 ),
-                SizedBox(height: 4),
-                Text(
-                  'For beginners',
-                  style: MentalHealthTextStyles.text.popinsSecondaryFontF14,
+                const SizedBox(height: 4),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Text(
+                    'For beginners',
+                    style: MentalHealthTextStyles.text.popinsSecondaryFontF14,
+                  ),
                 ),
               ],
             ),

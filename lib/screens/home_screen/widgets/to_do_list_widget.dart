@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:pet_project/screens/habits_screen/widgets/habits_item.dart';
-import 'package:pet_project/utils/app_colors.dart';
-import 'package:pet_project/utils/decorations.dart';
-import 'package:pet_project/utils/styles/styles.dart';
 import 'package:pet_project/utils/utils.dart';
 
 class ToDoListWidget extends StatefulWidget {
@@ -16,7 +13,7 @@ class _ToDoListWidgetState extends State<ToDoListWidget> {
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
-      decoration: BoxDecoration(color: AppColor.primaryBackgroundColor),
+      decoration: const BoxDecoration(color: AppColor.primaryBackgroundColor),
       child: SizedBox(
         height: MediaQuery.of(context).size.height / 4,
         width: MediaQuery.of(context).size.width,
@@ -29,14 +26,15 @@ class _ToDoListWidgetState extends State<ToDoListWidget> {
             color: AppColor.primaryColor,
           ),
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             child: DecoratedBox(
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.white),
                 borderRadius: MentalHealthDecorations.borders.radiusBTRightC40,
               ),
               child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 8, horizontal: 14),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 8, horizontal: 14),
                 child: Column(
                   children: [
                     Align(
@@ -50,7 +48,7 @@ class _ToDoListWidgetState extends State<ToDoListWidget> {
                     Expanded(
                       child: ListView.builder(
                         itemCount: 3,
-                        itemBuilder: (context, index) => HabbitsItem(),
+                        itemBuilder: (context, index) => const HabbitsItem(),
                         physics: const NeverScrollableScrollPhysics(),
                       ),
                     ),

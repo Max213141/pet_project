@@ -50,7 +50,7 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                     ),
                     context: context,
                     builder: (context) {
-                      return MoodPickerWidget();
+                      return const MoodPickerWidget();
                     },
                   );
                 },

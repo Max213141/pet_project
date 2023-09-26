@@ -90,9 +90,9 @@ class _CategoryCardState extends State<CategoryCard> {
                           GestureDetector(
                             onTap: () => GoRouter.of(context)
                                 .go('/main/breathing/breathing_item_screen'),
-                            child: CategoryItem(),
+                            child: const CategoryItem(),
                           ),
-                          CategoryItem()
+                          const CategoryItem()
                         ],
                       ),
                     ],

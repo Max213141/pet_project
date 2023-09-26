@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pet_project/screens/breathing_item_screen/widgets/breathing_timer_widget.dart';
 import 'package:pet_project/screens/breathing_item_screen/widgets/widgets.dart';
 
 import 'package:pet_project/utils/utils.dart';
@@ -67,7 +66,7 @@ class _BreathingItemScreenState extends State<BreathingItemScreen> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 10),
+              padding: const EdgeInsets.symmetric(vertical: 10),
               child: Text(
                 'Each side of the square is one breath cycle: inhale, hold the breath, exhale, hold the breath. As you breathe, consider moving along the side of this square.',
                 style: MentalHealthTextStyles.text.mainCommonF14,
@@ -80,10 +79,10 @@ class _BreathingItemScreenState extends State<BreathingItemScreen> {
                 style: MentalHealthTextStyles.text.mainCommonF16,
               ),
             ),
-            SizedBox(height: 4),
-            BreathingGuide(),
-            SizedBox(height: 45),
-            BreathingTimerWidget(),
+            const SizedBox(height: 4),
+            const BreathingGuide(),
+            const SizedBox(height: 45),
+            const BreathingTimerWidget(),
           ],
         ),
       ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 import 'package:pet_project/utils/utils.dart';
 
 class CategoryDescription extends StatelessWidget {
@@ -10,9 +10,9 @@ class CategoryDescription extends StatelessWidget {
     return SizedBox(
       width: MediaQuery.of(context).size.width,
       child: DecoratedBox(
-        decoration: BoxDecoration(color: AppColor.primaryColor),
+        decoration: const BoxDecoration(color: AppColor.primaryColor),
         child: DecoratedBox(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(40),
             ),

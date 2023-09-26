@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pet_project/blocs/blocs.dart';
 import 'package:pet_project/common_widgets/widgets.dart';
+import 'package:pet_project/screens/auth_screen/widgets/widgets.dart';
 import 'package:pet_project/utils/utils.dart';
 
 class AuthModalBody extends StatefulWidget {
@@ -13,12 +14,21 @@ class AuthModalBody extends StatefulWidget {
 }
 
 class _AuthModalBodyState extends State<AuthModalBody> {
+  late GlobalKey<FormState> formKey;
+  late TextEditingController emailController;
+  late TextEditingController passwordController;
+  bool _showLoader = false;
+
+  @override
+  void initState() {
+    formKey = GlobalKey<FormState>();
+    emailController = TextEditingController();
+    passwordController = TextEditingController();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    bool _showLoader = false;
-    final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-    final TextEditingController _emailController = TextEditingController();
-    final TextEditingController _passwordController = TextEditingController();
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         state.whenOrNull(
@@ -52,75 +62,66 @@ class _AuthModalBodyState extends State<AuthModalBody> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'How are you today?',
-                style: MentalHealthTextStyles.text.signikaFontF24,
+                'Welcome!',
+                style: MentalHealthTextStyles.text.signikaPrimaryFontF28,
               ),
               Stack(
                 children: [
                   Form(
-                    key: _formKey,
+                    key: formKey,
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          TextFormField(
-                            controller: _emailController,
-                            validator: (value) {
-                              if (value?.isEmpty ?? true) {
-                                return 'Введите почту';
-                              }
-                              return null;
-                            },
-                            decoration: const InputDecoration(
-                              labelText: 'Email',
+                          RepaintBoundary(
+                            child: FormFieldWidget(
+                              controller: emailController,
+                              validator: (value) {
+                                if (value?.isEmpty ?? true) {
+                                  return 'Enter email';
+                                }
+                                return null;
+                              },
+                              title: 'Email',
                             ),
                           ),
                           const SizedBox(height: 16.0),
-                          TextFormField(
-                            controller: _passwordController,
-                            validator: (value) {
-                              if (value?.isEmpty ?? true) {
-                                return 'Введите пароль';
-                              }
-                              return null;
-                            },
-                            decoration: const InputDecoration(
-                              labelText: 'Password',
+                          RepaintBoundary(
+                            child: FormFieldWidget(
+                              controller: passwordController,
+                              validator: (value) {
+                                if (value?.isEmpty ?? true) {
+                                  return 'Enter password';
+                                }
+                                return null;
+                              },
+                              title: 'Password',
                             ),
                           ),
                           const SizedBox(height: 32.0),
-                          // SizedBox(
-                          //   width: 100,
-                          //   child: ElevatedButton(
-                          //     onPressed: () {
-
-                          //     },
-                          //     child: const Text('Register'),
-                          //   ),
-                          // ),
-                          // SizedBox(
-                          //   width: 100,
-                          //   child: ElevatedButton(
-                          //     onPressed: () {
-
-                          //     },
-                          //     child: const Text('Log in'),
-                          //   ),
-                          // ),
                         ],
                       ),
                     ),
                   ),
-                  //  _showLoader? Loader(): ,
+                  if (_showLoader)
+                    const Center(
+                      child: SizedBox(
+                        height: 85,
+                        width: 85,
+                        child: RepaintBoundary(child: Loader()),
+                      ),
+                    ),
                 ],
               ),
               ActionButton(
                 title: 'Log in'.toUpperCase(),
                 onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    final String email = _emailController.text;
-                    final String password = _passwordController.text;
+                  hideKeyBoard();
+
+                  if (formKey.currentState!.validate()) {
+                    final String email = emailController.text;
+                    final String password = passwordController.text;
 
                     BlocProvider.of<AuthBloc>(context).add(
                       LogInEvent(email: email, password: password),
@@ -132,9 +133,11 @@ class _AuthModalBodyState extends State<AuthModalBody> {
               ActionButton(
                 title: 'Register'.toUpperCase(),
                 onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    final String email = _emailController.text;
-                    final String password = _passwordController.text;
+                  hideKeyBoard();
+
+                  if (formKey.currentState!.validate()) {
+                    final String email = emailController.text;
+                    final String password = passwordController.text;
 
                     BlocProvider.of<AuthBloc>(context).add(
                       CreateUserEvent(email: email, password: password),

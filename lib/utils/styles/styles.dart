@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pet_project/utils/app_colors.dart';
@@ -36,11 +34,11 @@ part 'text.dart';
 // }
 
 class MentalHealthTextStyles {
-  static TextStyle none = TextStyle(height: 0, fontSize: 0);
+  static TextStyle none = const TextStyle(height: 0, fontSize: 0);
 
   // static const _ButtonTextStyle buttons = _ButtonTextStyle();
   // static const _HeadersTextStyle headers = _HeadersTextStyle();
-  static const _TextTextStyle text = _TextTextStyle();
+  static const TextTextStyle text = TextTextStyle();
   // static const _InputTextStyle input = _InputTextStyle();
   // static const _PopupsTextStyle popups = _PopupsTextStyle();
   // static const _OnlineOrderTextStyle onlineOrder = _OnlineOrderTextStyle();

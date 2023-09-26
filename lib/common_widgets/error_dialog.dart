@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class ErrorDialogWidget extends StatelessWidget {
   final String message;
 
-  ErrorDialogWidget({required this.message});
+  const ErrorDialogWidget({super.key, required this.message});
 
   @override
   Widget build(BuildContext context) {
@@ -40,11 +40,11 @@ class ErrorDialogWidget extends StatelessWidget {
                 Navigator.of(context).pop();
               },
               style: ElevatedButton.styleFrom(
-                primary: Colors.red,
+                backgroundColor: Colors.red,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
-                minimumSize: Size(100.0, 50.0),
+                minimumSize: const Size(100.0, 50.0),
               ),
               child: const Text(
                 "OK",

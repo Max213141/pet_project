@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pet_project/utils/app_colors.dart';
-import 'package:pet_project/utils/decorations.dart';
-import 'package:pet_project/utils/styles/styles.dart';
 import 'package:pet_project/utils/utils.dart';
 
 class BreathingTimerSwitcher extends StatefulWidget {

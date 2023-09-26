@@ -133,7 +133,6 @@ void main() async {
 class MyApp extends StatelessWidget {
   final FirebaseAuth auth;
   final HiveStore hiveStore = HiveStore();
-  bool isFirstLaunch = true;
 
   Future<void> _initHive() async {
     WidgetsFlutterBinding.ensureInitialized();
@@ -215,7 +214,7 @@ class MyApp extends StatelessWidget {
               builder: (BuildContext context, GoRouterState state) {
                 // return SplashScreen();
 
-                return IntroScreen();
+                return const IntroScreen();
               },
             ),
             GoRoute(

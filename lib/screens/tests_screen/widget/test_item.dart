@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pet_project/utils/utils.dart';
 
-class NewCategoryItem extends StatelessWidget {
-  const NewCategoryItem({super.key});
+class TestItem extends StatelessWidget {
+  final String title;
+  final String image;
+
+  const TestItem({super.key, required this.title, required this.image});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +32,7 @@ class NewCategoryItem extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: MentalHealthDecorations.borders.radiusC20,
                     child: SvgPicture.asset(
-                      'assets/backgrounds/card_backgound.svg',
+                      image,
                       fit: BoxFit.fill,
                     ),
                   ),
@@ -37,20 +40,10 @@ class NewCategoryItem extends StatelessWidget {
               ),
               const SizedBox(height: 4),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8),
-                child: Column(
-                  children: [
-                    Text(
-                      'For beginners',
-                      style:
-                          MentalHealthTextStyles.text.signikaSecondaryFontF16,
-                    ),
-                    const SizedBox(height: 10),
-                    Text(
-                      'For beginners',
-                      style: MentalHealthTextStyles.text.popinsSecondaryFontF14,
-                    ),
-                  ],
+                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 4),
+                child: Text(
+                  title,
+                  style: MentalHealthTextStyles.text.signikaSecondaryFontF16,
                 ),
               )
             ],

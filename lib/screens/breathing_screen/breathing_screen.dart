@@ -17,7 +17,7 @@ class _BreathingPracticeScreenState extends State<BreathingPracticeScreen> {
   Widget build(BuildContext context) {
     return CommonCategoryScreen(
       title: widget.title,
-      child: NewCategoryItem(),
+      child: const NewCategoryItem(),
     );
   }
 }

@@ -92,6 +92,9 @@ class BarChartSampleState extends State<BarChartSample> {
 
   @override
   Widget build(BuildContext context) {
+    const barsSpace = 15.0;
+    const barsWidth = 30.0;
+
     return SizedBox(
       height: MediaQuery.of(context).size.height / 4,
       width: MediaQuery.of(context).size.width - 32,
@@ -108,8 +111,6 @@ class BarChartSampleState extends State<BarChartSample> {
               padding: const EdgeInsets.only(top: 16),
               child: LayoutBuilder(
                 builder: (context, constraints) {
-                  final barsSpace = 15.0;
-                  final barsWidth = 30.0;
                   return Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 4.0, vertical: 6),

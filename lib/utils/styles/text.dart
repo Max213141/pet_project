@@ -1,6 +1,6 @@
 part of 'styles.dart';
 
-class _TextTextStyle {
+class TextTextStyle {
   get signikaPrimaryFontF28 => GoogleFonts.signika(
         fontSize: 28,
         height: 28 / 24,
@@ -75,6 +75,13 @@ class _TextTextStyle {
         color: AppColor.oneMoreDarkColor,
         fontWeight: FontWeight.w200,
       );
+  get popinsSecondaryFontF14Grey => GoogleFonts.poppins(
+        fontSize: 14,
+        height: 14 / 12,
+        letterSpacing: -.41,
+        color: AppColor.authFieldsTextGray,
+        fontWeight: FontWeight.w200,
+      );
 
   get popinsSecondaryFontF16 => GoogleFonts.poppins(
         fontSize: 16,
@@ -127,5 +134,5 @@ class _TextTextStyle {
         letterSpacing: -.51,
       );
 
-  const _TextTextStyle();
+  const TextTextStyle();
 }

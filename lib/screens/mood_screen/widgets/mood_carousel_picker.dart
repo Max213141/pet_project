@@ -72,9 +72,7 @@ class _MoodCarouselPickerState extends State<MoodCarouselPicker> {
                           ),
                         ),
                       ),
-                      SizedBox(
-                        height: 10,
-                      ),
+                      const SizedBox(height: 10),
                       Text(
                         emotion.emotionTitle,
                         style:

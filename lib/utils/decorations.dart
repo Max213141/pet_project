@@ -8,8 +8,8 @@ import 'package:pet_project/utils/app_colors.dart';
 // export 'upward_gradient_box.dart';
 
 class MentalHealthDecorations {
-  static const _Shadows shadows = _Shadows();
-  static const _Borders borders = _Borders.config();
+  static const Shadows shadows = Shadows();
+  static const Borders borders = Borders.config();
 
   // /// shape of all shown modal bottom sheets
   static ShapeBorder get modalBottomSheetShape => RoundedRectangleBorder(
@@ -18,8 +18,8 @@ class MentalHealthDecorations {
   const MentalHealthDecorations();
 }
 
-class _Shadows {
-  const _Shadows();
+class Shadows {
+  const Shadows();
 
   BoxShadow blur4spread2(BuildContext context) => BoxShadow(
         color: Theme.of(context).shadowColor,
@@ -48,7 +48,7 @@ class _Shadows {
   //     );
 }
 
-class _Borders {
+class Borders {
   // BorderSide get none => const BorderSide(
   //       width: 0,
   //       color: SlivkiColors.backgroundTransparent,
@@ -239,5 +239,5 @@ class _Borders {
         bottomRight: Radius.circular(4),
       );
 
-  const _Borders.config();
+  const Borders.config();
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
@@ -52,11 +51,12 @@ class _CarouselWidgetState extends State<CarouselWidget> {
                                 GoRouter.of(context).go('/main/breathing');
                                 break;
                               case 1:
-                                GoRouter.of(context).go('/main/tests');
+                                GoRouter.of(context).go('/main/meditation');
+
                                 break;
 
                               case 2:
-                                GoRouter.of(context).go('/main/meditation');
+                                GoRouter.of(context).go('/main/tests');
                                 break;
                               default:
                             }
@@ -69,7 +69,7 @@ class _CarouselWidgetState extends State<CarouselWidget> {
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: AnimatedContainer(
-                            duration: Duration(milliseconds: 400),
+                            duration: const Duration(milliseconds: 400),
                             curve: Curves.linear,
                             width: selectedIndex == index
                                 ? expandedWidth
@@ -81,12 +81,10 @@ class _CarouselWidgetState extends State<CarouselWidget> {
                                     borderRadius: MentalHealthDecorations
                                         .borders.radiusC20,
                                     child: DecoratedBox(
-                                      decoration: BoxDecoration(
-                                          color: AppColor.primaryColor),
-                                      child: SvgPicture.asset(
-                                        'assets/backgrounds/carousel_back.svg',
-                                        fit: BoxFit.fill,
+                                      decoration: const BoxDecoration(
+                                        color: AppColor.primaryColor,
                                       ),
+                                      child: getImage(index),
                                     ),
                                   ),
                                 ),
@@ -96,7 +94,8 @@ class _CarouselWidgetState extends State<CarouselWidget> {
                                         left: 0,
                                         child: DecoratedBox(
                                           decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.only(
+                                              borderRadius:
+                                                  const BorderRadius.only(
                                                 topRight: Radius.circular(8),
                                                 bottomLeft: Radius.circular(18),
                                               ),
@@ -104,19 +103,15 @@ class _CarouselWidgetState extends State<CarouselWidget> {
                                                   .secondaryBackgroundColor
                                                   .withOpacity(.5)),
                                           child: Padding(
-                                            padding: EdgeInsets.symmetric(
+                                            padding: const EdgeInsets.symmetric(
                                               vertical: 1,
                                               horizontal: 8,
                                             ),
-                                            child: Text(
-                                              'Meditation',
-                                              style: MentalHealthTextStyles
-                                                  .text.signikaPrimaryFontF22N,
-                                            ),
+                                            child: getTitle(index),
                                           ),
                                         ),
                                       )
-                                    : SizedBox.shrink()
+                                    : const SizedBox.shrink()
                               ],
                             ),
                           ),
@@ -131,5 +126,59 @@ class _CarouselWidgetState extends State<CarouselWidget> {
         ),
       ),
     );
+  }
+
+  Widget getImage(int index) {
+    switch (index) {
+      case 0:
+        return SvgPicture.asset(
+          'assets/backgrounds/first_category_background.svg',
+          fit: BoxFit.fill,
+        );
+
+      case 1:
+        return SvgPicture.asset(
+          'assets/backgrounds/second_category_background.svg',
+          fit: BoxFit.fill,
+        );
+
+      case 2:
+        return SvgPicture.asset(
+          'assets/backgrounds/third_category_background.svg',
+          fit: BoxFit.fill,
+        );
+
+      default:
+        return SvgPicture.asset(
+          'assets/backgrounds/third_category_background.svg',
+          fit: BoxFit.fill,
+        );
+    }
+  }
+
+  Widget getTitle(int index) {
+    switch (index) {
+      case 0:
+        return Text(
+          'Meditation',
+          style: MentalHealthTextStyles.text.signikaPrimaryFontF22N,
+        );
+
+      case 1:
+        return Text(
+          'Breathing practice',
+          style: MentalHealthTextStyles.text.signikaSecondaryFontF16
+              .copyWith(color: AppColor.primaryColor),
+        );
+
+      case 2:
+        return Text(
+          'Self Tests',
+          style: MentalHealthTextStyles.text.signikaPrimaryFontF22N,
+        );
+
+      default:
+        return Text('');
+    }
   }
 }

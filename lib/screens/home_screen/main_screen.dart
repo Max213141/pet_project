@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pet_project/common_widgets/bottom_navigation_bar.dart';
 import 'package:pet_project/common_widgets/widgets.dart';
 import 'package:pet_project/screens/chat_screen/chat_screen.dart';
 import 'package:pet_project/screens/habits_screen/habits_screen.dart';
@@ -26,7 +25,7 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   final List<Widget> _screens = [
-    HomeScreen(),
+    const HomeScreen(),
     const HabitsScreen(),
     const ChatScreen(),
     const MoodScreen(),
@@ -111,7 +110,7 @@ class _MainScreenState extends State<MainScreen> {
             return const Center(child: DevMenuWidget());
           },
         ),
-        child: Text('M'),
+        child:const Text('M'),
       ),
       bottomNavigationBar: BottomNavBar(
         selectedIndex: _selectedIndex,

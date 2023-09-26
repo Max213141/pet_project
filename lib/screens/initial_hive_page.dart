@@ -73,7 +73,7 @@ class _InitialHivePageState extends State<InitialHivePage> {
         if (snapshot.connectionState == ConnectionState.done) {
           // //_log('is ifrst launch after snapshot done - $isFirstLaunch');
           if (isFirstLaunch) {
-            return IntroScreen();
+            return const IntroScreen();
           } else {
             if (widget.auth.currentUser != null) {
               //TODO uncomment for uth porper flow

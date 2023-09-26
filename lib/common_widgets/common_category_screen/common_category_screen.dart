@@ -78,7 +78,7 @@ class _CommonCategoryScreenState extends State<CommonCategoryScreen> {
                 delegate: _SliverFiltersDelegate(
                   minHeight: 56,
                   maxHeight: 56,
-                  child: TagTray(),
+                  child: const TagTray(),
                 ),
               ),
               SliverToBoxAdapter(
@@ -97,7 +97,7 @@ class _CommonCategoryScreenState extends State<CommonCategoryScreen> {
                             width: MediaQuery.of(context).size.height - 32,
                             child: Row(
                               children: [
-                                MainCategoryItem(),
+                                const MainCategoryItem(),
                                 const SizedBox(width: 6),
                                 Expanded(
                                   child: GridView.builder(
@@ -132,10 +132,10 @@ class _CommonCategoryScreenState extends State<CommonCategoryScreen> {
                   ),
                 ),
               ),
-              SliverToBoxAdapter(child: SizedBox(height: 8)),
+              const SliverToBoxAdapter(child: SizedBox(height: 8)),
               SliverToBoxAdapter(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: Text(
                     'Meditations by tags',
                     style: MentalHealthTextStyles.text.signikaSecondaryFontF16,

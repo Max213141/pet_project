@@ -46,7 +46,7 @@ class _CategoryItemState extends State<CategoryItem> {
                       width: 35,
                       height: 35,
                       child: Padding(
-                        padding: const EdgeInsets.only(bottom: 5, left: 5),
+                        padding: EdgeInsets.only(bottom: 5, left: 5),
                         child: Center(
                           child: Icon(
                             Icons.heart_broken_rounded,

@@ -20,6 +20,11 @@ class AppColor {
   static const Color oneMoreDarkColor = Color(0xFF252525);
   static const Color habbitsTileBackground = Color(0xFFFAFAFA);
   static const Color chartsColor = Color(0xFFE2E7CB);
+  static const Color authFieldsTextGray = Color(0xFFBDBDBD);
+
+  static const Color authFieldsGray = Color(0xFFF6F6F6);
+
+  static const Color authFieldsBordersGray = Color(0xFFE8E8E8);
 
   static const List<Color> radialDiagramColors = <Color>[
     Color(0xFFFFFFFF),
