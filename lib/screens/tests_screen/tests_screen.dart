@@ -14,23 +14,23 @@ class TestsScreen extends StatefulWidget {
 class _TestsScreenState extends State<TestsScreen> {
   final List<TestEntity> testsList = [
     const TestEntity(
-      image: 'assets/tests/first.svg',
+      image: 'assets/backgrounds/card_backgound.svg',
       title: 'Depression test (PHQ-9)',
     ),
     const TestEntity(
-      image: 'assets/tests/second.svg',
+      image: 'assets/backgrounds/card_backgound.svg',
       title: 'Satisfaction with life',
     ),
     const TestEntity(
-      image: 'assets/tests/third.svg',
+      image: 'assets/backgrounds/card_backgound.svg',
       title: 'Beck Anxiety Scale',
     ),
     const TestEntity(
-      image: 'assets/tests/forth.svg',
+      image: 'assets/backgrounds/card_backgound.svg',
       title: 'Beck Hopelessness Scale',
     ),
     const TestEntity(
-      image: 'assets/tests/fifth.svg',
+      image: 'assets/backgrounds/card_backgound.svg',
       title: 'Oxford Happiness Questionnaire',
     ),
   ];

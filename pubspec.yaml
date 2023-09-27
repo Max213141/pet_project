@@ -58,6 +58,7 @@ flutter:
     - assets/breathing_images/
     - assets/emotions/
     - assets/intro/
+    - assets/tests/
 
 
   # assets:
