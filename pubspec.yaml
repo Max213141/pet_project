@@ -33,6 +33,7 @@ dependencies:
   app_utils: ^0.0.6
   intl: ^0.18.1
   http: ^1.1.0
+  cloud_firestore: ^4.9.2
 
   # firebase_messaging: ^14.6.0
   # flutter_local_notifications: ^14.0.0+2

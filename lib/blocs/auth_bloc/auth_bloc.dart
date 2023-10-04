@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:pet_project/utils/loger.dart';
@@ -70,7 +71,16 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         email: event.email.trim(),
         password: event.password.trim(),
       );
+      final uid = userCredential.user?.uid;
       _log('User ${userCredential.user?.uid ?? 'UID NOT found'} signed in');
+
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(uid) // Используйте UID пользователя как идентификатор документа
+          .set({
+        'name': '${event.email}1',
+        'email': event.email,
+      });
       emit(const AuthState.logInSuccess());
     } on FirebaseAuthException catch (e) {
       emit(AuthState.authError(errorText: 'Ошибка: ${e.message}'));
