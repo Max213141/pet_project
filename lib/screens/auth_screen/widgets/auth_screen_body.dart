@@ -79,29 +79,29 @@ class AuthScreenBody extends StatelessWidget {
                   onPressed: () => trigerAuth(context),
                 ),
                 const SizedBox(height: 10),
-                GestureDetector(
-                  onTap: () => trigerAuth(context),
-                  child: RichText(
-                    textAlign: TextAlign.center,
-                    text: TextSpan(
-                      children: [
-                        TextSpan(
-                          text: 'Already have an account? ',
-                          style: MentalHealthTextStyles
-                              .text.popinsSecondaryFontF14,
-                        ),
-                        TextSpan(
-                          text: 'Log In',
-                          style: MentalHealthTextStyles
-                              .text.popinsSecondaryFontF14
-                              .copyWith(
-                            color: AppColor.primaryBackgroundColor,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+                // GestureDetector(
+                //   onTap: () => trigerAuth(context),
+                //   child: RichText(
+                //     textAlign: TextAlign.center,
+                //     text: TextSpan(
+                //       children: [
+                //         TextSpan(
+                //           text: 'Already have an account? ',
+                //           style: MentalHealthTextStyles
+                //               .text.popinsSecondaryFontF14,
+                //         ),
+                //         TextSpan(
+                //           text: 'Log In',
+                //           style: MentalHealthTextStyles
+                //               .text.popinsSecondaryFontF14
+                //               .copyWith(
+                //             color: AppColor.primaryBackgroundColor,
+                //           ),
+                //         ),
+                //       ],
+                //     ),
+                //   ),
+                // ),
               ],
             ),
           ),

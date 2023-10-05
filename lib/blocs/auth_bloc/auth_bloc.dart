@@ -29,11 +29,22 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     emit(const AuthState.loading());
 
     try {
-      // UserCredential userCredential =
-      await auth.createUserWithEmailAndPassword(
+      final userCredential = await auth.createUserWithEmailAndPassword(
         email: event.email,
         password: event.password,
       );
+
+      final uid = userCredential.user?.uid;
+      _log('User ${userCredential.user?.uid ?? 'UID NOT found'} signed in');
+
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(uid) // Используйте UID пользователя как идентификатор документа
+          .set({
+        'name': event.username,
+        'email': event.email,
+        'password': event.password,
+      });
       _log('create user done successfully');
       add(LogInEvent(email: event.email, password: event.password));
       // Зарегистрированный пользователь сохранен в объекте userCredential.user.
@@ -67,20 +78,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       _log('User login: ${event.email.trim()}');
       _log('User password: ${event.password.trim()}');
 
-      final userCredential = await auth.signInWithEmailAndPassword(
-        email: event.email.trim(),
-        password: event.password.trim(),
-      );
-      final uid = userCredential.user?.uid;
-      _log('User ${userCredential.user?.uid ?? 'UID NOT found'} signed in');
-
-      await FirebaseFirestore.instance
-          .collection('users')
-          .doc(uid) // Используйте UID пользователя как идентификатор документа
-          .set({
-        'name': '${event.email}1',
-        'email': event.email,
-      });
       emit(const AuthState.logInSuccess());
     } on FirebaseAuthException catch (e) {
       emit(AuthState.authError(errorText: 'Ошибка: ${e.message}'));

@@ -5,6 +5,7 @@ class AuthEvent with _$AuthEvent {
   const factory AuthEvent.createUser({
     required String email,
     required String password,
+    required String username,
   }) = CreateUserEvent;
 
   const factory AuthEvent.logIn({

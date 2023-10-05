@@ -3,6 +3,7 @@ import 'package:pet_project/utils/utils.dart';
 
 class ActionButton extends StatelessWidget {
   final String title;
+  final double? width;
   // final BuildContext context;
   final void Function() onPressed;
 
@@ -10,12 +11,13 @@ class ActionButton extends StatelessWidget {
     super.key,
     required this.onPressed,
     required this.title,
+    this.width,
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: MediaQuery.of(context).size.width - 90,
+      width: width ?? MediaQuery.of(context).size.width - 90,
       height: 50,
       child: ElevatedButton(
         onPressed: onPressed,

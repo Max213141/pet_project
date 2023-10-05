@@ -74,22 +74,22 @@ class _$SampleClassCopyWithImpl<$Res, $Val extends SampleClass>
 }
 
 /// @nodoc
-abstract class _$$_SampleClassCopyWith<$Res>
+abstract class _$$SampleClassImplCopyWith<$Res>
     implements $SampleClassCopyWith<$Res> {
-  factory _$$_SampleClassCopyWith(
-          _$_SampleClass value, $Res Function(_$_SampleClass) then) =
-      __$$_SampleClassCopyWithImpl<$Res>;
+  factory _$$SampleClassImplCopyWith(
+          _$SampleClassImpl value, $Res Function(_$SampleClassImpl) then) =
+      __$$SampleClassImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String firstName, String lastName, int age});
 }
 
 /// @nodoc
-class __$$_SampleClassCopyWithImpl<$Res>
-    extends _$SampleClassCopyWithImpl<$Res, _$_SampleClass>
-    implements _$$_SampleClassCopyWith<$Res> {
-  __$$_SampleClassCopyWithImpl(
-      _$_SampleClass _value, $Res Function(_$_SampleClass) _then)
+class __$$SampleClassImplCopyWithImpl<$Res>
+    extends _$SampleClassCopyWithImpl<$Res, _$SampleClassImpl>
+    implements _$$SampleClassImplCopyWith<$Res> {
+  __$$SampleClassImplCopyWithImpl(
+      _$SampleClassImpl _value, $Res Function(_$SampleClassImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -99,7 +99,7 @@ class __$$_SampleClassCopyWithImpl<$Res>
     Object? lastName = null,
     Object? age = null,
   }) {
-    return _then(_$_SampleClass(
+    return _then(_$SampleClassImpl(
       firstName: null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
@@ -118,12 +118,12 @@ class __$$_SampleClassCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SampleClass with DiagnosticableTreeMixin implements _SampleClass {
-  const _$_SampleClass(
+class _$SampleClassImpl with DiagnosticableTreeMixin implements _SampleClass {
+  const _$SampleClassImpl(
       {required this.firstName, required this.lastName, required this.age});
 
-  factory _$_SampleClass.fromJson(Map<String, dynamic> json) =>
-      _$$_SampleClassFromJson(json);
+  factory _$SampleClassImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SampleClassImplFromJson(json);
 
   @override
   final String firstName;
@@ -151,7 +151,7 @@ class _$_SampleClass with DiagnosticableTreeMixin implements _SampleClass {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SampleClass &&
+            other is _$SampleClassImpl &&
             (identical(other.firstName, firstName) ||
                 other.firstName == firstName) &&
             (identical(other.lastName, lastName) ||
@@ -166,12 +166,12 @@ class _$_SampleClass with DiagnosticableTreeMixin implements _SampleClass {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SampleClassCopyWith<_$_SampleClass> get copyWith =>
-      __$$_SampleClassCopyWithImpl<_$_SampleClass>(this, _$identity);
+  _$$SampleClassImplCopyWith<_$SampleClassImpl> get copyWith =>
+      __$$SampleClassImplCopyWithImpl<_$SampleClassImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SampleClassToJson(
+    return _$$SampleClassImplToJson(
       this,
     );
   }
@@ -181,10 +181,10 @@ abstract class _SampleClass implements SampleClass {
   const factory _SampleClass(
       {required final String firstName,
       required final String lastName,
-      required final int age}) = _$_SampleClass;
+      required final int age}) = _$SampleClassImpl;
 
   factory _SampleClass.fromJson(Map<String, dynamic> json) =
-      _$_SampleClass.fromJson;
+      _$SampleClassImpl.fromJson;
 
   @override
   String get firstName;
@@ -194,6 +194,6 @@ abstract class _SampleClass implements SampleClass {
   int get age;
   @override
   @JsonKey(ignore: true)
-  _$$_SampleClassCopyWith<_$_SampleClass> get copyWith =>
+  _$$SampleClassImplCopyWith<_$SampleClassImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
