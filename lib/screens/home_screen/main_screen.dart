@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pet_project/common_widgets/widgets.dart';
+import 'package:pet_project/entities/entities.dart';
 import 'package:pet_project/screens/chat_screen/chat_screen.dart';
 import 'package:pet_project/screens/habits_screen/habits_screen.dart';
 import 'package:pet_project/screens/home_screen/home_screen.dart';
@@ -32,6 +33,7 @@ class _MainScreenState extends State<MainScreen> {
     const WallScreen(),
   ];
   getAppBarTitle() {
+    final String? username = HiveStore().getUserName();
     switch (_selectedIndex) {
       case 0:
         return Align(
@@ -45,7 +47,7 @@ class _MainScreenState extends State<MainScreen> {
                       .copyWith(color: AppColor.oneMoreDarkColor),
                 ),
                 TextSpan(
-                  text: 'Melany ',
+                  text: username,
                   style: MentalHealthTextStyles.text.userName,
                 ),
               ],
@@ -110,7 +112,7 @@ class _MainScreenState extends State<MainScreen> {
             return const Center(child: DevMenuWidget());
           },
         ),
-        child:const Text('M'),
+        child: const Text('M'),
       ),
       bottomNavigationBar: BottomNavBar(
         selectedIndex: _selectedIndex,

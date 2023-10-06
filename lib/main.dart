@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:pet_project/entities/hive_entities/app_preferences.dart';
+import 'package:pet_project/entities/hive_entities/hive_entities.dart';
 import 'package:pet_project/navigation/navigation_observer.dart';
 import 'package:pet_project/screens/breathing_item_screen/breathing_item_screen.dart';
 import 'package:pet_project/screens/breathing_items_screen/breathing_items_screen.dart';
@@ -139,11 +139,12 @@ class MyApp extends StatelessWidget {
     await hiveStore.init();
     final appPreferencesBox =
         await Hive.openBox<AppPreferences>('app_preferences');
+    await Hive.openBox<UserData>('user_data');
     //_log('app preferences box: $appPreferencesBox');
     //_log('app preferences box is empty: ${appPreferencesBox.isEmpty}');
 
     if (appPreferencesBox.isEmpty) {
-      await HiveStore().setInitialPreferences();
+      await HiveStore().setInitialData();
       // final appPreferencesBox = hiveStore.getAppPreferencesBox();
 
       //_log(

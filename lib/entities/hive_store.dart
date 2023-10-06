@@ -1,6 +1,7 @@
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:pet_project/entities/hive_entities/app_preferences.dart';
+import 'package:pet_project/entities/hive_entities/user_data.dart';
 import 'package:pet_project/utils/loger.dart';
 
 void _log(dynamic message) => Logger.projectLog(message, name: 'hice_store');
@@ -10,17 +11,26 @@ class HiveStore {
     final directory = await getApplicationDocumentsDirectory();
     await Hive.initFlutter(directory.path);
     Hive.registerAdapter(AppPreferencesAdapter());
+    Hive.registerAdapter(UserDataAdapter());
   }
 
-  Future<void> setInitialPreferences() async {
+  Future<void> setInitialData() async {
     var box = await Hive.openBox<AppPreferences>('app_preferences');
+    var userDataBox = await Hive.openBox<UserData>('user_data');
+
     //_log('hive box: $box');
-    var appPrefs = AppPreferences.initial();
+    final appPrefs = AppPreferences.initial();
+    final userData = UserData.initial();
     await box.add(appPrefs);
+    await userDataBox.add(userData);
   }
 
   Box<AppPreferences> getAppPreferencesBox() {
     return Hive.box<AppPreferences>('app_preferences');
+  }
+
+  Box<UserData> getUserDataBox() {
+    return Hive.box<UserData>('user_data');
   }
 
   bool? getAppTheme() {
@@ -35,5 +45,11 @@ class HiveStore {
         Hive.box<AppPreferences>('app_preferences');
     AppPreferences? appPrefs = appPrefsBox.get(0);
     return appPrefs?.isFirstLaunch;
+  }
+
+  String? getUserName() {
+    Box<UserData> useDataBox = Hive.box<UserData>('user_data');
+    UserData? userData = useDataBox.get(0);
+    return userData?.userName;
   }
 }

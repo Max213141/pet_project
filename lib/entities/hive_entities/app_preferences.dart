@@ -10,7 +10,6 @@ class AppPreferences extends HiveObject {
 
   @HiveField(1)
   bool isDarkTheme;
-
   // bool get isDarkThemeInApp => isDarkTheme;
 
   AppPreferences({

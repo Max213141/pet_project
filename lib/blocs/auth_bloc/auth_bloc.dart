@@ -2,6 +2,10 @@ import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:pet_project/entities/db_entities/db_entities.dart';
+import 'package:pet_project/entities/entities.dart';
+import 'package:pet_project/entities/hive_entities/user_data.dart';
 import 'package:pet_project/utils/loger.dart';
 
 part 'auth_event.dart';
@@ -37,14 +41,15 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       final uid = userCredential.user?.uid;
       _log('User ${userCredential.user?.uid ?? 'UID NOT found'} signed in');
 
-      await FirebaseFirestore.instance
-          .collection('users')
-          .doc(uid) // Используйте UID пользователя как идентификатор документа
-          .set({
-        'name': event.username,
-        'email': event.email,
-        'password': event.password,
-      });
+      await FirebaseFirestore.instance.collection('users').doc(uid).set(
+        {
+          'userData': {
+            'name': event.username,
+            'email': event.email,
+            'password': event.password,
+          },
+        },
+      );
       _log('create user done successfully');
       add(LogInEvent(email: event.email, password: event.password));
       // Зарегистрированный пользователь сохранен в объекте userCredential.user.
@@ -77,6 +82,32 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     try {
       _log('User login: ${event.email.trim()}');
       _log('User password: ${event.password.trim()}');
+      final userCredential = await auth.signInWithEmailAndPassword(
+        email: event.email.trim(),
+        password: event.password.trim(),
+      );
+      final uid = userCredential.user?.uid;
+
+      try {
+        //TODO impelement separated methods for db requests, simplify the code
+        DocumentSnapshot docSnapShot =
+            await FirebaseFirestore.instance.collection('users').doc(uid).get();
+        if (docSnapShot.exists) {
+          final DBdata = docSnapShot.get('userData');
+          DBUserData data = DBUserData.fromJson(DBdata);
+          _log('USERNAME - ${data.name}');
+          Box<UserData> userDataBox = HiveStore().getUserDataBox();
+          UserData? userData = userDataBox.getAt(0);
+          if (userData != null) {
+            userData.userName = data.name;
+            await userData.save();
+          }
+        } else {
+          print('Smth went wrong with name'); //TODO implement error handling
+        }
+      } catch (e) {
+        print('Error $e'); //TODO implement error handling
+      }
 
       emit(const AuthState.logInSuccess());
     } on FirebaseAuthException catch (e) {

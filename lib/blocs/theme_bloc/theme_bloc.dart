@@ -17,21 +17,13 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
       (event, emit) async {
         Box<AppPreferences> preferencesBox = HiveStore().getAppPreferencesBox();
         AppPreferences? appPreferences = preferencesBox.getAt(0);
-        // bool? darkThemeFlag = HiveStore().getAppTheme();
-        // _log('darkThemeFlag from storage: ${darkThemeFlag}');
-
-        // bool isDarkTheme = darkThemeFlag ?? false;
-
-        // _log('app preference is no empty: ${appPreferences}');
-
         if (appPreferences != null) {
-          // _log('triggerred theme change');
-
           appPreferences.isDarkTheme = event.isDarkTheme;
           await appPreferences.save();
-          emit(state.copyWith(isDarkTheme: event.isDarkTheme));
+          emit(
+            state.copyWith(isDarkTheme: event.isDarkTheme),
+          );
         }
-        //_log('app preference theme: $isDarkTheme');
       },
     );
   }

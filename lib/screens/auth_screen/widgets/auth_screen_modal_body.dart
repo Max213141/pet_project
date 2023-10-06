@@ -72,143 +72,146 @@ class _AuthModalBodyState extends State<AuthModalBody> {
       child: Scaffold(
         body: Align(
           alignment: Alignment.center,
-          child: ListView(
-            shrinkWrap: true,
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            // mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Center(
-                child: Text(
-                  'Welcome!',
-                  style: MentalHealthTextStyles.text.signikaPrimaryFontF28,
-                ),
-              ),
-              Stack(
-                children: [
-                  Form(
-                    key: formKey,
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          ...[
-                            AnimatedContainer(
-                              duration: const Duration(milliseconds: 2000),
-                              child: _switchedToRegister
-                                  ? RepaintBoundary(
-                                      child: FormFieldWidget(
-                                        controller: usernameController,
-                                        validator: (value) {
-                                          if (value?.isEmpty ?? true) {
-                                            return 'Enter your username';
-                                          }
-                                          return null;
-                                        },
-                                        title: 'Username',
-                                      ),
-                                    )
-                                  : const SizedBox.shrink(),
-                            ),
-                            const SizedBox(
-                              height: 16.0,
-                            ),
-                          ],
-                          RepaintBoundary(
-                            child: FormFieldWidget(
-                              controller: emailController,
-                              validator: (value) {
-                                if (value?.isEmpty ?? true) {
-                                  return 'Enter email';
-                                }
-                                return null;
-                              },
-                              title: 'Email',
-                            ),
-                          ),
-                          const SizedBox(height: 16.0),
-                          RepaintBoundary(
-                            child: FormFieldWidget(
-                              controller: passwordController,
-                              validator: (value) {
-                                if (value?.isEmpty ?? true) {
-                                  return 'Enter password';
-                                }
-                                return null;
-                              },
-                              title: 'Password',
-                            ),
-                          ),
-                          const SizedBox(height: 32.0),
-                        ],
-                      ),
-                    ),
+          child: ScrollConfiguration(
+            behavior: CustomBehavior(),
+            child: ListView(
+              shrinkWrap: true,
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              // mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Center(
+                  child: Text(
+                    'Welcome!',
+                    style: MentalHealthTextStyles.text.signikaPrimaryFontF28,
                   ),
-                  if (_showLoader)
-                    const Center(
-                      child: SizedBox(
-                        height: 85,
-                        width: 85,
-                        child: RepaintBoundary(child: Loader()),
-                      ),
-                    ),
-                ],
-              ),
-              ActionButton(
-                title: _switchedToRegister
-                    ? 'Register'.toUpperCase()
-                    : 'Log in'.toUpperCase(),
-                onPressed: () {
-                  hideKeyBoard();
-
-                  if (formKey.currentState!.validate()) {
-                    final String email = emailController.text;
-                    final String password = passwordController.text;
-                    final String username = usernameController.text;
-                    _switchedToRegister
-                        ? BlocProvider.of<AuthBloc>(context).add(
-                            CreateUserEvent(
-                              email: email,
-                              password: password,
-                              username: username,
+                ),
+                Stack(
+                  children: [
+                    Form(
+                      key: formKey,
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ...[
+                              AnimatedContainer(
+                                duration: const Duration(milliseconds: 2000),
+                                child: _switchedToRegister
+                                    ? RepaintBoundary(
+                                        child: FormFieldWidget(
+                                          controller: usernameController,
+                                          validator: (value) {
+                                            if (value?.isEmpty ?? true) {
+                                              return 'Enter your username';
+                                            }
+                                            return null;
+                                          },
+                                          title: 'Username',
+                                        ),
+                                      )
+                                    : const SizedBox.shrink(),
+                              ),
+                              const SizedBox(
+                                height: 16.0,
+                              ),
+                            ],
+                            RepaintBoundary(
+                              child: FormFieldWidget(
+                                controller: emailController,
+                                validator: (value) {
+                                  if (value?.isEmpty ?? true) {
+                                    return 'Enter email';
+                                  }
+                                  return null;
+                                },
+                                title: 'Email',
+                              ),
                             ),
-                          )
-                        : BlocProvider.of<AuthBloc>(context).add(
-                            LogInEvent(email: email, password: password),
-                          );
-                  }
-                },
-                width: MediaQuery.of(context).size.width - 70,
-              ),
-              const SizedBox(height: 10),
-              GestureDetector(
-                onTap: () => setState(() {
-                  _switchedToRegister = !_switchedToRegister;
-                }),
-                child: RichText(
-                  textAlign: TextAlign.center,
-                  text: TextSpan(
-                    children: [
-                      TextSpan(
-                        text: _switchedToRegister
-                            ? 'Already have an account?'
-                            : 'Register new account!',
-                        style:
-                            MentalHealthTextStyles.text.popinsSecondaryFontF14,
-                      ),
-                      TextSpan(
-                        text: _switchedToRegister ? ' Log in' : ' Register',
-                        style: MentalHealthTextStyles
-                            .text.popinsSecondaryFontF14
-                            .copyWith(
-                          color: AppColor.primaryBackgroundColor,
+                            const SizedBox(height: 16.0),
+                            RepaintBoundary(
+                              child: FormFieldWidget(
+                                controller: passwordController,
+                                validator: (value) {
+                                  if (value?.isEmpty ?? true) {
+                                    return 'Enter password';
+                                  }
+                                  return null;
+                                },
+                                title: 'Password',
+                              ),
+                            ),
+                            const SizedBox(height: 32.0),
+                          ],
                         ),
                       ),
-                    ],
+                    ),
+                    if (_showLoader)
+                      const Center(
+                        child: SizedBox(
+                          height: 85,
+                          width: 85,
+                          child: RepaintBoundary(child: Loader()),
+                        ),
+                      ),
+                  ],
+                ),
+                ActionButton(
+                  title: _switchedToRegister
+                      ? 'Register'.toUpperCase()
+                      : 'Log in'.toUpperCase(),
+                  onPressed: () {
+                    hideKeyBoard();
+
+                    if (formKey.currentState!.validate()) {
+                      final String email = emailController.text;
+                      final String password = passwordController.text;
+                      final String username = usernameController.text;
+                      _switchedToRegister
+                          ? BlocProvider.of<AuthBloc>(context).add(
+                              CreateUserEvent(
+                                email: email,
+                                password: password,
+                                username: username,
+                              ),
+                            )
+                          : BlocProvider.of<AuthBloc>(context).add(
+                              LogInEvent(email: email, password: password),
+                            );
+                    }
+                  },
+                  width: MediaQuery.of(context).size.width - 70,
+                ),
+                const SizedBox(height: 10),
+                GestureDetector(
+                  onTap: () => setState(() {
+                    _switchedToRegister = !_switchedToRegister;
+                  }),
+                  child: RichText(
+                    textAlign: TextAlign.center,
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: _switchedToRegister
+                              ? 'Already have an account?'
+                              : 'Register new account!',
+                          style: MentalHealthTextStyles
+                              .text.popinsSecondaryFontF14,
+                        ),
+                        TextSpan(
+                          text: _switchedToRegister ? ' Log in' : ' Register',
+                          style: MentalHealthTextStyles
+                              .text.popinsSecondaryFontF14
+                              .copyWith(
+                            color: AppColor.primaryBackgroundColor,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
