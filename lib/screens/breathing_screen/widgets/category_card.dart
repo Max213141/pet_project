@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pet_project/common_widgets/common_category_screen/widgets/category_item.dart';
+import 'package:pet_project/screens/breathing_screen/widgets/widgets.dart';
 import 'package:pet_project/utils/utils.dart';
 
 void _log(dynamic message) => Logger.projectLog(message, name: 'category_card');
@@ -100,7 +100,7 @@ class _CategoryCardState extends State<CategoryCard> {
                               ),
                               context: context,
                               builder: (context) {
-                                return const Text(':)');
+                                return const CategoryItemBottomSheetBody();
                               },
                             ),
 

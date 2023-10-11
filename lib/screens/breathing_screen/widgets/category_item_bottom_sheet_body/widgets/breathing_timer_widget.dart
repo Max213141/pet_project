@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:pet_project/screens/breathing_item_screen/widgets/widgets.dart';
+import 'package:pet_project/screens/breathing_screen/widgets/category_item_bottom_sheet_body/widgets/widgets.dart';
 import 'package:pet_project/utils/utils.dart';
 
 class BreathingTimerWidget extends StatefulWidget {
@@ -20,15 +19,6 @@ class _BreathingTimerWidgetState extends State<BreathingTimerWidget> {
         child: Stack(
           alignment: Alignment.center,
           children: <Widget>[
-            Positioned.fill(
-              child: SvgPicture.asset(
-                'assets/backgrounds/card_backgound.svg',
-                fit: BoxFit.cover,
-                // alignment: Alignment.center,
-                // width: MediaQuery.of(context).size.width,
-                // height: MediaQuery.of(context).size.height,
-              ),
-            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
               child: SizedBox(

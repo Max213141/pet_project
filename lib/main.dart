@@ -6,7 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:pet_project/entities/hive_entities/hive_entities.dart';
 import 'package:pet_project/navigation/navigation_observer.dart';
-import 'package:pet_project/screens/breathing_item_screen/breathing_item_screen.dart';
+import 'package:pet_project/screens/breath_screen/breathe_screen.dart';
 import 'package:pet_project/screens/breathing_items_screen/breathing_items_screen.dart';
 import 'package:pet_project/blocs/blocs.dart';
 import 'package:pet_project/screens/breathing_screen/breathing_screen.dart';
@@ -238,23 +238,12 @@ class MyApp extends StatelessWidget {
                   routes: [
                     GoRoute(
                       // name: 'breathing_item_screen',
-                      path: 'breathing_item_screen',
+                      path: 'breathe',
                       builder: (BuildContext context, GoRouterState state) {
-                        return const BreathingItemScreen(
-                          title: 'Meta Meditation',
-                        );
+                        return const AnimatedCircleImageAnimation();
                       },
                     ),
                   ],
-                ),
-                GoRoute(
-                  // name: 'breathing_item_screen',
-                  path: 'breathing_item_screen',
-                  builder: (BuildContext context, GoRouterState state) {
-                    return const BreathingItemScreen(
-                      title: 'Meta Meditation',
-                    );
-                  },
                 ),
               ],
             ),

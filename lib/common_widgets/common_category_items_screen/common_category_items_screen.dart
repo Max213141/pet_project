@@ -103,8 +103,7 @@ class _CommonCategoryItemsScreenState extends State<CommonCategoryItemsScreen> {
                     return Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8.0),
                       child: GestureDetector(
-                        onTap: () => GoRouter.of(context)
-                            .go('/main/breathing/breathing_item_screen'),
+                        onTap: () {},
                         child: Center(child: widget.child),
                       ),
                     );
