@@ -41,7 +41,8 @@ class _CommonCategoryScreenState extends State<CommonCategoryScreen> {
             widget.title,
           ),
         ),
-        titleTextStyle: MentalHealthTextStyles.text.signikaPrimaryFontF28,
+        titleTextStyle: MentalHealthTextStyles.text.signikaPrimaryFontF28
+            .copyWith(color: AppColor.mainDarkColor),
         backgroundColor: AppColor.primaryBackgroundColor,
         elevation: 0,
       ),

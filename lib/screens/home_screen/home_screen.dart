@@ -46,9 +46,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: AppColor.primaryBackgroundColor),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 18.0),
-                      child: Text('What are you up to today?',
-                          style: MentalHealthTextStyles
-                              .text.popinsSecondaryFontF16),
+                      child: Text(
+                        'What are you up to today?',
+                        style:
+                            MentalHealthTextStyles.text.popinsSecondaryFontF16,
+                      ),
                     ),
                   ),
                 ),
@@ -56,11 +58,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 const ToDoListWidget(),
                 const QuoteWidget(),
                 const CalendarWidget(),
-                // Text(
-                //   '${BlocProvider.of<AuthBloc>(context).auth.currentUser?.email ?? 'Email not found'}',
-                //   style: MentalHealthTextStyles.text.mainCommonF14,
-                // ),
-                // const SizedBox(height: 12),
               ],
             ),
           ),

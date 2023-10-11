@@ -272,7 +272,7 @@ class MyApp extends StatelessWidget {
               path: 'meditation',
               builder: (BuildContext context, GoRouterState state) {
                 return const MeditationScreen(
-                  title: 'Psychological tests',
+                  title: 'Meditations',
                 );
               },
             ),

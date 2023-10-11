@@ -3,11 +3,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pet_project/screens/tests_screen/widget/widgets.dart';
 import 'package:pet_project/utils/utils.dart';
 
-class TestItem extends StatelessWidget {
+class MeditationItem extends StatelessWidget {
   final String title;
   final String image;
 
-  const TestItem({
+  const MeditationItem({
     super.key,
     required this.title,
     required this.image,

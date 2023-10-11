@@ -59,7 +59,10 @@ class _TestsScreenState extends State<TestsScreen> {
             widget.title,
           ),
         ),
-        titleTextStyle: MentalHealthTextStyles.text.signikaPrimaryFontF28,
+        titleTextStyle:
+            MentalHealthTextStyles.text.signikaPrimaryFontF28.copyWith(
+          color: AppColor.mainDarkColor,
+        ),
         backgroundColor: AppColor.primaryBackgroundColor,
         elevation: 0,
       ),
@@ -103,27 +106,19 @@ class _TestsScreenState extends State<TestsScreen> {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
                       child: Column(
-                        children: testsList.map((e) {
-                          return TestItem(
-                            title: e.title,
-                            image: e.image,
-                          );
-                        }).toList(),
+                        children: testsList.map(
+                          (e) {
+                            return TestItem(
+                              title: e.title,
+                              image: e.image,
+                            );
+                          },
+                        ).toList(),
                       ),
                     ),
                   ),
                 ),
               ),
-              // const SliverToBoxAdapter(child: SizedBox(height: 8)),
-              // SliverToBoxAdapter(
-              //   child: Padding(
-              //     padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              //     child: Text(
-              //       'Meditations by tags',
-              //       style: MentalHealthTextStyles.text.signikaSecondaryFontF16,
-              //     ),
-              //   ),
-              // ),
             ],
           ),
         ),

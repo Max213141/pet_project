@@ -52,23 +52,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
     ),
     BottomNavigationBarItem(
       icon: SvgPicture.asset(
-        'assets/icons/chat.svg',
-        colorFilter: const ColorFilter.mode(
-          Colors.black,
-          BlendMode.srcIn,
-        ),
-      ),
-      activeIcon: SvgPicture.asset(
-        'assets/icons/chat.svg',
-        colorFilter: const ColorFilter.mode(
-          AppColor.primaryBackgroundColor,
-          BlendMode.srcIn,
-        ),
-      ),
-      label: "",
-    ),
-    BottomNavigationBarItem(
-      icon: SvgPicture.asset(
         'assets/icons/emotions.svg',
         colorFilter: const ColorFilter.mode(
           Colors.black,

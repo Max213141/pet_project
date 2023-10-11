@@ -48,13 +48,11 @@ class _CarouselWidgetState extends State<CarouselWidget> {
                           if (selectedIndex == index) {
                             switch (index) {
                               case 0:
-                                GoRouter.of(context).go('/main/breathing');
+                                GoRouter.of(context).go('/main/meditation');
                                 break;
                               case 1:
-                                GoRouter.of(context).go('/main/meditation');
-
+                                GoRouter.of(context).go('/main/breathing');
                                 break;
-
                               case 2:
                                 GoRouter.of(context).go('/main/tests');
                                 break;
@@ -178,7 +176,7 @@ class _CarouselWidgetState extends State<CarouselWidget> {
         );
 
       default:
-        return Text('');
+        return const Text('');
     }
   }
 }

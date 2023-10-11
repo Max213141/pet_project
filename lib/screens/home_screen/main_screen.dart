@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pet_project/common_widgets/widgets.dart';
 import 'package:pet_project/entities/entities.dart';
-import 'package:pet_project/screens/chat_screen/chat_screen.dart';
 import 'package:pet_project/screens/habits_screen/habits_screen.dart';
 import 'package:pet_project/screens/home_screen/home_screen.dart';
 import 'package:pet_project/screens/mood_screen/mood_screen.dart';
@@ -28,7 +27,6 @@ class _MainScreenState extends State<MainScreen> {
   final List<Widget> _screens = [
     const HomeScreen(),
     const HabitsScreen(),
-    const ChatScreen(),
     const MoodScreen(),
     const WallScreen(),
   ];
@@ -68,21 +66,12 @@ class _MainScreenState extends State<MainScreen> {
         return Align(
           alignment: Alignment.centerLeft,
           child: Text(
-            'Chat Assistant',
-            style: MentalHealthTextStyles.text.signikaPrimaryFontF28
-                .copyWith(color: Colors.black),
-          ),
-        );
-      case 3:
-        return Align(
-          alignment: Alignment.centerLeft,
-          child: Text(
             'Mood statistic',
             style: MentalHealthTextStyles.text.signikaPrimaryFontF28
                 .copyWith(color: Colors.black),
           ),
         );
-      case 4:
+      case 3:
         return Align(
           alignment: Alignment.centerLeft,
           child: Text(
