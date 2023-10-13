@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pet_project/common_widgets/widgets.dart';
 import 'package:pet_project/utils/utils.dart';
 
 class NewCategoryItem extends StatelessWidget {
@@ -28,8 +28,8 @@ class NewCategoryItem extends StatelessWidget {
                   width: (MediaQuery.of(context).size.width / 2 - 32) / 2,
                   child: ClipRRect(
                     borderRadius: MentalHealthDecorations.borders.radiusC20,
-                    child: SvgPicture.asset(
-                      'assets/backgrounds/card_backgound.svg',
+                    child: const MentalHealthSvgPicture(
+                      picture: 'assets/backgrounds/card_backgound.svg',
                       fit: BoxFit.fill,
                     ),
                   ),

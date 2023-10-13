@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pet_project/common_widgets/widgets.dart';
 import 'package:pet_project/utils/utils.dart';
 
 class BottomNavBar extends StatefulWidget {
@@ -17,70 +17,47 @@ class BottomNavBar extends StatefulWidget {
 
 class _BottomNavBarState extends State<BottomNavBar> {
   final List<BottomNavigationBarItem> navIcons = <BottomNavigationBarItem>[
-    BottomNavigationBarItem(
-        icon: SvgPicture.asset(
-          'assets/icons/home.svg',
-          colorFilter: const ColorFilter.mode(
-            Colors.black,
-            BlendMode.srcIn,
-          ),
-        ),
-        activeIcon: SvgPicture.asset(
-          'assets/icons/home.svg',
-          colorFilter: const ColorFilter.mode(
-            AppColor.primaryBackgroundColor,
-            BlendMode.srcIn,
-          ),
-        ),
-        label: ""),
-    BottomNavigationBarItem(
-      icon: SvgPicture.asset(
-        'assets/icons/habits.svg',
-        colorFilter: const ColorFilter.mode(
-          Colors.black,
-          BlendMode.srcIn,
-        ),
+    const BottomNavigationBarItem(
+      icon: MentalHealthSvgPicture(
+        picture: 'assets/icons/home.svg',
+        color: Colors.black,
       ),
-      activeIcon: SvgPicture.asset(
-        'assets/icons/habits.svg',
-        colorFilter: const ColorFilter.mode(
-          AppColor.primaryBackgroundColor,
-          BlendMode.srcIn,
-        ),
+      activeIcon: MentalHealthSvgPicture(
+        picture: 'assets/icons/home.svg',
+        color: AppColor.primaryBackgroundColor,
       ),
       label: "",
     ),
-    BottomNavigationBarItem(
-      icon: SvgPicture.asset(
-        'assets/icons/emotions.svg',
-        colorFilter: const ColorFilter.mode(
-          Colors.black,
-          BlendMode.srcIn,
-        ),
+    const BottomNavigationBarItem(
+      icon: MentalHealthSvgPicture(
+        picture: 'assets/icons/habits.svg',
+        color: Colors.black,
       ),
-      activeIcon: SvgPicture.asset(
-        'assets/icons/emotions.svg',
-        colorFilter: const ColorFilter.mode(
-          AppColor.primaryBackgroundColor,
-          BlendMode.srcIn,
-        ),
+      activeIcon: MentalHealthSvgPicture(
+        picture: 'assets/icons/habits.svg',
+        color: AppColor.primaryBackgroundColor,
       ),
       label: "",
     ),
-    BottomNavigationBarItem(
-      icon: SvgPicture.asset(
-        'assets/icons/wall.svg',
-        colorFilter: const ColorFilter.mode(
-          Colors.black,
-          BlendMode.srcIn,
-        ),
+    const BottomNavigationBarItem(
+      icon: MentalHealthSvgPicture(
+        picture: 'assets/icons/emotions.svg',
+        color: Colors.black,
       ),
-      activeIcon: SvgPicture.asset(
-        'assets/icons/wall.svg',
-        colorFilter: const ColorFilter.mode(
-          AppColor.primaryBackgroundColor,
-          BlendMode.srcIn,
-        ),
+      activeIcon: MentalHealthSvgPicture(
+        picture: 'assets/icons/emotions.svg',
+        color: AppColor.primaryBackgroundColor,
+      ),
+      label: "",
+    ),
+    const BottomNavigationBarItem(
+      icon: MentalHealthSvgPicture(
+        picture: 'assets/icons/wall.svg',
+        color: Colors.black,
+      ),
+      activeIcon: MentalHealthSvgPicture(
+        picture: 'assets/icons/wall.svg',
+        color: AppColor.primaryBackgroundColor,
       ),
       label: "",
     ),

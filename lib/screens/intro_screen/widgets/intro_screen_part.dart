@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pet_project/common_widgets/widgets.dart';
 import 'package:pet_project/utils/styles/styles.dart';
 
 class IntroScreenPart extends StatelessWidget {
@@ -26,8 +26,8 @@ class IntroScreenPart extends StatelessWidget {
         children: [
           SizedBox(
             height: size.height / 3,
-            child: SvgPicture.asset(
-              image,
+            child: MentalHealthSvgPicture(
+              picture: image,
               fit: BoxFit.fill,
             ),
           ),

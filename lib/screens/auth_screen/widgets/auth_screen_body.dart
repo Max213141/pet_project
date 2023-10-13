@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pet_project/common_widgets/widgets.dart';
 import 'package:pet_project/screens/auth_screen/widgets/widgets.dart';
 import 'package:pet_project/utils/utils.dart';
@@ -70,9 +69,11 @@ class AuthScreenBody extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 20),
-                SvgPicture.asset(
-                  'assets/images/auth_image.svg',
+                const MentalHealthSvgPicture(
+                  picture: 'assets/images/auth_image.svg',
+                  fit: BoxFit.fill,
                 ),
+
                 const SizedBox(height: 20),
                 ActionButton(
                   title: 'Get started'.toUpperCase(),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pet_project/common_widgets/widgets.dart';
 import 'package:pet_project/screens/tests_screen/widget/widgets.dart';
 import 'package:pet_project/utils/utils.dart';
 
@@ -62,8 +62,8 @@ class MeditationItem extends StatelessWidget {
                             child: ClipRRect(
                               borderRadius:
                                   MentalHealthDecorations.borders.radiusC20,
-                              child: SvgPicture.asset(
-                                image,
+                              child: MentalHealthSvgPicture(
+                                picture: image,
                                 fit: BoxFit.fill,
                               ),
                             ),

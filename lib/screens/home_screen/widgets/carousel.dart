@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pet_project/common_widgets/widgets.dart';
 import 'package:pet_project/utils/utils.dart';
 
 class CarouselWidget extends StatefulWidget {
@@ -129,26 +129,26 @@ class _CarouselWidgetState extends State<CarouselWidget> {
   Widget getImage(int index) {
     switch (index) {
       case 0:
-        return SvgPicture.asset(
-          'assets/backgrounds/first_category_background.svg',
+        return const MentalHealthSvgPicture(
+          picture: 'assets/backgrounds/first_category_background.svg',
           fit: BoxFit.fill,
         );
 
       case 1:
-        return SvgPicture.asset(
-          'assets/backgrounds/second_category_background.svg',
+        return const MentalHealthSvgPicture(
+          picture: 'assets/backgrounds/second_category_background.svg',
           fit: BoxFit.fill,
         );
 
       case 2:
-        return SvgPicture.asset(
-          'assets/backgrounds/third_category_background.svg',
+        return const MentalHealthSvgPicture(
+          picture: 'assets/backgrounds/third_category_background.svg',
           fit: BoxFit.fill,
         );
 
       default:
-        return SvgPicture.asset(
-          'assets/backgrounds/third_category_background.svg',
+        return const MentalHealthSvgPicture(
+          picture: 'assets/backgrounds/third_category_background.svg',
           fit: BoxFit.fill,
         );
     }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pet_project/common_widgets/common_category_screen/widgets/category_item.dart';
+import 'package:pet_project/common_widgets/widgets.dart';
 import 'package:pet_project/utils/utils.dart';
 
 void _log(dynamic message) => Logger.projectLog(message, name: 'category_card');
@@ -56,12 +56,9 @@ class _CategoryCardState extends State<CategoryCard> {
             child: Stack(
               alignment: Alignment.center,
               children: <Widget>[
-                SvgPicture.asset(
-                  'assets/backgrounds/card_backgound.svg',
+                const MentalHealthSvgPicture(
+                  picture: 'assets/backgrounds/card_backgound.svg',
                   fit: BoxFit.cover,
-                  // alignment: Alignment.center,
-                  // width: MediaQuery.of(context).size.width,
-                  // height: MediaQuery.of(context).size.height,
                 ),
                 Padding(
                   padding:

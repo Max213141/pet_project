@@ -21,6 +21,7 @@ class AppColor {
   static const Color habbitsTileBackground = Color(0xFFFAFAFA);
   static const Color chartsColor = Color(0xFFE2E7CB);
   static const Color authFieldsTextGray = Color(0xFFBDBDBD);
+  static const Color shredStoryChipColor = Color(0xFFF6E8CF);
 
   static const Color authFieldsGray = Color(0xFFF6F6F6);
 

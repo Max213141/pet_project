@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pet_project/common_widgets/widgets.dart';
 import 'package:pet_project/entities/entities.dart';
 import 'package:pet_project/utils/utils.dart';
@@ -82,8 +81,8 @@ class _MoodPickerWidgetState extends State<MoodPickerWidget> {
                                       emotions[index].emotionTitle
                                   ? 80
                                   : 60,
-                              child: SvgPicture.asset(
-                                emotions[index].picturePath,
+                              child: MentalHealthSvgPicture(
+                                picture: emotions[index].picturePath,
                               ),
                             ),
                           ),

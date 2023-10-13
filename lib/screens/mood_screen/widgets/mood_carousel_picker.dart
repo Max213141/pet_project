@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pet_project/common_widgets/widgets.dart';
 import 'package:pet_project/entities/entities.dart';
 import 'package:pet_project/utils/utils.dart';
 
@@ -67,8 +67,9 @@ class _MoodCarouselPickerState extends State<MoodCarouselPicker> {
                               selectedEmotion == emotion.emotionTitle ? 80 : 60,
                           width:
                               selectedEmotion == emotion.emotionTitle ? 80 : 60,
-                          child: SvgPicture.asset(
-                            emotion.picturePath,
+                          child: MentalHealthSvgPicture(
+                            picture: emotion.picturePath,
+                            fit: BoxFit.fill,
                           ),
                         ),
                       ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pet_project/common_widgets/widgets.dart';
 import 'package:pet_project/utils/utils.dart';
 
 class MainCategoryItem extends StatelessWidget {
@@ -31,8 +31,8 @@ class MainCategoryItem extends StatelessWidget {
                     height: 130,
                     child: ClipRRect(
                       borderRadius: MentalHealthDecorations.borders.radiusC20,
-                      child: SvgPicture.asset(
-                        'assets/backgrounds/card_backgound.svg',
+                      child: const MentalHealthSvgPicture(
+                        picture: 'assets/backgrounds/card_backgound.svg',
                         fit: BoxFit.fill,
                       ),
                     ),

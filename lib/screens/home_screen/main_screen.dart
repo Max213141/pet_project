@@ -4,7 +4,7 @@ import 'package:pet_project/entities/entities.dart';
 import 'package:pet_project/screens/habits_screen/habits_screen.dart';
 import 'package:pet_project/screens/home_screen/home_screen.dart';
 import 'package:pet_project/screens/mood_screen/mood_screen.dart';
-import 'package:pet_project/screens/wall_screen/wall_screen.dart';
+import 'package:pet_project/screens/shared_stories/shared_stories.dart';
 import 'package:pet_project/utils/utils.dart';
 
 void _log(dynamic message) => Logger.projectLog(message, name: 'main_screen');
@@ -28,7 +28,7 @@ class _MainScreenState extends State<MainScreen> {
     const HomeScreen(),
     const HabitsScreen(),
     const MoodScreen(),
-    const WallScreen(),
+    const SharedStoriesScreen(),
   ];
   getAppBarTitle() {
     final String? username = HiveStore().getUserName();

@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pet_project/common_widgets/widgets.dart';
 
 class BreathingGuideItem extends StatelessWidget {
   const BreathingGuideItem({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        SvgPicture.asset(
-          'assets/breathing_images/hold.svg',
+        MentalHealthSvgPicture(
+          picture: 'assets/breathing_images/hold.svg',
           alignment: Alignment.topCenter,
         ),
-        const SizedBox(
+        SizedBox(
           height: 6,
         ),
-        const Text(
+        Text(
           '4s \n hold',
           textAlign: TextAlign.center,
         )
