@@ -3,10 +3,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:pet_project/entities/db_entities/db_entities.dart';
-import 'package:pet_project/entities/entities.dart';
-import 'package:pet_project/entities/hive_entities/user_data.dart';
-import 'package:pet_project/utils/loger.dart';
+import 'package:life_sync/entities/db_entities/db_entities.dart';
+import 'package:life_sync/entities/entities.dart';
+import 'package:life_sync/entities/hive_entities/user_data.dart';
+import 'package:life_sync/utils/loger.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';

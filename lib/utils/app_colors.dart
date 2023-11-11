@@ -42,9 +42,9 @@ class AppColor {
 
 
 // import 'package:flutter/material.dart';
-// import 'package:pet_project/main_screen.dart';
-// import 'package:pet_project/utils/loger.dart';
-// import 'package:pet_project/utils/theme_data.dart';
+// import 'package:life_sync/main_screen.dart';
+// import 'package:life_sync/utils/loger.dart';
+// import 'package:life_sync/utils/theme_data.dart';
 
 // void //_log(dynamic message) => Logger.projectLog(message, name: 'main');
 

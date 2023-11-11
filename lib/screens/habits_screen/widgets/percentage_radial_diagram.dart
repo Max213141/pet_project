@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pet_project/utils/utils.dart';
+import 'package:life_sync/utils/utils.dart';
 import 'dart:math';
 
 class HabitsPercentageRadialDiagram extends StatelessWidget {

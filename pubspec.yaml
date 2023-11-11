@@ -1,4 +1,4 @@
-name: pet_project
+name: life_sync
 description: A new Flutter project.
 publish_to: 'none'
 
@@ -39,7 +39,7 @@ dependencies:
   # flutter_local_notifications: ^14.0.0+2
 
 flutter_launcher_icons:
-  image_path: "assets/app_icon/LifeSync-01.png"
+  image_path: "assets/app_icon/life_sync-01.png"
   # image_path_android: "assets/images/icon-710x599-android.png"
   # image_path_ios: "assets/images/icon-1024x1024.png"
   android: true # can specify file name here e.g. "ic_launcher"

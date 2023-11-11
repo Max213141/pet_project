@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pet_project/common_widgets/widgets.dart';
-import 'package:pet_project/utils/app_colors.dart';
-import 'package:pet_project/utils/decorations.dart';
+import 'package:life_sync/common_widgets/widgets.dart';
+import 'package:life_sync/utils/app_colors.dart';
+import 'package:life_sync/utils/decorations.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class CalendarWidget extends StatefulWidget {

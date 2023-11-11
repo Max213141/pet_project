@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pet_project/utils/loger.dart';
+import 'package:life_sync/utils/loger.dart';
 
 void _log(dynamic message) =>
     Logger.projectLog(message, name: 'navigation_observer');

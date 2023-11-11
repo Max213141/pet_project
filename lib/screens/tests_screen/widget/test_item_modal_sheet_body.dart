@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pet_project/common_widgets/widgets.dart';
-import 'package:pet_project/utils/utils.dart';
+import 'package:life_sync/common_widgets/widgets.dart';
+import 'package:life_sync/utils/utils.dart';
 
 class TestItemModalSheetBody extends StatelessWidget {
   final String title;

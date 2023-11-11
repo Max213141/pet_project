@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pet_project/common_widgets/widgets.dart';
-import 'package:pet_project/entities/db_entities/db_entities.dart';
-import 'package:pet_project/utils/utils.dart';
+import 'package:life_sync/common_widgets/widgets.dart';
+import 'package:life_sync/entities/db_entities/db_entities.dart';
+import 'package:life_sync/utils/utils.dart';
 
 class UserStoryBottomSheetBody extends StatelessWidget {
   final SharedStory story;

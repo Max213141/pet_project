@@ -1,11 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:pet_project/entities/hive_store.dart';
-import 'package:pet_project/screens/auth_screen/auth_screen.dart';
-import 'package:pet_project/screens/intro_screen/intro_screen.dart';
-import 'package:pet_project/screens/home_screen/main_screen.dart';
-import 'package:pet_project/screens/splash_screen/splash_screen.dart';
-import 'package:pet_project/utils/loger.dart';
+import 'package:life_sync/entities/hive_store.dart';
+import 'package:life_sync/screens/auth_screen/auth_screen.dart';
+import 'package:life_sync/screens/intro_screen/intro_screen.dart';
+import 'package:life_sync/screens/home_screen/main_screen.dart';
+import 'package:life_sync/screens/splash_screen/splash_screen.dart';
+import 'package:life_sync/utils/loger.dart';
 
 void _log(dynamic message) =>
     Logger.projectLog(message, name: 'initial_hive_page');

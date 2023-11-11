@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pet_project/common_widgets/widgets.dart';
-import 'package:pet_project/utils/styles/styles.dart';
+import 'package:life_sync/common_widgets/widgets.dart';
+import 'package:life_sync/utils/styles/styles.dart';
 
 class IntroScreenPart extends StatelessWidget {
   final String image;

@@ -1,5 +1,5 @@
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:pet_project/entities/hive_index.dart';
+import 'package:life_sync/entities/hive_index.dart';
 
 part 'app_preferences.g.dart';
 

@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pet_project/blocs/auth_bloc/auth_bloc.dart';
-import 'package:pet_project/screens/auth_screen/auth_screen.dart';
-import 'package:pet_project/screens/home_screen/main_screen.dart';
+import 'package:life_sync/blocs/auth_bloc/auth_bloc.dart';
+import 'package:life_sync/screens/auth_screen/auth_screen.dart';
+import 'package:life_sync/screens/home_screen/main_screen.dart';
 
 class InitialPage extends StatefulWidget {
   final FirebaseAuth auth;

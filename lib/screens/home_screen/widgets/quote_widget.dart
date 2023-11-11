@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
-import 'package:pet_project/utils/utils.dart';
+import 'package:life_sync/utils/utils.dart';
 import 'package:http/http.dart' as http;
 
 class QuoteWidget extends StatefulWidget {

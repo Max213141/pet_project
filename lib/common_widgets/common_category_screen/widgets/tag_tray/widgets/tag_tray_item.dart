@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pet_project/utils/decorations.dart';
-import 'package:pet_project/utils/styles/styles.dart';
+import 'package:life_sync/utils/decorations.dart';
+import 'package:life_sync/utils/styles/styles.dart';
 
 class TagTrayItem extends StatefulWidget {
   final bool changeFirstPadding;

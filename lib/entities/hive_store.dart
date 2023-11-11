@@ -1,8 +1,8 @@
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:pet_project/entities/hive_entities/app_preferences.dart';
-import 'package:pet_project/entities/hive_entities/user_data.dart';
-import 'package:pet_project/utils/loger.dart';
+import 'package:life_sync/entities/hive_entities/app_preferences.dart';
+import 'package:life_sync/entities/hive_entities/user_data.dart';
+import 'package:life_sync/utils/loger.dart';
 
 void _log(dynamic message) => Logger.projectLog(message, name: 'hice_store');
 

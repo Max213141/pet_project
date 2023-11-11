@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pet_project/screens/breathing_screen/widgets/category_item_bottom_sheet_body/widgets/widgets.dart';
-import 'package:pet_project/utils/utils.dart';
+import 'package:life_sync/screens/breathing_screen/widgets/category_item_bottom_sheet_body/widgets/widgets.dart';
+import 'package:life_sync/utils/utils.dart';
 
 class BreathingTimerWidget extends StatefulWidget {
   const BreathingTimerWidget({super.key});

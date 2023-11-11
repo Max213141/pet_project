@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pet_project/utils/utils.dart';
+import 'package:life_sync/utils/utils.dart';
 
 import 'widgets/widgets.dart';
 

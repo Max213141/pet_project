@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intro_slider/intro_slider.dart';
-import 'package:pet_project/screens/intro_screen/widgets/widgets.dart';
-import 'package:pet_project/utils/utils.dart';
+import 'package:life_sync/screens/intro_screen/widgets/widgets.dart';
+import 'package:life_sync/utils/utils.dart';
 
 class IntroScreen extends StatefulWidget {
   const IntroScreen({super.key});

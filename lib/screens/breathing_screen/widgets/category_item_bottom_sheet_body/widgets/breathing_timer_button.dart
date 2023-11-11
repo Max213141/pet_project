@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pet_project/utils/app_colors.dart';
-import 'package:pet_project/utils/decorations.dart';
-import 'package:pet_project/utils/styles/styles.dart';
+import 'package:life_sync/utils/app_colors.dart';
+import 'package:life_sync/utils/decorations.dart';
+import 'package:life_sync/utils/styles/styles.dart';
 
 class BreathingTimer extends StatelessWidget {
   const BreathingTimer({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pet_project/entities/db_entities/db_entities.dart';
-import 'package:pet_project/screens/shared_stories/widgets/widgets.dart';
-import 'package:pet_project/utils/utils.dart';
+import 'package:life_sync/entities/db_entities/db_entities.dart';
+import 'package:life_sync/screens/shared_stories/widgets/widgets.dart';
+import 'package:life_sync/utils/utils.dart';
 
 class ViewModeBody extends StatefulWidget {
   final List<SharedStory> sharedStories;

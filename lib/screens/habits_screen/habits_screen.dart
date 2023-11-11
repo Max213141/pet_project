@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pet_project/common_widgets/widgets.dart';
-import 'package:pet_project/screens/habits_screen/widgets/widgets.dart';
-import 'package:pet_project/utils/utils.dart';
+import 'package:life_sync/common_widgets/widgets.dart';
+import 'package:life_sync/screens/habits_screen/widgets/widgets.dart';
+import 'package:life_sync/utils/utils.dart';
 
 void _log(dynamic message) => Logger.projectLog(message, name: 'habits_screen');
 

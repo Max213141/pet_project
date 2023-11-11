@@ -1,4 +1,4 @@
-package com.example.pet_project
+package com.example.life_sync
 
 import io.flutter.embedding.android.FlutterActivity
 

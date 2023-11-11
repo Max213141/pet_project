@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:pet_project/common_widgets/widgets.dart';
-import 'package:pet_project/entities/entities.dart';
-import 'package:pet_project/screens/habits_screen/habits_screen.dart';
-import 'package:pet_project/screens/home_screen/home_screen.dart';
-import 'package:pet_project/screens/mood_screen/mood_screen.dart';
-import 'package:pet_project/screens/shared_stories/shared_stories.dart';
-import 'package:pet_project/utils/utils.dart';
+import 'package:life_sync/common_widgets/widgets.dart';
+import 'package:life_sync/entities/entities.dart';
+import 'package:life_sync/screens/habits_screen/habits_screen.dart';
+import 'package:life_sync/screens/home_screen/home_screen.dart';
+import 'package:life_sync/screens/mood_screen/mood_screen.dart';
+import 'package:life_sync/screens/shared_stories/shared_stories.dart';
+import 'package:life_sync/utils/utils.dart';
 
 void _log(dynamic message) => Logger.projectLog(message, name: 'main_screen');
 

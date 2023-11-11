@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pet_project/common_widgets/common_category_items_screen/widgets/category_description.dart';
-import 'package:pet_project/screens/breathing_screen/widgets/widgets.dart';
-import 'package:pet_project/utils/utils.dart';
+import 'package:life_sync/common_widgets/common_category_items_screen/widgets/category_description.dart';
+import 'package:life_sync/screens/breathing_screen/widgets/widgets.dart';
+import 'package:life_sync/utils/utils.dart';
 
 class BreathingItemsScreen extends StatefulWidget {
   final String title;

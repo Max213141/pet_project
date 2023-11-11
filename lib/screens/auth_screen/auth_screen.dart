@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pet_project/screens/auth_screen/widgets/widgets.dart';
-import 'package:pet_project/utils/utils.dart';
+import 'package:life_sync/screens/auth_screen/widgets/widgets.dart';
+import 'package:life_sync/utils/utils.dart';
 
 class AuthScreen extends StatelessWidget {
   const AuthScreen({

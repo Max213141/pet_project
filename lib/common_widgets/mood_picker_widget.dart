@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pet_project/common_widgets/widgets.dart';
-import 'package:pet_project/entities/entities.dart';
-import 'package:pet_project/utils/utils.dart';
+import 'package:life_sync/common_widgets/widgets.dart';
+import 'package:life_sync/entities/entities.dart';
+import 'package:life_sync/utils/utils.dart';
 
 class MoodPickerWidget extends StatefulWidget {
   const MoodPickerWidget({super.key});

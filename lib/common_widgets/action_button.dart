@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pet_project/utils/utils.dart';
+import 'package:life_sync/utils/utils.dart';
 
 class ActionButton extends StatelessWidget {
   final String title;

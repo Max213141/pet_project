@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pet_project/utils/app_colors.dart';
+import 'package:life_sync/utils/app_colors.dart';
 
 // import 'package:slivki/res/colors.dart';
 // import 'package:slivki/ui/kit/kit.dart';

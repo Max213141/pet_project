@@ -5,18 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "pet_project",
+            "name": "life_sync",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "pet_project (profile mode)",
+            "name": "life_sync (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "pet_project (release mode)",
+            "name": "life_sync (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"

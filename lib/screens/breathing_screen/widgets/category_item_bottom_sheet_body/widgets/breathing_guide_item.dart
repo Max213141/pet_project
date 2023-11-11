@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pet_project/common_widgets/widgets.dart';
+import 'package:life_sync/common_widgets/widgets.dart';
 
 class BreathingGuideItem extends StatelessWidget {
   const BreathingGuideItem({super.key});

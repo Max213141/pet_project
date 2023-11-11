@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pet_project/blocs/blocs.dart';
-import 'package:pet_project/utils/utils.dart';
+import 'package:life_sync/blocs/blocs.dart';
+import 'package:life_sync/utils/utils.dart';
 
 class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
   final bool isHomeScreen;

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pet_project/common_widgets/widgets.dart';
-import 'package:pet_project/screens/breathing_screen/widgets/category_item_bottom_sheet_body/widgets/widgets.dart';
-import 'package:pet_project/utils/utils.dart';
+import 'package:life_sync/common_widgets/widgets.dart';
+import 'package:life_sync/screens/breathing_screen/widgets/category_item_bottom_sheet_body/widgets/widgets.dart';
+import 'package:life_sync/utils/utils.dart';
 
 class AddStoryBottomSheetBody extends StatefulWidget {
   const AddStoryBottomSheetBody({super.key});

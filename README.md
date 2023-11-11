@@ -1,4 +1,4 @@
-# pet_project
+# LifeSync
 
 A new Flutter project.
 
