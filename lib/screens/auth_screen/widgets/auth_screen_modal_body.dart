@@ -99,7 +99,7 @@ class _AuthModalBodyState extends State<AuthModalBody> {
                                 duration: const Duration(milliseconds: 2000),
                                 child: _switchedToRegister
                                     ? RepaintBoundary(
-                                        child: FormFieldWidget(
+                                        child: CustomFormFieldWidget(
                                           controller: usernameController,
                                           validator: (value) {
                                             if (value?.isEmpty ?? true) {
@@ -117,7 +117,7 @@ class _AuthModalBodyState extends State<AuthModalBody> {
                               ),
                             ],
                             RepaintBoundary(
-                              child: FormFieldWidget(
+                              child: CustomFormFieldWidget(
                                 controller: emailController,
                                 validator: (value) {
                                   if (value?.isEmpty ?? true) {
@@ -130,7 +130,7 @@ class _AuthModalBodyState extends State<AuthModalBody> {
                             ),
                             const SizedBox(height: 16.0),
                             RepaintBoundary(
-                              child: FormFieldWidget(
+                              child: CustomFormFieldWidget(
                                 controller: passwordController,
                                 validator: (value) {
                                   if (value?.isEmpty ?? true) {
