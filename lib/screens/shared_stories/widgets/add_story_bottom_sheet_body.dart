@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:life_sync/common_widgets/widgets.dart';
-import 'package:life_sync/screens/breathing_screen/widgets/category_item_bottom_sheet_body/widgets/widgets.dart';
-import 'package:life_sync/utils/utils.dart';
 
 class AddStoryBottomSheetBody extends StatefulWidget {
   const AddStoryBottomSheetBody({super.key});
@@ -28,6 +26,7 @@ class _AddStoryBottomSheetBodyState extends State<AddStoryBottomSheetBody> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           // Align(
@@ -49,20 +48,22 @@ class _AddStoryBottomSheetBodyState extends State<AddStoryBottomSheetBody> {
             },
           ),
           const SizedBox(height: 15),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              'Description:',
-              style: MentalHealthTextStyles.text.popinsSecondaryFontF16,
-            ),
+          CustomFormFieldWidget(
+            title: 'Description',
+            controller: descriptionController,
+            maxLength: 150,
+            maxLines: 7,
+            validator: (value) {
+              if (value?.isEmpty ?? true) {
+                return 'Enter description';
+              }
+              return null;
+            },
           ),
-          const SizedBox(height: 4),
-          const BreathingGuide(),
-          const SizedBox(height: 20),
+          const SizedBox(height: 15),
           ActionButton(
             onPressed: () {
-              GoRouter.of(context)
-                  .go('/main/breathing/breathing_items/breathe');
+              GoRouter.of(context).pop();
             },
             title: 'Create',
           )

@@ -102,6 +102,7 @@ class _CreateModeBodyState extends State<CreateModeBody> {
               ActionButton(
                 onPressed: () => showModalBottomSheet(
                   showDragHandle: true,
+                  isScrollControlled: true,
                   shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(40),
@@ -110,7 +111,11 @@ class _CreateModeBodyState extends State<CreateModeBody> {
                   ),
                   context: context,
                   builder: (context) {
-                    return const AddStoryBottomSheetBody();
+                    return Padding(
+                      padding: EdgeInsets.only(
+                          bottom: MediaQuery.of(context).viewInsets.bottom),
+                      child: const AddStoryBottomSheetBody(),
+                    );
                   },
                 ),
                 title: 'Add Story',

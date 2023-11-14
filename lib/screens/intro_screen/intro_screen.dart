@@ -30,7 +30,7 @@ class _IntroScreenState extends State<IntroScreen> {
               style: MentalHealthTextStyles.text.signikaFontF24,
             ),
             TextSpan(
-              text: 'MentalSync\n',
+              text: 'LifeSync\n',
               style: MentalHealthTextStyles.text.signikaFontF24Green,
             ),
             TextSpan(

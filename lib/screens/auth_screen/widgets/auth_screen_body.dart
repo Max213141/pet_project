@@ -36,7 +36,7 @@ class AuthScreenBody extends StatelessWidget {
                             .copyWith(color: Colors.black),
                       ),
                       TextSpan(
-                        text: 'life_sync ',
+                        text: 'LifeSync',
                         style: MentalHealthTextStyles.text.signikaPrimaryFontF28
                             .copyWith(color: AppColor.primaryBackgroundColor),
                       ),
