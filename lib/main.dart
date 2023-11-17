@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:life_sync/blocs/shared_stories_bloc/shared_stories_bloc.dart';
 import 'package:life_sync/entities/hive_entities/hive_entities.dart';
 import 'package:life_sync/navigation/navigation_observer.dart';
 import 'package:life_sync/screens/breath_screen/breathe_screen.dart';
@@ -288,6 +289,8 @@ class MyApp extends StatelessWidget {
             providers: [
               BlocProvider<ThemeBloc>(create: (context) => ThemeBloc()),
               BlocProvider<AuthBloc>(create: (context) => AuthBloc(auth: auth)),
+              BlocProvider<SharedStoriesBloc>(
+                  create: (context) => SharedStoriesBloc()),
             ],
             child: BlocBuilder<ThemeBloc, ThemeState>(
               builder: (context, state) {

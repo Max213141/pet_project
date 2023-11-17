@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:life_sync/blocs/blocs.dart';
 import 'package:life_sync/common_widgets/widgets.dart';
+import 'package:life_sync/entities/entities.dart';
+import 'package:life_sync/entities/hive_entities/hive_entities.dart';
 
 class AddStoryBottomSheetBody extends StatefulWidget {
   const AddStoryBottomSheetBody({super.key});
@@ -13,9 +18,13 @@ class AddStoryBottomSheetBody extends StatefulWidget {
 class _AddStoryBottomSheetBodyState extends State<AddStoryBottomSheetBody> {
   late TextEditingController titleController;
   late TextEditingController descriptionController;
+  late String uid;
 
   @override
   void initState() {
+    Box<UserData> userDataBox = HiveStore().getUserDataBox();
+    UserData? userData = userDataBox.getAt(0);
+    // uid = userData!.uid!;
     titleController = TextEditingController();
     descriptionController = TextEditingController();
     super.initState();
@@ -63,6 +72,12 @@ class _AddStoryBottomSheetBodyState extends State<AddStoryBottomSheetBody> {
           const SizedBox(height: 15),
           ActionButton(
             onPressed: () {
+              BlocProvider.of<SharedStoriesBloc>(context)
+                  .add(AddSharedStoriesEvent(iserUID: uid, stories: [
+                SharedStory(
+                    title: titleController.text,
+                    decriptions: descriptionController.text)
+              ]));
               GoRouter.of(context).pop();
             },
             title: 'Create',

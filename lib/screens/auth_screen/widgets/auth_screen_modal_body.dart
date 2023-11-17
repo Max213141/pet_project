@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:life_sync/blocs/blocs.dart';
 import 'package:life_sync/common_widgets/widgets.dart';
-import 'package:life_sync/screens/auth_screen/widgets/widgets.dart';
 import 'package:life_sync/utils/utils.dart';
 
 class AuthModalBody extends StatefulWidget {
