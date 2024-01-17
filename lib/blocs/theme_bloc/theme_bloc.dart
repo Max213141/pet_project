@@ -3,7 +3,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:life_sync/entities/hive_entities/app_preferences.dart';
 import 'package:life_sync/entities/hive_store.dart';
 import 'package:life_sync/utils/loger.dart';
-
+import 'package:meta/meta.dart';
 part 'theme_event.dart';
 part 'theme_state.dart';
 
