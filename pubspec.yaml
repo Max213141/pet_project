@@ -32,8 +32,9 @@ dependencies:
   flutter_launcher_icons: ^0.13.1
   app_utils: ^0.0.6
   intl: ^0.18.1
-  http: ^1.1.0
+  http: ^1.2.0
   cloud_firestore: ^4.14.0
+  welltested: ^0.0.1
 
   # firebase_messaging: ^14.6.0
   # flutter_local_notifications: ^14.0.0+2
