@@ -7,9 +7,12 @@ part 'user_data.g.dart';
 class UserData extends HiveObject {
   @HiveField(0)
   String? userName;
+  @HiveField(1)
+  String? uid;
 
   UserData({
     this.userName,
+    this.uid,
   });
 
   UserData.initial() : userName = 'AppUser';

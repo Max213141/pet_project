@@ -6,9 +6,14 @@ import 'package:life_sync/screens/shared_stories/widgets/widgets.dart';
 import 'package:life_sync/utils/utils.dart';
 
 class CreateModeBody extends StatefulWidget {
+  final String uid;
   final List<SharedStory> userStories;
 
-  const CreateModeBody({super.key, required this.userStories});
+  const CreateModeBody({
+    super.key,
+    required this.userStories,
+    required this.uid,
+  });
   @override
   State<CreateModeBody> createState() => _CreateModeBodyState();
 }
@@ -114,7 +119,9 @@ class _CreateModeBodyState extends State<CreateModeBody> {
                     return Padding(
                       padding: EdgeInsets.only(
                           bottom: MediaQuery.of(context).viewInsets.bottom),
-                      child: const AddStoryBottomSheetBody(),
+                      child: AddStoryBottomSheetBody(
+                        uid: widget.uid,
+                      ),
                     );
                   },
                 ),

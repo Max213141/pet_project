@@ -93,20 +93,20 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         DocumentSnapshot docSnapShot =
             await FirebaseFirestore.instance.collection('users').doc(uid).get();
         if (docSnapShot.exists) {
-          final DBdata = docSnapShot.get('userData');
-          DBUserData data = DBUserData.fromJson(DBdata);
+          final dbData = docSnapShot.get('userData');
+          DBUserData data = DBUserData.fromJson(dbData);
           _log('USERNAME - ${data.name}');
           Box<UserData> userDataBox = HiveStore().getUserDataBox();
           UserData? userData = userDataBox.getAt(0);
           if (userData != null) {
             userData.userName = data.name;
-            // userData.uid = uid;
+            userData.uid = uid;
           }
         } else {
-          print('Smth went wrong with name'); //TODO implement error handling
+          _log('Smth went wrong with name'); //TODO implement error handling
         }
       } catch (e) {
-        print('Error $e'); //TODO implement error handling
+        _log('Error $e'); //TODO implement error handling
       }
 
       emit(const AuthState.logInSuccess());

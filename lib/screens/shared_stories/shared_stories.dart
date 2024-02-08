@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive/hive.dart';
 import 'package:life_sync/blocs/blocs.dart';
 import 'package:life_sync/common_widgets/widgets.dart';
 import 'package:life_sync/entities/db_entities/db_entities.dart';
+import 'package:life_sync/entities/hive_entities/user_data.dart';
+import 'package:life_sync/entities/hive_store.dart';
 import 'package:life_sync/screens/shared_stories/widgets/widgets.dart';
 import 'package:life_sync/utils/utils.dart';
 
@@ -18,47 +21,56 @@ class SharedStoriesScreen extends StatefulWidget {
 class _SharedStoriesScreenState extends State<SharedStoriesScreen> {
   bool viewModeSelected = true;
   bool _showLoader = false;
+  late String uid;
+  @override
+  void initState() {
+    Box<UserData> userDataBox = HiveStore().getUserDataBox();
+    UserData? userData = userDataBox.getAt(0);
+    uid = userData!.uid!;
+
+    super.initState();
+  }
 
   final List<SharedStory> sharedStories = [
     const SharedStory(
       title: 'Gaslighted',
-      decriptions: 'He said I didn\'t done it before',
+      description: 'He said I didn\'t done it before',
     ),
     const SharedStory(
       title: 'Abused',
-      decriptions: 'He is abuser',
+      description: 'He is abuser',
     ),
     const SharedStory(
       title: 'Stress',
-      decriptions: 'He shouted on me',
+      description: 'He shouted on me',
     ),
     const SharedStory(
       title: 'Lie',
-      decriptions: 'He lied',
+      description: 'He lied',
     ),
     const SharedStory(
       title: 'Disappointment',
-      decriptions: 'He lied',
+      description: 'He lied',
     ),
     const SharedStory(
       title: 'Disappointment',
-      decriptions: 'He lied',
+      description: 'He lied',
     ),
     const SharedStory(
       title: 'Lie',
-      decriptions: 'He lied',
+      description: 'He lied',
     ),
     const SharedStory(
       title: 'Lie',
-      decriptions: 'He lied',
+      description: 'He lied',
     ),
     const SharedStory(
       title: 'Disappointment',
-      decriptions: 'He lied',
+      description: 'He lied',
     ),
     const SharedStory(
       title: 'Lie',
-      decriptions: 'He lied',
+      description: 'He lied',
     ),
   ];
 
@@ -66,15 +78,23 @@ class _SharedStoriesScreenState extends State<SharedStoriesScreen> {
   Widget build(BuildContext context) {
     return BlocListener<SharedStoriesBloc, SharedStoriesState>(
       listener: (BuildContext context, SharedStoriesState state) {
-        state.whenOrNull(uploadingStories: () {
-          setState(() {
-            _showLoader = !_showLoader;
-          });
-        }, storiesLoaded: (userStories, randomStories) {
-          setState(() {
-            _showLoader = !_showLoader;
-          });
-        });
+        state.whenOrNull(
+          loading: () {
+            setState(() {
+              _showLoader = !_showLoader;
+            });
+          },
+          storiesUploaded: () {
+            setState(() {
+              _showLoader = !_showLoader;
+            });
+          },
+          storiesLoaded: (userStories, randomStories) {
+            setState(() {
+              _showLoader = !_showLoader;
+            });
+          },
+        );
       },
       child: Stack(
         children: [
@@ -88,9 +108,11 @@ class _SharedStoriesScreenState extends State<SharedStoriesScreen> {
               ),
               viewModeSelected
                   ? ViewModeBody(
+                      uid: uid,
                       sharedStories: sharedStories,
                     )
                   : CreateModeBody(
+                      uid: uid,
                       userStories: sharedStories,
                     ),
             ],

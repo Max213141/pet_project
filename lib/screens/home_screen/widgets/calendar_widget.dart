@@ -12,6 +12,8 @@ class CalendarWidget extends StatefulWidget {
 }
 
 class _CalendarWidgetState extends State<CalendarWidget> {
+  CalendarFormat _calendarFormat = CalendarFormat.month;
+
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
@@ -38,6 +40,12 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                 firstDay: DateTime.utc(2010, 10, 16),
                 lastDay: DateTime.utc(2030, 3, 14),
                 focusedDay: DateTime.now(),
+                calendarFormat: _calendarFormat,
+                onFormatChanged: (format) {
+                  setState(() {
+                    _calendarFormat = format;
+                  });
+                },
                 onDaySelected: (selectedDay, focusedDay) {
                   showModalBottomSheet(
                     useSafeArea: true,

@@ -16,32 +16,33 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SharedStoriesEvent {
+  Object get iserUID => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loadRandomStory,
+    required TResult Function(String iserUID) loadRandomStory,
     required TResult Function(String iserUID) loadUserStories,
     required TResult Function(String iserUID, List<SharedStory> stories)
-        addSharedStories,
+        uploadSharedStories,
     required TResult Function(int iserUID, SharedStory story) addNewStory,
     required TResult Function(int iserUID, SharedStory story) removeStory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loadRandomStory,
+    TResult? Function(String iserUID)? loadRandomStory,
     TResult? Function(String iserUID)? loadUserStories,
     TResult? Function(String iserUID, List<SharedStory> stories)?
-        addSharedStories,
+        uploadSharedStories,
     TResult? Function(int iserUID, SharedStory story)? addNewStory,
     TResult? Function(int iserUID, SharedStory story)? removeStory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loadRandomStory,
+    TResult Function(String iserUID)? loadRandomStory,
     TResult Function(String iserUID)? loadUserStories,
     TResult Function(String iserUID, List<SharedStory> stories)?
-        addSharedStories,
+        uploadSharedStories,
     TResult Function(int iserUID, SharedStory story)? addNewStory,
     TResult Function(int iserUID, SharedStory story)? removeStory,
     required TResult orElse(),
@@ -51,7 +52,7 @@ mixin _$SharedStoriesEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(LoadRandomStoryEvent value) loadRandomStory,
     required TResult Function(LoadUserStoriesEvent value) loadUserStories,
-    required TResult Function(AddSharedStoriesEvent value) addSharedStories,
+    required TResult Function(AddSharedStoriesEvent value) uploadSharedStories,
     required TResult Function(AddNewStoryEvent value) addNewStory,
     required TResult Function(RemoveStoryEvent value) removeStory,
   }) =>
@@ -60,7 +61,7 @@ mixin _$SharedStoriesEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadRandomStoryEvent value)? loadRandomStory,
     TResult? Function(LoadUserStoriesEvent value)? loadUserStories,
-    TResult? Function(AddSharedStoriesEvent value)? addSharedStories,
+    TResult? Function(AddSharedStoriesEvent value)? uploadSharedStories,
     TResult? Function(AddNewStoryEvent value)? addNewStory,
     TResult? Function(RemoveStoryEvent value)? removeStory,
   }) =>
@@ -69,7 +70,7 @@ mixin _$SharedStoriesEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadRandomStoryEvent value)? loadRandomStory,
     TResult Function(LoadUserStoriesEvent value)? loadUserStories,
-    TResult Function(AddSharedStoriesEvent value)? addSharedStories,
+    TResult Function(AddSharedStoriesEvent value)? uploadSharedStories,
     TResult Function(AddNewStoryEvent value)? addNewStory,
     TResult Function(RemoveStoryEvent value)? removeStory,
     required TResult orElse(),
@@ -100,6 +101,8 @@ abstract class _$$LoadRandomStoryEventImplCopyWith<$Res> {
   factory _$$LoadRandomStoryEventImplCopyWith(_$LoadRandomStoryEventImpl value,
           $Res Function(_$LoadRandomStoryEventImpl) then) =
       __$$LoadRandomStoryEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String iserUID});
 }
 
 /// @nodoc
@@ -109,67 +112,92 @@ class __$$LoadRandomStoryEventImplCopyWithImpl<$Res>
   __$$LoadRandomStoryEventImplCopyWithImpl(_$LoadRandomStoryEventImpl _value,
       $Res Function(_$LoadRandomStoryEventImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? iserUID = null,
+  }) {
+    return _then(_$LoadRandomStoryEventImpl(
+      iserUID: null == iserUID
+          ? _value.iserUID
+          : iserUID // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$LoadRandomStoryEventImpl implements LoadRandomStoryEvent {
-  const _$LoadRandomStoryEventImpl();
+  const _$LoadRandomStoryEventImpl({required this.iserUID});
+
+  @override
+  final String iserUID;
 
   @override
   String toString() {
-    return 'SharedStoriesEvent.loadRandomStory()';
+    return 'SharedStoriesEvent.loadRandomStory(iserUID: $iserUID)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LoadRandomStoryEventImpl);
+            other is _$LoadRandomStoryEventImpl &&
+            (identical(other.iserUID, iserUID) || other.iserUID == iserUID));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, iserUID);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadRandomStoryEventImplCopyWith<_$LoadRandomStoryEventImpl>
+      get copyWith =>
+          __$$LoadRandomStoryEventImplCopyWithImpl<_$LoadRandomStoryEventImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loadRandomStory,
+    required TResult Function(String iserUID) loadRandomStory,
     required TResult Function(String iserUID) loadUserStories,
     required TResult Function(String iserUID, List<SharedStory> stories)
-        addSharedStories,
+        uploadSharedStories,
     required TResult Function(int iserUID, SharedStory story) addNewStory,
     required TResult Function(int iserUID, SharedStory story) removeStory,
   }) {
-    return loadRandomStory();
+    return loadRandomStory(iserUID);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loadRandomStory,
+    TResult? Function(String iserUID)? loadRandomStory,
     TResult? Function(String iserUID)? loadUserStories,
     TResult? Function(String iserUID, List<SharedStory> stories)?
-        addSharedStories,
+        uploadSharedStories,
     TResult? Function(int iserUID, SharedStory story)? addNewStory,
     TResult? Function(int iserUID, SharedStory story)? removeStory,
   }) {
-    return loadRandomStory?.call();
+    return loadRandomStory?.call(iserUID);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loadRandomStory,
+    TResult Function(String iserUID)? loadRandomStory,
     TResult Function(String iserUID)? loadUserStories,
     TResult Function(String iserUID, List<SharedStory> stories)?
-        addSharedStories,
+        uploadSharedStories,
     TResult Function(int iserUID, SharedStory story)? addNewStory,
     TResult Function(int iserUID, SharedStory story)? removeStory,
     required TResult orElse(),
   }) {
     if (loadRandomStory != null) {
-      return loadRandomStory();
+      return loadRandomStory(iserUID);
     }
     return orElse();
   }
@@ -179,7 +207,7 @@ class _$LoadRandomStoryEventImpl implements LoadRandomStoryEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(LoadRandomStoryEvent value) loadRandomStory,
     required TResult Function(LoadUserStoriesEvent value) loadUserStories,
-    required TResult Function(AddSharedStoriesEvent value) addSharedStories,
+    required TResult Function(AddSharedStoriesEvent value) uploadSharedStories,
     required TResult Function(AddNewStoryEvent value) addNewStory,
     required TResult Function(RemoveStoryEvent value) removeStory,
   }) {
@@ -191,7 +219,7 @@ class _$LoadRandomStoryEventImpl implements LoadRandomStoryEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadRandomStoryEvent value)? loadRandomStory,
     TResult? Function(LoadUserStoriesEvent value)? loadUserStories,
-    TResult? Function(AddSharedStoriesEvent value)? addSharedStories,
+    TResult? Function(AddSharedStoriesEvent value)? uploadSharedStories,
     TResult? Function(AddNewStoryEvent value)? addNewStory,
     TResult? Function(RemoveStoryEvent value)? removeStory,
   }) {
@@ -203,7 +231,7 @@ class _$LoadRandomStoryEventImpl implements LoadRandomStoryEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadRandomStoryEvent value)? loadRandomStory,
     TResult Function(LoadUserStoriesEvent value)? loadUserStories,
-    TResult Function(AddSharedStoriesEvent value)? addSharedStories,
+    TResult Function(AddSharedStoriesEvent value)? uploadSharedStories,
     TResult Function(AddNewStoryEvent value)? addNewStory,
     TResult Function(RemoveStoryEvent value)? removeStory,
     required TResult orElse(),
@@ -216,7 +244,14 @@ class _$LoadRandomStoryEventImpl implements LoadRandomStoryEvent {
 }
 
 abstract class LoadRandomStoryEvent implements SharedStoriesEvent {
-  const factory LoadRandomStoryEvent() = _$LoadRandomStoryEventImpl;
+  const factory LoadRandomStoryEvent({required final String iserUID}) =
+      _$LoadRandomStoryEventImpl;
+
+  @override
+  String get iserUID;
+  @JsonKey(ignore: true)
+  _$$LoadRandomStoryEventImplCopyWith<_$LoadRandomStoryEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -264,7 +299,7 @@ class _$LoadUserStoriesEventImpl implements LoadUserStoriesEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadUserStoriesEventImpl &&
@@ -285,10 +320,10 @@ class _$LoadUserStoriesEventImpl implements LoadUserStoriesEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loadRandomStory,
+    required TResult Function(String iserUID) loadRandomStory,
     required TResult Function(String iserUID) loadUserStories,
     required TResult Function(String iserUID, List<SharedStory> stories)
-        addSharedStories,
+        uploadSharedStories,
     required TResult Function(int iserUID, SharedStory story) addNewStory,
     required TResult Function(int iserUID, SharedStory story) removeStory,
   }) {
@@ -298,10 +333,10 @@ class _$LoadUserStoriesEventImpl implements LoadUserStoriesEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loadRandomStory,
+    TResult? Function(String iserUID)? loadRandomStory,
     TResult? Function(String iserUID)? loadUserStories,
     TResult? Function(String iserUID, List<SharedStory> stories)?
-        addSharedStories,
+        uploadSharedStories,
     TResult? Function(int iserUID, SharedStory story)? addNewStory,
     TResult? Function(int iserUID, SharedStory story)? removeStory,
   }) {
@@ -311,10 +346,10 @@ class _$LoadUserStoriesEventImpl implements LoadUserStoriesEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loadRandomStory,
+    TResult Function(String iserUID)? loadRandomStory,
     TResult Function(String iserUID)? loadUserStories,
     TResult Function(String iserUID, List<SharedStory> stories)?
-        addSharedStories,
+        uploadSharedStories,
     TResult Function(int iserUID, SharedStory story)? addNewStory,
     TResult Function(int iserUID, SharedStory story)? removeStory,
     required TResult orElse(),
@@ -330,7 +365,7 @@ class _$LoadUserStoriesEventImpl implements LoadUserStoriesEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(LoadRandomStoryEvent value) loadRandomStory,
     required TResult Function(LoadUserStoriesEvent value) loadUserStories,
-    required TResult Function(AddSharedStoriesEvent value) addSharedStories,
+    required TResult Function(AddSharedStoriesEvent value) uploadSharedStories,
     required TResult Function(AddNewStoryEvent value) addNewStory,
     required TResult Function(RemoveStoryEvent value) removeStory,
   }) {
@@ -342,7 +377,7 @@ class _$LoadUserStoriesEventImpl implements LoadUserStoriesEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadRandomStoryEvent value)? loadRandomStory,
     TResult? Function(LoadUserStoriesEvent value)? loadUserStories,
-    TResult? Function(AddSharedStoriesEvent value)? addSharedStories,
+    TResult? Function(AddSharedStoriesEvent value)? uploadSharedStories,
     TResult? Function(AddNewStoryEvent value)? addNewStory,
     TResult? Function(RemoveStoryEvent value)? removeStory,
   }) {
@@ -354,7 +389,7 @@ class _$LoadUserStoriesEventImpl implements LoadUserStoriesEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadRandomStoryEvent value)? loadRandomStory,
     TResult Function(LoadUserStoriesEvent value)? loadUserStories,
-    TResult Function(AddSharedStoriesEvent value)? addSharedStories,
+    TResult Function(AddSharedStoriesEvent value)? uploadSharedStories,
     TResult Function(AddNewStoryEvent value)? addNewStory,
     TResult Function(RemoveStoryEvent value)? removeStory,
     required TResult orElse(),
@@ -370,6 +405,7 @@ abstract class LoadUserStoriesEvent implements SharedStoriesEvent {
   const factory LoadUserStoriesEvent({required final String iserUID}) =
       _$LoadUserStoriesEventImpl;
 
+  @override
   String get iserUID;
   @JsonKey(ignore: true)
   _$$LoadUserStoriesEventImplCopyWith<_$LoadUserStoriesEventImpl>
@@ -432,11 +468,11 @@ class _$AddSharedStoriesEventImpl implements AddSharedStoriesEvent {
 
   @override
   String toString() {
-    return 'SharedStoriesEvent.addSharedStories(iserUID: $iserUID, stories: $stories)';
+    return 'SharedStoriesEvent.uploadSharedStories(iserUID: $iserUID, stories: $stories)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddSharedStoriesEventImpl &&
@@ -458,42 +494,42 @@ class _$AddSharedStoriesEventImpl implements AddSharedStoriesEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loadRandomStory,
+    required TResult Function(String iserUID) loadRandomStory,
     required TResult Function(String iserUID) loadUserStories,
     required TResult Function(String iserUID, List<SharedStory> stories)
-        addSharedStories,
+        uploadSharedStories,
     required TResult Function(int iserUID, SharedStory story) addNewStory,
     required TResult Function(int iserUID, SharedStory story) removeStory,
   }) {
-    return addSharedStories(iserUID, stories);
+    return uploadSharedStories(iserUID, stories);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loadRandomStory,
+    TResult? Function(String iserUID)? loadRandomStory,
     TResult? Function(String iserUID)? loadUserStories,
     TResult? Function(String iserUID, List<SharedStory> stories)?
-        addSharedStories,
+        uploadSharedStories,
     TResult? Function(int iserUID, SharedStory story)? addNewStory,
     TResult? Function(int iserUID, SharedStory story)? removeStory,
   }) {
-    return addSharedStories?.call(iserUID, stories);
+    return uploadSharedStories?.call(iserUID, stories);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loadRandomStory,
+    TResult Function(String iserUID)? loadRandomStory,
     TResult Function(String iserUID)? loadUserStories,
     TResult Function(String iserUID, List<SharedStory> stories)?
-        addSharedStories,
+        uploadSharedStories,
     TResult Function(int iserUID, SharedStory story)? addNewStory,
     TResult Function(int iserUID, SharedStory story)? removeStory,
     required TResult orElse(),
   }) {
-    if (addSharedStories != null) {
-      return addSharedStories(iserUID, stories);
+    if (uploadSharedStories != null) {
+      return uploadSharedStories(iserUID, stories);
     }
     return orElse();
   }
@@ -503,11 +539,11 @@ class _$AddSharedStoriesEventImpl implements AddSharedStoriesEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(LoadRandomStoryEvent value) loadRandomStory,
     required TResult Function(LoadUserStoriesEvent value) loadUserStories,
-    required TResult Function(AddSharedStoriesEvent value) addSharedStories,
+    required TResult Function(AddSharedStoriesEvent value) uploadSharedStories,
     required TResult Function(AddNewStoryEvent value) addNewStory,
     required TResult Function(RemoveStoryEvent value) removeStory,
   }) {
-    return addSharedStories(this);
+    return uploadSharedStories(this);
   }
 
   @override
@@ -515,11 +551,11 @@ class _$AddSharedStoriesEventImpl implements AddSharedStoriesEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadRandomStoryEvent value)? loadRandomStory,
     TResult? Function(LoadUserStoriesEvent value)? loadUserStories,
-    TResult? Function(AddSharedStoriesEvent value)? addSharedStories,
+    TResult? Function(AddSharedStoriesEvent value)? uploadSharedStories,
     TResult? Function(AddNewStoryEvent value)? addNewStory,
     TResult? Function(RemoveStoryEvent value)? removeStory,
   }) {
-    return addSharedStories?.call(this);
+    return uploadSharedStories?.call(this);
   }
 
   @override
@@ -527,13 +563,13 @@ class _$AddSharedStoriesEventImpl implements AddSharedStoriesEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadRandomStoryEvent value)? loadRandomStory,
     TResult Function(LoadUserStoriesEvent value)? loadUserStories,
-    TResult Function(AddSharedStoriesEvent value)? addSharedStories,
+    TResult Function(AddSharedStoriesEvent value)? uploadSharedStories,
     TResult Function(AddNewStoryEvent value)? addNewStory,
     TResult Function(RemoveStoryEvent value)? removeStory,
     required TResult orElse(),
   }) {
-    if (addSharedStories != null) {
-      return addSharedStories(this);
+    if (uploadSharedStories != null) {
+      return uploadSharedStories(this);
     }
     return orElse();
   }
@@ -544,6 +580,7 @@ abstract class AddSharedStoriesEvent implements SharedStoriesEvent {
       {required final String iserUID,
       required final List<SharedStory> stories}) = _$AddSharedStoriesEventImpl;
 
+  @override
   String get iserUID;
   List<SharedStory> get stories;
   @JsonKey(ignore: true)
@@ -603,7 +640,7 @@ class _$AddNewStoryEventImpl implements AddNewStoryEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddNewStoryEventImpl &&
@@ -624,10 +661,10 @@ class _$AddNewStoryEventImpl implements AddNewStoryEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loadRandomStory,
+    required TResult Function(String iserUID) loadRandomStory,
     required TResult Function(String iserUID) loadUserStories,
     required TResult Function(String iserUID, List<SharedStory> stories)
-        addSharedStories,
+        uploadSharedStories,
     required TResult Function(int iserUID, SharedStory story) addNewStory,
     required TResult Function(int iserUID, SharedStory story) removeStory,
   }) {
@@ -637,10 +674,10 @@ class _$AddNewStoryEventImpl implements AddNewStoryEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loadRandomStory,
+    TResult? Function(String iserUID)? loadRandomStory,
     TResult? Function(String iserUID)? loadUserStories,
     TResult? Function(String iserUID, List<SharedStory> stories)?
-        addSharedStories,
+        uploadSharedStories,
     TResult? Function(int iserUID, SharedStory story)? addNewStory,
     TResult? Function(int iserUID, SharedStory story)? removeStory,
   }) {
@@ -650,10 +687,10 @@ class _$AddNewStoryEventImpl implements AddNewStoryEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loadRandomStory,
+    TResult Function(String iserUID)? loadRandomStory,
     TResult Function(String iserUID)? loadUserStories,
     TResult Function(String iserUID, List<SharedStory> stories)?
-        addSharedStories,
+        uploadSharedStories,
     TResult Function(int iserUID, SharedStory story)? addNewStory,
     TResult Function(int iserUID, SharedStory story)? removeStory,
     required TResult orElse(),
@@ -669,7 +706,7 @@ class _$AddNewStoryEventImpl implements AddNewStoryEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(LoadRandomStoryEvent value) loadRandomStory,
     required TResult Function(LoadUserStoriesEvent value) loadUserStories,
-    required TResult Function(AddSharedStoriesEvent value) addSharedStories,
+    required TResult Function(AddSharedStoriesEvent value) uploadSharedStories,
     required TResult Function(AddNewStoryEvent value) addNewStory,
     required TResult Function(RemoveStoryEvent value) removeStory,
   }) {
@@ -681,7 +718,7 @@ class _$AddNewStoryEventImpl implements AddNewStoryEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadRandomStoryEvent value)? loadRandomStory,
     TResult? Function(LoadUserStoriesEvent value)? loadUserStories,
-    TResult? Function(AddSharedStoriesEvent value)? addSharedStories,
+    TResult? Function(AddSharedStoriesEvent value)? uploadSharedStories,
     TResult? Function(AddNewStoryEvent value)? addNewStory,
     TResult? Function(RemoveStoryEvent value)? removeStory,
   }) {
@@ -693,7 +730,7 @@ class _$AddNewStoryEventImpl implements AddNewStoryEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadRandomStoryEvent value)? loadRandomStory,
     TResult Function(LoadUserStoriesEvent value)? loadUserStories,
-    TResult Function(AddSharedStoriesEvent value)? addSharedStories,
+    TResult Function(AddSharedStoriesEvent value)? uploadSharedStories,
     TResult Function(AddNewStoryEvent value)? addNewStory,
     TResult Function(RemoveStoryEvent value)? removeStory,
     required TResult orElse(),
@@ -710,6 +747,7 @@ abstract class AddNewStoryEvent implements SharedStoriesEvent {
       {required final int iserUID,
       required final SharedStory story}) = _$AddNewStoryEventImpl;
 
+  @override
   int get iserUID;
   SharedStory get story;
   @JsonKey(ignore: true)
@@ -769,7 +807,7 @@ class _$RemoveStoryEventImpl implements RemoveStoryEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RemoveStoryEventImpl &&
@@ -790,10 +828,10 @@ class _$RemoveStoryEventImpl implements RemoveStoryEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loadRandomStory,
+    required TResult Function(String iserUID) loadRandomStory,
     required TResult Function(String iserUID) loadUserStories,
     required TResult Function(String iserUID, List<SharedStory> stories)
-        addSharedStories,
+        uploadSharedStories,
     required TResult Function(int iserUID, SharedStory story) addNewStory,
     required TResult Function(int iserUID, SharedStory story) removeStory,
   }) {
@@ -803,10 +841,10 @@ class _$RemoveStoryEventImpl implements RemoveStoryEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loadRandomStory,
+    TResult? Function(String iserUID)? loadRandomStory,
     TResult? Function(String iserUID)? loadUserStories,
     TResult? Function(String iserUID, List<SharedStory> stories)?
-        addSharedStories,
+        uploadSharedStories,
     TResult? Function(int iserUID, SharedStory story)? addNewStory,
     TResult? Function(int iserUID, SharedStory story)? removeStory,
   }) {
@@ -816,10 +854,10 @@ class _$RemoveStoryEventImpl implements RemoveStoryEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loadRandomStory,
+    TResult Function(String iserUID)? loadRandomStory,
     TResult Function(String iserUID)? loadUserStories,
     TResult Function(String iserUID, List<SharedStory> stories)?
-        addSharedStories,
+        uploadSharedStories,
     TResult Function(int iserUID, SharedStory story)? addNewStory,
     TResult Function(int iserUID, SharedStory story)? removeStory,
     required TResult orElse(),
@@ -835,7 +873,7 @@ class _$RemoveStoryEventImpl implements RemoveStoryEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(LoadRandomStoryEvent value) loadRandomStory,
     required TResult Function(LoadUserStoriesEvent value) loadUserStories,
-    required TResult Function(AddSharedStoriesEvent value) addSharedStories,
+    required TResult Function(AddSharedStoriesEvent value) uploadSharedStories,
     required TResult Function(AddNewStoryEvent value) addNewStory,
     required TResult Function(RemoveStoryEvent value) removeStory,
   }) {
@@ -847,7 +885,7 @@ class _$RemoveStoryEventImpl implements RemoveStoryEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadRandomStoryEvent value)? loadRandomStory,
     TResult? Function(LoadUserStoriesEvent value)? loadUserStories,
-    TResult? Function(AddSharedStoriesEvent value)? addSharedStories,
+    TResult? Function(AddSharedStoriesEvent value)? uploadSharedStories,
     TResult? Function(AddNewStoryEvent value)? addNewStory,
     TResult? Function(RemoveStoryEvent value)? removeStory,
   }) {
@@ -859,7 +897,7 @@ class _$RemoveStoryEventImpl implements RemoveStoryEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadRandomStoryEvent value)? loadRandomStory,
     TResult Function(LoadUserStoriesEvent value)? loadUserStories,
-    TResult Function(AddSharedStoriesEvent value)? addSharedStories,
+    TResult Function(AddSharedStoriesEvent value)? uploadSharedStories,
     TResult Function(AddNewStoryEvent value)? addNewStory,
     TResult Function(RemoveStoryEvent value)? removeStory,
     required TResult orElse(),
@@ -876,6 +914,7 @@ abstract class RemoveStoryEvent implements SharedStoriesEvent {
       {required final int iserUID,
       required final SharedStory story}) = _$RemoveStoryEventImpl;
 
+  @override
   int get iserUID;
   SharedStory get story;
   @JsonKey(ignore: true)
@@ -888,9 +927,8 @@ mixin _$SharedStoriesState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loadingRandomStory,
-    required TResult Function() loadingUserStories,
-    required TResult Function() uploadingStories,
+    required TResult Function() loading,
+    required TResult Function() storiesUploaded,
     required TResult Function(
             List<SharedStory> userStories, List<SharedStory> randomStories)
         storiesLoaded,
@@ -900,9 +938,8 @@ mixin _$SharedStoriesState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loadingRandomStory,
-    TResult? Function()? loadingUserStories,
-    TResult? Function()? uploadingStories,
+    TResult? Function()? loading,
+    TResult? Function()? storiesUploaded,
     TResult? Function(
             List<SharedStory> userStories, List<SharedStory> randomStories)?
         storiesLoaded,
@@ -912,9 +949,8 @@ mixin _$SharedStoriesState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loadingRandomStory,
-    TResult Function()? loadingUserStories,
-    TResult Function()? uploadingStories,
+    TResult Function()? loading,
+    TResult Function()? storiesUploaded,
     TResult Function(
             List<SharedStory> userStories, List<SharedStory> randomStories)?
         storiesLoaded,
@@ -925,9 +961,8 @@ mixin _$SharedStoriesState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_LoadingRandomStory value) loadingRandomStory,
-    required TResult Function(_LoadingUserStories value) loadingUserStories,
-    required TResult Function(_UploadingStories value) uploadingStories,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_StoriesUploaded value) storiesUploaded,
     required TResult Function(_StoriesLoaded value) storiesLoaded,
     required TResult Function(_StoriesLoadingError value) storiesLoadingError,
   }) =>
@@ -935,9 +970,8 @@ mixin _$SharedStoriesState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_LoadingRandomStory value)? loadingRandomStory,
-    TResult? Function(_LoadingUserStories value)? loadingUserStories,
-    TResult? Function(_UploadingStories value)? uploadingStories,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_StoriesUploaded value)? storiesUploaded,
     TResult? Function(_StoriesLoaded value)? storiesLoaded,
     TResult? Function(_StoriesLoadingError value)? storiesLoadingError,
   }) =>
@@ -945,9 +979,8 @@ mixin _$SharedStoriesState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_LoadingRandomStory value)? loadingRandomStory,
-    TResult Function(_LoadingUserStories value)? loadingUserStories,
-    TResult Function(_UploadingStories value)? uploadingStories,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_StoriesUploaded value)? storiesUploaded,
     TResult Function(_StoriesLoaded value)? storiesLoaded,
     TResult Function(_StoriesLoadingError value)? storiesLoadingError,
     required TResult orElse(),
@@ -1000,7 +1033,7 @@ class _$InitialImpl implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
@@ -1012,9 +1045,8 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loadingRandomStory,
-    required TResult Function() loadingUserStories,
-    required TResult Function() uploadingStories,
+    required TResult Function() loading,
+    required TResult Function() storiesUploaded,
     required TResult Function(
             List<SharedStory> userStories, List<SharedStory> randomStories)
         storiesLoaded,
@@ -1027,9 +1059,8 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loadingRandomStory,
-    TResult? Function()? loadingUserStories,
-    TResult? Function()? uploadingStories,
+    TResult? Function()? loading,
+    TResult? Function()? storiesUploaded,
     TResult? Function(
             List<SharedStory> userStories, List<SharedStory> randomStories)?
         storiesLoaded,
@@ -1042,9 +1073,8 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loadingRandomStory,
-    TResult Function()? loadingUserStories,
-    TResult Function()? uploadingStories,
+    TResult Function()? loading,
+    TResult Function()? storiesUploaded,
     TResult Function(
             List<SharedStory> userStories, List<SharedStory> randomStories)?
         storiesLoaded,
@@ -1061,9 +1091,8 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_LoadingRandomStory value) loadingRandomStory,
-    required TResult Function(_LoadingUserStories value) loadingUserStories,
-    required TResult Function(_UploadingStories value) uploadingStories,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_StoriesUploaded value) storiesUploaded,
     required TResult Function(_StoriesLoaded value) storiesLoaded,
     required TResult Function(_StoriesLoadingError value) storiesLoadingError,
   }) {
@@ -1074,9 +1103,8 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_LoadingRandomStory value)? loadingRandomStory,
-    TResult? Function(_LoadingUserStories value)? loadingUserStories,
-    TResult? Function(_UploadingStories value)? uploadingStories,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_StoriesUploaded value)? storiesUploaded,
     TResult? Function(_StoriesLoaded value)? storiesLoaded,
     TResult? Function(_StoriesLoadingError value)? storiesLoadingError,
   }) {
@@ -1087,9 +1115,8 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_LoadingRandomStory value)? loadingRandomStory,
-    TResult Function(_LoadingUserStories value)? loadingUserStories,
-    TResult Function(_UploadingStories value)? uploadingStories,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_StoriesUploaded value)? storiesUploaded,
     TResult Function(_StoriesLoaded value)? storiesLoaded,
     TResult Function(_StoriesLoadingError value)? storiesLoadingError,
     required TResult orElse(),
@@ -1106,35 +1133,35 @@ abstract class _Initial implements SharedStoriesState {
 }
 
 /// @nodoc
-abstract class _$$LoadingRandomStoryImplCopyWith<$Res> {
-  factory _$$LoadingRandomStoryImplCopyWith(_$LoadingRandomStoryImpl value,
-          $Res Function(_$LoadingRandomStoryImpl) then) =
-      __$$LoadingRandomStoryImplCopyWithImpl<$Res>;
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadingRandomStoryImplCopyWithImpl<$Res>
-    extends _$SharedStoriesStateCopyWithImpl<$Res, _$LoadingRandomStoryImpl>
-    implements _$$LoadingRandomStoryImplCopyWith<$Res> {
-  __$$LoadingRandomStoryImplCopyWithImpl(_$LoadingRandomStoryImpl _value,
-      $Res Function(_$LoadingRandomStoryImpl) _then)
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$SharedStoriesStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$LoadingRandomStoryImpl implements _LoadingRandomStory {
-  const _$LoadingRandomStoryImpl();
+class _$LoadingImpl implements _Loading {
+  const _$LoadingImpl();
 
   @override
   String toString() {
-    return 'SharedStoriesState.loadingRandomStory()';
+    return 'SharedStoriesState.loading()';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingRandomStoryImpl);
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
   }
 
   @override
@@ -1144,47 +1171,44 @@ class _$LoadingRandomStoryImpl implements _LoadingRandomStory {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loadingRandomStory,
-    required TResult Function() loadingUserStories,
-    required TResult Function() uploadingStories,
+    required TResult Function() loading,
+    required TResult Function() storiesUploaded,
     required TResult Function(
             List<SharedStory> userStories, List<SharedStory> randomStories)
         storiesLoaded,
     required TResult Function(String errorText) storiesLoadingError,
   }) {
-    return loadingRandomStory();
+    return loading();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loadingRandomStory,
-    TResult? Function()? loadingUserStories,
-    TResult? Function()? uploadingStories,
+    TResult? Function()? loading,
+    TResult? Function()? storiesUploaded,
     TResult? Function(
             List<SharedStory> userStories, List<SharedStory> randomStories)?
         storiesLoaded,
     TResult? Function(String errorText)? storiesLoadingError,
   }) {
-    return loadingRandomStory?.call();
+    return loading?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loadingRandomStory,
-    TResult Function()? loadingUserStories,
-    TResult Function()? uploadingStories,
+    TResult Function()? loading,
+    TResult Function()? storiesUploaded,
     TResult Function(
             List<SharedStory> userStories, List<SharedStory> randomStories)?
         storiesLoaded,
     TResult Function(String errorText)? storiesLoadingError,
     required TResult orElse(),
   }) {
-    if (loadingRandomStory != null) {
-      return loadingRandomStory();
+    if (loading != null) {
+      return loading();
     }
     return orElse();
   }
@@ -1193,80 +1217,77 @@ class _$LoadingRandomStoryImpl implements _LoadingRandomStory {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_LoadingRandomStory value) loadingRandomStory,
-    required TResult Function(_LoadingUserStories value) loadingUserStories,
-    required TResult Function(_UploadingStories value) uploadingStories,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_StoriesUploaded value) storiesUploaded,
     required TResult Function(_StoriesLoaded value) storiesLoaded,
     required TResult Function(_StoriesLoadingError value) storiesLoadingError,
   }) {
-    return loadingRandomStory(this);
+    return loading(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_LoadingRandomStory value)? loadingRandomStory,
-    TResult? Function(_LoadingUserStories value)? loadingUserStories,
-    TResult? Function(_UploadingStories value)? uploadingStories,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_StoriesUploaded value)? storiesUploaded,
     TResult? Function(_StoriesLoaded value)? storiesLoaded,
     TResult? Function(_StoriesLoadingError value)? storiesLoadingError,
   }) {
-    return loadingRandomStory?.call(this);
+    return loading?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_LoadingRandomStory value)? loadingRandomStory,
-    TResult Function(_LoadingUserStories value)? loadingUserStories,
-    TResult Function(_UploadingStories value)? uploadingStories,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_StoriesUploaded value)? storiesUploaded,
     TResult Function(_StoriesLoaded value)? storiesLoaded,
     TResult Function(_StoriesLoadingError value)? storiesLoadingError,
     required TResult orElse(),
   }) {
-    if (loadingRandomStory != null) {
-      return loadingRandomStory(this);
+    if (loading != null) {
+      return loading(this);
     }
     return orElse();
   }
 }
 
-abstract class _LoadingRandomStory implements SharedStoriesState {
-  const factory _LoadingRandomStory() = _$LoadingRandomStoryImpl;
+abstract class _Loading implements SharedStoriesState {
+  const factory _Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$LoadingUserStoriesImplCopyWith<$Res> {
-  factory _$$LoadingUserStoriesImplCopyWith(_$LoadingUserStoriesImpl value,
-          $Res Function(_$LoadingUserStoriesImpl) then) =
-      __$$LoadingUserStoriesImplCopyWithImpl<$Res>;
+abstract class _$$StoriesUploadedImplCopyWith<$Res> {
+  factory _$$StoriesUploadedImplCopyWith(_$StoriesUploadedImpl value,
+          $Res Function(_$StoriesUploadedImpl) then) =
+      __$$StoriesUploadedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadingUserStoriesImplCopyWithImpl<$Res>
-    extends _$SharedStoriesStateCopyWithImpl<$Res, _$LoadingUserStoriesImpl>
-    implements _$$LoadingUserStoriesImplCopyWith<$Res> {
-  __$$LoadingUserStoriesImplCopyWithImpl(_$LoadingUserStoriesImpl _value,
-      $Res Function(_$LoadingUserStoriesImpl) _then)
+class __$$StoriesUploadedImplCopyWithImpl<$Res>
+    extends _$SharedStoriesStateCopyWithImpl<$Res, _$StoriesUploadedImpl>
+    implements _$$StoriesUploadedImplCopyWith<$Res> {
+  __$$StoriesUploadedImplCopyWithImpl(
+      _$StoriesUploadedImpl _value, $Res Function(_$StoriesUploadedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$LoadingUserStoriesImpl implements _LoadingUserStories {
-  const _$LoadingUserStoriesImpl();
+class _$StoriesUploadedImpl implements _StoriesUploaded {
+  const _$StoriesUploadedImpl();
 
   @override
   String toString() {
-    return 'SharedStoriesState.loadingUserStories()';
+    return 'SharedStoriesState.storiesUploaded()';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingUserStoriesImpl);
+        (other.runtimeType == runtimeType && other is _$StoriesUploadedImpl);
   }
 
   @override
@@ -1276,47 +1297,44 @@ class _$LoadingUserStoriesImpl implements _LoadingUserStories {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loadingRandomStory,
-    required TResult Function() loadingUserStories,
-    required TResult Function() uploadingStories,
+    required TResult Function() loading,
+    required TResult Function() storiesUploaded,
     required TResult Function(
             List<SharedStory> userStories, List<SharedStory> randomStories)
         storiesLoaded,
     required TResult Function(String errorText) storiesLoadingError,
   }) {
-    return loadingUserStories();
+    return storiesUploaded();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loadingRandomStory,
-    TResult? Function()? loadingUserStories,
-    TResult? Function()? uploadingStories,
+    TResult? Function()? loading,
+    TResult? Function()? storiesUploaded,
     TResult? Function(
             List<SharedStory> userStories, List<SharedStory> randomStories)?
         storiesLoaded,
     TResult? Function(String errorText)? storiesLoadingError,
   }) {
-    return loadingUserStories?.call();
+    return storiesUploaded?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loadingRandomStory,
-    TResult Function()? loadingUserStories,
-    TResult Function()? uploadingStories,
+    TResult Function()? loading,
+    TResult Function()? storiesUploaded,
     TResult Function(
             List<SharedStory> userStories, List<SharedStory> randomStories)?
         storiesLoaded,
     TResult Function(String errorText)? storiesLoadingError,
     required TResult orElse(),
   }) {
-    if (loadingUserStories != null) {
-      return loadingUserStories();
+    if (storiesUploaded != null) {
+      return storiesUploaded();
     }
     return orElse();
   }
@@ -1325,180 +1343,45 @@ class _$LoadingUserStoriesImpl implements _LoadingUserStories {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_LoadingRandomStory value) loadingRandomStory,
-    required TResult Function(_LoadingUserStories value) loadingUserStories,
-    required TResult Function(_UploadingStories value) uploadingStories,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_StoriesUploaded value) storiesUploaded,
     required TResult Function(_StoriesLoaded value) storiesLoaded,
     required TResult Function(_StoriesLoadingError value) storiesLoadingError,
   }) {
-    return loadingUserStories(this);
+    return storiesUploaded(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_LoadingRandomStory value)? loadingRandomStory,
-    TResult? Function(_LoadingUserStories value)? loadingUserStories,
-    TResult? Function(_UploadingStories value)? uploadingStories,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_StoriesUploaded value)? storiesUploaded,
     TResult? Function(_StoriesLoaded value)? storiesLoaded,
     TResult? Function(_StoriesLoadingError value)? storiesLoadingError,
   }) {
-    return loadingUserStories?.call(this);
+    return storiesUploaded?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_LoadingRandomStory value)? loadingRandomStory,
-    TResult Function(_LoadingUserStories value)? loadingUserStories,
-    TResult Function(_UploadingStories value)? uploadingStories,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_StoriesUploaded value)? storiesUploaded,
     TResult Function(_StoriesLoaded value)? storiesLoaded,
     TResult Function(_StoriesLoadingError value)? storiesLoadingError,
     required TResult orElse(),
   }) {
-    if (loadingUserStories != null) {
-      return loadingUserStories(this);
+    if (storiesUploaded != null) {
+      return storiesUploaded(this);
     }
     return orElse();
   }
 }
 
-abstract class _LoadingUserStories implements SharedStoriesState {
-  const factory _LoadingUserStories() = _$LoadingUserStoriesImpl;
-}
-
-/// @nodoc
-abstract class _$$UploadingStoriesImplCopyWith<$Res> {
-  factory _$$UploadingStoriesImplCopyWith(_$UploadingStoriesImpl value,
-          $Res Function(_$UploadingStoriesImpl) then) =
-      __$$UploadingStoriesImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$UploadingStoriesImplCopyWithImpl<$Res>
-    extends _$SharedStoriesStateCopyWithImpl<$Res, _$UploadingStoriesImpl>
-    implements _$$UploadingStoriesImplCopyWith<$Res> {
-  __$$UploadingStoriesImplCopyWithImpl(_$UploadingStoriesImpl _value,
-      $Res Function(_$UploadingStoriesImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$UploadingStoriesImpl implements _UploadingStories {
-  const _$UploadingStoriesImpl();
-
-  @override
-  String toString() {
-    return 'SharedStoriesState.uploadingStories()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$UploadingStoriesImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loadingRandomStory,
-    required TResult Function() loadingUserStories,
-    required TResult Function() uploadingStories,
-    required TResult Function(
-            List<SharedStory> userStories, List<SharedStory> randomStories)
-        storiesLoaded,
-    required TResult Function(String errorText) storiesLoadingError,
-  }) {
-    return uploadingStories();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loadingRandomStory,
-    TResult? Function()? loadingUserStories,
-    TResult? Function()? uploadingStories,
-    TResult? Function(
-            List<SharedStory> userStories, List<SharedStory> randomStories)?
-        storiesLoaded,
-    TResult? Function(String errorText)? storiesLoadingError,
-  }) {
-    return uploadingStories?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loadingRandomStory,
-    TResult Function()? loadingUserStories,
-    TResult Function()? uploadingStories,
-    TResult Function(
-            List<SharedStory> userStories, List<SharedStory> randomStories)?
-        storiesLoaded,
-    TResult Function(String errorText)? storiesLoadingError,
-    required TResult orElse(),
-  }) {
-    if (uploadingStories != null) {
-      return uploadingStories();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_LoadingRandomStory value) loadingRandomStory,
-    required TResult Function(_LoadingUserStories value) loadingUserStories,
-    required TResult Function(_UploadingStories value) uploadingStories,
-    required TResult Function(_StoriesLoaded value) storiesLoaded,
-    required TResult Function(_StoriesLoadingError value) storiesLoadingError,
-  }) {
-    return uploadingStories(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_LoadingRandomStory value)? loadingRandomStory,
-    TResult? Function(_LoadingUserStories value)? loadingUserStories,
-    TResult? Function(_UploadingStories value)? uploadingStories,
-    TResult? Function(_StoriesLoaded value)? storiesLoaded,
-    TResult? Function(_StoriesLoadingError value)? storiesLoadingError,
-  }) {
-    return uploadingStories?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_LoadingRandomStory value)? loadingRandomStory,
-    TResult Function(_LoadingUserStories value)? loadingUserStories,
-    TResult Function(_UploadingStories value)? uploadingStories,
-    TResult Function(_StoriesLoaded value)? storiesLoaded,
-    TResult Function(_StoriesLoadingError value)? storiesLoadingError,
-    required TResult orElse(),
-  }) {
-    if (uploadingStories != null) {
-      return uploadingStories(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _UploadingStories implements SharedStoriesState {
-  const factory _UploadingStories() = _$UploadingStoriesImpl;
+abstract class _StoriesUploaded implements SharedStoriesState {
+  const factory _StoriesUploaded() = _$StoriesUploadedImpl;
 }
 
 /// @nodoc
@@ -1570,7 +1453,7 @@ class _$StoriesLoadedImpl implements _StoriesLoaded {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$StoriesLoadedImpl &&
@@ -1596,9 +1479,8 @@ class _$StoriesLoadedImpl implements _StoriesLoaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loadingRandomStory,
-    required TResult Function() loadingUserStories,
-    required TResult Function() uploadingStories,
+    required TResult Function() loading,
+    required TResult Function() storiesUploaded,
     required TResult Function(
             List<SharedStory> userStories, List<SharedStory> randomStories)
         storiesLoaded,
@@ -1611,9 +1493,8 @@ class _$StoriesLoadedImpl implements _StoriesLoaded {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loadingRandomStory,
-    TResult? Function()? loadingUserStories,
-    TResult? Function()? uploadingStories,
+    TResult? Function()? loading,
+    TResult? Function()? storiesUploaded,
     TResult? Function(
             List<SharedStory> userStories, List<SharedStory> randomStories)?
         storiesLoaded,
@@ -1626,9 +1507,8 @@ class _$StoriesLoadedImpl implements _StoriesLoaded {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loadingRandomStory,
-    TResult Function()? loadingUserStories,
-    TResult Function()? uploadingStories,
+    TResult Function()? loading,
+    TResult Function()? storiesUploaded,
     TResult Function(
             List<SharedStory> userStories, List<SharedStory> randomStories)?
         storiesLoaded,
@@ -1645,9 +1525,8 @@ class _$StoriesLoadedImpl implements _StoriesLoaded {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_LoadingRandomStory value) loadingRandomStory,
-    required TResult Function(_LoadingUserStories value) loadingUserStories,
-    required TResult Function(_UploadingStories value) uploadingStories,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_StoriesUploaded value) storiesUploaded,
     required TResult Function(_StoriesLoaded value) storiesLoaded,
     required TResult Function(_StoriesLoadingError value) storiesLoadingError,
   }) {
@@ -1658,9 +1537,8 @@ class _$StoriesLoadedImpl implements _StoriesLoaded {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_LoadingRandomStory value)? loadingRandomStory,
-    TResult? Function(_LoadingUserStories value)? loadingUserStories,
-    TResult? Function(_UploadingStories value)? uploadingStories,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_StoriesUploaded value)? storiesUploaded,
     TResult? Function(_StoriesLoaded value)? storiesLoaded,
     TResult? Function(_StoriesLoadingError value)? storiesLoadingError,
   }) {
@@ -1671,9 +1549,8 @@ class _$StoriesLoadedImpl implements _StoriesLoaded {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_LoadingRandomStory value)? loadingRandomStory,
-    TResult Function(_LoadingUserStories value)? loadingUserStories,
-    TResult Function(_UploadingStories value)? uploadingStories,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_StoriesUploaded value)? storiesUploaded,
     TResult Function(_StoriesLoaded value)? storiesLoaded,
     TResult Function(_StoriesLoadingError value)? storiesLoadingError,
     required TResult orElse(),
@@ -1731,8 +1608,7 @@ class __$$StoriesLoadingErrorImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$StoriesLoadingErrorImpl implements _StoriesLoadingError {
-  const _$StoriesLoadingErrorImpl(
-      {this.errorText = 'Shared stories loading error'});
+  const _$StoriesLoadingErrorImpl({this.errorText = 'Stories loading error'});
 
   @override
   @JsonKey()
@@ -1744,7 +1620,7 @@ class _$StoriesLoadingErrorImpl implements _StoriesLoadingError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$StoriesLoadingErrorImpl &&
@@ -1766,9 +1642,8 @@ class _$StoriesLoadingErrorImpl implements _StoriesLoadingError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loadingRandomStory,
-    required TResult Function() loadingUserStories,
-    required TResult Function() uploadingStories,
+    required TResult Function() loading,
+    required TResult Function() storiesUploaded,
     required TResult Function(
             List<SharedStory> userStories, List<SharedStory> randomStories)
         storiesLoaded,
@@ -1781,9 +1656,8 @@ class _$StoriesLoadingErrorImpl implements _StoriesLoadingError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loadingRandomStory,
-    TResult? Function()? loadingUserStories,
-    TResult? Function()? uploadingStories,
+    TResult? Function()? loading,
+    TResult? Function()? storiesUploaded,
     TResult? Function(
             List<SharedStory> userStories, List<SharedStory> randomStories)?
         storiesLoaded,
@@ -1796,9 +1670,8 @@ class _$StoriesLoadingErrorImpl implements _StoriesLoadingError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loadingRandomStory,
-    TResult Function()? loadingUserStories,
-    TResult Function()? uploadingStories,
+    TResult Function()? loading,
+    TResult Function()? storiesUploaded,
     TResult Function(
             List<SharedStory> userStories, List<SharedStory> randomStories)?
         storiesLoaded,
@@ -1815,9 +1688,8 @@ class _$StoriesLoadingErrorImpl implements _StoriesLoadingError {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_LoadingRandomStory value) loadingRandomStory,
-    required TResult Function(_LoadingUserStories value) loadingUserStories,
-    required TResult Function(_UploadingStories value) uploadingStories,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_StoriesUploaded value) storiesUploaded,
     required TResult Function(_StoriesLoaded value) storiesLoaded,
     required TResult Function(_StoriesLoadingError value) storiesLoadingError,
   }) {
@@ -1828,9 +1700,8 @@ class _$StoriesLoadingErrorImpl implements _StoriesLoadingError {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_LoadingRandomStory value)? loadingRandomStory,
-    TResult? Function(_LoadingUserStories value)? loadingUserStories,
-    TResult? Function(_UploadingStories value)? uploadingStories,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_StoriesUploaded value)? storiesUploaded,
     TResult? Function(_StoriesLoaded value)? storiesLoaded,
     TResult? Function(_StoriesLoadingError value)? storiesLoadingError,
   }) {
@@ -1841,9 +1712,8 @@ class _$StoriesLoadingErrorImpl implements _StoriesLoadingError {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_LoadingRandomStory value)? loadingRandomStory,
-    TResult Function(_LoadingUserStories value)? loadingUserStories,
-    TResult Function(_UploadingStories value)? uploadingStories,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_StoriesUploaded value)? storiesUploaded,
     TResult Function(_StoriesLoaded value)? storiesLoaded,
     TResult Function(_StoriesLoadingError value)? storiesLoadingError,
     required TResult orElse(),

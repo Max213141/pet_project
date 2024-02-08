@@ -142,7 +142,7 @@ class _$CreateUserEventImpl implements CreateUserEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CreateUserEventImpl &&
@@ -301,7 +301,7 @@ class _$LogInEventImpl implements LogInEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LogInEventImpl &&
@@ -430,7 +430,7 @@ class _$LogOutEventImpl implements LogOutEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$LogOutEventImpl);
   }
@@ -624,7 +624,7 @@ class _$InitialImpl implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
@@ -750,7 +750,7 @@ class _$AuthLoadingStateImpl implements _AuthLoadingState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$AuthLoadingStateImpl);
   }
@@ -904,7 +904,7 @@ class _$AuthUserCreatedStateImpl implements _AuthUserCreatedState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AuthUserCreatedStateImpl &&
@@ -1079,7 +1079,7 @@ class _$AuthLogInSuccessStateImpl implements _AuthLogInSuccessState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AuthLogInSuccessStateImpl &&
@@ -1227,7 +1227,7 @@ class _$AuthLogOutSuccessStateImpl implements _AuthLogOutSuccessState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AuthLogOutSuccessStateImpl);
@@ -1373,7 +1373,7 @@ class _$AuthErrorStateImpl implements _AuthErrorState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AuthErrorStateImpl &&

@@ -52,25 +52,5 @@ class _HabbitsItemState extends State<HabbitsItem> {
         ),
       ],
     );
-
-    //   CheckboxListTile(
-    //     value: isChecked,
-    //     onChanged: (bool? value) {
-
-    //     },
-    //     shape: RoundedRectangleBorder(
-    //       borderRadius: MentalHealthDecorations.borders.radiusC10,
-    //     ),
-    //     tileColor: AppColor.habbitsTile,
-    //     title: Text(
-    //       'Go for a walk',
-    //       style: MentalHealthTextStyles.text.popinsSecondaryFontF16
-    //           .copyWith(fontSize: 14.0),
-    //     ),
-    //     checkboxShape: RoundedRectangleBorder(
-    //       borderRadius: MentalHealthDecorations.borders.radiusC10,
-    //     ),
-    //   );
-    // }
   }
 }

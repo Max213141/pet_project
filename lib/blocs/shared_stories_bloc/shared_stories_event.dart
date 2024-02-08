@@ -2,13 +2,15 @@ part of 'shared_stories_bloc.dart';
 
 @freezed
 class SharedStoriesEvent with _$SharedStoriesEvent {
-  const factory SharedStoriesEvent.loadRandomStory() = LoadRandomStoryEvent;
+  const factory SharedStoriesEvent.loadRandomStory({
+    required String iserUID,
+  }) = LoadRandomStoryEvent;
 
   const factory SharedStoriesEvent.loadUserStories({
     required String iserUID,
   }) = LoadUserStoriesEvent;
 
-  const factory SharedStoriesEvent.addSharedStories({
+  const factory SharedStoriesEvent.uploadSharedStories({
     required String iserUID,
     required List<SharedStory> stories,
   }) = AddSharedStoriesEvent;

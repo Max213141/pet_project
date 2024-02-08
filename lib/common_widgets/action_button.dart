@@ -33,6 +33,7 @@ class ActionButton extends StatelessWidget {
         ),
         child: Text(
           title,
+          textAlign: TextAlign.center,
           style: MentalHealthTextStyles.text.signikaPrimaryFontF22Black,
         ),
       ),

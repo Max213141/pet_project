@@ -28,7 +28,7 @@ class UserStoryBottomSheetBody extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                story.decriptions,
+                story.description,
                 style: MentalHealthTextStyles.text.popinsSecondaryFontF14,
               ),
             ),
