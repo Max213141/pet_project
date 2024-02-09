@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -14,6 +12,8 @@ void _log(dynamic message) =>
     Logger.projectLog(message, name: 'shared_stories_bloc');
 
 class SharedStoriesBloc extends Bloc<SharedStoriesEvent, SharedStoriesState> {
+  FirebaseFirestore db = FirebaseFirestore.instance;
+
   SharedStoriesBloc() : super(const _Initial()) {
     on<SharedStoriesEvent>((events, emit) async {
       await events.map(
@@ -31,42 +31,39 @@ class SharedStoriesBloc extends Bloc<SharedStoriesEvent, SharedStoriesState> {
     LoadRandomStoryEvent event,
     Emitter<SharedStoriesState> emit,
   ) async {
+    List<SharedStory> randomStoriesList = [];
     String uid = event.iserUID;
     emit(const SharedStoriesState.loading());
 
     try {
-      // Get all sharedStories except for the user's own stories
-      QuerySnapshot querySnapshot = await FirebaseFirestore.instance
-          .collection('sharedStories')
-          .where(
-            'uid',
-            isNotEqualTo: uid,
-          ) // Exclude the user's own stories
+      var querySnapshot = await db
+          .collection("sharedStories")
+          .where('uid', isNotEqualTo: uid)
           .get();
 
-      List<List<SharedStory>> sharedStories = querySnapshot.docs.map((doc) {
-        List<Map<String, dynamic>> data = doc.get('userStories');
-        return data
+      _log("$querySnapshot");
+
+      for (var docSnapshot in querySnapshot.docs) {
+        _log('${docSnapshot.id} => ${docSnapshot.data()}');
+        final Map<String, dynamic> data = docSnapshot.data();
+        final List<dynamic> sharedStories = data['userStories'];
+        randomStoriesList = sharedStories
             .map(
-              (userStory) => SharedStory.fromJson(userStory),
+              (story) => SharedStory.fromJson(story),
             )
             .toList();
-      }).toList();
-
-      // Get a single random shared story from the list
-      if (sharedStories.isNotEmpty) {
-        Random random = Random();
-        List<SharedStory> randomStories =
-            sharedStories[random.nextInt(sharedStories.length)];
-
-        emit(
-          SharedStoriesState.storiesLoaded(randomStories: randomStories),
-        );
-      } else {
-        emit(
-          const SharedStoriesState.storiesLoaded(),
-        ); // Return null if no shared stories are found
+        _log('Parsed list - $randomStoriesList');
       }
+      add(
+        LoadUserStoriesEvent(
+          iserUID: uid,
+          randomStoriesList: randomStoriesList,
+          emitLoading: false,
+        ),
+      );
+      // emit(
+      //   SharedStoriesState.storiesLoaded(randomStories: randomStoriesList),
+      // );
     } catch (e) {
       emit(SharedStoriesState.storiesLoadingError(errorText: 'Error: $e'));
       _log('UNHANDLED RANDOM STORY LOADING ERROR: $e');
@@ -78,15 +75,14 @@ class SharedStoriesBloc extends Bloc<SharedStoriesEvent, SharedStoriesState> {
     Emitter<SharedStoriesState> emit,
   ) async {
     String uid = event.iserUID;
-    emit(const SharedStoriesState.loading());
+    _log('emit loading -${event.emitLoading}');
+    if (event.emitLoading ?? true) emit(const SharedStoriesState.loading());
 
     try {
-      DocumentSnapshot snapshot = await FirebaseFirestore.instance
-          .collection('sharedStories')
-          .doc(uid)
-          .get();
+      DocumentSnapshot snapshot =
+          await db.collection('sharedStories').doc(uid).get();
       if (snapshot.exists) {
-        final List<Map<String, dynamic>> dbData = snapshot.get('userStories');
+        final List<dynamic> dbData = snapshot.get('userStories');
         _log('$dbData');
         List<SharedStory> sharedStories = dbData
             .map(
@@ -94,16 +90,19 @@ class SharedStoriesBloc extends Bloc<SharedStoriesEvent, SharedStoriesState> {
             )
             .toList();
         emit(
-          SharedStoriesState.storiesLoaded(userStories: sharedStories),
+          SharedStoriesState.storiesLoaded(
+              userStories: sharedStories,
+              randomStories: event.randomStoriesList ?? []),
         );
       } else {
         return emit(
-          const SharedStoriesState.storiesLoaded(),
+          SharedStoriesState.storiesLoaded(
+              randomStories: event.randomStoriesList ?? []),
         );
       }
     } catch (e) {
       emit(SharedStoriesState.storiesLoadingError(errorText: 'Ошибка: $e'));
-      _log('UNHANDLED RANDOM STORY LOADING ERROR: $e');
+      _log('UNHANDLED USER STORY LOADING ERROR: $e');
     }
   }
 
@@ -115,36 +114,36 @@ class SharedStoriesBloc extends Bloc<SharedStoriesEvent, SharedStoriesState> {
     emit(const SharedStoriesState.loading());
 
     try {
-      DocumentSnapshot sharedStoriesSnapshot = await FirebaseFirestore.instance
-          .collection('sharedStories')
-          .doc(uid)
-          .get();
+      DocumentSnapshot sharedStoriesSnapshot =
+          await db.collection('sharedStories').doc(uid).get();
       _log('SharedStories - $sharedStoriesSnapshot');
       if (sharedStoriesSnapshot.exists) {
-        FirebaseFirestore.instance.collection('sharedStories').doc(uid).update(
+        db.collection('sharedStories').doc(uid).update(
           {
             'userStories': event.stories
-                .map((story) => {
-                      'title': story.title,
-                      'description': story.description,
-                    })
+                .map(
+                  (story) => story.toJson(),
+                )
                 .toList(),
           },
         );
-        emit(SharedStoriesState.storiesUploaded());
+        add(LoadUserStoriesEvent(iserUID: uid));
+
+        emit(const SharedStoriesState.storiesUploaded());
       } else {
         _log('Creating shared stories collection in Firebase');
-        FirebaseFirestore.instance.collection('sharedStories').doc(uid).set(
+        db.collection('sharedStories').doc(uid).set(
           {
-            'sharedStories': event.stories
-                .map((story) => {
-                      'title': story.title,
-                      'description': story.description,
-                    })
+            'userStories': event.stories
+                .map(
+                  (story) => story.toJson(),
+                )
                 .toList(),
+            'uid': uid,
           },
         );
-        emit(SharedStoriesState.storiesUploaded());
+        add(LoadUserStoriesEvent(iserUID: uid));
+        emit(const SharedStoriesState.storiesUploaded());
       }
     } catch (e) {
       emit(SharedStoriesState.storiesLoadingError(errorText: 'Ошибка: $e'));
@@ -158,7 +157,7 @@ class SharedStoriesBloc extends Bloc<SharedStoriesEvent, SharedStoriesState> {
 
     try {
       // if (userData?.uid?.isNotEmpty ?? false) {
-      //   await FirebaseFirestore.instance
+      //   await db
       //       .collection('sharedStories')
       //       .doc(userData!.uid!)
       //       .set(

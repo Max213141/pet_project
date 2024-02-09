@@ -6,13 +6,16 @@ import 'package:life_sync/entities/db_entities/db_entities.dart';
 import 'package:life_sync/screens/shared_stories/widgets/widgets.dart';
 import 'package:life_sync/utils/utils.dart';
 
+void _log(dynamic message) =>
+    Logger.projectLog(message, name: 'view_mode_body');
+
 class ViewModeBody extends StatefulWidget {
-  final List<SharedStory> sharedStories;
-  final String? uid;
+  final List<SharedStory> randomStories;
+  final String uid;
 
   const ViewModeBody({
     super.key,
-    required this.sharedStories,
+    required this.randomStories,
     required this.uid,
   });
   @override
@@ -30,7 +33,7 @@ class _ViewModeBodyState extends State<ViewModeBody> {
             // alignment: WrapAlignment.spaceBetween,
             spacing: 10,
             runSpacing: 5,
-            children: widget.sharedStories
+            children: widget.randomStories
                 .map(
                   (story) => GestureDetector(
                     onTap: () => showModalBottomSheet(
@@ -74,9 +77,9 @@ class _ViewModeBodyState extends State<ViewModeBody> {
           Center(
               child: ActionButton(
             onPressed: () {
+              _log('Load new random story button pressed');
               BlocProvider.of<SharedStoriesBloc>(context).add(
-                LoadRandomStoryEvent(
-                    iserUID: widget.uid ?? 'pEo04Rq6And1QOhyTaUOjkMczyy1'),
+                LoadRandomStoryEvent(iserUID: widget.uid),
               ); //TODO remove hardcode
             },
             title: 'R',

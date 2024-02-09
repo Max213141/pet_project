@@ -21,58 +21,25 @@ class SharedStoriesScreen extends StatefulWidget {
 class _SharedStoriesScreenState extends State<SharedStoriesScreen> {
   bool viewModeSelected = true;
   bool _showLoader = false;
+  late List<SharedStory> _userStories = [];
+  late List<SharedStory> _randomStories = [];
   late String uid;
   @override
   void initState() {
     Box<UserData> userDataBox = HiveStore().getUserDataBox();
     UserData? userData = userDataBox.getAt(0);
     uid = userData!.uid!;
-
+    // BlocProvider.of<SharedStoriesBloc>(context)
+    //     .add(LoadUserStoriesEvent(iserUID: uid));
+    BlocProvider.of<SharedStoriesBloc>(context)
+        .add(LoadRandomStoryEvent(iserUID: uid));
     super.initState();
   }
 
-  final List<SharedStory> sharedStories = [
-    const SharedStory(
-      title: 'Gaslighted',
-      description: 'He said I didn\'t done it before',
-    ),
-    const SharedStory(
-      title: 'Abused',
-      description: 'He is abuser',
-    ),
-    const SharedStory(
-      title: 'Stress',
-      description: 'He shouted on me',
-    ),
-    const SharedStory(
-      title: 'Lie',
-      description: 'He lied',
-    ),
-    const SharedStory(
-      title: 'Disappointment',
-      description: 'He lied',
-    ),
-    const SharedStory(
-      title: 'Disappointment',
-      description: 'He lied',
-    ),
-    const SharedStory(
-      title: 'Lie',
-      description: 'He lied',
-    ),
-    const SharedStory(
-      title: 'Lie',
-      description: 'He lied',
-    ),
-    const SharedStory(
-      title: 'Disappointment',
-      description: 'He lied',
-    ),
-    const SharedStory(
-      title: 'Lie',
-      description: 'He lied',
-    ),
-  ];
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -90,7 +57,10 @@ class _SharedStoriesScreenState extends State<SharedStoriesScreen> {
             });
           },
           storiesLoaded: (userStories, randomStories) {
+            _log('storiesLoaded: USER- $userStories, RANDOM - $randomStories');
             setState(() {
+              _userStories = userStories;
+              _randomStories = randomStories;
               _showLoader = !_showLoader;
             });
           },
@@ -109,11 +79,11 @@ class _SharedStoriesScreenState extends State<SharedStoriesScreen> {
               viewModeSelected
                   ? ViewModeBody(
                       uid: uid,
-                      sharedStories: sharedStories,
+                      randomStories: _randomStories,
                     )
                   : CreateModeBody(
                       uid: uid,
-                      userStories: sharedStories,
+                      userStories: _userStories,
                     ),
             ],
           ),

@@ -20,7 +20,9 @@ mixin _$SharedStoriesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String iserUID) loadRandomStory,
-    required TResult Function(String iserUID) loadUserStories,
+    required TResult Function(List<SharedStory>? randomStoriesList,
+            bool? emitLoading, String iserUID)
+        loadUserStories,
     required TResult Function(String iserUID, List<SharedStory> stories)
         uploadSharedStories,
     required TResult Function(int iserUID, SharedStory story) addNewStory,
@@ -30,7 +32,9 @@ mixin _$SharedStoriesEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String iserUID)? loadRandomStory,
-    TResult? Function(String iserUID)? loadUserStories,
+    TResult? Function(List<SharedStory>? randomStoriesList, bool? emitLoading,
+            String iserUID)?
+        loadUserStories,
     TResult? Function(String iserUID, List<SharedStory> stories)?
         uploadSharedStories,
     TResult? Function(int iserUID, SharedStory story)? addNewStory,
@@ -40,7 +44,9 @@ mixin _$SharedStoriesEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String iserUID)? loadRandomStory,
-    TResult Function(String iserUID)? loadUserStories,
+    TResult Function(List<SharedStory>? randomStoriesList, bool? emitLoading,
+            String iserUID)?
+        loadUserStories,
     TResult Function(String iserUID, List<SharedStory> stories)?
         uploadSharedStories,
     TResult Function(int iserUID, SharedStory story)? addNewStory,
@@ -163,7 +169,9 @@ class _$LoadRandomStoryEventImpl implements LoadRandomStoryEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String iserUID) loadRandomStory,
-    required TResult Function(String iserUID) loadUserStories,
+    required TResult Function(List<SharedStory>? randomStoriesList,
+            bool? emitLoading, String iserUID)
+        loadUserStories,
     required TResult Function(String iserUID, List<SharedStory> stories)
         uploadSharedStories,
     required TResult Function(int iserUID, SharedStory story) addNewStory,
@@ -176,7 +184,9 @@ class _$LoadRandomStoryEventImpl implements LoadRandomStoryEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String iserUID)? loadRandomStory,
-    TResult? Function(String iserUID)? loadUserStories,
+    TResult? Function(List<SharedStory>? randomStoriesList, bool? emitLoading,
+            String iserUID)?
+        loadUserStories,
     TResult? Function(String iserUID, List<SharedStory> stories)?
         uploadSharedStories,
     TResult? Function(int iserUID, SharedStory story)? addNewStory,
@@ -189,7 +199,9 @@ class _$LoadRandomStoryEventImpl implements LoadRandomStoryEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String iserUID)? loadRandomStory,
-    TResult Function(String iserUID)? loadUserStories,
+    TResult Function(List<SharedStory>? randomStoriesList, bool? emitLoading,
+            String iserUID)?
+        loadUserStories,
     TResult Function(String iserUID, List<SharedStory> stories)?
         uploadSharedStories,
     TResult Function(int iserUID, SharedStory story)? addNewStory,
@@ -260,7 +272,10 @@ abstract class _$$LoadUserStoriesEventImplCopyWith<$Res> {
           $Res Function(_$LoadUserStoriesEventImpl) then) =
       __$$LoadUserStoriesEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String iserUID});
+  $Res call(
+      {List<SharedStory>? randomStoriesList,
+      bool? emitLoading,
+      String iserUID});
 }
 
 /// @nodoc
@@ -274,9 +289,19 @@ class __$$LoadUserStoriesEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? randomStoriesList = freezed,
+    Object? emitLoading = freezed,
     Object? iserUID = null,
   }) {
     return _then(_$LoadUserStoriesEventImpl(
+      randomStoriesList: freezed == randomStoriesList
+          ? _value._randomStoriesList
+          : randomStoriesList // ignore: cast_nullable_to_non_nullable
+              as List<SharedStory>?,
+      emitLoading: freezed == emitLoading
+          ? _value.emitLoading
+          : emitLoading // ignore: cast_nullable_to_non_nullable
+              as bool?,
       iserUID: null == iserUID
           ? _value.iserUID
           : iserUID // ignore: cast_nullable_to_non_nullable
@@ -288,14 +313,31 @@ class __$$LoadUserStoriesEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadUserStoriesEventImpl implements LoadUserStoriesEvent {
-  const _$LoadUserStoriesEventImpl({required this.iserUID});
+  const _$LoadUserStoriesEventImpl(
+      {final List<SharedStory>? randomStoriesList,
+      this.emitLoading,
+      required this.iserUID})
+      : _randomStoriesList = randomStoriesList;
 
+  final List<SharedStory>? _randomStoriesList;
+  @override
+  List<SharedStory>? get randomStoriesList {
+    final value = _randomStoriesList;
+    if (value == null) return null;
+    if (_randomStoriesList is EqualUnmodifiableListView)
+      return _randomStoriesList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  final bool? emitLoading;
   @override
   final String iserUID;
 
   @override
   String toString() {
-    return 'SharedStoriesEvent.loadUserStories(iserUID: $iserUID)';
+    return 'SharedStoriesEvent.loadUserStories(randomStoriesList: $randomStoriesList, emitLoading: $emitLoading, iserUID: $iserUID)';
   }
 
   @override
@@ -303,11 +345,19 @@ class _$LoadUserStoriesEventImpl implements LoadUserStoriesEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadUserStoriesEventImpl &&
+            const DeepCollectionEquality()
+                .equals(other._randomStoriesList, _randomStoriesList) &&
+            (identical(other.emitLoading, emitLoading) ||
+                other.emitLoading == emitLoading) &&
             (identical(other.iserUID, iserUID) || other.iserUID == iserUID));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, iserUID);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_randomStoriesList),
+      emitLoading,
+      iserUID);
 
   @JsonKey(ignore: true)
   @override
@@ -321,33 +371,39 @@ class _$LoadUserStoriesEventImpl implements LoadUserStoriesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String iserUID) loadRandomStory,
-    required TResult Function(String iserUID) loadUserStories,
+    required TResult Function(List<SharedStory>? randomStoriesList,
+            bool? emitLoading, String iserUID)
+        loadUserStories,
     required TResult Function(String iserUID, List<SharedStory> stories)
         uploadSharedStories,
     required TResult Function(int iserUID, SharedStory story) addNewStory,
     required TResult Function(int iserUID, SharedStory story) removeStory,
   }) {
-    return loadUserStories(iserUID);
+    return loadUserStories(randomStoriesList, emitLoading, iserUID);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String iserUID)? loadRandomStory,
-    TResult? Function(String iserUID)? loadUserStories,
+    TResult? Function(List<SharedStory>? randomStoriesList, bool? emitLoading,
+            String iserUID)?
+        loadUserStories,
     TResult? Function(String iserUID, List<SharedStory> stories)?
         uploadSharedStories,
     TResult? Function(int iserUID, SharedStory story)? addNewStory,
     TResult? Function(int iserUID, SharedStory story)? removeStory,
   }) {
-    return loadUserStories?.call(iserUID);
+    return loadUserStories?.call(randomStoriesList, emitLoading, iserUID);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String iserUID)? loadRandomStory,
-    TResult Function(String iserUID)? loadUserStories,
+    TResult Function(List<SharedStory>? randomStoriesList, bool? emitLoading,
+            String iserUID)?
+        loadUserStories,
     TResult Function(String iserUID, List<SharedStory> stories)?
         uploadSharedStories,
     TResult Function(int iserUID, SharedStory story)? addNewStory,
@@ -355,7 +411,7 @@ class _$LoadUserStoriesEventImpl implements LoadUserStoriesEvent {
     required TResult orElse(),
   }) {
     if (loadUserStories != null) {
-      return loadUserStories(iserUID);
+      return loadUserStories(randomStoriesList, emitLoading, iserUID);
     }
     return orElse();
   }
@@ -402,9 +458,13 @@ class _$LoadUserStoriesEventImpl implements LoadUserStoriesEvent {
 }
 
 abstract class LoadUserStoriesEvent implements SharedStoriesEvent {
-  const factory LoadUserStoriesEvent({required final String iserUID}) =
-      _$LoadUserStoriesEventImpl;
+  const factory LoadUserStoriesEvent(
+      {final List<SharedStory>? randomStoriesList,
+      final bool? emitLoading,
+      required final String iserUID}) = _$LoadUserStoriesEventImpl;
 
+  List<SharedStory>? get randomStoriesList;
+  bool? get emitLoading;
   @override
   String get iserUID;
   @JsonKey(ignore: true)
@@ -495,7 +555,9 @@ class _$AddSharedStoriesEventImpl implements AddSharedStoriesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String iserUID) loadRandomStory,
-    required TResult Function(String iserUID) loadUserStories,
+    required TResult Function(List<SharedStory>? randomStoriesList,
+            bool? emitLoading, String iserUID)
+        loadUserStories,
     required TResult Function(String iserUID, List<SharedStory> stories)
         uploadSharedStories,
     required TResult Function(int iserUID, SharedStory story) addNewStory,
@@ -508,7 +570,9 @@ class _$AddSharedStoriesEventImpl implements AddSharedStoriesEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String iserUID)? loadRandomStory,
-    TResult? Function(String iserUID)? loadUserStories,
+    TResult? Function(List<SharedStory>? randomStoriesList, bool? emitLoading,
+            String iserUID)?
+        loadUserStories,
     TResult? Function(String iserUID, List<SharedStory> stories)?
         uploadSharedStories,
     TResult? Function(int iserUID, SharedStory story)? addNewStory,
@@ -521,7 +585,9 @@ class _$AddSharedStoriesEventImpl implements AddSharedStoriesEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String iserUID)? loadRandomStory,
-    TResult Function(String iserUID)? loadUserStories,
+    TResult Function(List<SharedStory>? randomStoriesList, bool? emitLoading,
+            String iserUID)?
+        loadUserStories,
     TResult Function(String iserUID, List<SharedStory> stories)?
         uploadSharedStories,
     TResult Function(int iserUID, SharedStory story)? addNewStory,
@@ -662,7 +728,9 @@ class _$AddNewStoryEventImpl implements AddNewStoryEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String iserUID) loadRandomStory,
-    required TResult Function(String iserUID) loadUserStories,
+    required TResult Function(List<SharedStory>? randomStoriesList,
+            bool? emitLoading, String iserUID)
+        loadUserStories,
     required TResult Function(String iserUID, List<SharedStory> stories)
         uploadSharedStories,
     required TResult Function(int iserUID, SharedStory story) addNewStory,
@@ -675,7 +743,9 @@ class _$AddNewStoryEventImpl implements AddNewStoryEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String iserUID)? loadRandomStory,
-    TResult? Function(String iserUID)? loadUserStories,
+    TResult? Function(List<SharedStory>? randomStoriesList, bool? emitLoading,
+            String iserUID)?
+        loadUserStories,
     TResult? Function(String iserUID, List<SharedStory> stories)?
         uploadSharedStories,
     TResult? Function(int iserUID, SharedStory story)? addNewStory,
@@ -688,7 +758,9 @@ class _$AddNewStoryEventImpl implements AddNewStoryEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String iserUID)? loadRandomStory,
-    TResult Function(String iserUID)? loadUserStories,
+    TResult Function(List<SharedStory>? randomStoriesList, bool? emitLoading,
+            String iserUID)?
+        loadUserStories,
     TResult Function(String iserUID, List<SharedStory> stories)?
         uploadSharedStories,
     TResult Function(int iserUID, SharedStory story)? addNewStory,
@@ -829,7 +901,9 @@ class _$RemoveStoryEventImpl implements RemoveStoryEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String iserUID) loadRandomStory,
-    required TResult Function(String iserUID) loadUserStories,
+    required TResult Function(List<SharedStory>? randomStoriesList,
+            bool? emitLoading, String iserUID)
+        loadUserStories,
     required TResult Function(String iserUID, List<SharedStory> stories)
         uploadSharedStories,
     required TResult Function(int iserUID, SharedStory story) addNewStory,
@@ -842,7 +916,9 @@ class _$RemoveStoryEventImpl implements RemoveStoryEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String iserUID)? loadRandomStory,
-    TResult? Function(String iserUID)? loadUserStories,
+    TResult? Function(List<SharedStory>? randomStoriesList, bool? emitLoading,
+            String iserUID)?
+        loadUserStories,
     TResult? Function(String iserUID, List<SharedStory> stories)?
         uploadSharedStories,
     TResult? Function(int iserUID, SharedStory story)? addNewStory,
@@ -855,7 +931,9 @@ class _$RemoveStoryEventImpl implements RemoveStoryEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String iserUID)? loadRandomStory,
-    TResult Function(String iserUID)? loadUserStories,
+    TResult Function(List<SharedStory>? randomStoriesList, bool? emitLoading,
+            String iserUID)?
+        loadUserStories,
     TResult Function(String iserUID, List<SharedStory> stories)?
         uploadSharedStories,
     TResult Function(int iserUID, SharedStory story)? addNewStory,

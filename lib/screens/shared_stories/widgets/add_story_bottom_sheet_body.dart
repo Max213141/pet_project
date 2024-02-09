@@ -7,7 +7,12 @@ import 'package:life_sync/entities/entities.dart';
 
 class AddStoryBottomSheetBody extends StatefulWidget {
   final String uid;
-  const AddStoryBottomSheetBody({super.key, required this.uid});
+  final List<SharedStory> userStories;
+  const AddStoryBottomSheetBody({
+    super.key,
+    required this.uid,
+    required this.userStories,
+  });
 
   @override
   State<AddStoryBottomSheetBody> createState() =>
@@ -67,17 +72,18 @@ class _AddStoryBottomSheetBodyState extends State<AddStoryBottomSheetBody> {
           const SizedBox(height: 15),
           ActionButton(
             onPressed: () {
+              List<SharedStory> modifiedList = List.from(widget.userStories);
+              modifiedList.add(SharedStory(
+                title: titleController.text,
+                description: descriptionController.text,
+              ));
               BlocProvider.of<SharedStoriesBloc>(context).add(
                 AddSharedStoriesEvent(
                   iserUID: widget.uid,
-                  stories: [
-                    SharedStory(
-                      title: titleController.text,
-                      description: descriptionController.text,
-                    )
-                  ],
+                  stories: modifiedList,
                 ),
               );
+
               GoRouter.of(context).pop();
             },
             title: 'Create',

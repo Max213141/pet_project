@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:life_sync/common_widgets/widgets.dart';
 import 'package:life_sync/entities/db_entities/shared_story.dart';
-import 'package:life_sync/screens/breathing_screen/widgets/widgets.dart';
 import 'package:life_sync/screens/shared_stories/widgets/widgets.dart';
 import 'package:life_sync/utils/utils.dart';
 
@@ -23,17 +22,17 @@ class _CreateModeBodyState extends State<CreateModeBody> {
   Widget build(BuildContext context) {
     return widget.userStories.isEmpty
         ? Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 'You have no stories, add some...',
-                style: MentalHealthTextStyles.text.signikaPrimaryFontF22N,
+                style: MentalHealthTextStyles.text.signikaPrimaryFontF22Black,
               ),
               const SizedBox(
                 height: 10,
               ),
               ActionButton(
                 onPressed: () => showModalBottomSheet(
-                  useSafeArea: true,
                   showDragHandle: true,
                   isScrollControlled: true,
                   shape: const RoundedRectangleBorder(
@@ -44,7 +43,14 @@ class _CreateModeBodyState extends State<CreateModeBody> {
                   ),
                   context: context,
                   builder: (context) {
-                    return const CategoryItemBottomSheetBody();
+                    return Padding(
+                      padding: EdgeInsets.only(
+                          bottom: MediaQuery.of(context).viewInsets.bottom),
+                      child: AddStoryBottomSheetBody(
+                        userStories: [],
+                        uid: widget.uid,
+                      ),
+                    );
                   },
                 ),
                 title: 'Add Story',
@@ -120,6 +126,7 @@ class _CreateModeBodyState extends State<CreateModeBody> {
                       padding: EdgeInsets.only(
                           bottom: MediaQuery.of(context).viewInsets.bottom),
                       child: AddStoryBottomSheetBody(
+                        userStories: widget.userStories,
                         uid: widget.uid,
                       ),
                     );

@@ -13,4 +13,11 @@ class SharedStory {
       description: json['description'] as String,
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      "title": title,
+      "description": description,
+    };
+  }
 }

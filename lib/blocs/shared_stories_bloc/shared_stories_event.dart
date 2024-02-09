@@ -7,6 +7,8 @@ class SharedStoriesEvent with _$SharedStoriesEvent {
   }) = LoadRandomStoryEvent;
 
   const factory SharedStoriesEvent.loadUserStories({
+    List<SharedStory>? randomStoriesList,
+    bool? emitLoading,
     required String iserUID,
   }) = LoadUserStoriesEvent;
 
