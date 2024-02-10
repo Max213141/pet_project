@@ -39,11 +39,6 @@ class _SharedStoriesModePickerState extends State<SharedStoriesModePicker> {
                 GestureDetector(
                   onTap: () {
                     widget.switchMode();
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text("Switched to cteation mode"),
-                      ),
-                    );
                   },
                   child: MentalHealthSvgPicture(
                     picture: widget.viewModeSelected
@@ -55,12 +50,6 @@ class _SharedStoriesModePickerState extends State<SharedStoriesModePicker> {
                 GestureDetector(
                   onTap: () {
                     widget.switchMode();
-
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text("Switched to viewing mode"),
-                      ),
-                    );
                   },
                   child: MentalHealthSvgPicture(
                     picture: widget.viewModeSelected

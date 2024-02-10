@@ -4,6 +4,7 @@ import 'package:life_sync/utils/utils.dart';
 class ActionButton extends StatelessWidget {
   final String title;
   final double? width;
+  final Color? buttonColor;
   // final BuildContext context;
   final void Function() onPressed;
 
@@ -12,6 +13,7 @@ class ActionButton extends StatelessWidget {
     required this.onPressed,
     required this.title,
     this.width,
+    this.buttonColor,
   });
 
   @override
@@ -28,8 +30,17 @@ class ActionButton extends StatelessWidget {
               // side: BorderSide(color: Colors.red)
             ),
           ),
-          backgroundColor:
-              MaterialStateProperty.all<Color>(AppColor.primaryBackgroundColor),
+          backgroundColor: MaterialStateProperty.all<Color>(
+              buttonColor ?? AppColor.primaryBackgroundColor),
+          surfaceTintColor: MaterialStateProperty.all<Color>(
+              buttonColor ?? AppColor.primaryBackgroundColor),
+          side: MaterialStateProperty.all<BorderSide>(
+            const BorderSide(
+              width: 1,
+              color: AppColor.habbitsTileBackground,
+            ),
+          ),
+          elevation: MaterialStateProperty.all<double>(2.0),
         ),
         child: Text(
           title,

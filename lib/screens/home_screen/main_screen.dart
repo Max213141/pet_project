@@ -18,6 +18,7 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
+  double navBarHeight = 0;
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -87,13 +88,11 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.primaryColor,
-
       appBar: CustomAppBar(
         isHomeScreen: _selectedIndex == 0,
         title: getAppBarTitle(),
         preferredSize: const Size.fromHeight(56),
       ),
-
       floatingActionButton: ElevatedButton(
         onPressed: () => showDialog(
           context: context,
@@ -103,23 +102,13 @@ class _MainScreenState extends State<MainScreen> {
         ),
         child: const Text('M'),
       ),
-      bottomNavigationBar: BottomNavBar(
-        selectedIndex: _selectedIndex,
-        onPressed: _onItemTapped,
-      ),
-      // navigationBar: CupertinoNavigationBar(
-      //     middle: const Text('Switch theme'),
-      //     trailing: CupertinoSwitch(
-      //       value: isDarkTheme,
-      //       onChanged: (value) {
-      //         setState(() {
-      //           isDarkTheme = value;
-      //         });
-      //         _log('Is dark theme - $value');
-      //         BlocProvider.of<ThemeBloc>(context)
-      //             .add(ChangeTheme(isDarkTheme: isDarkTheme));
-      //       },
-      //     )),
+      bottomNavigationBar: LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints constraints) {
+        return BottomNavBar(
+          selectedIndex: _selectedIndex,
+          onPressed: _onItemTapped,
+        );
+      }),
       body: _screens.elementAt(_selectedIndex),
     );
   }

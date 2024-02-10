@@ -12,7 +12,9 @@ import 'package:life_sync/utils/utils.dart';
 void _log(dynamic message) => Logger.projectLog(message, name: 'wall_screen');
 
 class SharedStoriesScreen extends StatefulWidget {
-  const SharedStoriesScreen({super.key});
+  const SharedStoriesScreen({
+    super.key,
+  });
 
   @override
   State<SharedStoriesScreen> createState() => _SharedStoriesScreenState();
@@ -21,6 +23,7 @@ class SharedStoriesScreen extends StatefulWidget {
 class _SharedStoriesScreenState extends State<SharedStoriesScreen> {
   bool viewModeSelected = true;
   bool _showLoader = false;
+
   late List<SharedStory> _userStories = [];
   late List<SharedStory> _randomStories = [];
   late String uid;
@@ -28,7 +31,7 @@ class _SharedStoriesScreenState extends State<SharedStoriesScreen> {
   void initState() {
     Box<UserData> userDataBox = HiveStore().getUserDataBox();
     UserData? userData = userDataBox.getAt(0);
-    uid = userData!.uid!;
+    uid = userData?.uid ?? 'qwr213124214';
     // BlocProvider.of<SharedStoriesBloc>(context)
     //     .add(LoadUserStoriesEvent(iserUID: uid));
     BlocProvider.of<SharedStoriesBloc>(context)
@@ -100,3 +103,47 @@ class _SharedStoriesScreenState extends State<SharedStoriesScreen> {
     );
   }
 }
+
+
+// [
+//     const SharedStory(
+//       title: 'Gaslighted',
+//       description: 'He said I didn\'t done it before',
+//     ),
+//     const SharedStory(
+//       title: 'Abused',
+//       description: 'He is abuser',
+//     ),
+//     const SharedStory(
+//       title: 'Stress',
+//       description: 'He shouted on me',
+//     ),
+//     const SharedStory(
+//       title: 'Lie',
+//       description: 'He lied',
+//     ),
+//     const SharedStory(
+//       title: 'Disappointment',
+//       description: 'He lied',
+//     ),
+//     const SharedStory(
+//       title: 'Disappointment',
+//       description: 'He lied',
+//     ),
+//     const SharedStory(
+//       title: 'Lie',
+//       description: 'He lied',
+//     ),
+//     const SharedStory(
+//       title: 'Lie',
+//       description: 'He lied',
+//     ),
+//     const SharedStory(
+//       title: 'Disappointment',
+//       description: 'He lied',
+//     ),
+//     const SharedStory(
+//       title: 'Lie',
+//       description: 'He lied',
+//     ),
+//   ];
