@@ -31,7 +31,7 @@ class _SharedStoriesScreenState extends State<SharedStoriesScreen> {
   void initState() {
     Box<UserData> userDataBox = HiveStore().getUserDataBox();
     UserData? userData = userDataBox.getAt(0);
-    uid = userData?.uid ?? 'qwr213124214';
+    uid = userData?.uid ?? 'pEo04Rq6And1QOhyTaUOjkMczyy1';
     // BlocProvider.of<SharedStoriesBloc>(context)
     //     .add(LoadUserStoriesEvent(iserUID: uid));
     BlocProvider.of<SharedStoriesBloc>(context)

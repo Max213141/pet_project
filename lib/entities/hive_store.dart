@@ -9,9 +9,11 @@ void _log(dynamic message) => Logger.projectLog(message, name: 'hice_store');
 class HiveStore {
   Future<void> init() async {
     final directory = await getApplicationDocumentsDirectory();
-    await Hive.initFlutter(directory.path);
-    Hive.registerAdapter(AppPreferencesAdapter());
-    Hive.registerAdapter(UserDataAdapter());
+    if (!Hive.isAdapterRegistered(0)) {
+      await Hive.initFlutter(directory.path);
+      Hive.registerAdapter(AppPreferencesAdapter());
+      Hive.registerAdapter(UserDataAdapter());
+    }
   }
 
   Future<void> setInitialData() async {
