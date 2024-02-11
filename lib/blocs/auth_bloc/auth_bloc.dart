@@ -100,6 +100,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           if (userData != null) {
             userData.userName = data.name;
             userData.uid = uid;
+            await userDataBox.put(0, userData);
           }
         } else {
           _log('Smth went wrong with name'); //TODO implement error handling

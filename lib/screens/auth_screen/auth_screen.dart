@@ -36,7 +36,7 @@ class AuthScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              Expanded(child: AuthScreenBody()),
+              const Expanded(child: AuthScreenBody()),
               Align(
                 alignment: Alignment.centerLeft,
                 child: SizedBox(

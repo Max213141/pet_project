@@ -69,6 +69,7 @@ class _AuthModalBodyState extends State<AuthModalBody> {
             });
       },
       child: Scaffold(
+        backgroundColor: Colors.transparent,
         body: Align(
           alignment: Alignment.center,
           child: ScrollConfiguration(
