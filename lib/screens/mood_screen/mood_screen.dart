@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:life_sync/blocs/blocs.dart';
 import 'package:life_sync/common_widgets/widgets.dart';
+import 'package:life_sync/entities/hive_entities/hive_entities.dart';
+import 'package:life_sync/entities/hive_store.dart';
 import 'package:life_sync/screens/mood_screen/widgets/widgets.dart';
 import 'package:life_sync/utils/utils.dart';
 
@@ -13,6 +18,19 @@ class MoodScreen extends StatefulWidget {
 }
 
 class _MoodScreenState extends State<MoodScreen> {
+  late String uid;
+
+  @override
+  void initState() {
+    Box<UserData> userDataBox = HiveStore().getUserDataBox();
+    UserData? userData = userDataBox.getAt(0);
+    uid = userData?.uid ?? 'pEo04Rq6And1QOhyTaUOjkMczyy1';
+    // BlocProvider.of<SharedStoriesBloc>(context)
+    //     .add(LoadUserStoriesEvent(userUID: uid));
+    BlocProvider.of<MoodBloc>(context).add(LoadUserMoodData(userUID: uid));
+    super.initState();
+  }
+
   @override
   void dispose() {
     super.dispose();

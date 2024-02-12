@@ -290,7 +290,11 @@ class MyApp extends StatelessWidget {
               BlocProvider<ThemeBloc>(create: (context) => ThemeBloc()),
               BlocProvider<AuthBloc>(create: (context) => AuthBloc(auth: auth)),
               BlocProvider<SharedStoriesBloc>(
-                  create: (context) => SharedStoriesBloc()),
+                create: (context) => SharedStoriesBloc(),
+              ),
+              BlocProvider<MoodBloc>(
+                create: (context) => MoodBloc(),
+              ),
             ],
             child: BlocBuilder<ThemeBloc, ThemeState>(
               builder: (context, state) {

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -15,16 +17,18 @@ class SharedStoriesBloc extends Bloc<SharedStoriesEvent, SharedStoriesState> {
   FirebaseFirestore db = FirebaseFirestore.instance;
 
   SharedStoriesBloc() : super(const _Initial()) {
-    on<SharedStoriesEvent>((events, emit) async {
-      await events.map(
-        loadRandomStory: (event) async => await _loadRandomStory(event, emit),
-        loadUserStories: (event) async => await _loadUserStories(event, emit),
-        uploadSharedStories: (event) async =>
-            await _uploadSharedStories(event, emit),
-        addNewStory: (event) async => await _addNewStory(event, emit),
-        removeStory: (event) async => await _removeStory(event, emit),
-      );
-    });
+    on<SharedStoriesEvent>(
+      (events, emit) async {
+        await events.map(
+          loadRandomStory: (event) async => await _loadRandomStory(event, emit),
+          loadUserStories: (event) async => await _loadUserStories(event, emit),
+          uploadSharedStories: (event) async =>
+              await _uploadSharedStories(event, emit),
+          addNewStory: (event) async => await _addNewStory(event, emit),
+          removeStory: (event) async => await _removeStory(event, emit),
+        );
+      },
+    );
   }
 
   _loadRandomStory(
@@ -32,7 +36,10 @@ class SharedStoriesBloc extends Bloc<SharedStoriesEvent, SharedStoriesState> {
     Emitter<SharedStoriesState> emit,
   ) async {
     List<SharedStory> randomStoriesList = [];
-    String uid = event.iserUID;
+    String uid = event.userUID;
+    List<List<dynamic>> allSharedStories = [];
+    var random = Random();
+
     emit(const SharedStoriesState.loading());
 
     try {
@@ -41,22 +48,24 @@ class SharedStoriesBloc extends Bloc<SharedStoriesEvent, SharedStoriesState> {
           .where('uid', isNotEqualTo: uid)
           .get();
 
-      _log("$querySnapshot");
-
+      // _log("$querySnapshot");
+      // _log("loaded random docs - ${querySnapshot.docs}");
       for (var docSnapshot in querySnapshot.docs) {
         _log('${docSnapshot.id} => ${docSnapshot.data()}');
         final Map<String, dynamic> data = docSnapshot.data();
         final List<dynamic> sharedStories = data['userStories'];
-        randomStoriesList = sharedStories
-            .map(
-              (story) => SharedStory.fromJson(story),
-            )
-            .toList();
-        _log('Parsed list - $randomStoriesList');
+        allSharedStories.add(sharedStories);
       }
+      var randomNumber = random.nextInt(allSharedStories.length);
+      randomStoriesList = allSharedStories[randomNumber]
+          .map(
+            (story) => SharedStory.fromJson(story),
+          )
+          .toList();
+      // _log('Parsed list - $randomStoriesList');
       add(
         LoadUserStoriesEvent(
-          iserUID: uid,
+          userUID: uid,
           randomStoriesList: randomStoriesList,
           emitLoading: false,
         ),
@@ -74,8 +83,7 @@ class SharedStoriesBloc extends Bloc<SharedStoriesEvent, SharedStoriesState> {
     LoadUserStoriesEvent event,
     Emitter<SharedStoriesState> emit,
   ) async {
-    String uid = event.iserUID;
-    _log('emit loading -${event.emitLoading}');
+    String uid = event.userUID;
     if (event.emitLoading ?? true) emit(const SharedStoriesState.loading());
 
     try {
@@ -83,7 +91,6 @@ class SharedStoriesBloc extends Bloc<SharedStoriesEvent, SharedStoriesState> {
           await db.collection('sharedStories').doc(uid).get();
       if (snapshot.exists) {
         final List<dynamic> dbData = snapshot.get('userStories');
-        _log('$dbData');
         List<SharedStory> sharedStories = dbData
             .map(
               (data) => SharedStory.fromJson(data),
@@ -110,7 +117,7 @@ class SharedStoriesBloc extends Bloc<SharedStoriesEvent, SharedStoriesState> {
     AddSharedStoriesEvent event,
     Emitter<SharedStoriesState> emit,
   ) async {
-    String uid = event.iserUID;
+    String uid = event.userUID;
     emit(const SharedStoriesState.loading());
 
     try {
@@ -127,7 +134,7 @@ class SharedStoriesBloc extends Bloc<SharedStoriesEvent, SharedStoriesState> {
                 .toList(),
           },
         );
-        add(LoadUserStoriesEvent(iserUID: uid));
+        add(LoadUserStoriesEvent(userUID: uid));
 
         emit(const SharedStoriesState.storiesUploaded());
       } else {
@@ -142,7 +149,7 @@ class SharedStoriesBloc extends Bloc<SharedStoriesEvent, SharedStoriesState> {
             'uid': uid,
           },
         );
-        add(LoadUserStoriesEvent(iserUID: uid));
+        add(LoadUserStoriesEvent(userUID: uid));
         emit(const SharedStoriesState.storiesUploaded());
       }
     } catch (e) {

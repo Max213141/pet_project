@@ -79,7 +79,7 @@ class _AddStoryBottomSheetBodyState extends State<AddStoryBottomSheetBody> {
               ));
               BlocProvider.of<SharedStoriesBloc>(context).add(
                 AddSharedStoriesEvent(
-                  iserUID: widget.uid,
+                  userUID: widget.uid,
                   stories: modifiedList,
                 ),
               );

@@ -12,7 +12,7 @@ class MoodCarouselPicker extends StatefulWidget {
 }
 
 class _MoodCarouselPickerState extends State<MoodCarouselPicker> {
-  String selectedEmotion = 'Bored';
+  String? selectedEmotion;
   final List<Emotion> emotions = const [
     Emotion(
       emotionTitle: 'Angry',
@@ -69,7 +69,7 @@ class _MoodCarouselPickerState extends State<MoodCarouselPicker> {
                               selectedEmotion == emotion.emotionTitle ? 80 : 60,
                           child: MentalHealthSvgPicture(
                             picture: emotion.picturePath,
-                            fit: BoxFit.fill,
+                            fit: BoxFit.contain,
                           ),
                         ),
                       ),

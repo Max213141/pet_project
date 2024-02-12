@@ -85,7 +85,7 @@ class _ViewModeBodyState extends State<ViewModeBody> {
                 onPressed: () {
                   _log('Load new random story button pressed');
                   BlocProvider.of<SharedStoriesBloc>(context).add(
-                    LoadRandomStoryEvent(iserUID: widget.uid),
+                    LoadRandomStoryEvent(userUID: widget.uid),
                   ); //TODO remove hardcode
                 },
                 size: 100,

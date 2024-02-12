@@ -33,9 +33,9 @@ class _SharedStoriesScreenState extends State<SharedStoriesScreen> {
     UserData? userData = userDataBox.getAt(0);
     uid = userData?.uid ?? 'pEo04Rq6And1QOhyTaUOjkMczyy1';
     // BlocProvider.of<SharedStoriesBloc>(context)
-    //     .add(LoadUserStoriesEvent(iserUID: uid));
+    //     .add(LoadUserStoriesEvent(userUID: uid));
     BlocProvider.of<SharedStoriesBloc>(context)
-        .add(LoadRandomStoryEvent(iserUID: uid));
+        .add(LoadRandomStoryEvent(userUID: uid));
     super.initState();
   }
 

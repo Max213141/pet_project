@@ -16,41 +16,41 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SharedStoriesEvent {
-  Object get iserUID => throw _privateConstructorUsedError;
+  Object get userUID => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String iserUID) loadRandomStory,
+    required TResult Function(String userUID) loadRandomStory,
     required TResult Function(List<SharedStory>? randomStoriesList,
-            bool? emitLoading, String iserUID)
+            bool? emitLoading, String userUID)
         loadUserStories,
-    required TResult Function(String iserUID, List<SharedStory> stories)
+    required TResult Function(String userUID, List<SharedStory> stories)
         uploadSharedStories,
-    required TResult Function(int iserUID, SharedStory story) addNewStory,
-    required TResult Function(int iserUID, SharedStory story) removeStory,
+    required TResult Function(int userUID, SharedStory story) addNewStory,
+    required TResult Function(int userUID, SharedStory story) removeStory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String iserUID)? loadRandomStory,
+    TResult? Function(String userUID)? loadRandomStory,
     TResult? Function(List<SharedStory>? randomStoriesList, bool? emitLoading,
-            String iserUID)?
+            String userUID)?
         loadUserStories,
-    TResult? Function(String iserUID, List<SharedStory> stories)?
+    TResult? Function(String userUID, List<SharedStory> stories)?
         uploadSharedStories,
-    TResult? Function(int iserUID, SharedStory story)? addNewStory,
-    TResult? Function(int iserUID, SharedStory story)? removeStory,
+    TResult? Function(int userUID, SharedStory story)? addNewStory,
+    TResult? Function(int userUID, SharedStory story)? removeStory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String iserUID)? loadRandomStory,
+    TResult Function(String userUID)? loadRandomStory,
     TResult Function(List<SharedStory>? randomStoriesList, bool? emitLoading,
-            String iserUID)?
+            String userUID)?
         loadUserStories,
-    TResult Function(String iserUID, List<SharedStory> stories)?
+    TResult Function(String userUID, List<SharedStory> stories)?
         uploadSharedStories,
-    TResult Function(int iserUID, SharedStory story)? addNewStory,
-    TResult Function(int iserUID, SharedStory story)? removeStory,
+    TResult Function(int userUID, SharedStory story)? addNewStory,
+    TResult Function(int userUID, SharedStory story)? removeStory,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -108,7 +108,7 @@ abstract class _$$LoadRandomStoryEventImplCopyWith<$Res> {
           $Res Function(_$LoadRandomStoryEventImpl) then) =
       __$$LoadRandomStoryEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String iserUID});
+  $Res call({String userUID});
 }
 
 /// @nodoc
@@ -122,12 +122,12 @@ class __$$LoadRandomStoryEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? iserUID = null,
+    Object? userUID = null,
   }) {
     return _then(_$LoadRandomStoryEventImpl(
-      iserUID: null == iserUID
-          ? _value.iserUID
-          : iserUID // ignore: cast_nullable_to_non_nullable
+      userUID: null == userUID
+          ? _value.userUID
+          : userUID // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -136,14 +136,14 @@ class __$$LoadRandomStoryEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadRandomStoryEventImpl implements LoadRandomStoryEvent {
-  const _$LoadRandomStoryEventImpl({required this.iserUID});
+  const _$LoadRandomStoryEventImpl({required this.userUID});
 
   @override
-  final String iserUID;
+  final String userUID;
 
   @override
   String toString() {
-    return 'SharedStoriesEvent.loadRandomStory(iserUID: $iserUID)';
+    return 'SharedStoriesEvent.loadRandomStory(userUID: $userUID)';
   }
 
   @override
@@ -151,11 +151,11 @@ class _$LoadRandomStoryEventImpl implements LoadRandomStoryEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadRandomStoryEventImpl &&
-            (identical(other.iserUID, iserUID) || other.iserUID == iserUID));
+            (identical(other.userUID, userUID) || other.userUID == userUID));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, iserUID);
+  int get hashCode => Object.hash(runtimeType, userUID);
 
   @JsonKey(ignore: true)
   @override
@@ -168,48 +168,48 @@ class _$LoadRandomStoryEventImpl implements LoadRandomStoryEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String iserUID) loadRandomStory,
+    required TResult Function(String userUID) loadRandomStory,
     required TResult Function(List<SharedStory>? randomStoriesList,
-            bool? emitLoading, String iserUID)
+            bool? emitLoading, String userUID)
         loadUserStories,
-    required TResult Function(String iserUID, List<SharedStory> stories)
+    required TResult Function(String userUID, List<SharedStory> stories)
         uploadSharedStories,
-    required TResult Function(int iserUID, SharedStory story) addNewStory,
-    required TResult Function(int iserUID, SharedStory story) removeStory,
+    required TResult Function(int userUID, SharedStory story) addNewStory,
+    required TResult Function(int userUID, SharedStory story) removeStory,
   }) {
-    return loadRandomStory(iserUID);
+    return loadRandomStory(userUID);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String iserUID)? loadRandomStory,
+    TResult? Function(String userUID)? loadRandomStory,
     TResult? Function(List<SharedStory>? randomStoriesList, bool? emitLoading,
-            String iserUID)?
+            String userUID)?
         loadUserStories,
-    TResult? Function(String iserUID, List<SharedStory> stories)?
+    TResult? Function(String userUID, List<SharedStory> stories)?
         uploadSharedStories,
-    TResult? Function(int iserUID, SharedStory story)? addNewStory,
-    TResult? Function(int iserUID, SharedStory story)? removeStory,
+    TResult? Function(int userUID, SharedStory story)? addNewStory,
+    TResult? Function(int userUID, SharedStory story)? removeStory,
   }) {
-    return loadRandomStory?.call(iserUID);
+    return loadRandomStory?.call(userUID);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String iserUID)? loadRandomStory,
+    TResult Function(String userUID)? loadRandomStory,
     TResult Function(List<SharedStory>? randomStoriesList, bool? emitLoading,
-            String iserUID)?
+            String userUID)?
         loadUserStories,
-    TResult Function(String iserUID, List<SharedStory> stories)?
+    TResult Function(String userUID, List<SharedStory> stories)?
         uploadSharedStories,
-    TResult Function(int iserUID, SharedStory story)? addNewStory,
-    TResult Function(int iserUID, SharedStory story)? removeStory,
+    TResult Function(int userUID, SharedStory story)? addNewStory,
+    TResult Function(int userUID, SharedStory story)? removeStory,
     required TResult orElse(),
   }) {
     if (loadRandomStory != null) {
-      return loadRandomStory(iserUID);
+      return loadRandomStory(userUID);
     }
     return orElse();
   }
@@ -256,11 +256,11 @@ class _$LoadRandomStoryEventImpl implements LoadRandomStoryEvent {
 }
 
 abstract class LoadRandomStoryEvent implements SharedStoriesEvent {
-  const factory LoadRandomStoryEvent({required final String iserUID}) =
+  const factory LoadRandomStoryEvent({required final String userUID}) =
       _$LoadRandomStoryEventImpl;
 
   @override
-  String get iserUID;
+  String get userUID;
   @JsonKey(ignore: true)
   _$$LoadRandomStoryEventImplCopyWith<_$LoadRandomStoryEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -275,7 +275,7 @@ abstract class _$$LoadUserStoriesEventImplCopyWith<$Res> {
   $Res call(
       {List<SharedStory>? randomStoriesList,
       bool? emitLoading,
-      String iserUID});
+      String userUID});
 }
 
 /// @nodoc
@@ -291,7 +291,7 @@ class __$$LoadUserStoriesEventImplCopyWithImpl<$Res>
   $Res call({
     Object? randomStoriesList = freezed,
     Object? emitLoading = freezed,
-    Object? iserUID = null,
+    Object? userUID = null,
   }) {
     return _then(_$LoadUserStoriesEventImpl(
       randomStoriesList: freezed == randomStoriesList
@@ -302,9 +302,9 @@ class __$$LoadUserStoriesEventImplCopyWithImpl<$Res>
           ? _value.emitLoading
           : emitLoading // ignore: cast_nullable_to_non_nullable
               as bool?,
-      iserUID: null == iserUID
-          ? _value.iserUID
-          : iserUID // ignore: cast_nullable_to_non_nullable
+      userUID: null == userUID
+          ? _value.userUID
+          : userUID // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -316,7 +316,7 @@ class _$LoadUserStoriesEventImpl implements LoadUserStoriesEvent {
   const _$LoadUserStoriesEventImpl(
       {final List<SharedStory>? randomStoriesList,
       this.emitLoading,
-      required this.iserUID})
+      required this.userUID})
       : _randomStoriesList = randomStoriesList;
 
   final List<SharedStory>? _randomStoriesList;
@@ -333,11 +333,11 @@ class _$LoadUserStoriesEventImpl implements LoadUserStoriesEvent {
   @override
   final bool? emitLoading;
   @override
-  final String iserUID;
+  final String userUID;
 
   @override
   String toString() {
-    return 'SharedStoriesEvent.loadUserStories(randomStoriesList: $randomStoriesList, emitLoading: $emitLoading, iserUID: $iserUID)';
+    return 'SharedStoriesEvent.loadUserStories(randomStoriesList: $randomStoriesList, emitLoading: $emitLoading, userUID: $userUID)';
   }
 
   @override
@@ -349,7 +349,7 @@ class _$LoadUserStoriesEventImpl implements LoadUserStoriesEvent {
                 .equals(other._randomStoriesList, _randomStoriesList) &&
             (identical(other.emitLoading, emitLoading) ||
                 other.emitLoading == emitLoading) &&
-            (identical(other.iserUID, iserUID) || other.iserUID == iserUID));
+            (identical(other.userUID, userUID) || other.userUID == userUID));
   }
 
   @override
@@ -357,7 +357,7 @@ class _$LoadUserStoriesEventImpl implements LoadUserStoriesEvent {
       runtimeType,
       const DeepCollectionEquality().hash(_randomStoriesList),
       emitLoading,
-      iserUID);
+      userUID);
 
   @JsonKey(ignore: true)
   @override
@@ -370,48 +370,48 @@ class _$LoadUserStoriesEventImpl implements LoadUserStoriesEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String iserUID) loadRandomStory,
+    required TResult Function(String userUID) loadRandomStory,
     required TResult Function(List<SharedStory>? randomStoriesList,
-            bool? emitLoading, String iserUID)
+            bool? emitLoading, String userUID)
         loadUserStories,
-    required TResult Function(String iserUID, List<SharedStory> stories)
+    required TResult Function(String userUID, List<SharedStory> stories)
         uploadSharedStories,
-    required TResult Function(int iserUID, SharedStory story) addNewStory,
-    required TResult Function(int iserUID, SharedStory story) removeStory,
+    required TResult Function(int userUID, SharedStory story) addNewStory,
+    required TResult Function(int userUID, SharedStory story) removeStory,
   }) {
-    return loadUserStories(randomStoriesList, emitLoading, iserUID);
+    return loadUserStories(randomStoriesList, emitLoading, userUID);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String iserUID)? loadRandomStory,
+    TResult? Function(String userUID)? loadRandomStory,
     TResult? Function(List<SharedStory>? randomStoriesList, bool? emitLoading,
-            String iserUID)?
+            String userUID)?
         loadUserStories,
-    TResult? Function(String iserUID, List<SharedStory> stories)?
+    TResult? Function(String userUID, List<SharedStory> stories)?
         uploadSharedStories,
-    TResult? Function(int iserUID, SharedStory story)? addNewStory,
-    TResult? Function(int iserUID, SharedStory story)? removeStory,
+    TResult? Function(int userUID, SharedStory story)? addNewStory,
+    TResult? Function(int userUID, SharedStory story)? removeStory,
   }) {
-    return loadUserStories?.call(randomStoriesList, emitLoading, iserUID);
+    return loadUserStories?.call(randomStoriesList, emitLoading, userUID);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String iserUID)? loadRandomStory,
+    TResult Function(String userUID)? loadRandomStory,
     TResult Function(List<SharedStory>? randomStoriesList, bool? emitLoading,
-            String iserUID)?
+            String userUID)?
         loadUserStories,
-    TResult Function(String iserUID, List<SharedStory> stories)?
+    TResult Function(String userUID, List<SharedStory> stories)?
         uploadSharedStories,
-    TResult Function(int iserUID, SharedStory story)? addNewStory,
-    TResult Function(int iserUID, SharedStory story)? removeStory,
+    TResult Function(int userUID, SharedStory story)? addNewStory,
+    TResult Function(int userUID, SharedStory story)? removeStory,
     required TResult orElse(),
   }) {
     if (loadUserStories != null) {
-      return loadUserStories(randomStoriesList, emitLoading, iserUID);
+      return loadUserStories(randomStoriesList, emitLoading, userUID);
     }
     return orElse();
   }
@@ -461,12 +461,12 @@ abstract class LoadUserStoriesEvent implements SharedStoriesEvent {
   const factory LoadUserStoriesEvent(
       {final List<SharedStory>? randomStoriesList,
       final bool? emitLoading,
-      required final String iserUID}) = _$LoadUserStoriesEventImpl;
+      required final String userUID}) = _$LoadUserStoriesEventImpl;
 
   List<SharedStory>? get randomStoriesList;
   bool? get emitLoading;
   @override
-  String get iserUID;
+  String get userUID;
   @JsonKey(ignore: true)
   _$$LoadUserStoriesEventImplCopyWith<_$LoadUserStoriesEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -479,7 +479,7 @@ abstract class _$$AddSharedStoriesEventImplCopyWith<$Res> {
           $Res Function(_$AddSharedStoriesEventImpl) then) =
       __$$AddSharedStoriesEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String iserUID, List<SharedStory> stories});
+  $Res call({String userUID, List<SharedStory> stories});
 }
 
 /// @nodoc
@@ -493,13 +493,13 @@ class __$$AddSharedStoriesEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? iserUID = null,
+    Object? userUID = null,
     Object? stories = null,
   }) {
     return _then(_$AddSharedStoriesEventImpl(
-      iserUID: null == iserUID
-          ? _value.iserUID
-          : iserUID // ignore: cast_nullable_to_non_nullable
+      userUID: null == userUID
+          ? _value.userUID
+          : userUID // ignore: cast_nullable_to_non_nullable
               as String,
       stories: null == stories
           ? _value._stories
@@ -513,11 +513,11 @@ class __$$AddSharedStoriesEventImplCopyWithImpl<$Res>
 
 class _$AddSharedStoriesEventImpl implements AddSharedStoriesEvent {
   const _$AddSharedStoriesEventImpl(
-      {required this.iserUID, required final List<SharedStory> stories})
+      {required this.userUID, required final List<SharedStory> stories})
       : _stories = stories;
 
   @override
-  final String iserUID;
+  final String userUID;
   final List<SharedStory> _stories;
   @override
   List<SharedStory> get stories {
@@ -528,7 +528,7 @@ class _$AddSharedStoriesEventImpl implements AddSharedStoriesEvent {
 
   @override
   String toString() {
-    return 'SharedStoriesEvent.uploadSharedStories(iserUID: $iserUID, stories: $stories)';
+    return 'SharedStoriesEvent.uploadSharedStories(userUID: $userUID, stories: $stories)';
   }
 
   @override
@@ -536,13 +536,13 @@ class _$AddSharedStoriesEventImpl implements AddSharedStoriesEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddSharedStoriesEventImpl &&
-            (identical(other.iserUID, iserUID) || other.iserUID == iserUID) &&
+            (identical(other.userUID, userUID) || other.userUID == userUID) &&
             const DeepCollectionEquality().equals(other._stories, _stories));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, iserUID, const DeepCollectionEquality().hash(_stories));
+      runtimeType, userUID, const DeepCollectionEquality().hash(_stories));
 
   @JsonKey(ignore: true)
   @override
@@ -554,48 +554,48 @@ class _$AddSharedStoriesEventImpl implements AddSharedStoriesEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String iserUID) loadRandomStory,
+    required TResult Function(String userUID) loadRandomStory,
     required TResult Function(List<SharedStory>? randomStoriesList,
-            bool? emitLoading, String iserUID)
+            bool? emitLoading, String userUID)
         loadUserStories,
-    required TResult Function(String iserUID, List<SharedStory> stories)
+    required TResult Function(String userUID, List<SharedStory> stories)
         uploadSharedStories,
-    required TResult Function(int iserUID, SharedStory story) addNewStory,
-    required TResult Function(int iserUID, SharedStory story) removeStory,
+    required TResult Function(int userUID, SharedStory story) addNewStory,
+    required TResult Function(int userUID, SharedStory story) removeStory,
   }) {
-    return uploadSharedStories(iserUID, stories);
+    return uploadSharedStories(userUID, stories);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String iserUID)? loadRandomStory,
+    TResult? Function(String userUID)? loadRandomStory,
     TResult? Function(List<SharedStory>? randomStoriesList, bool? emitLoading,
-            String iserUID)?
+            String userUID)?
         loadUserStories,
-    TResult? Function(String iserUID, List<SharedStory> stories)?
+    TResult? Function(String userUID, List<SharedStory> stories)?
         uploadSharedStories,
-    TResult? Function(int iserUID, SharedStory story)? addNewStory,
-    TResult? Function(int iserUID, SharedStory story)? removeStory,
+    TResult? Function(int userUID, SharedStory story)? addNewStory,
+    TResult? Function(int userUID, SharedStory story)? removeStory,
   }) {
-    return uploadSharedStories?.call(iserUID, stories);
+    return uploadSharedStories?.call(userUID, stories);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String iserUID)? loadRandomStory,
+    TResult Function(String userUID)? loadRandomStory,
     TResult Function(List<SharedStory>? randomStoriesList, bool? emitLoading,
-            String iserUID)?
+            String userUID)?
         loadUserStories,
-    TResult Function(String iserUID, List<SharedStory> stories)?
+    TResult Function(String userUID, List<SharedStory> stories)?
         uploadSharedStories,
-    TResult Function(int iserUID, SharedStory story)? addNewStory,
-    TResult Function(int iserUID, SharedStory story)? removeStory,
+    TResult Function(int userUID, SharedStory story)? addNewStory,
+    TResult Function(int userUID, SharedStory story)? removeStory,
     required TResult orElse(),
   }) {
     if (uploadSharedStories != null) {
-      return uploadSharedStories(iserUID, stories);
+      return uploadSharedStories(userUID, stories);
     }
     return orElse();
   }
@@ -643,11 +643,11 @@ class _$AddSharedStoriesEventImpl implements AddSharedStoriesEvent {
 
 abstract class AddSharedStoriesEvent implements SharedStoriesEvent {
   const factory AddSharedStoriesEvent(
-      {required final String iserUID,
+      {required final String userUID,
       required final List<SharedStory> stories}) = _$AddSharedStoriesEventImpl;
 
   @override
-  String get iserUID;
+  String get userUID;
   List<SharedStory> get stories;
   @JsonKey(ignore: true)
   _$$AddSharedStoriesEventImplCopyWith<_$AddSharedStoriesEventImpl>
@@ -660,7 +660,7 @@ abstract class _$$AddNewStoryEventImplCopyWith<$Res> {
           $Res Function(_$AddNewStoryEventImpl) then) =
       __$$AddNewStoryEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int iserUID, SharedStory story});
+  $Res call({int userUID, SharedStory story});
 }
 
 /// @nodoc
@@ -674,13 +674,13 @@ class __$$AddNewStoryEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? iserUID = null,
+    Object? userUID = null,
     Object? story = null,
   }) {
     return _then(_$AddNewStoryEventImpl(
-      iserUID: null == iserUID
-          ? _value.iserUID
-          : iserUID // ignore: cast_nullable_to_non_nullable
+      userUID: null == userUID
+          ? _value.userUID
+          : userUID // ignore: cast_nullable_to_non_nullable
               as int,
       story: null == story
           ? _value.story
@@ -693,16 +693,16 @@ class __$$AddNewStoryEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AddNewStoryEventImpl implements AddNewStoryEvent {
-  const _$AddNewStoryEventImpl({required this.iserUID, required this.story});
+  const _$AddNewStoryEventImpl({required this.userUID, required this.story});
 
   @override
-  final int iserUID;
+  final int userUID;
   @override
   final SharedStory story;
 
   @override
   String toString() {
-    return 'SharedStoriesEvent.addNewStory(iserUID: $iserUID, story: $story)';
+    return 'SharedStoriesEvent.addNewStory(userUID: $userUID, story: $story)';
   }
 
   @override
@@ -710,12 +710,12 @@ class _$AddNewStoryEventImpl implements AddNewStoryEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddNewStoryEventImpl &&
-            (identical(other.iserUID, iserUID) || other.iserUID == iserUID) &&
+            (identical(other.userUID, userUID) || other.userUID == userUID) &&
             (identical(other.story, story) || other.story == story));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, iserUID, story);
+  int get hashCode => Object.hash(runtimeType, userUID, story);
 
   @JsonKey(ignore: true)
   @override
@@ -727,48 +727,48 @@ class _$AddNewStoryEventImpl implements AddNewStoryEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String iserUID) loadRandomStory,
+    required TResult Function(String userUID) loadRandomStory,
     required TResult Function(List<SharedStory>? randomStoriesList,
-            bool? emitLoading, String iserUID)
+            bool? emitLoading, String userUID)
         loadUserStories,
-    required TResult Function(String iserUID, List<SharedStory> stories)
+    required TResult Function(String userUID, List<SharedStory> stories)
         uploadSharedStories,
-    required TResult Function(int iserUID, SharedStory story) addNewStory,
-    required TResult Function(int iserUID, SharedStory story) removeStory,
+    required TResult Function(int userUID, SharedStory story) addNewStory,
+    required TResult Function(int userUID, SharedStory story) removeStory,
   }) {
-    return addNewStory(iserUID, story);
+    return addNewStory(userUID, story);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String iserUID)? loadRandomStory,
+    TResult? Function(String userUID)? loadRandomStory,
     TResult? Function(List<SharedStory>? randomStoriesList, bool? emitLoading,
-            String iserUID)?
+            String userUID)?
         loadUserStories,
-    TResult? Function(String iserUID, List<SharedStory> stories)?
+    TResult? Function(String userUID, List<SharedStory> stories)?
         uploadSharedStories,
-    TResult? Function(int iserUID, SharedStory story)? addNewStory,
-    TResult? Function(int iserUID, SharedStory story)? removeStory,
+    TResult? Function(int userUID, SharedStory story)? addNewStory,
+    TResult? Function(int userUID, SharedStory story)? removeStory,
   }) {
-    return addNewStory?.call(iserUID, story);
+    return addNewStory?.call(userUID, story);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String iserUID)? loadRandomStory,
+    TResult Function(String userUID)? loadRandomStory,
     TResult Function(List<SharedStory>? randomStoriesList, bool? emitLoading,
-            String iserUID)?
+            String userUID)?
         loadUserStories,
-    TResult Function(String iserUID, List<SharedStory> stories)?
+    TResult Function(String userUID, List<SharedStory> stories)?
         uploadSharedStories,
-    TResult Function(int iserUID, SharedStory story)? addNewStory,
-    TResult Function(int iserUID, SharedStory story)? removeStory,
+    TResult Function(int userUID, SharedStory story)? addNewStory,
+    TResult Function(int userUID, SharedStory story)? removeStory,
     required TResult orElse(),
   }) {
     if (addNewStory != null) {
-      return addNewStory(iserUID, story);
+      return addNewStory(userUID, story);
     }
     return orElse();
   }
@@ -816,11 +816,11 @@ class _$AddNewStoryEventImpl implements AddNewStoryEvent {
 
 abstract class AddNewStoryEvent implements SharedStoriesEvent {
   const factory AddNewStoryEvent(
-      {required final int iserUID,
+      {required final int userUID,
       required final SharedStory story}) = _$AddNewStoryEventImpl;
 
   @override
-  int get iserUID;
+  int get userUID;
   SharedStory get story;
   @JsonKey(ignore: true)
   _$$AddNewStoryEventImplCopyWith<_$AddNewStoryEventImpl> get copyWith =>
@@ -833,7 +833,7 @@ abstract class _$$RemoveStoryEventImplCopyWith<$Res> {
           $Res Function(_$RemoveStoryEventImpl) then) =
       __$$RemoveStoryEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int iserUID, SharedStory story});
+  $Res call({int userUID, SharedStory story});
 }
 
 /// @nodoc
@@ -847,13 +847,13 @@ class __$$RemoveStoryEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? iserUID = null,
+    Object? userUID = null,
     Object? story = null,
   }) {
     return _then(_$RemoveStoryEventImpl(
-      iserUID: null == iserUID
-          ? _value.iserUID
-          : iserUID // ignore: cast_nullable_to_non_nullable
+      userUID: null == userUID
+          ? _value.userUID
+          : userUID // ignore: cast_nullable_to_non_nullable
               as int,
       story: null == story
           ? _value.story
@@ -866,16 +866,16 @@ class __$$RemoveStoryEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$RemoveStoryEventImpl implements RemoveStoryEvent {
-  const _$RemoveStoryEventImpl({required this.iserUID, required this.story});
+  const _$RemoveStoryEventImpl({required this.userUID, required this.story});
 
   @override
-  final int iserUID;
+  final int userUID;
   @override
   final SharedStory story;
 
   @override
   String toString() {
-    return 'SharedStoriesEvent.removeStory(iserUID: $iserUID, story: $story)';
+    return 'SharedStoriesEvent.removeStory(userUID: $userUID, story: $story)';
   }
 
   @override
@@ -883,12 +883,12 @@ class _$RemoveStoryEventImpl implements RemoveStoryEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RemoveStoryEventImpl &&
-            (identical(other.iserUID, iserUID) || other.iserUID == iserUID) &&
+            (identical(other.userUID, userUID) || other.userUID == userUID) &&
             (identical(other.story, story) || other.story == story));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, iserUID, story);
+  int get hashCode => Object.hash(runtimeType, userUID, story);
 
   @JsonKey(ignore: true)
   @override
@@ -900,48 +900,48 @@ class _$RemoveStoryEventImpl implements RemoveStoryEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String iserUID) loadRandomStory,
+    required TResult Function(String userUID) loadRandomStory,
     required TResult Function(List<SharedStory>? randomStoriesList,
-            bool? emitLoading, String iserUID)
+            bool? emitLoading, String userUID)
         loadUserStories,
-    required TResult Function(String iserUID, List<SharedStory> stories)
+    required TResult Function(String userUID, List<SharedStory> stories)
         uploadSharedStories,
-    required TResult Function(int iserUID, SharedStory story) addNewStory,
-    required TResult Function(int iserUID, SharedStory story) removeStory,
+    required TResult Function(int userUID, SharedStory story) addNewStory,
+    required TResult Function(int userUID, SharedStory story) removeStory,
   }) {
-    return removeStory(iserUID, story);
+    return removeStory(userUID, story);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String iserUID)? loadRandomStory,
+    TResult? Function(String userUID)? loadRandomStory,
     TResult? Function(List<SharedStory>? randomStoriesList, bool? emitLoading,
-            String iserUID)?
+            String userUID)?
         loadUserStories,
-    TResult? Function(String iserUID, List<SharedStory> stories)?
+    TResult? Function(String userUID, List<SharedStory> stories)?
         uploadSharedStories,
-    TResult? Function(int iserUID, SharedStory story)? addNewStory,
-    TResult? Function(int iserUID, SharedStory story)? removeStory,
+    TResult? Function(int userUID, SharedStory story)? addNewStory,
+    TResult? Function(int userUID, SharedStory story)? removeStory,
   }) {
-    return removeStory?.call(iserUID, story);
+    return removeStory?.call(userUID, story);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String iserUID)? loadRandomStory,
+    TResult Function(String userUID)? loadRandomStory,
     TResult Function(List<SharedStory>? randomStoriesList, bool? emitLoading,
-            String iserUID)?
+            String userUID)?
         loadUserStories,
-    TResult Function(String iserUID, List<SharedStory> stories)?
+    TResult Function(String userUID, List<SharedStory> stories)?
         uploadSharedStories,
-    TResult Function(int iserUID, SharedStory story)? addNewStory,
-    TResult Function(int iserUID, SharedStory story)? removeStory,
+    TResult Function(int userUID, SharedStory story)? addNewStory,
+    TResult Function(int userUID, SharedStory story)? removeStory,
     required TResult orElse(),
   }) {
     if (removeStory != null) {
-      return removeStory(iserUID, story);
+      return removeStory(userUID, story);
     }
     return orElse();
   }
@@ -989,11 +989,11 @@ class _$RemoveStoryEventImpl implements RemoveStoryEvent {
 
 abstract class RemoveStoryEvent implements SharedStoriesEvent {
   const factory RemoveStoryEvent(
-      {required final int iserUID,
+      {required final int userUID,
       required final SharedStory story}) = _$RemoveStoryEventImpl;
 
   @override
-  int get iserUID;
+  int get userUID;
   SharedStory get story;
   @JsonKey(ignore: true)
   _$$RemoveStoryEventImplCopyWith<_$RemoveStoryEventImpl> get copyWith =>

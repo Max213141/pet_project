@@ -96,7 +96,7 @@ class BarChartSampleState extends State<BarChartSample> {
     const barsWidth = 30.0;
 
     return SizedBox(
-      height: MediaQuery.of(context).size.height / 4,
+      height: MediaQuery.of(context).size.height / 3.1,
       width: MediaQuery.of(context).size.width - 32,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -133,6 +133,7 @@ class BarChartSampleState extends State<BarChartSample> {
                             sideTitles: SideTitles(
                               showTitles: true,
                               reservedSize: 45,
+                              interval: 1.0,
                               getTitlesWidget: leftTitles,
                             ),
                           ),
