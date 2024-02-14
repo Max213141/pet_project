@@ -67,6 +67,19 @@ class _SharedStoriesScreenState extends State<SharedStoriesScreen> {
               _showLoader = !_showLoader;
             });
           },
+          storiesLoadingError: (errorText) {
+            setState(() {
+              _showLoader = !_showLoader;
+            });
+            showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return ErrorDialogWidget(
+                  message: errorText,
+                );
+              },
+            );
+          },
         );
       },
       child: Stack(

@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:life_sync/utils/utils.dart';
 
-class HabbitsItem extends StatefulWidget {
-  const HabbitsItem({super.key});
+class HabitsItem extends StatefulWidget {
+  const HabitsItem({
+    super.key,
+  });
 
   @override
-  State<HabbitsItem> createState() => _HabbitsItemState();
+  State<HabitsItem> createState() => _HabitsItemState();
 }
 
-class _HabbitsItemState extends State<HabbitsItem> {
+class _HabitsItemState extends State<HabitsItem> {
   bool isChecked = false;
   @override
   Widget build(BuildContext context) {

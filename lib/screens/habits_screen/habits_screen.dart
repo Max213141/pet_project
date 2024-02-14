@@ -63,7 +63,7 @@ class _HabitsScreenState extends State<HabitsScreen> {
                   behavior: CustomBehavior(),
                   child: ListView.builder(
                     itemCount: 6,
-                    itemBuilder: (context, index) => const HabbitsItem(),
+                    itemBuilder: (context, index) => const HabitsItem(),
                   ),
                 ),
               ),

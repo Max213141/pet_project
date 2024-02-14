@@ -1,3 +1,12 @@
+enum EmotionType {
+  angry,
+  bored,
+  good,
+  happy,
+  meh,
+  sad,
+}
+
 class Emotion {
   final String picturePath;
   final String emotionTitle;

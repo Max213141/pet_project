@@ -20,21 +20,25 @@ mixin _$MoodEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String userUID) loadUserMoodData,
-    required TResult Function(String userUID, MoodEntry currentMood)
+    required TResult Function(String userUID, MoodEntry currentMood,
+            MoodTracker updatedMoodTracker, DBUserData userData)
         uploadUserMoodData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String userUID)? loadUserMoodData,
-    TResult? Function(String userUID, MoodEntry currentMood)?
+    TResult? Function(String userUID, MoodEntry currentMood,
+            MoodTracker updatedMoodTracker, DBUserData userData)?
         uploadUserMoodData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userUID)? loadUserMoodData,
-    TResult Function(String userUID, MoodEntry currentMood)? uploadUserMoodData,
+    TResult Function(String userUID, MoodEntry currentMood,
+            MoodTracker updatedMoodTracker, DBUserData userData)?
+        uploadUserMoodData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -163,7 +167,8 @@ class _$LoadUserMoodDataImpl implements LoadUserMoodData {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String userUID) loadUserMoodData,
-    required TResult Function(String userUID, MoodEntry currentMood)
+    required TResult Function(String userUID, MoodEntry currentMood,
+            MoodTracker updatedMoodTracker, DBUserData userData)
         uploadUserMoodData,
   }) {
     return loadUserMoodData(userUID);
@@ -173,7 +178,8 @@ class _$LoadUserMoodDataImpl implements LoadUserMoodData {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String userUID)? loadUserMoodData,
-    TResult? Function(String userUID, MoodEntry currentMood)?
+    TResult? Function(String userUID, MoodEntry currentMood,
+            MoodTracker updatedMoodTracker, DBUserData userData)?
         uploadUserMoodData,
   }) {
     return loadUserMoodData?.call(userUID);
@@ -183,7 +189,9 @@ class _$LoadUserMoodDataImpl implements LoadUserMoodData {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userUID)? loadUserMoodData,
-    TResult Function(String userUID, MoodEntry currentMood)? uploadUserMoodData,
+    TResult Function(String userUID, MoodEntry currentMood,
+            MoodTracker updatedMoodTracker, DBUserData userData)?
+        uploadUserMoodData,
     required TResult orElse(),
   }) {
     if (loadUserMoodData != null) {
@@ -244,7 +252,11 @@ abstract class _$$UploadUserMoodDataImplCopyWith<$Res>
       __$$UploadUserMoodDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String userUID, MoodEntry currentMood});
+  $Res call(
+      {String userUID,
+      MoodEntry currentMood,
+      MoodTracker updatedMoodTracker,
+      DBUserData userData});
 }
 
 /// @nodoc
@@ -260,6 +272,8 @@ class __$$UploadUserMoodDataImplCopyWithImpl<$Res>
   $Res call({
     Object? userUID = null,
     Object? currentMood = null,
+    Object? updatedMoodTracker = null,
+    Object? userData = null,
   }) {
     return _then(_$UploadUserMoodDataImpl(
       userUID: null == userUID
@@ -270,6 +284,14 @@ class __$$UploadUserMoodDataImplCopyWithImpl<$Res>
           ? _value.currentMood
           : currentMood // ignore: cast_nullable_to_non_nullable
               as MoodEntry,
+      updatedMoodTracker: null == updatedMoodTracker
+          ? _value.updatedMoodTracker
+          : updatedMoodTracker // ignore: cast_nullable_to_non_nullable
+              as MoodTracker,
+      userData: null == userData
+          ? _value.userData
+          : userData // ignore: cast_nullable_to_non_nullable
+              as DBUserData,
     ));
   }
 }
@@ -278,16 +300,23 @@ class __$$UploadUserMoodDataImplCopyWithImpl<$Res>
 
 class _$UploadUserMoodDataImpl implements UploadUserMoodData {
   const _$UploadUserMoodDataImpl(
-      {required this.userUID, required this.currentMood});
+      {required this.userUID,
+      required this.currentMood,
+      required this.updatedMoodTracker,
+      required this.userData});
 
   @override
   final String userUID;
   @override
   final MoodEntry currentMood;
+  @override
+  final MoodTracker updatedMoodTracker;
+  @override
+  final DBUserData userData;
 
   @override
   String toString() {
-    return 'MoodEvent.uploadUserMoodData(userUID: $userUID, currentMood: $currentMood)';
+    return 'MoodEvent.uploadUserMoodData(userUID: $userUID, currentMood: $currentMood, updatedMoodTracker: $updatedMoodTracker, userData: $userData)';
   }
 
   @override
@@ -297,11 +326,16 @@ class _$UploadUserMoodDataImpl implements UploadUserMoodData {
             other is _$UploadUserMoodDataImpl &&
             (identical(other.userUID, userUID) || other.userUID == userUID) &&
             (identical(other.currentMood, currentMood) ||
-                other.currentMood == currentMood));
+                other.currentMood == currentMood) &&
+            (identical(other.updatedMoodTracker, updatedMoodTracker) ||
+                other.updatedMoodTracker == updatedMoodTracker) &&
+            (identical(other.userData, userData) ||
+                other.userData == userData));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userUID, currentMood);
+  int get hashCode => Object.hash(
+      runtimeType, userUID, currentMood, updatedMoodTracker, userData);
 
   @JsonKey(ignore: true)
   @override
@@ -314,31 +348,38 @@ class _$UploadUserMoodDataImpl implements UploadUserMoodData {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String userUID) loadUserMoodData,
-    required TResult Function(String userUID, MoodEntry currentMood)
+    required TResult Function(String userUID, MoodEntry currentMood,
+            MoodTracker updatedMoodTracker, DBUserData userData)
         uploadUserMoodData,
   }) {
-    return uploadUserMoodData(userUID, currentMood);
+    return uploadUserMoodData(
+        userUID, currentMood, updatedMoodTracker, userData);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String userUID)? loadUserMoodData,
-    TResult? Function(String userUID, MoodEntry currentMood)?
+    TResult? Function(String userUID, MoodEntry currentMood,
+            MoodTracker updatedMoodTracker, DBUserData userData)?
         uploadUserMoodData,
   }) {
-    return uploadUserMoodData?.call(userUID, currentMood);
+    return uploadUserMoodData?.call(
+        userUID, currentMood, updatedMoodTracker, userData);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userUID)? loadUserMoodData,
-    TResult Function(String userUID, MoodEntry currentMood)? uploadUserMoodData,
+    TResult Function(String userUID, MoodEntry currentMood,
+            MoodTracker updatedMoodTracker, DBUserData userData)?
+        uploadUserMoodData,
     required TResult orElse(),
   }) {
     if (uploadUserMoodData != null) {
-      return uploadUserMoodData(userUID, currentMood);
+      return uploadUserMoodData(
+          userUID, currentMood, updatedMoodTracker, userData);
     }
     return orElse();
   }
@@ -378,11 +419,15 @@ class _$UploadUserMoodDataImpl implements UploadUserMoodData {
 abstract class UploadUserMoodData implements MoodEvent {
   const factory UploadUserMoodData(
       {required final String userUID,
-      required final MoodEntry currentMood}) = _$UploadUserMoodDataImpl;
+      required final MoodEntry currentMood,
+      required final MoodTracker updatedMoodTracker,
+      required final DBUserData userData}) = _$UploadUserMoodDataImpl;
 
   @override
   String get userUID;
   MoodEntry get currentMood;
+  MoodTracker get updatedMoodTracker;
+  DBUserData get userData;
   @override
   @JsonKey(ignore: true)
   _$$UploadUserMoodDataImplCopyWith<_$UploadUserMoodDataImpl> get copyWith =>
@@ -396,7 +441,6 @@ mixin _$MoodState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<MoodEntry> moodEntries) moodLoaded,
-    required TResult Function() moodUploaded,
     required TResult Function(String errorText) moodLoadingError,
   }) =>
       throw _privateConstructorUsedError;
@@ -405,7 +449,6 @@ mixin _$MoodState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<MoodEntry> moodEntries)? moodLoaded,
-    TResult? Function()? moodUploaded,
     TResult? Function(String errorText)? moodLoadingError,
   }) =>
       throw _privateConstructorUsedError;
@@ -414,36 +457,32 @@ mixin _$MoodState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<MoodEntry> moodEntries)? moodLoaded,
-    TResult Function()? moodUploaded,
     TResult Function(String errorText)? moodLoadingError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
     required TResult Function(_MoodLoaded value) moodLoaded,
-    required TResult Function(_MoodUploaded value) moodUploaded,
-    required TResult Function(_MoodLoadingError value) moodLoadingError,
+    required TResult Function(MoodLoadingError value) moodLoadingError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
     TResult? Function(_MoodLoaded value)? moodLoaded,
-    TResult? Function(_MoodUploaded value)? moodUploaded,
-    TResult? Function(_MoodLoadingError value)? moodLoadingError,
+    TResult? Function(MoodLoadingError value)? moodLoadingError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
     TResult Function(_MoodLoaded value)? moodLoaded,
-    TResult Function(_MoodUploaded value)? moodUploaded,
-    TResult Function(_MoodLoadingError value)? moodLoadingError,
+    TResult Function(MoodLoadingError value)? moodLoadingError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -484,7 +523,7 @@ class __$$InitialImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
+class _$InitialImpl implements Initial {
   const _$InitialImpl();
 
   @override
@@ -507,7 +546,6 @@ class _$InitialImpl implements _Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<MoodEntry> moodEntries) moodLoaded,
-    required TResult Function() moodUploaded,
     required TResult Function(String errorText) moodLoadingError,
   }) {
     return initial();
@@ -519,7 +557,6 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<MoodEntry> moodEntries)? moodLoaded,
-    TResult? Function()? moodUploaded,
     TResult? Function(String errorText)? moodLoadingError,
   }) {
     return initial?.call();
@@ -531,7 +568,6 @@ class _$InitialImpl implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<MoodEntry> moodEntries)? moodLoaded,
-    TResult Function()? moodUploaded,
     TResult Function(String errorText)? moodLoadingError,
     required TResult orElse(),
   }) {
@@ -544,11 +580,10 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
     required TResult Function(_MoodLoaded value) moodLoaded,
-    required TResult Function(_MoodUploaded value) moodUploaded,
-    required TResult Function(_MoodLoadingError value) moodLoadingError,
+    required TResult Function(MoodLoadingError value) moodLoadingError,
   }) {
     return initial(this);
   }
@@ -556,11 +591,10 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
     TResult? Function(_MoodLoaded value)? moodLoaded,
-    TResult? Function(_MoodUploaded value)? moodUploaded,
-    TResult? Function(_MoodLoadingError value)? moodLoadingError,
+    TResult? Function(MoodLoadingError value)? moodLoadingError,
   }) {
     return initial?.call(this);
   }
@@ -568,11 +602,10 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
     TResult Function(_MoodLoaded value)? moodLoaded,
-    TResult Function(_MoodUploaded value)? moodUploaded,
-    TResult Function(_MoodLoadingError value)? moodLoadingError,
+    TResult Function(MoodLoadingError value)? moodLoadingError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -582,8 +615,8 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements MoodState {
-  const factory _Initial() = _$InitialImpl;
+abstract class Initial implements MoodState {
+  const factory Initial() = _$InitialImpl;
 }
 
 /// @nodoc
@@ -604,7 +637,7 @@ class __$$LoadingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoadingImpl implements _Loading {
+class _$LoadingImpl implements Loading {
   const _$LoadingImpl();
 
   @override
@@ -627,7 +660,6 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<MoodEntry> moodEntries) moodLoaded,
-    required TResult Function() moodUploaded,
     required TResult Function(String errorText) moodLoadingError,
   }) {
     return loading();
@@ -639,7 +671,6 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<MoodEntry> moodEntries)? moodLoaded,
-    TResult? Function()? moodUploaded,
     TResult? Function(String errorText)? moodLoadingError,
   }) {
     return loading?.call();
@@ -651,7 +682,6 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<MoodEntry> moodEntries)? moodLoaded,
-    TResult Function()? moodUploaded,
     TResult Function(String errorText)? moodLoadingError,
     required TResult orElse(),
   }) {
@@ -664,11 +694,10 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
     required TResult Function(_MoodLoaded value) moodLoaded,
-    required TResult Function(_MoodUploaded value) moodUploaded,
-    required TResult Function(_MoodLoadingError value) moodLoadingError,
+    required TResult Function(MoodLoadingError value) moodLoadingError,
   }) {
     return loading(this);
   }
@@ -676,11 +705,10 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
     TResult? Function(_MoodLoaded value)? moodLoaded,
-    TResult? Function(_MoodUploaded value)? moodUploaded,
-    TResult? Function(_MoodLoadingError value)? moodLoadingError,
+    TResult? Function(MoodLoadingError value)? moodLoadingError,
   }) {
     return loading?.call(this);
   }
@@ -688,11 +716,10 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
     TResult Function(_MoodLoaded value)? moodLoaded,
-    TResult Function(_MoodUploaded value)? moodUploaded,
-    TResult Function(_MoodLoadingError value)? moodLoadingError,
+    TResult Function(MoodLoadingError value)? moodLoadingError,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -702,8 +729,8 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements MoodState {
-  const factory _Loading() = _$LoadingImpl;
+abstract class Loading implements MoodState {
+  const factory Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
@@ -781,7 +808,6 @@ class _$MoodLoadedImpl implements _MoodLoaded {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<MoodEntry> moodEntries) moodLoaded,
-    required TResult Function() moodUploaded,
     required TResult Function(String errorText) moodLoadingError,
   }) {
     return moodLoaded(moodEntries);
@@ -793,7 +819,6 @@ class _$MoodLoadedImpl implements _MoodLoaded {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<MoodEntry> moodEntries)? moodLoaded,
-    TResult? Function()? moodUploaded,
     TResult? Function(String errorText)? moodLoadingError,
   }) {
     return moodLoaded?.call(moodEntries);
@@ -805,7 +830,6 @@ class _$MoodLoadedImpl implements _MoodLoaded {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<MoodEntry> moodEntries)? moodLoaded,
-    TResult Function()? moodUploaded,
     TResult Function(String errorText)? moodLoadingError,
     required TResult orElse(),
   }) {
@@ -818,11 +842,10 @@ class _$MoodLoadedImpl implements _MoodLoaded {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
     required TResult Function(_MoodLoaded value) moodLoaded,
-    required TResult Function(_MoodUploaded value) moodUploaded,
-    required TResult Function(_MoodLoadingError value) moodLoadingError,
+    required TResult Function(MoodLoadingError value) moodLoadingError,
   }) {
     return moodLoaded(this);
   }
@@ -830,11 +853,10 @@ class _$MoodLoadedImpl implements _MoodLoaded {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
     TResult? Function(_MoodLoaded value)? moodLoaded,
-    TResult? Function(_MoodUploaded value)? moodUploaded,
-    TResult? Function(_MoodLoadingError value)? moodLoadingError,
+    TResult? Function(MoodLoadingError value)? moodLoadingError,
   }) {
     return moodLoaded?.call(this);
   }
@@ -842,11 +864,10 @@ class _$MoodLoadedImpl implements _MoodLoaded {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
     TResult Function(_MoodLoaded value)? moodLoaded,
-    TResult Function(_MoodUploaded value)? moodUploaded,
-    TResult Function(_MoodLoadingError value)? moodLoadingError,
+    TResult Function(MoodLoadingError value)? moodLoadingError,
     required TResult orElse(),
   }) {
     if (moodLoaded != null) {
@@ -864,126 +885,6 @@ abstract class _MoodLoaded implements MoodState {
   @JsonKey(ignore: true)
   _$$MoodLoadedImplCopyWith<_$MoodLoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$MoodUploadedImplCopyWith<$Res> {
-  factory _$$MoodUploadedImplCopyWith(
-          _$MoodUploadedImpl value, $Res Function(_$MoodUploadedImpl) then) =
-      __$$MoodUploadedImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$MoodUploadedImplCopyWithImpl<$Res>
-    extends _$MoodStateCopyWithImpl<$Res, _$MoodUploadedImpl>
-    implements _$$MoodUploadedImplCopyWith<$Res> {
-  __$$MoodUploadedImplCopyWithImpl(
-      _$MoodUploadedImpl _value, $Res Function(_$MoodUploadedImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$MoodUploadedImpl implements _MoodUploaded {
-  const _$MoodUploadedImpl();
-
-  @override
-  String toString() {
-    return 'MoodState.moodUploaded()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$MoodUploadedImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<MoodEntry> moodEntries) moodLoaded,
-    required TResult Function() moodUploaded,
-    required TResult Function(String errorText) moodLoadingError,
-  }) {
-    return moodUploaded();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<MoodEntry> moodEntries)? moodLoaded,
-    TResult? Function()? moodUploaded,
-    TResult? Function(String errorText)? moodLoadingError,
-  }) {
-    return moodUploaded?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<MoodEntry> moodEntries)? moodLoaded,
-    TResult Function()? moodUploaded,
-    TResult Function(String errorText)? moodLoadingError,
-    required TResult orElse(),
-  }) {
-    if (moodUploaded != null) {
-      return moodUploaded();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_MoodLoaded value) moodLoaded,
-    required TResult Function(_MoodUploaded value) moodUploaded,
-    required TResult Function(_MoodLoadingError value) moodLoadingError,
-  }) {
-    return moodUploaded(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_MoodLoaded value)? moodLoaded,
-    TResult? Function(_MoodUploaded value)? moodUploaded,
-    TResult? Function(_MoodLoadingError value)? moodLoadingError,
-  }) {
-    return moodUploaded?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_MoodLoaded value)? moodLoaded,
-    TResult Function(_MoodUploaded value)? moodUploaded,
-    TResult Function(_MoodLoadingError value)? moodLoadingError,
-    required TResult orElse(),
-  }) {
-    if (moodUploaded != null) {
-      return moodUploaded(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _MoodUploaded implements MoodState {
-  const factory _MoodUploaded() = _$MoodUploadedImpl;
 }
 
 /// @nodoc
@@ -1019,7 +920,7 @@ class __$$MoodLoadingErrorImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$MoodLoadingErrorImpl implements _MoodLoadingError {
+class _$MoodLoadingErrorImpl implements MoodLoadingError {
   const _$MoodLoadingErrorImpl({this.errorText = 'Stories loading error'});
 
   @override
@@ -1056,7 +957,6 @@ class _$MoodLoadingErrorImpl implements _MoodLoadingError {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<MoodEntry> moodEntries) moodLoaded,
-    required TResult Function() moodUploaded,
     required TResult Function(String errorText) moodLoadingError,
   }) {
     return moodLoadingError(errorText);
@@ -1068,7 +968,6 @@ class _$MoodLoadingErrorImpl implements _MoodLoadingError {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<MoodEntry> moodEntries)? moodLoaded,
-    TResult? Function()? moodUploaded,
     TResult? Function(String errorText)? moodLoadingError,
   }) {
     return moodLoadingError?.call(errorText);
@@ -1080,7 +979,6 @@ class _$MoodLoadingErrorImpl implements _MoodLoadingError {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<MoodEntry> moodEntries)? moodLoaded,
-    TResult Function()? moodUploaded,
     TResult Function(String errorText)? moodLoadingError,
     required TResult orElse(),
   }) {
@@ -1093,11 +991,10 @@ class _$MoodLoadingErrorImpl implements _MoodLoadingError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
     required TResult Function(_MoodLoaded value) moodLoaded,
-    required TResult Function(_MoodUploaded value) moodUploaded,
-    required TResult Function(_MoodLoadingError value) moodLoadingError,
+    required TResult Function(MoodLoadingError value) moodLoadingError,
   }) {
     return moodLoadingError(this);
   }
@@ -1105,11 +1002,10 @@ class _$MoodLoadingErrorImpl implements _MoodLoadingError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
     TResult? Function(_MoodLoaded value)? moodLoaded,
-    TResult? Function(_MoodUploaded value)? moodUploaded,
-    TResult? Function(_MoodLoadingError value)? moodLoadingError,
+    TResult? Function(MoodLoadingError value)? moodLoadingError,
   }) {
     return moodLoadingError?.call(this);
   }
@@ -1117,11 +1013,10 @@ class _$MoodLoadingErrorImpl implements _MoodLoadingError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
     TResult Function(_MoodLoaded value)? moodLoaded,
-    TResult Function(_MoodUploaded value)? moodUploaded,
-    TResult Function(_MoodLoadingError value)? moodLoadingError,
+    TResult Function(MoodLoadingError value)? moodLoadingError,
     required TResult orElse(),
   }) {
     if (moodLoadingError != null) {
@@ -1131,8 +1026,8 @@ class _$MoodLoadingErrorImpl implements _MoodLoadingError {
   }
 }
 
-abstract class _MoodLoadingError implements MoodState {
-  const factory _MoodLoadingError({final String errorText}) =
+abstract class MoodLoadingError implements MoodState {
+  const factory MoodLoadingError({final String errorText}) =
       _$MoodLoadingErrorImpl;
 
   String get errorText;

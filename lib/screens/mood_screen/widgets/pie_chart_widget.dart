@@ -1,9 +1,14 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:life_sync/entities/db_entities/db_entities.dart';
 import 'package:life_sync/utils/utils.dart';
 
-class PieChartSample2 extends StatefulWidget {
-  const PieChartSample2({super.key});
+class MoodPieChart extends StatefulWidget {
+  final List<MoodEntry> userDailyMood;
+  const MoodPieChart({
+    super.key,
+    required this.userDailyMood,
+  });
 
   @override
   State<StatefulWidget> createState() => PieChart2State();

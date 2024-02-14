@@ -4,8 +4,10 @@ import 'package:life_sync/screens/mood_screen/widgets/widgets.dart';
 import 'package:life_sync/utils/utils.dart';
 
 class CircularMoodScheme extends StatelessWidget {
+  final List<MoodEntry> userDailyMood;
   const CircularMoodScheme({
     super.key,
+    required this.userDailyMood,
   });
   final List<ChartInfo> chartDescription = const [
     ChartInfo(color: AppColor.chartHappy, title: 'Happy'),
@@ -38,7 +40,11 @@ class CircularMoodScheme extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 17.0, right: 17.0),
                   child: Stack(
                     children: [
-                      const Positioned.fill(child: PieChartSample2()),
+                      Positioned.fill(
+                        child: MoodPieChart(
+                          userDailyMood: userDailyMood,
+                        ),
+                      ),
                       SizedBox(
                         height: 100,
                         width: 100,

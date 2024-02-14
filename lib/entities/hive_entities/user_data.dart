@@ -9,10 +9,16 @@ class UserData extends HiveObject {
   String? userName;
   @HiveField(1)
   String? uid;
+  @HiveField(2)
+  String? email;
+  @HiveField(3)
+  String? password;
 
   UserData({
     this.userName,
     this.uid,
+    this.email,
+    this.password,
   });
 
   UserData.initial() : userName = 'AppUser';

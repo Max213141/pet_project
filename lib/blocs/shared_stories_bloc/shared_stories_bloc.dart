@@ -51,7 +51,7 @@ class SharedStoriesBloc extends Bloc<SharedStoriesEvent, SharedStoriesState> {
       // _log("$querySnapshot");
       // _log("loaded random docs - ${querySnapshot.docs}");
       for (var docSnapshot in querySnapshot.docs) {
-        _log('${docSnapshot.id} => ${docSnapshot.data()}');
+        // _log('${docSnapshot.id} => ${docSnapshot.data()}');
         final Map<String, dynamic> data = docSnapshot.data();
         final List<dynamic> sharedStories = data['userStories'];
         allSharedStories.add(sharedStories);
@@ -134,7 +134,7 @@ class SharedStoriesBloc extends Bloc<SharedStoriesEvent, SharedStoriesState> {
                 .toList(),
           },
         );
-        add(LoadUserStoriesEvent(userUID: uid));
+        add(LoadRandomStoryEvent(userUID: uid));
 
         emit(const SharedStoriesState.storiesUploaded());
       } else {

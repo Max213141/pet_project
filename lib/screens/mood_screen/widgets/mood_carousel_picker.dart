@@ -5,7 +5,11 @@ import 'package:life_sync/entities/entities.dart';
 import 'package:life_sync/utils/utils.dart';
 
 class MoodCarouselPicker extends StatefulWidget {
-  const MoodCarouselPicker({super.key});
+  final MoodEntry? userCurrentMood;
+  const MoodCarouselPicker({
+    super.key,
+    this.userCurrentMood,
+  });
 
   @override
   State<MoodCarouselPicker> createState() => _MoodCarouselPickerState();
@@ -13,6 +17,20 @@ class MoodCarouselPicker extends StatefulWidget {
 
 class _MoodCarouselPickerState extends State<MoodCarouselPicker> {
   String? selectedEmotion;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+
+    if (widget.userCurrentMood != null) {
+      setState(() {
+        selectedEmotion = widget.userCurrentMood!.mood;
+      });
+    }
+
+    super.initState();
+  }
+
   final List<Emotion> emotions = const [
     Emotion(
       emotionTitle: 'Angry',

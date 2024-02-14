@@ -45,12 +45,18 @@ class _ToDoListWidgetState extends State<ToDoListWidget> {
                             MentalHealthTextStyles.text.signikaSecondaryFontF16,
                       ),
                     ),
-                    Expanded(
-                      child: ListView.builder(
-                        itemCount: 3,
-                        itemBuilder: (context, index) => const HabbitsItem(),
-                        physics: const NeverScrollableScrollPhysics(),
-                      ),
+                    const Expanded(
+                      child: Center(
+                          child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [HabitsItem(), HabitsItem(), HabitsItem()],
+                      )
+                          // ListView.builder(
+                          //   itemCount: 3,
+                          //   itemBuilder: (context, index) => const HabbitsItem(),
+                          //   physics: const NeverScrollableScrollPhysics(),
+                          // ),
+                          ),
                     ),
                   ],
                 ),
