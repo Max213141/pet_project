@@ -7,7 +7,7 @@ class MoodState with _$MoodState {
   const factory MoodState.loading() = Loading;
 
   const factory MoodState.moodLoaded(
-    List<MoodEntry> moodEntries,
+    List<dynamic> moodEntries,
   ) = _MoodLoaded;
 
   // const factory MoodState.moodUploaded() = MoodUploaded;

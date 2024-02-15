@@ -21,7 +21,7 @@ class MoodScreen extends StatefulWidget {
 
 class _MoodScreenState extends State<MoodScreen> {
   late String uid;
-  late List<MoodEntry> _userDailyMood = [];
+  // late List<MoodEntry> _userDailyMood = [];
 
   @override
   void initState() {
@@ -129,9 +129,10 @@ class _MoodScreenState extends State<MoodScreen> {
                       userCurrentMood: moodEntries.firstWhere(
                         (element) {
                           // _log(
-                          //     'mood entry from state date - ${element.trackedDay.toDate()}');
+                          //     'mood entry from state date - ${element.trackedDay.toDate().day}');
                           // _log(
                           //     'mood entry from state - ${element.trackedDay.toDate().day}');
+                          // _log('day - ${DateTime.now().day}');
 
                           return element.trackedDay.toDate().day ==
                               DateTime.now().day;
@@ -141,27 +142,17 @@ class _MoodScreenState extends State<MoodScreen> {
                           trackedDay: Timestamp.now(),
                         ),
                       ),
-                    ),
-                    const SizedBox(height: 22),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 35.0),
-                      child: ActionButton(
-                        title: 'Submit'.toUpperCase(),
-                        onPressed: () {},
-                      ),
+                      moodEntries: moodEntries,
                     ),
                   ],
                 ),
               ),
             ),
           },
-          moodLoadingError: (errorText) => showDialog(
-            context: context,
-            builder: (BuildContext context) {
-              return ErrorDialogWidget(
-                message: errorText,
-              );
-            },
+          moodLoadingError: (errorText) => body = Center(
+            child: ErrorDialogWidget(
+              message: errorText,
+            ),
           ),
         );
         return body;

@@ -1,22 +1,26 @@
 import 'package:life_sync/entities/db_entities/db_entities.dart';
 
 class MoodTracker {
-  final DailyMood dailyMood;
+  final List<MoodEntry> dailyMood;
 
   MoodTracker({
     required this.dailyMood,
   });
 
   factory MoodTracker.fromFirestore(Map<String, dynamic> data) {
+    List<MoodEntry> moodEntries = data['dailyMood']
+        .map((entry) => MoodEntry.fromFirestore(entry))
+        .toList();
     // final data = snapshot.data();
     return MoodTracker(
-      dailyMood: DailyMood.fromFirestore(data['dailyMood']),
+      dailyMood: moodEntries,
     );
   }
 
   Map<String, dynamic> toFirestore() {
     return {
-      'dailyMood': dailyMood,
+      'dailyMood':
+          dailyMood.map((moodEntry) => moodEntry.toFirestore()).toList(),
     };
   }
 }

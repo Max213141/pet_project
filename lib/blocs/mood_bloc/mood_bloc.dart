@@ -41,12 +41,12 @@ class MoodBloc extends Bloc<MoodEvent, MoodState> {
             );
     try {
       final docSnapshot = await ref.get();
+
       final userInfo = docSnapshot.data();
-      _log(
-          'Fucking mood entries ${userInfo?.moodTracker.dailyMood.moodEntries}');
+      _log('Fucking mood entries ${userInfo}');
       emit(
         MoodState.moodLoaded(
-          userInfo?.moodTracker.dailyMood.moodEntries ?? [],
+          userInfo?.moodTracker.dailyMood ?? [],
         ),
       );
     } catch (e) {
@@ -58,19 +58,20 @@ class MoodBloc extends Bloc<MoodEvent, MoodState> {
     UploadUserMoodData event,
     Emitter<MoodState> emit,
   ) async {
-    String uid = event.userUID;
-    final ref = await FirebaseFirestore.instance
-        .collection('users')
-        .doc(uid)
-        .withConverter(
-          fromFirestore: UserInfo.fromFirestore,
-          toFirestore: (UserInfo userInfo, _) => userInfo.toFirestore(),
-        );
     final Box<UserData> useDataBox = Hive.box<UserData>('user_data');
     final UserData? userData = useDataBox.get(0);
+    final String? uid = userData?.uid;
+    final ref =
+        FirebaseFirestore.instance.collection('users').doc(uid).withConverter(
+              fromFirestore: UserInfo.fromFirestore,
+              toFirestore: (UserInfo userInfo, _) => userInfo.toFirestore(),
+            );
+
     try {
       final updatedUserMoodInfo = UserInfo(
-        moodTracker: event.updatedMoodTracker,
+        moodTracker: MoodTracker(
+          dailyMood: event.updatedMoodTracker,
+        ),
         userData: DBUserData(
           email: userData!.email!,
           name: userData.userName!,
@@ -79,7 +80,7 @@ class MoodBloc extends Bloc<MoodEvent, MoodState> {
       );
       await ref.set(updatedUserMoodInfo, SetOptions(merge: true));
 
-      add(MoodEvent.loadUserMoodData(userUID: uid));
+      add(MoodEvent.loadUserMoodData(userUID: uid!));
     } catch (e) {
       emit(MoodState.moodLoadingError(errorText: e.toString()));
     }

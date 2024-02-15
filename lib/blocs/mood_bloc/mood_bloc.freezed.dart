@@ -16,29 +16,23 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$MoodEvent {
-  String get userUID => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String userUID) loadUserMoodData,
-    required TResult Function(String userUID, MoodEntry currentMood,
-            MoodTracker updatedMoodTracker, DBUserData userData)
+    required TResult Function(List<MoodEntry> updatedMoodTracker)
         uploadUserMoodData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String userUID)? loadUserMoodData,
-    TResult? Function(String userUID, MoodEntry currentMood,
-            MoodTracker updatedMoodTracker, DBUserData userData)?
-        uploadUserMoodData,
+    TResult? Function(List<MoodEntry> updatedMoodTracker)? uploadUserMoodData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userUID)? loadUserMoodData,
-    TResult Function(String userUID, MoodEntry currentMood,
-            MoodTracker updatedMoodTracker, DBUserData userData)?
-        uploadUserMoodData,
+    TResult Function(List<MoodEntry> updatedMoodTracker)? uploadUserMoodData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -61,18 +55,12 @@ mixin _$MoodEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $MoodEventCopyWith<MoodEvent> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $MoodEventCopyWith<$Res> {
   factory $MoodEventCopyWith(MoodEvent value, $Res Function(MoodEvent) then) =
       _$MoodEventCopyWithImpl<$Res, MoodEvent>;
-  @useResult
-  $Res call({String userUID});
 }
 
 /// @nodoc
@@ -84,28 +72,13 @@ class _$MoodEventCopyWithImpl<$Res, $Val extends MoodEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? userUID = null,
-  }) {
-    return _then(_value.copyWith(
-      userUID: null == userUID
-          ? _value.userUID
-          : userUID // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$LoadUserMoodDataImplCopyWith<$Res>
-    implements $MoodEventCopyWith<$Res> {
+abstract class _$$LoadUserMoodDataImplCopyWith<$Res> {
   factory _$$LoadUserMoodDataImplCopyWith(_$LoadUserMoodDataImpl value,
           $Res Function(_$LoadUserMoodDataImpl) then) =
       __$$LoadUserMoodDataImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({String userUID});
 }
@@ -167,8 +140,7 @@ class _$LoadUserMoodDataImpl implements LoadUserMoodData {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String userUID) loadUserMoodData,
-    required TResult Function(String userUID, MoodEntry currentMood,
-            MoodTracker updatedMoodTracker, DBUserData userData)
+    required TResult Function(List<MoodEntry> updatedMoodTracker)
         uploadUserMoodData,
   }) {
     return loadUserMoodData(userUID);
@@ -178,9 +150,7 @@ class _$LoadUserMoodDataImpl implements LoadUserMoodData {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String userUID)? loadUserMoodData,
-    TResult? Function(String userUID, MoodEntry currentMood,
-            MoodTracker updatedMoodTracker, DBUserData userData)?
-        uploadUserMoodData,
+    TResult? Function(List<MoodEntry> updatedMoodTracker)? uploadUserMoodData,
   }) {
     return loadUserMoodData?.call(userUID);
   }
@@ -189,9 +159,7 @@ class _$LoadUserMoodDataImpl implements LoadUserMoodData {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userUID)? loadUserMoodData,
-    TResult Function(String userUID, MoodEntry currentMood,
-            MoodTracker updatedMoodTracker, DBUserData userData)?
-        uploadUserMoodData,
+    TResult Function(List<MoodEntry> updatedMoodTracker)? uploadUserMoodData,
     required TResult orElse(),
   }) {
     if (loadUserMoodData != null) {
@@ -236,27 +204,19 @@ abstract class LoadUserMoodData implements MoodEvent {
   const factory LoadUserMoodData({required final String userUID}) =
       _$LoadUserMoodDataImpl;
 
-  @override
   String get userUID;
-  @override
   @JsonKey(ignore: true)
   _$$LoadUserMoodDataImplCopyWith<_$LoadUserMoodDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$UploadUserMoodDataImplCopyWith<$Res>
-    implements $MoodEventCopyWith<$Res> {
+abstract class _$$UploadUserMoodDataImplCopyWith<$Res> {
   factory _$$UploadUserMoodDataImplCopyWith(_$UploadUserMoodDataImpl value,
           $Res Function(_$UploadUserMoodDataImpl) then) =
       __$$UploadUserMoodDataImplCopyWithImpl<$Res>;
-  @override
   @useResult
-  $Res call(
-      {String userUID,
-      MoodEntry currentMood,
-      MoodTracker updatedMoodTracker,
-      DBUserData userData});
+  $Res call({List<MoodEntry> updatedMoodTracker});
 }
 
 /// @nodoc
@@ -270,28 +230,13 @@ class __$$UploadUserMoodDataImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userUID = null,
-    Object? currentMood = null,
     Object? updatedMoodTracker = null,
-    Object? userData = null,
   }) {
     return _then(_$UploadUserMoodDataImpl(
-      userUID: null == userUID
-          ? _value.userUID
-          : userUID // ignore: cast_nullable_to_non_nullable
-              as String,
-      currentMood: null == currentMood
-          ? _value.currentMood
-          : currentMood // ignore: cast_nullable_to_non_nullable
-              as MoodEntry,
       updatedMoodTracker: null == updatedMoodTracker
-          ? _value.updatedMoodTracker
+          ? _value._updatedMoodTracker
           : updatedMoodTracker // ignore: cast_nullable_to_non_nullable
-              as MoodTracker,
-      userData: null == userData
-          ? _value.userData
-          : userData // ignore: cast_nullable_to_non_nullable
-              as DBUserData,
+              as List<MoodEntry>,
     ));
   }
 }
@@ -300,23 +245,25 @@ class __$$UploadUserMoodDataImplCopyWithImpl<$Res>
 
 class _$UploadUserMoodDataImpl implements UploadUserMoodData {
   const _$UploadUserMoodDataImpl(
-      {required this.userUID,
-      required this.currentMood,
-      required this.updatedMoodTracker,
-      required this.userData});
+      {required final List<MoodEntry> updatedMoodTracker})
+      : _updatedMoodTracker = updatedMoodTracker;
 
+// required String userUID,
+// required MoodEntry currentMood,
+  final List<MoodEntry> _updatedMoodTracker;
+// required String userUID,
+// required MoodEntry currentMood,
   @override
-  final String userUID;
-  @override
-  final MoodEntry currentMood;
-  @override
-  final MoodTracker updatedMoodTracker;
-  @override
-  final DBUserData userData;
+  List<MoodEntry> get updatedMoodTracker {
+    if (_updatedMoodTracker is EqualUnmodifiableListView)
+      return _updatedMoodTracker;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_updatedMoodTracker);
+  }
 
   @override
   String toString() {
-    return 'MoodEvent.uploadUserMoodData(userUID: $userUID, currentMood: $currentMood, updatedMoodTracker: $updatedMoodTracker, userData: $userData)';
+    return 'MoodEvent.uploadUserMoodData(updatedMoodTracker: $updatedMoodTracker)';
   }
 
   @override
@@ -324,18 +271,13 @@ class _$UploadUserMoodDataImpl implements UploadUserMoodData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UploadUserMoodDataImpl &&
-            (identical(other.userUID, userUID) || other.userUID == userUID) &&
-            (identical(other.currentMood, currentMood) ||
-                other.currentMood == currentMood) &&
-            (identical(other.updatedMoodTracker, updatedMoodTracker) ||
-                other.updatedMoodTracker == updatedMoodTracker) &&
-            (identical(other.userData, userData) ||
-                other.userData == userData));
+            const DeepCollectionEquality()
+                .equals(other._updatedMoodTracker, _updatedMoodTracker));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, userUID, currentMood, updatedMoodTracker, userData);
+      runtimeType, const DeepCollectionEquality().hash(_updatedMoodTracker));
 
   @JsonKey(ignore: true)
   @override
@@ -348,38 +290,30 @@ class _$UploadUserMoodDataImpl implements UploadUserMoodData {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String userUID) loadUserMoodData,
-    required TResult Function(String userUID, MoodEntry currentMood,
-            MoodTracker updatedMoodTracker, DBUserData userData)
+    required TResult Function(List<MoodEntry> updatedMoodTracker)
         uploadUserMoodData,
   }) {
-    return uploadUserMoodData(
-        userUID, currentMood, updatedMoodTracker, userData);
+    return uploadUserMoodData(updatedMoodTracker);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String userUID)? loadUserMoodData,
-    TResult? Function(String userUID, MoodEntry currentMood,
-            MoodTracker updatedMoodTracker, DBUserData userData)?
-        uploadUserMoodData,
+    TResult? Function(List<MoodEntry> updatedMoodTracker)? uploadUserMoodData,
   }) {
-    return uploadUserMoodData?.call(
-        userUID, currentMood, updatedMoodTracker, userData);
+    return uploadUserMoodData?.call(updatedMoodTracker);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userUID)? loadUserMoodData,
-    TResult Function(String userUID, MoodEntry currentMood,
-            MoodTracker updatedMoodTracker, DBUserData userData)?
-        uploadUserMoodData,
+    TResult Function(List<MoodEntry> updatedMoodTracker)? uploadUserMoodData,
     required TResult orElse(),
   }) {
     if (uploadUserMoodData != null) {
-      return uploadUserMoodData(
-          userUID, currentMood, updatedMoodTracker, userData);
+      return uploadUserMoodData(updatedMoodTracker);
     }
     return orElse();
   }
@@ -418,17 +352,12 @@ class _$UploadUserMoodDataImpl implements UploadUserMoodData {
 
 abstract class UploadUserMoodData implements MoodEvent {
   const factory UploadUserMoodData(
-      {required final String userUID,
-      required final MoodEntry currentMood,
-      required final MoodTracker updatedMoodTracker,
-      required final DBUserData userData}) = _$UploadUserMoodDataImpl;
+          {required final List<MoodEntry> updatedMoodTracker}) =
+      _$UploadUserMoodDataImpl;
 
-  @override
-  String get userUID;
-  MoodEntry get currentMood;
-  MoodTracker get updatedMoodTracker;
-  DBUserData get userData;
-  @override
+// required String userUID,
+// required MoodEntry currentMood,
+  List<MoodEntry> get updatedMoodTracker;
   @JsonKey(ignore: true)
   _$$UploadUserMoodDataImplCopyWith<_$UploadUserMoodDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -440,7 +369,7 @@ mixin _$MoodState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<MoodEntry> moodEntries) moodLoaded,
+    required TResult Function(List<dynamic> moodEntries) moodLoaded,
     required TResult Function(String errorText) moodLoadingError,
   }) =>
       throw _privateConstructorUsedError;
@@ -448,7 +377,7 @@ mixin _$MoodState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<MoodEntry> moodEntries)? moodLoaded,
+    TResult? Function(List<dynamic> moodEntries)? moodLoaded,
     TResult? Function(String errorText)? moodLoadingError,
   }) =>
       throw _privateConstructorUsedError;
@@ -456,7 +385,7 @@ mixin _$MoodState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<MoodEntry> moodEntries)? moodLoaded,
+    TResult Function(List<dynamic> moodEntries)? moodLoaded,
     TResult Function(String errorText)? moodLoadingError,
     required TResult orElse(),
   }) =>
@@ -545,7 +474,7 @@ class _$InitialImpl implements Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<MoodEntry> moodEntries) moodLoaded,
+    required TResult Function(List<dynamic> moodEntries) moodLoaded,
     required TResult Function(String errorText) moodLoadingError,
   }) {
     return initial();
@@ -556,7 +485,7 @@ class _$InitialImpl implements Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<MoodEntry> moodEntries)? moodLoaded,
+    TResult? Function(List<dynamic> moodEntries)? moodLoaded,
     TResult? Function(String errorText)? moodLoadingError,
   }) {
     return initial?.call();
@@ -567,7 +496,7 @@ class _$InitialImpl implements Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<MoodEntry> moodEntries)? moodLoaded,
+    TResult Function(List<dynamic> moodEntries)? moodLoaded,
     TResult Function(String errorText)? moodLoadingError,
     required TResult orElse(),
   }) {
@@ -659,7 +588,7 @@ class _$LoadingImpl implements Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<MoodEntry> moodEntries) moodLoaded,
+    required TResult Function(List<dynamic> moodEntries) moodLoaded,
     required TResult Function(String errorText) moodLoadingError,
   }) {
     return loading();
@@ -670,7 +599,7 @@ class _$LoadingImpl implements Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<MoodEntry> moodEntries)? moodLoaded,
+    TResult? Function(List<dynamic> moodEntries)? moodLoaded,
     TResult? Function(String errorText)? moodLoadingError,
   }) {
     return loading?.call();
@@ -681,7 +610,7 @@ class _$LoadingImpl implements Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<MoodEntry> moodEntries)? moodLoaded,
+    TResult Function(List<dynamic> moodEntries)? moodLoaded,
     TResult Function(String errorText)? moodLoadingError,
     required TResult orElse(),
   }) {
@@ -739,7 +668,7 @@ abstract class _$$MoodLoadedImplCopyWith<$Res> {
           _$MoodLoadedImpl value, $Res Function(_$MoodLoadedImpl) then) =
       __$$MoodLoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<MoodEntry> moodEntries});
+  $Res call({List<dynamic> moodEntries});
 }
 
 /// @nodoc
@@ -759,7 +688,7 @@ class __$$MoodLoadedImplCopyWithImpl<$Res>
       null == moodEntries
           ? _value._moodEntries
           : moodEntries // ignore: cast_nullable_to_non_nullable
-              as List<MoodEntry>,
+              as List<dynamic>,
     ));
   }
 }
@@ -767,12 +696,12 @@ class __$$MoodLoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$MoodLoadedImpl implements _MoodLoaded {
-  const _$MoodLoadedImpl(final List<MoodEntry> moodEntries)
+  const _$MoodLoadedImpl(final List<dynamic> moodEntries)
       : _moodEntries = moodEntries;
 
-  final List<MoodEntry> _moodEntries;
+  final List<dynamic> _moodEntries;
   @override
-  List<MoodEntry> get moodEntries {
+  List<dynamic> get moodEntries {
     if (_moodEntries is EqualUnmodifiableListView) return _moodEntries;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_moodEntries);
@@ -807,7 +736,7 @@ class _$MoodLoadedImpl implements _MoodLoaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<MoodEntry> moodEntries) moodLoaded,
+    required TResult Function(List<dynamic> moodEntries) moodLoaded,
     required TResult Function(String errorText) moodLoadingError,
   }) {
     return moodLoaded(moodEntries);
@@ -818,7 +747,7 @@ class _$MoodLoadedImpl implements _MoodLoaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<MoodEntry> moodEntries)? moodLoaded,
+    TResult? Function(List<dynamic> moodEntries)? moodLoaded,
     TResult? Function(String errorText)? moodLoadingError,
   }) {
     return moodLoaded?.call(moodEntries);
@@ -829,7 +758,7 @@ class _$MoodLoadedImpl implements _MoodLoaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<MoodEntry> moodEntries)? moodLoaded,
+    TResult Function(List<dynamic> moodEntries)? moodLoaded,
     TResult Function(String errorText)? moodLoadingError,
     required TResult orElse(),
   }) {
@@ -878,10 +807,9 @@ class _$MoodLoadedImpl implements _MoodLoaded {
 }
 
 abstract class _MoodLoaded implements MoodState {
-  const factory _MoodLoaded(final List<MoodEntry> moodEntries) =
-      _$MoodLoadedImpl;
+  const factory _MoodLoaded(final List<dynamic> moodEntries) = _$MoodLoadedImpl;
 
-  List<MoodEntry> get moodEntries;
+  List<dynamic> get moodEntries;
   @JsonKey(ignore: true)
   _$$MoodLoadedImplCopyWith<_$MoodLoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -956,7 +884,7 @@ class _$MoodLoadingErrorImpl implements MoodLoadingError {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<MoodEntry> moodEntries) moodLoaded,
+    required TResult Function(List<dynamic> moodEntries) moodLoaded,
     required TResult Function(String errorText) moodLoadingError,
   }) {
     return moodLoadingError(errorText);
@@ -967,7 +895,7 @@ class _$MoodLoadingErrorImpl implements MoodLoadingError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<MoodEntry> moodEntries)? moodLoaded,
+    TResult? Function(List<dynamic> moodEntries)? moodLoaded,
     TResult? Function(String errorText)? moodLoadingError,
   }) {
     return moodLoadingError?.call(errorText);
@@ -978,7 +906,7 @@ class _$MoodLoadingErrorImpl implements MoodLoadingError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<MoodEntry> moodEntries)? moodLoaded,
+    TResult Function(List<dynamic> moodEntries)? moodLoaded,
     TResult Function(String errorText)? moodLoadingError,
     required TResult orElse(),
   }) {

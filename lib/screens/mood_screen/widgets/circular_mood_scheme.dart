@@ -4,7 +4,7 @@ import 'package:life_sync/screens/mood_screen/widgets/widgets.dart';
 import 'package:life_sync/utils/utils.dart';
 
 class CircularMoodScheme extends StatelessWidget {
-  final List<MoodEntry> userDailyMood;
+  final List<dynamic> userDailyMood;
   const CircularMoodScheme({
     super.key,
     required this.userDailyMood,
@@ -42,7 +42,7 @@ class CircularMoodScheme extends StatelessWidget {
                     children: [
                       Positioned.fill(
                         child: MoodPieChart(
-                          userDailyMood: userDailyMood,
+                          userDailyMood: userDailyMood as List<MoodEntry>,
                         ),
                       ),
                       SizedBox(

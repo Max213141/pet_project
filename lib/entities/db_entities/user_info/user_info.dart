@@ -23,8 +23,8 @@ class UserInfo {
 
   Map<String, dynamic> toFirestore() {
     return {
-      'moodTracker': moodTracker,
-      'userData': userData,
+      'moodTracker': moodTracker.toFirestore(),
+      'userData': userData.toFirestore(),
     };
   }
 }

@@ -7,9 +7,9 @@ class MoodEvent with _$MoodEvent {
   }) = LoadUserMoodData;
 
   const factory MoodEvent.uploadUserMoodData({
-    required String userUID,
-    required MoodEntry currentMood,
-    required MoodTracker updatedMoodTracker,
-    required DBUserData userData,
+    // required String userUID,
+    // required MoodEntry currentMood,
+    required List<MoodEntry> updatedMoodTracker,
+    // required DBUserData userData,
   }) = UploadUserMoodData;
 }
