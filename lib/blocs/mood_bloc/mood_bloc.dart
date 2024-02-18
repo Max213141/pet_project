@@ -26,10 +26,7 @@ class MoodBloc extends Bloc<MoodEvent, MoodState> {
     );
   }
 
-  _loadUserMoodData(
-    LoadUserMoodData event,
-    Emitter<MoodState> emit,
-  ) async {
+  _loadUserMoodData(LoadUserMoodData event, Emitter<MoodState> emit) async {
     emit(
       const MoodState.loading(),
     );
@@ -46,7 +43,7 @@ class MoodBloc extends Bloc<MoodEvent, MoodState> {
       _log('Fucking mood entries ${userInfo}');
       emit(
         MoodState.moodLoaded(
-          userInfo?.moodTracker.dailyMood ?? [],
+          userInfo?.moodTracker?.dailyMood ?? [],
         ),
       );
     } catch (e) {

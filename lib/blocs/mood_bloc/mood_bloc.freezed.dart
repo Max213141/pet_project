@@ -369,7 +369,7 @@ mixin _$MoodState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<dynamic> moodEntries) moodLoaded,
+    required TResult Function(List<MoodEntry> moodEntries) moodLoaded,
     required TResult Function(String errorText) moodLoadingError,
   }) =>
       throw _privateConstructorUsedError;
@@ -377,7 +377,7 @@ mixin _$MoodState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<dynamic> moodEntries)? moodLoaded,
+    TResult? Function(List<MoodEntry> moodEntries)? moodLoaded,
     TResult? Function(String errorText)? moodLoadingError,
   }) =>
       throw _privateConstructorUsedError;
@@ -385,7 +385,7 @@ mixin _$MoodState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<dynamic> moodEntries)? moodLoaded,
+    TResult Function(List<MoodEntry> moodEntries)? moodLoaded,
     TResult Function(String errorText)? moodLoadingError,
     required TResult orElse(),
   }) =>
@@ -474,7 +474,7 @@ class _$InitialImpl implements Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<dynamic> moodEntries) moodLoaded,
+    required TResult Function(List<MoodEntry> moodEntries) moodLoaded,
     required TResult Function(String errorText) moodLoadingError,
   }) {
     return initial();
@@ -485,7 +485,7 @@ class _$InitialImpl implements Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<dynamic> moodEntries)? moodLoaded,
+    TResult? Function(List<MoodEntry> moodEntries)? moodLoaded,
     TResult? Function(String errorText)? moodLoadingError,
   }) {
     return initial?.call();
@@ -496,7 +496,7 @@ class _$InitialImpl implements Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<dynamic> moodEntries)? moodLoaded,
+    TResult Function(List<MoodEntry> moodEntries)? moodLoaded,
     TResult Function(String errorText)? moodLoadingError,
     required TResult orElse(),
   }) {
@@ -588,7 +588,7 @@ class _$LoadingImpl implements Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<dynamic> moodEntries) moodLoaded,
+    required TResult Function(List<MoodEntry> moodEntries) moodLoaded,
     required TResult Function(String errorText) moodLoadingError,
   }) {
     return loading();
@@ -599,7 +599,7 @@ class _$LoadingImpl implements Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<dynamic> moodEntries)? moodLoaded,
+    TResult? Function(List<MoodEntry> moodEntries)? moodLoaded,
     TResult? Function(String errorText)? moodLoadingError,
   }) {
     return loading?.call();
@@ -610,7 +610,7 @@ class _$LoadingImpl implements Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<dynamic> moodEntries)? moodLoaded,
+    TResult Function(List<MoodEntry> moodEntries)? moodLoaded,
     TResult Function(String errorText)? moodLoadingError,
     required TResult orElse(),
   }) {
@@ -668,7 +668,7 @@ abstract class _$$MoodLoadedImplCopyWith<$Res> {
           _$MoodLoadedImpl value, $Res Function(_$MoodLoadedImpl) then) =
       __$$MoodLoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<dynamic> moodEntries});
+  $Res call({List<MoodEntry> moodEntries});
 }
 
 /// @nodoc
@@ -688,7 +688,7 @@ class __$$MoodLoadedImplCopyWithImpl<$Res>
       null == moodEntries
           ? _value._moodEntries
           : moodEntries // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<MoodEntry>,
     ));
   }
 }
@@ -696,12 +696,12 @@ class __$$MoodLoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$MoodLoadedImpl implements _MoodLoaded {
-  const _$MoodLoadedImpl(final List<dynamic> moodEntries)
+  const _$MoodLoadedImpl(final List<MoodEntry> moodEntries)
       : _moodEntries = moodEntries;
 
-  final List<dynamic> _moodEntries;
+  final List<MoodEntry> _moodEntries;
   @override
-  List<dynamic> get moodEntries {
+  List<MoodEntry> get moodEntries {
     if (_moodEntries is EqualUnmodifiableListView) return _moodEntries;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_moodEntries);
@@ -736,7 +736,7 @@ class _$MoodLoadedImpl implements _MoodLoaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<dynamic> moodEntries) moodLoaded,
+    required TResult Function(List<MoodEntry> moodEntries) moodLoaded,
     required TResult Function(String errorText) moodLoadingError,
   }) {
     return moodLoaded(moodEntries);
@@ -747,7 +747,7 @@ class _$MoodLoadedImpl implements _MoodLoaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<dynamic> moodEntries)? moodLoaded,
+    TResult? Function(List<MoodEntry> moodEntries)? moodLoaded,
     TResult? Function(String errorText)? moodLoadingError,
   }) {
     return moodLoaded?.call(moodEntries);
@@ -758,7 +758,7 @@ class _$MoodLoadedImpl implements _MoodLoaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<dynamic> moodEntries)? moodLoaded,
+    TResult Function(List<MoodEntry> moodEntries)? moodLoaded,
     TResult Function(String errorText)? moodLoadingError,
     required TResult orElse(),
   }) {
@@ -807,9 +807,10 @@ class _$MoodLoadedImpl implements _MoodLoaded {
 }
 
 abstract class _MoodLoaded implements MoodState {
-  const factory _MoodLoaded(final List<dynamic> moodEntries) = _$MoodLoadedImpl;
+  const factory _MoodLoaded(final List<MoodEntry> moodEntries) =
+      _$MoodLoadedImpl;
 
-  List<dynamic> get moodEntries;
+  List<MoodEntry> get moodEntries;
   @JsonKey(ignore: true)
   _$$MoodLoadedImplCopyWith<_$MoodLoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -884,7 +885,7 @@ class _$MoodLoadingErrorImpl implements MoodLoadingError {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<dynamic> moodEntries) moodLoaded,
+    required TResult Function(List<MoodEntry> moodEntries) moodLoaded,
     required TResult Function(String errorText) moodLoadingError,
   }) {
     return moodLoadingError(errorText);
@@ -895,7 +896,7 @@ class _$MoodLoadingErrorImpl implements MoodLoadingError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<dynamic> moodEntries)? moodLoaded,
+    TResult? Function(List<MoodEntry> moodEntries)? moodLoaded,
     TResult? Function(String errorText)? moodLoadingError,
   }) {
     return moodLoadingError?.call(errorText);
@@ -906,7 +907,7 @@ class _$MoodLoadingErrorImpl implements MoodLoadingError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<dynamic> moodEntries)? moodLoaded,
+    TResult Function(List<MoodEntry> moodEntries)? moodLoaded,
     TResult Function(String errorText)? moodLoadingError,
     required TResult orElse(),
   }) {

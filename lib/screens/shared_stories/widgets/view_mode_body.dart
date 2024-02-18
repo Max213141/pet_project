@@ -30,70 +30,137 @@ class _ViewModeBodyState extends State<ViewModeBody> {
         height: MediaQuery.of(context).size.height -
             AppBar().preferredSize.height -
             200,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-              child: Wrap(
-                // alignment: WrapAlignment.spaceBetween,
-                spacing: 10,
-                runSpacing: 5,
-                children: widget.randomStories
-                    .map(
-                      (story) => GestureDetector(
-                        onTap: () => showModalBottomSheet(
-                          useSafeArea: true,
-                          showDragHandle: true,
-                          isScrollControlled: true,
-                          shape: const RoundedRectangleBorder(
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(40),
-                              topRight: Radius.circular(40),
-                            ),
-                          ),
-                          context: context,
-                          builder: (context) {
-                            return UserStoryBottomSheetBody(story: story);
-                          },
+        child: widget.randomStories.isEmpty
+            ? Center(
+                child: Text(
+                  'There is no user stories :(',
+                  style: MentalHealthTextStyles.text.signikaPrimaryFontF22Black,
+                ),
+              )
+            : Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: AppColor.habbitsTileBackground,
                         ),
-                        child: DecoratedBox(
-                          decoration: BoxDecoration(
-                            borderRadius:
-                                MentalHealthDecorations.borders.radiusC10,
-                            border: Border.all(
-                              color: AppColor.habbitsTileBackground,
-                            ),
-                            color: AppColor.sharedStoryChipColor,
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 10.0, vertical: 10),
-                            child: Text(
-                              story.title,
-                              style: MentalHealthTextStyles
-                                  .text.popinsSecondaryFontF14,
-                            ),
+                        borderRadius: MentalHealthDecorations.borders.radiusC20,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(6.0),
+                        child: SingleChildScrollView(
+                          child: Wrap(
+                            // alignment: WrapAlignment.spaceBetween,
+                            spacing: 10,
+                            runSpacing: 5,
+                            children: widget.randomStories
+                                .map(
+                                  (story) => GestureDetector(
+                                    onTap: () => showModalBottomSheet(
+                                      useSafeArea: true,
+                                      showDragHandle: true,
+                                      isScrollControlled: true,
+                                      shape: const RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(40),
+                                          topRight: Radius.circular(40),
+                                        ),
+                                      ),
+                                      context: context,
+                                      builder: (context) {
+                                        return UserStoryBottomSheetBody(
+                                            story: story);
+                                      },
+                                    ),
+                                    child: DecoratedBox(
+                                      decoration: BoxDecoration(
+                                        borderRadius: MentalHealthDecorations
+                                            .borders.radiusC10,
+                                        border: Border.all(
+                                          color: AppColor.habbitsTileBackground,
+                                        ),
+                                        color: AppColor.sharedStoryChipColor,
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 10.0, vertical: 10),
+                                        child: Text(
+                                          story.title,
+                                          style: MentalHealthTextStyles
+                                              .text.popinsSecondaryFontF14,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                )
+                                .toList(),
                           ),
                         ),
                       ),
-                    )
-                    .toList(),
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  Center(
+                    child: RefreshButton(
+                      onPressed: () {
+                        _log('Load new random story button pressed');
+                        BlocProvider.of<SharedStoriesBloc>(context).add(
+                          LoadRandomStoryEvent(userUID: widget.uid),
+                        ); //TODO remove hardcode
+                      },
+                      size: 100,
+                    ),
+                  ),
+                ],
               ),
-            ),
-            Center(
-              child: RefreshButton(
-                onPressed: () {
-                  _log('Load new random story button pressed');
-                  BlocProvider.of<SharedStoriesBloc>(context).add(
-                    LoadRandomStoryEvent(userUID: widget.uid),
-                  ); //TODO remove hardcode
-                },
-                size: 100,
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }
 }
+
+// ListView.builder(
+//                       // alignment: WrapAlignment.spaceBetween,
+//                       // spacing: 10,
+//                       // runSpacing: 5,
+//                       itemCount: widget.randomStories.length,
+//                       itemBuilder: (BuildContext context, int index) {
+//                         return GestureDetector(
+//                           onTap: () => showModalBottomSheet(
+//                             useSafeArea: true,
+//                             showDragHandle: true,
+//                             isScrollControlled: true,
+//                             shape: const RoundedRectangleBorder(
+//                               borderRadius: BorderRadius.only(
+//                                 topLeft: Radius.circular(40),
+//                                 topRight: Radius.circular(40),
+//                               ),
+//                             ),
+//                             context: context,
+//                             builder: (context) {
+//                               return UserStoryBottomSheetBody(
+//                                   story: widget.randomStories[index]);
+//                             },
+//                           ),
+//                           child: DecoratedBox(
+//                             decoration: BoxDecoration(
+//                               borderRadius:
+//                                   MentalHealthDecorations.borders.radiusC10,
+//                               border: Border.all(
+//                                 color: AppColor.habbitsTileBackground,
+//                               ),
+//                               color: AppColor.sharedStoryChipColor,
+//                             ),
+//                             child: Padding(
+//                               padding: const EdgeInsets.symmetric(
+//                                   horizontal: 10.0, vertical: 10),
+//                               child: Text(
+//                                 widget.randomStories[index].title,
+//                                 style: MentalHealthTextStyles
+//                                     .text.popinsSecondaryFontF14,
+//                               ),
+//                             ),
+//                           ),
+//                         );
+//                       }),

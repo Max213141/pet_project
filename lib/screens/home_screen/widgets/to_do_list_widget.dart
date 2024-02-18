@@ -40,7 +40,7 @@ class _ToDoListWidgetState extends State<ToDoListWidget> {
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        'Check out your habbits',
+                        'Check out your habits',
                         style:
                             MentalHealthTextStyles.text.signikaSecondaryFontF16,
                       ),
