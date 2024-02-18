@@ -8,7 +8,7 @@ class MoodTracker {
   });
 
   factory MoodTracker.fromFirestore(Map<String, dynamic> data) {
-    List<MoodEntry> moodEntries = data['dailyMood']
+    final moodEntries = (data['dailyMood'] as List<dynamic>)
         .map((entry) => MoodEntry.fromFirestore(entry))
         .toList();
     // final data = snapshot.data();

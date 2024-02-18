@@ -41,61 +41,66 @@ class _ViewModeBodyState extends State<ViewModeBody> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: AppColor.habbitsTileBackground,
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width - 32,
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: AppColor.habbitsTileBackground,
+                          ),
+                          borderRadius:
+                              MentalHealthDecorations.borders.radiusC20,
                         ),
-                        borderRadius: MentalHealthDecorations.borders.radiusC20,
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(6.0),
-                        child: SingleChildScrollView(
-                          child: Wrap(
-                            // alignment: WrapAlignment.spaceBetween,
-                            spacing: 10,
-                            runSpacing: 5,
-                            children: widget.randomStories
-                                .map(
-                                  (story) => GestureDetector(
-                                    onTap: () => showModalBottomSheet(
-                                      useSafeArea: true,
-                                      showDragHandle: true,
-                                      isScrollControlled: true,
-                                      shape: const RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(40),
-                                          topRight: Radius.circular(40),
+                        child: Padding(
+                          padding: const EdgeInsets.all(6.0),
+                          child: SingleChildScrollView(
+                            child: Wrap(
+                              // alignment: WrapAlignment.spaceBetween,
+                              spacing: 10,
+                              runSpacing: 5,
+                              children: widget.randomStories
+                                  .map(
+                                    (story) => GestureDetector(
+                                      onTap: () => showModalBottomSheet(
+                                        useSafeArea: true,
+                                        showDragHandle: true,
+                                        isScrollControlled: true,
+                                        shape: const RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(40),
+                                            topRight: Radius.circular(40),
+                                          ),
+                                        ),
+                                        context: context,
+                                        builder: (context) {
+                                          return UserStoryBottomSheetBody(
+                                              story: story);
+                                        },
+                                      ),
+                                      child: DecoratedBox(
+                                        decoration: BoxDecoration(
+                                          borderRadius: MentalHealthDecorations
+                                              .borders.radiusC10,
+                                          border: Border.all(
+                                            color:
+                                                AppColor.habbitsTileBackground,
+                                          ),
+                                          color: AppColor.sharedStoryChipColor,
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 10.0, vertical: 10),
+                                          child: Text(
+                                            story.title,
+                                            style: MentalHealthTextStyles
+                                                .text.popinsSecondaryFontF14,
+                                          ),
                                         ),
                                       ),
-                                      context: context,
-                                      builder: (context) {
-                                        return UserStoryBottomSheetBody(
-                                            story: story);
-                                      },
                                     ),
-                                    child: DecoratedBox(
-                                      decoration: BoxDecoration(
-                                        borderRadius: MentalHealthDecorations
-                                            .borders.radiusC10,
-                                        border: Border.all(
-                                          color: AppColor.habbitsTileBackground,
-                                        ),
-                                        color: AppColor.sharedStoryChipColor,
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 10.0, vertical: 10),
-                                        child: Text(
-                                          story.title,
-                                          style: MentalHealthTextStyles
-                                              .text.popinsSecondaryFontF14,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                )
-                                .toList(),
+                                  )
+                                  .toList(),
+                            ),
                           ),
                         ),
                       ),
