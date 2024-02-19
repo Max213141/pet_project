@@ -12,27 +12,29 @@ class HabitsPercentageRadialDiagram extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 85,
-      width: 85,
-      child: Stack(children: [
-        Positioned.fill(
-          child: CustomPaint(
-            size: const Size(85, 85),
-            painter: CircleChartPainter(data),
-          ),
-        ),
-        Positioned(
-          // top: 42 / 2,
-          // left: 42 / 2,
-          child: Center(
-            child: Text(
-              '${((2 * 100) / 7).round()}%',
-              style: MentalHealthTextStyles.text.signikaFontF22Bold,
+    return Expanded(
+      child: SizedBox(
+        height: 85,
+        width: MediaQuery.of(context).size.width - 48 - 76 - 60,
+        child: Stack(children: [
+          Positioned.fill(
+            child: CustomPaint(
+              size: const Size(85, 85),
+              painter: CircleChartPainter(data),
             ),
           ),
-        )
-      ]),
+          Positioned(
+            // top: 42 / 2,
+            // left: 42 / 2,
+            child: Center(
+              child: Text(
+                '${((2 * 100) / 7).round()}%',
+                style: MentalHealthTextStyles.text.signikaFontF22Bold,
+              ),
+            ),
+          )
+        ]),
+      ),
     );
   }
 }

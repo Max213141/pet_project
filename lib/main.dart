@@ -295,11 +295,14 @@ class MyApp extends StatelessWidget {
               BlocProvider<MoodBloc>(
                 create: (context) => MoodBloc(),
               ),
+              BlocProvider<HabitsBloc>(
+                create: (context) => HabitsBloc(),
+              )
             ],
             child: BlocBuilder<ThemeBloc, ThemeState>(
               builder: (context, state) {
                 return MaterialApp.router(
-                  title: 'Flutter Demo',
+                  title: 'LifeSync',
                   routerConfig: router,
                   theme: state.isDarkTheme ? lightTheme : darkTheme,
                 );

@@ -18,7 +18,7 @@ class HabitsPercentageWidget extends StatelessWidget {
           borderRadius: MentalHealthDecorations.borders.radiusC15,
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 46.0, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 38.0, vertical: 10),
           child: Column(
             children: [
               Center(

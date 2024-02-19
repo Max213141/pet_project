@@ -404,24 +404,27 @@ mixin _$HabitsState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<dynamic> userHabits) habitsLoaded,
+    required TResult Function(List<UserHabit> userHabits) habitsLoaded,
     required TResult Function() habitsUploaded,
+    required TResult Function(String errorText) habitsLoadingError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<dynamic> userHabits)? habitsLoaded,
+    TResult? Function(List<UserHabit> userHabits)? habitsLoaded,
     TResult? Function()? habitsUploaded,
+    TResult? Function(String errorText)? habitsLoadingError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<dynamic> userHabits)? habitsLoaded,
+    TResult Function(List<UserHabit> userHabits)? habitsLoaded,
     TResult Function()? habitsUploaded,
+    TResult Function(String errorText)? habitsLoadingError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -431,6 +434,7 @@ mixin _$HabitsState {
     required TResult Function(_Loading value) loading,
     required TResult Function(_HabitsLoaded value) habitsLoaded,
     required TResult Function(_HabitsUploaded value) habitsUploaded,
+    required TResult Function(HabitsLoadingError value) habitsLoadingError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -439,6 +443,7 @@ mixin _$HabitsState {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_HabitsLoaded value)? habitsLoaded,
     TResult? Function(_HabitsUploaded value)? habitsUploaded,
+    TResult? Function(HabitsLoadingError value)? habitsLoadingError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -447,6 +452,7 @@ mixin _$HabitsState {
     TResult Function(_Loading value)? loading,
     TResult Function(_HabitsLoaded value)? habitsLoaded,
     TResult Function(_HabitsUploaded value)? habitsUploaded,
+    TResult Function(HabitsLoadingError value)? habitsLoadingError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -510,8 +516,9 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<dynamic> userHabits) habitsLoaded,
+    required TResult Function(List<UserHabit> userHabits) habitsLoaded,
     required TResult Function() habitsUploaded,
+    required TResult Function(String errorText) habitsLoadingError,
   }) {
     return initial();
   }
@@ -521,8 +528,9 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<dynamic> userHabits)? habitsLoaded,
+    TResult? Function(List<UserHabit> userHabits)? habitsLoaded,
     TResult? Function()? habitsUploaded,
+    TResult? Function(String errorText)? habitsLoadingError,
   }) {
     return initial?.call();
   }
@@ -532,8 +540,9 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<dynamic> userHabits)? habitsLoaded,
+    TResult Function(List<UserHabit> userHabits)? habitsLoaded,
     TResult Function()? habitsUploaded,
+    TResult Function(String errorText)? habitsLoadingError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -549,6 +558,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Loading value) loading,
     required TResult Function(_HabitsLoaded value) habitsLoaded,
     required TResult Function(_HabitsUploaded value) habitsUploaded,
+    required TResult Function(HabitsLoadingError value) habitsLoadingError,
   }) {
     return initial(this);
   }
@@ -560,6 +570,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_HabitsLoaded value)? habitsLoaded,
     TResult? Function(_HabitsUploaded value)? habitsUploaded,
+    TResult? Function(HabitsLoadingError value)? habitsLoadingError,
   }) {
     return initial?.call(this);
   }
@@ -571,6 +582,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Loading value)? loading,
     TResult Function(_HabitsLoaded value)? habitsLoaded,
     TResult Function(_HabitsUploaded value)? habitsUploaded,
+    TResult Function(HabitsLoadingError value)? habitsLoadingError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -624,8 +636,9 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<dynamic> userHabits) habitsLoaded,
+    required TResult Function(List<UserHabit> userHabits) habitsLoaded,
     required TResult Function() habitsUploaded,
+    required TResult Function(String errorText) habitsLoadingError,
   }) {
     return loading();
   }
@@ -635,8 +648,9 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<dynamic> userHabits)? habitsLoaded,
+    TResult? Function(List<UserHabit> userHabits)? habitsLoaded,
     TResult? Function()? habitsUploaded,
+    TResult? Function(String errorText)? habitsLoadingError,
   }) {
     return loading?.call();
   }
@@ -646,8 +660,9 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<dynamic> userHabits)? habitsLoaded,
+    TResult Function(List<UserHabit> userHabits)? habitsLoaded,
     TResult Function()? habitsUploaded,
+    TResult Function(String errorText)? habitsLoadingError,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -663,6 +678,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Loading value) loading,
     required TResult Function(_HabitsLoaded value) habitsLoaded,
     required TResult Function(_HabitsUploaded value) habitsUploaded,
+    required TResult Function(HabitsLoadingError value) habitsLoadingError,
   }) {
     return loading(this);
   }
@@ -674,6 +690,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_HabitsLoaded value)? habitsLoaded,
     TResult? Function(_HabitsUploaded value)? habitsUploaded,
+    TResult? Function(HabitsLoadingError value)? habitsLoadingError,
   }) {
     return loading?.call(this);
   }
@@ -685,6 +702,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Loading value)? loading,
     TResult Function(_HabitsLoaded value)? habitsLoaded,
     TResult Function(_HabitsUploaded value)? habitsUploaded,
+    TResult Function(HabitsLoadingError value)? habitsLoadingError,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -704,7 +722,7 @@ abstract class _$$HabitsLoadedImplCopyWith<$Res> {
           _$HabitsLoadedImpl value, $Res Function(_$HabitsLoadedImpl) then) =
       __$$HabitsLoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<dynamic> userHabits});
+  $Res call({List<UserHabit> userHabits});
 }
 
 /// @nodoc
@@ -724,7 +742,7 @@ class __$$HabitsLoadedImplCopyWithImpl<$Res>
       userHabits: null == userHabits
           ? _value._userHabits
           : userHabits // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<UserHabit>,
     ));
   }
 }
@@ -732,12 +750,12 @@ class __$$HabitsLoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$HabitsLoadedImpl implements _HabitsLoaded {
-  const _$HabitsLoadedImpl({required final List<dynamic> userHabits})
+  const _$HabitsLoadedImpl({required final List<UserHabit> userHabits})
       : _userHabits = userHabits;
 
-  final List<dynamic> _userHabits;
+  final List<UserHabit> _userHabits;
   @override
-  List<dynamic> get userHabits {
+  List<UserHabit> get userHabits {
     if (_userHabits is EqualUnmodifiableListView) return _userHabits;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_userHabits);
@@ -772,8 +790,9 @@ class _$HabitsLoadedImpl implements _HabitsLoaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<dynamic> userHabits) habitsLoaded,
+    required TResult Function(List<UserHabit> userHabits) habitsLoaded,
     required TResult Function() habitsUploaded,
+    required TResult Function(String errorText) habitsLoadingError,
   }) {
     return habitsLoaded(userHabits);
   }
@@ -783,8 +802,9 @@ class _$HabitsLoadedImpl implements _HabitsLoaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<dynamic> userHabits)? habitsLoaded,
+    TResult? Function(List<UserHabit> userHabits)? habitsLoaded,
     TResult? Function()? habitsUploaded,
+    TResult? Function(String errorText)? habitsLoadingError,
   }) {
     return habitsLoaded?.call(userHabits);
   }
@@ -794,8 +814,9 @@ class _$HabitsLoadedImpl implements _HabitsLoaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<dynamic> userHabits)? habitsLoaded,
+    TResult Function(List<UserHabit> userHabits)? habitsLoaded,
     TResult Function()? habitsUploaded,
+    TResult Function(String errorText)? habitsLoadingError,
     required TResult orElse(),
   }) {
     if (habitsLoaded != null) {
@@ -811,6 +832,7 @@ class _$HabitsLoadedImpl implements _HabitsLoaded {
     required TResult Function(_Loading value) loading,
     required TResult Function(_HabitsLoaded value) habitsLoaded,
     required TResult Function(_HabitsUploaded value) habitsUploaded,
+    required TResult Function(HabitsLoadingError value) habitsLoadingError,
   }) {
     return habitsLoaded(this);
   }
@@ -822,6 +844,7 @@ class _$HabitsLoadedImpl implements _HabitsLoaded {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_HabitsLoaded value)? habitsLoaded,
     TResult? Function(_HabitsUploaded value)? habitsUploaded,
+    TResult? Function(HabitsLoadingError value)? habitsLoadingError,
   }) {
     return habitsLoaded?.call(this);
   }
@@ -833,6 +856,7 @@ class _$HabitsLoadedImpl implements _HabitsLoaded {
     TResult Function(_Loading value)? loading,
     TResult Function(_HabitsLoaded value)? habitsLoaded,
     TResult Function(_HabitsUploaded value)? habitsUploaded,
+    TResult Function(HabitsLoadingError value)? habitsLoadingError,
     required TResult orElse(),
   }) {
     if (habitsLoaded != null) {
@@ -843,10 +867,10 @@ class _$HabitsLoadedImpl implements _HabitsLoaded {
 }
 
 abstract class _HabitsLoaded implements HabitsState {
-  const factory _HabitsLoaded({required final List<dynamic> userHabits}) =
+  const factory _HabitsLoaded({required final List<UserHabit> userHabits}) =
       _$HabitsLoadedImpl;
 
-  List<dynamic> get userHabits;
+  List<UserHabit> get userHabits;
   @JsonKey(ignore: true)
   _$$HabitsLoadedImplCopyWith<_$HabitsLoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -892,8 +916,9 @@ class _$HabitsUploadedImpl implements _HabitsUploaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<dynamic> userHabits) habitsLoaded,
+    required TResult Function(List<UserHabit> userHabits) habitsLoaded,
     required TResult Function() habitsUploaded,
+    required TResult Function(String errorText) habitsLoadingError,
   }) {
     return habitsUploaded();
   }
@@ -903,8 +928,9 @@ class _$HabitsUploadedImpl implements _HabitsUploaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<dynamic> userHabits)? habitsLoaded,
+    TResult? Function(List<UserHabit> userHabits)? habitsLoaded,
     TResult? Function()? habitsUploaded,
+    TResult? Function(String errorText)? habitsLoadingError,
   }) {
     return habitsUploaded?.call();
   }
@@ -914,8 +940,9 @@ class _$HabitsUploadedImpl implements _HabitsUploaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<dynamic> userHabits)? habitsLoaded,
+    TResult Function(List<UserHabit> userHabits)? habitsLoaded,
     TResult Function()? habitsUploaded,
+    TResult Function(String errorText)? habitsLoadingError,
     required TResult orElse(),
   }) {
     if (habitsUploaded != null) {
@@ -931,6 +958,7 @@ class _$HabitsUploadedImpl implements _HabitsUploaded {
     required TResult Function(_Loading value) loading,
     required TResult Function(_HabitsLoaded value) habitsLoaded,
     required TResult Function(_HabitsUploaded value) habitsUploaded,
+    required TResult Function(HabitsLoadingError value) habitsLoadingError,
   }) {
     return habitsUploaded(this);
   }
@@ -942,6 +970,7 @@ class _$HabitsUploadedImpl implements _HabitsUploaded {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_HabitsLoaded value)? habitsLoaded,
     TResult? Function(_HabitsUploaded value)? habitsUploaded,
+    TResult? Function(HabitsLoadingError value)? habitsLoadingError,
   }) {
     return habitsUploaded?.call(this);
   }
@@ -953,6 +982,7 @@ class _$HabitsUploadedImpl implements _HabitsUploaded {
     TResult Function(_Loading value)? loading,
     TResult Function(_HabitsLoaded value)? habitsLoaded,
     TResult Function(_HabitsUploaded value)? habitsUploaded,
+    TResult Function(HabitsLoadingError value)? habitsLoadingError,
     required TResult orElse(),
   }) {
     if (habitsUploaded != null) {
@@ -964,4 +994,159 @@ class _$HabitsUploadedImpl implements _HabitsUploaded {
 
 abstract class _HabitsUploaded implements HabitsState {
   const factory _HabitsUploaded() = _$HabitsUploadedImpl;
+}
+
+/// @nodoc
+abstract class _$$HabitsLoadingErrorImplCopyWith<$Res> {
+  factory _$$HabitsLoadingErrorImplCopyWith(_$HabitsLoadingErrorImpl value,
+          $Res Function(_$HabitsLoadingErrorImpl) then) =
+      __$$HabitsLoadingErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String errorText});
+}
+
+/// @nodoc
+class __$$HabitsLoadingErrorImplCopyWithImpl<$Res>
+    extends _$HabitsStateCopyWithImpl<$Res, _$HabitsLoadingErrorImpl>
+    implements _$$HabitsLoadingErrorImplCopyWith<$Res> {
+  __$$HabitsLoadingErrorImplCopyWithImpl(_$HabitsLoadingErrorImpl _value,
+      $Res Function(_$HabitsLoadingErrorImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? errorText = null,
+  }) {
+    return _then(_$HabitsLoadingErrorImpl(
+      errorText: null == errorText
+          ? _value.errorText
+          : errorText // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$HabitsLoadingErrorImpl implements HabitsLoadingError {
+  const _$HabitsLoadingErrorImpl({this.errorText = 'habits loading error'});
+
+  @override
+  @JsonKey()
+  final String errorText;
+
+  @override
+  String toString() {
+    return 'HabitsState.habitsLoadingError(errorText: $errorText)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$HabitsLoadingErrorImpl &&
+            (identical(other.errorText, errorText) ||
+                other.errorText == errorText));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, errorText);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$HabitsLoadingErrorImplCopyWith<_$HabitsLoadingErrorImpl> get copyWith =>
+      __$$HabitsLoadingErrorImplCopyWithImpl<_$HabitsLoadingErrorImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<UserHabit> userHabits) habitsLoaded,
+    required TResult Function() habitsUploaded,
+    required TResult Function(String errorText) habitsLoadingError,
+  }) {
+    return habitsLoadingError(errorText);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<UserHabit> userHabits)? habitsLoaded,
+    TResult? Function()? habitsUploaded,
+    TResult? Function(String errorText)? habitsLoadingError,
+  }) {
+    return habitsLoadingError?.call(errorText);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<UserHabit> userHabits)? habitsLoaded,
+    TResult Function()? habitsUploaded,
+    TResult Function(String errorText)? habitsLoadingError,
+    required TResult orElse(),
+  }) {
+    if (habitsLoadingError != null) {
+      return habitsLoadingError(errorText);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_HabitsLoaded value) habitsLoaded,
+    required TResult Function(_HabitsUploaded value) habitsUploaded,
+    required TResult Function(HabitsLoadingError value) habitsLoadingError,
+  }) {
+    return habitsLoadingError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_HabitsLoaded value)? habitsLoaded,
+    TResult? Function(_HabitsUploaded value)? habitsUploaded,
+    TResult? Function(HabitsLoadingError value)? habitsLoadingError,
+  }) {
+    return habitsLoadingError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_HabitsLoaded value)? habitsLoaded,
+    TResult Function(_HabitsUploaded value)? habitsUploaded,
+    TResult Function(HabitsLoadingError value)? habitsLoadingError,
+    required TResult orElse(),
+  }) {
+    if (habitsLoadingError != null) {
+      return habitsLoadingError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class HabitsLoadingError implements HabitsState {
+  const factory HabitsLoadingError({final String errorText}) =
+      _$HabitsLoadingErrorImpl;
+
+  String get errorText;
+  @JsonKey(ignore: true)
+  _$$HabitsLoadingErrorImplCopyWith<_$HabitsLoadingErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

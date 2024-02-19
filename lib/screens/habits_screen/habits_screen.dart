@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive/hive.dart';
+import 'package:life_sync/blocs/habits_bloc/habits_bloc.dart';
 import 'package:life_sync/common_widgets/widgets.dart';
+import 'package:life_sync/entities/hive_entities/hive_entities.dart';
+import 'package:life_sync/entities/hive_store.dart';
 import 'package:life_sync/screens/habits_screen/widgets/widgets.dart';
 import 'package:life_sync/utils/utils.dart';
 
@@ -13,6 +18,19 @@ class HabitsScreen extends StatefulWidget {
 }
 
 class _HabitsScreenState extends State<HabitsScreen> {
+  late String uid;
+  @override
+  void initState() {
+    Box<UserData> userDataBox = HiveStore().getUserDataBox();
+    UserData? userData = userDataBox.getAt(0);
+    uid = userData?.uid ?? 'pEo04Rq6And1QOhyTaUOjkMczyy1';
+    BlocProvider.of<HabitsBloc>(context).add(
+      LoadHabits(userUID: uid),
+    );
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   void dispose() {
     super.dispose();
