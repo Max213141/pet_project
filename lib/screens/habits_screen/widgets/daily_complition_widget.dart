@@ -23,7 +23,7 @@ class HorizontalDateList extends StatelessWidget {
     List<DateTime> dates = generateDates(itemCount);
 
     return SizedBox(
-      height: 100,
+      height: 106,
       width: MediaQuery.of(context).size.width - 32,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
@@ -78,6 +78,7 @@ class HorizontalDateList extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.symmetric(vertical: 6.0),
                           child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Center(
                                 child: Text(

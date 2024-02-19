@@ -125,7 +125,6 @@ class _MoodCarouselPickerState extends State<MoodCarouselPicker> {
           child: ActionButton(
             title: 'Submit'.toUpperCase(),
             onPressed: () {
-              _log('mood entries list BEFORE - $updatedMoodentries');
               int index = updatedMoodentries.indexWhere((element) =>
                   element.trackedDay.toDate().day == DateTime.now().day);
               if (index != -1) {
@@ -134,7 +133,6 @@ class _MoodCarouselPickerState extends State<MoodCarouselPicker> {
                   mood: selectedEmotion!,
                   trackedDay: Timestamp.now(),
                 );
-                _log('mood entries list AFTER- $updatedMoodentries');
               } else {
                 // Add the new MoodEntry to the list
                 updatedMoodentries.add(
@@ -143,7 +141,6 @@ class _MoodCarouselPickerState extends State<MoodCarouselPicker> {
                     trackedDay: Timestamp.now(),
                   ),
                 );
-                _log('mood entries list AFTER- $updatedMoodentries');
               }
               BlocProvider.of<MoodBloc>(context).add(
                 UploadUserMoodData(

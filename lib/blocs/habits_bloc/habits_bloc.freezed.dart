@@ -20,21 +20,21 @@ mixin _$HabitsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String userUID) loadHabits,
-    required TResult Function(String userUID, List<dynamic> userUpdatedHabits)
+    required TResult Function(String userUID, UserHabitsList userUpdatedHabits)
         uploadHabits,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String userUID)? loadHabits,
-    TResult? Function(String userUID, List<dynamic> userUpdatedHabits)?
+    TResult? Function(String userUID, UserHabitsList userUpdatedHabits)?
         uploadHabits,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userUID)? loadHabits,
-    TResult Function(String userUID, List<dynamic> userUpdatedHabits)?
+    TResult Function(String userUID, UserHabitsList userUpdatedHabits)?
         uploadHabits,
     required TResult orElse(),
   }) =>
@@ -164,7 +164,7 @@ class _$LoadHabitsImpl implements LoadHabits {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String userUID) loadHabits,
-    required TResult Function(String userUID, List<dynamic> userUpdatedHabits)
+    required TResult Function(String userUID, UserHabitsList userUpdatedHabits)
         uploadHabits,
   }) {
     return loadHabits(userUID);
@@ -174,7 +174,7 @@ class _$LoadHabitsImpl implements LoadHabits {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String userUID)? loadHabits,
-    TResult? Function(String userUID, List<dynamic> userUpdatedHabits)?
+    TResult? Function(String userUID, UserHabitsList userUpdatedHabits)?
         uploadHabits,
   }) {
     return loadHabits?.call(userUID);
@@ -184,7 +184,7 @@ class _$LoadHabitsImpl implements LoadHabits {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userUID)? loadHabits,
-    TResult Function(String userUID, List<dynamic> userUpdatedHabits)?
+    TResult Function(String userUID, UserHabitsList userUpdatedHabits)?
         uploadHabits,
     required TResult orElse(),
   }) {
@@ -245,7 +245,7 @@ abstract class _$$UploadHabitsImplCopyWith<$Res>
       __$$UploadHabitsImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String userUID, List<dynamic> userUpdatedHabits});
+  $Res call({String userUID, UserHabitsList userUpdatedHabits});
 }
 
 /// @nodoc
@@ -268,9 +268,9 @@ class __$$UploadHabitsImplCopyWithImpl<$Res>
           : userUID // ignore: cast_nullable_to_non_nullable
               as String,
       userUpdatedHabits: null == userUpdatedHabits
-          ? _value._userUpdatedHabits
+          ? _value.userUpdatedHabits
           : userUpdatedHabits // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as UserHabitsList,
     ));
   }
 }
@@ -279,19 +279,12 @@ class __$$UploadHabitsImplCopyWithImpl<$Res>
 
 class _$UploadHabitsImpl implements UploadHabits {
   const _$UploadHabitsImpl(
-      {required this.userUID, required final List<dynamic> userUpdatedHabits})
-      : _userUpdatedHabits = userUpdatedHabits;
+      {required this.userUID, required this.userUpdatedHabits});
 
   @override
   final String userUID;
-  final List<dynamic> _userUpdatedHabits;
   @override
-  List<dynamic> get userUpdatedHabits {
-    if (_userUpdatedHabits is EqualUnmodifiableListView)
-      return _userUpdatedHabits;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_userUpdatedHabits);
-  }
+  final UserHabitsList userUpdatedHabits;
 
   @override
   String toString() {
@@ -304,13 +297,12 @@ class _$UploadHabitsImpl implements UploadHabits {
         (other.runtimeType == runtimeType &&
             other is _$UploadHabitsImpl &&
             (identical(other.userUID, userUID) || other.userUID == userUID) &&
-            const DeepCollectionEquality()
-                .equals(other._userUpdatedHabits, _userUpdatedHabits));
+            (identical(other.userUpdatedHabits, userUpdatedHabits) ||
+                other.userUpdatedHabits == userUpdatedHabits));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userUID,
-      const DeepCollectionEquality().hash(_userUpdatedHabits));
+  int get hashCode => Object.hash(runtimeType, userUID, userUpdatedHabits);
 
   @JsonKey(ignore: true)
   @override
@@ -322,7 +314,7 @@ class _$UploadHabitsImpl implements UploadHabits {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String userUID) loadHabits,
-    required TResult Function(String userUID, List<dynamic> userUpdatedHabits)
+    required TResult Function(String userUID, UserHabitsList userUpdatedHabits)
         uploadHabits,
   }) {
     return uploadHabits(userUID, userUpdatedHabits);
@@ -332,7 +324,7 @@ class _$UploadHabitsImpl implements UploadHabits {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String userUID)? loadHabits,
-    TResult? Function(String userUID, List<dynamic> userUpdatedHabits)?
+    TResult? Function(String userUID, UserHabitsList userUpdatedHabits)?
         uploadHabits,
   }) {
     return uploadHabits?.call(userUID, userUpdatedHabits);
@@ -342,7 +334,7 @@ class _$UploadHabitsImpl implements UploadHabits {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userUID)? loadHabits,
-    TResult Function(String userUID, List<dynamic> userUpdatedHabits)?
+    TResult Function(String userUID, UserHabitsList userUpdatedHabits)?
         uploadHabits,
     required TResult orElse(),
   }) {
@@ -387,11 +379,11 @@ class _$UploadHabitsImpl implements UploadHabits {
 abstract class UploadHabits implements HabitsEvent {
   const factory UploadHabits(
       {required final String userUID,
-      required final List<dynamic> userUpdatedHabits}) = _$UploadHabitsImpl;
+      required final UserHabitsList userUpdatedHabits}) = _$UploadHabitsImpl;
 
   @override
   String get userUID;
-  List<dynamic> get userUpdatedHabits;
+  UserHabitsList get userUpdatedHabits;
   @override
   @JsonKey(ignore: true)
   _$$UploadHabitsImplCopyWith<_$UploadHabitsImpl> get copyWith =>

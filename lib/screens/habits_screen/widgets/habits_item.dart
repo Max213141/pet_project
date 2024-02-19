@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:life_sync/entities/db_entities/db_entities.dart';
 import 'package:life_sync/utils/utils.dart';
 
 class HabitsItem extends StatefulWidget {
+  final UserHabit habit;
   const HabitsItem({
     super.key,
+    required this.habit,
   });
 
   @override
@@ -11,7 +14,14 @@ class HabitsItem extends StatefulWidget {
 }
 
 class _HabitsItemState extends State<HabitsItem> {
-  bool isChecked = false;
+  late bool isChecked;
+  @override
+  void initState() {
+    isChecked = widget.habit.isDone;
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -21,12 +31,15 @@ class _HabitsItemState extends State<HabitsItem> {
           child: DecoratedBox(
             decoration: BoxDecoration(
               borderRadius: MentalHealthDecorations.borders.radiusC10,
-              color: AppColor.habbitsTileBackground,
+              border: Border.all(
+                color: AppColor.habbitsTileBackground,
+              ),
+              color: AppColor.sharedStoryChipColor,
             ),
             child: Padding(
               padding: const EdgeInsets.all(7.0),
               child: Text(
-                'Go for a walk',
+                widget.habit.task,
                 maxLines: 1,
                 style: MentalHealthTextStyles.text.popinsSecondaryFontF14,
               ),
@@ -36,18 +49,26 @@ class _HabitsItemState extends State<HabitsItem> {
         RepaintBoundary(
           child: Transform.scale(
             scale: 1.4,
-            child: Checkbox(
-              value: isChecked,
-              onChanged: (bool? value) {
-                setState(() {
-                  isChecked = value!;
-                });
-              },
-              checkColor: Colors.white,
-              activeColor: AppColor.primaryBackgroundColor,
-              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(3.0),
+            child: SizedBox(
+              height: 35,
+              child: Checkbox(
+                value: isChecked,
+                onChanged: (bool? value) {
+                  setState(() {
+                    isChecked = value!;
+                  });
+                },
+                fillColor: MaterialStateProperty.all<Color>(
+                  AppColor.primaryBackgroundColor.withOpacity(.7),
+                ),
+                side: const BorderSide(
+                  color: AppColor.habbitsTileBackground,
+                ),
+                activeColor: AppColor.primaryBackgroundColor,
+                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(3.0),
+                ),
               ),
             ),
           ),

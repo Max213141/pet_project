@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:life_sync/entities/db_entities/db_entities.dart';
 import 'package:life_sync/screens/habits_screen/widgets/habits_item.dart';
 import 'package:life_sync/utils/utils.dart';
 
@@ -45,11 +47,33 @@ class _ToDoListWidgetState extends State<ToDoListWidget> {
                             MentalHealthTextStyles.text.signikaSecondaryFontF16,
                       ),
                     ),
-                    const Expanded(
+                    Expanded(
                       child: Center(
                           child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [HabitsItem(), HabitsItem(), HabitsItem()],
+                        children: [
+                          HabitsItem(
+                            habit: UserHabit(
+                              task: 'Finish todod List',
+                              date: Timestamp.now(),
+                              isDone: true,
+                            ),
+                          ),
+                          HabitsItem(
+                            habit: UserHabit(
+                              task: 'Finish todod List',
+                              date: Timestamp.now(),
+                              isDone: true,
+                            ),
+                          ),
+                          HabitsItem(
+                            habit: UserHabit(
+                              task: 'Finish todod List',
+                              date: Timestamp.now(),
+                              isDone: true,
+                            ),
+                          ),
+                        ],
                       )
                           // ListView.builder(
                           //   itemCount: 3,

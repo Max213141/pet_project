@@ -8,6 +8,6 @@ class HabitsEvent with _$HabitsEvent {
 
   const factory HabitsEvent.uploadHabits({
     required String userUID,
-    required List<dynamic> userUpdatedHabits, //TODO finish with proper class
+    required UserHabitsList userUpdatedHabits, //TODO finish with proper class
   }) = UploadHabits;
 }

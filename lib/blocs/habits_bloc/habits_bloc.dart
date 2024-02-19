@@ -37,7 +37,9 @@ class HabitsBloc extends Bloc<HabitsEvent, HabitsState> {
     try {
       final docSnapshot = await ref.get();
       final userHabits = docSnapshot.data();
-      _log('Fucking mood entries ${userHabits}');
+      emit(
+        HabitsState.habitsLoaded(userHabits: userHabits?.userHabits ?? []),
+      );
     } catch (e) {
       emit(
         HabitsState.habitsLoadingError(
@@ -47,5 +49,30 @@ class HabitsBloc extends Bloc<HabitsEvent, HabitsState> {
     }
   }
 
-  _uploadUserHabits(UploadHabits event, Emitter<HabitsState> emit) async {}
+  _uploadUserHabits(UploadHabits event, Emitter<HabitsState> emit) async {
+    String uid = event.userUID;
+    final ref = FirebaseFirestore.instance
+        .collection('users')
+        .doc(uid)
+        .collection('habits')
+        .doc('userHabits')
+        .withConverter(
+          fromFirestore: UserHabitsList.fromFirestore,
+          toFirestore: (UserHabitsList userHabits, _) =>
+              userHabits.toFirestore(),
+        );
+    try {
+      await ref.set(
+        event.userUpdatedHabits,
+        SetOptions(merge: true),
+      );
+      add(HabitsEvent.loadHabits(userUID: uid));
+    } catch (e) {
+      emit(
+        HabitsState.habitsLoadingError(
+          errorText: e.toString(),
+        ),
+      );
+    }
+  }
 }

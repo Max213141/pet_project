@@ -14,12 +14,11 @@ class HabitsPercentageRadialDiagram extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: SizedBox(
-        height: 85,
-        width: MediaQuery.of(context).size.width - 48 - 76 - 60,
+        height: MediaQuery.of(context).size.height > 710 ? 105 : 85,
+        // width: 95
         child: Stack(children: [
           Positioned.fill(
             child: CustomPaint(
-              size: const Size(85, 85),
               painter: CircleChartPainter(data),
             ),
           ),
