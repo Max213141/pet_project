@@ -1,93 +1,42 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:life_sync/entities/db_entities/db_entities.dart';
 import 'package:life_sync/utils/utils.dart';
 
 class BarChartSample extends StatefulWidget {
-  const BarChartSample({super.key});
+  final List<MoodEntry> userDailyMood;
 
-  final Color dark = Colors.red;
-  final Color normal = AppColor.backgroundColorDark;
-  final Color light = AppColor.primaryColor;
+  const BarChartSample({
+    super.key,
+    required this.userDailyMood,
+  });
 
   @override
   State<StatefulWidget> createState() => BarChartSampleState();
 }
 
 class BarChartSampleState extends State<BarChartSample> {
-  Widget bottomTitles(double value, TitleMeta meta) {
-    String text;
-    switch (value.toInt()) {
-      case 0:
-        text = 'Aug 11';
-        break;
-      case 1:
-        text = 'Aug 12';
-        break;
-      case 2:
-        text = 'Aug 13';
-        break;
-      case 3:
-        text = 'Aug 14';
-        break;
-      case 4:
-        text = 'Aug 15';
-        break;
-      case 5:
-        text = 'Aug 16';
-        break;
-      case 6:
-        text = 'Aug 17';
-        break;
-      default:
-        text = '';
-        break;
+  List<String> datesWithAbbreviation = [];
+
+  @override
+  initState() {
+    super.initState();
+
+    DateTime now = DateTime.now();
+    DateTime firstDayOfCurrentWeek =
+        now.subtract(Duration(days: now.weekday - 1));
+
+    for (int i = 0; i < 7; i++) {
+      DateTime date = firstDayOfCurrentWeek.add(Duration(days: i));
+      String formattedDate = DateFormat('MMM d').format(date);
+      datesWithAbbreviation.add(formattedDate);
     }
-    return SideTitleWidget(
-      axisSide: meta.axisSide,
-      child: Text(
-        text,
-        style: MentalHealthTextStyles.text.popinsSecondaryFontF12.copyWith(
-          color: AppColor.chartsColor,
-        ),
-      ),
-    );
   }
 
-  Widget leftTitles(double value, TitleMeta meta) {
-    String text;
-    switch (value.toInt()) {
-      case 0:
-        text = 'Angry';
-        break;
-      case 1:
-        text = 'Sad';
-        break;
-      case 2:
-        text = 'Bored';
-        break;
-      case 3:
-        text = 'Meh';
-        break;
-      case 4:
-        text = 'Good';
-        break;
-      case 5:
-        text = 'Happy';
-        break;
-      default:
-        text = '';
-        break;
-    }
-
-    return SideTitleWidget(
-      axisSide: meta.axisSide,
-      child: Text(
-        text,
-        style: MentalHealthTextStyles.text.popinsSecondaryFontF12.copyWith(
-          color: AppColor.chartsColor,
-        ),
-      ),
-    );
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   @override
@@ -181,6 +130,82 @@ class BarChartSampleState extends State<BarChartSample> {
               ),
             ),
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget bottomTitles(double value, TitleMeta meta) {
+    String text;
+    switch (value.toInt()) {
+      case 0:
+        text = datesWithAbbreviation[0];
+        break;
+      case 1:
+        text = datesWithAbbreviation[1];
+        break;
+      case 2:
+        text = datesWithAbbreviation[2];
+        break;
+      case 3:
+        text = datesWithAbbreviation[3];
+        break;
+      case 4:
+        text = datesWithAbbreviation[4];
+        break;
+      case 5:
+        text = datesWithAbbreviation[5];
+        break;
+      case 6:
+        text = datesWithAbbreviation[6];
+        break;
+      default:
+        text = '';
+        break;
+    }
+    return SideTitleWidget(
+      axisSide: meta.axisSide,
+      child: Text(
+        text,
+        style: MentalHealthTextStyles.text.popinsSecondaryFontF12.copyWith(
+          color: AppColor.chartsColor,
+        ),
+      ),
+    );
+  }
+
+  Widget leftTitles(double value, TitleMeta meta) {
+    String text;
+    switch (value.toInt()) {
+      case 0:
+        text = 'Angry';
+        break;
+      case 1:
+        text = 'Sad';
+        break;
+      case 2:
+        text = 'Bored';
+        break;
+      case 3:
+        text = 'Meh';
+        break;
+      case 4:
+        text = 'Good';
+        break;
+      case 5:
+        text = 'Happy';
+        break;
+      default:
+        text = '';
+        break;
+    }
+
+    return SideTitleWidget(
+      axisSide: meta.axisSide,
+      child: Text(
+        text,
+        style: MentalHealthTextStyles.text.popinsSecondaryFontF12.copyWith(
+          color: AppColor.chartsColor,
         ),
       ),
     );

@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:life_sync/entities/db_entities/db_entities.dart';
 import 'package:life_sync/utils/utils.dart';
 
+void _log(dynamic message) =>
+    Logger.projectLog(message, name: 'pie_chart_widget');
+
 class MoodPieChart extends StatefulWidget {
   final List<MoodEntry> userDailyMood;
   const MoodPieChart({
@@ -11,11 +14,34 @@ class MoodPieChart extends StatefulWidget {
   });
 
   @override
-  State<StatefulWidget> createState() => PieChart2State();
+  State<MoodPieChart> createState() => MoodPieChartState();
 }
 
-class PieChart2State extends State {
+class MoodPieChartState extends State<MoodPieChart> {
   int touchedIndex = -1;
+  late List<MoodEntry> _moodEntriesThisMonth;
+  late Map<String, double> moodPercentage = {};
+
+  @override
+  void initState() {
+    super.initState();
+    _moodEntriesThisMonth = widget.userDailyMood.where((entry) {
+      return entry.trackedDay.toDate().month == DateTime.now().month;
+    }).toList();
+    Map<String, int> _moodCount = {};
+    _moodEntriesThisMonth.forEach((entry) {
+      _moodCount[entry.mood] =
+          _moodCount.containsKey(entry.mood) ? _moodCount[entry.mood]! + 1 : 1;
+    });
+    int totalDaysInMonth =
+        DateTime(DateTime.now().year, DateTime.now().month + 1, 0).day;
+    _log('Total days in month $totalDaysInMonth');
+    _moodCount.forEach((mood, count) {
+      moodPercentage[mood] = (count / totalDaysInMonth) * 100;
+      //  = double.parse(percentage.toStringAsFixed(2)); // I dont know how necessary not rounded percentage
+    });
+    _log('Total days in month $moodPercentage');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,84 +75,82 @@ class PieChart2State extends State {
   }
 
   List<PieChartSectionData> showingSections() {
-    return List.generate(6, (i) {
+    double unfilledPercentage = 100 -
+        (moodPercentage['Meh'] ?? 0) +
+        (moodPercentage['Angry'] ?? 0) +
+        (moodPercentage['Happy'] ?? 0) +
+        (moodPercentage['Good'] ?? 0) +
+        (moodPercentage['Bored'] ?? 0) +
+        (moodPercentage['Sad'] ?? 0);
+    return List.generate(7, (i) {
       // final isTouched = i == touchedIndex;
-      // final fontSize = isTouched ? 25.0 : 16.0;
+      // final fontSize = isTouched ? 16.0 : 8.0;
       // final radius = isTouched ? 60.0 : 50.0;
       // const shadows = [Shadow(color: Colors.black, blurRadius: 2)];
       switch (i) {
         case 0:
           return PieChartSectionData(
             color: AppColor.chartMeh,
-            // value: 20,
+            value: moodPercentage['Meh'] ?? 0,
+            showTitle: false,
             // title: '20%',
             // radius: radius,
-            // titleStyle: MentalHealthTextStyles.text
+            titleStyle: MentalHealthTextStyles.text.popinsSecondaryFontF14,
           );
         case 1:
           return PieChartSectionData(
             color: AppColor.chartAngry,
-            // value: 30,
+            value: moodPercentage['Angry'] ?? 0,
+            showTitle: false,
             // title: '30%',
             // radius: radius,
-            // titleStyle: TextStyle(
-            //   fontSize: fontSize,
-            //   fontWeight: FontWeight.bold,
-            //   color: Colors.black,
-            //   shadows: shadows,
-            // ),
+            titleStyle: MentalHealthTextStyles.text.popinsSecondaryFontF14,
           );
         case 2:
           return PieChartSectionData(
             color: AppColor.chartHappy,
-            // value: 15,
+            value: moodPercentage['Happy'] ?? 0,
+            showTitle: false,
             // title: '15%',
             // radius: radius,
-            // titleStyle: TextStyle(
-            //   fontSize: fontSize,
-            //   fontWeight: FontWeight.bold,
-            //   color: Colors.black,
-            //   shadows: shadows,
-            // ),
+            titleStyle: MentalHealthTextStyles.text.popinsSecondaryFontF14,
           );
         case 3:
           return PieChartSectionData(
             color: AppColor.chartGood,
-            // value: 15,
+            value: moodPercentage['Good'] ?? 0,
+            showTitle: false,
             // title: '15%',
             // radius: radius,
-            // titleStyle: TextStyle(
-            //   fontSize: fontSize,
-            //   fontWeight: FontWeight.bold,
-            //   color: Colors.black,
-            //   shadows: shadows,
-            // ),
+            titleStyle: MentalHealthTextStyles.text.popinsSecondaryFontF14,
           );
         case 4:
           return PieChartSectionData(
             color: AppColor.chartBored,
-            // value: 15.50,
+            value: moodPercentage['Bored'] ?? 0,
+            showTitle: false,
             // title: '15.5%',
             // radius: radius,
-            // titleStyle: TextStyle(
-            //   fontSize: fontSize,
-            //   fontWeight: FontWeight.bold,
-            //   color: Colors.black,
-            //   shadows: shadows,
-            // ),
+            titleStyle: MentalHealthTextStyles.text.popinsSecondaryFontF14,
           );
         case 5:
           return PieChartSectionData(
             color: AppColor.chartSad,
-            // value: 4.50,
+            value: moodPercentage['Sad'] ?? 0,
+            showTitle: false,
+
             // title: '4.5%',
             // radius: radius,
-            // titleStyle: TextStyle(
-            //   fontSize: fontSize,
-            //   fontWeight: FontWeight.bold,
-            //   color: Colors.black,
-            //   shadows: shadows,
-            // ),
+            titleStyle: MentalHealthTextStyles.text.popinsSecondaryFontF14,
+          );
+        case 6:
+          return PieChartSectionData(
+            color: Colors.grey.shade200,
+            value: unfilledPercentage,
+            showTitle: false,
+            // title: '4.5%',
+            // radius: radius,
+            titleStyle: MentalHealthTextStyles.text.popinsSecondaryFontF14,
           );
         default:
           throw Error();

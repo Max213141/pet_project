@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:life_sync/entities/entities.dart';
 import 'package:life_sync/screens/mood_screen/widgets/widgets.dart';
 import 'package:life_sync/utils/utils.dart';
 
 class CircularMoodScheme extends StatelessWidget {
-  final List<dynamic> userDailyMood;
+  final List<MoodEntry> userDailyMood;
   const CircularMoodScheme({
     super.key,
     required this.userDailyMood,
@@ -33,16 +34,16 @@ class CircularMoodScheme extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 9),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                const Icon(Icons.arrow_back_ios_new_outlined),
+                // const Icon(Icons.arrow_back_ios_new_outlined), //TODO add this functionality
                 Padding(
                   padding: const EdgeInsets.only(left: 17.0, right: 17.0),
                   child: Stack(
                     children: [
                       Positioned.fill(
                         child: MoodPieChart(
-                          userDailyMood: userDailyMood as List<MoodEntry>,
+                          userDailyMood: userDailyMood,
                         ),
                       ),
                       SizedBox(
@@ -55,7 +56,7 @@ class CircularMoodScheme extends StatelessWidget {
                           ),
                           child: Center(
                             child: Text(
-                              'August',
+                              DateFormat.MMMM().format(DateTime.now()),
                               style: MentalHealthTextStyles
                                   .text.signikaSecondaryFontF16,
                             ),
@@ -66,41 +67,16 @@ class CircularMoodScheme extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 17.0, right: 17),
+                  padding: const EdgeInsets.only(left: 17, right: 17),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: chartDescription
-                        .map((emotion) => Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 2.0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    height: 20,
-                                    width: 20,
-                                    child: DecoratedBox(
-                                      decoration: BoxDecoration(
-                                        borderRadius: MentalHealthDecorations
-                                            .borders.radiusC5,
-                                        color: emotion.color,
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(width: 8),
-                                  Text(
-                                    emotion.title,
-                                    style: MentalHealthTextStyles
-                                        .text.popinsSecondaryFontF14,
-                                  ),
-                                ],
-                              ),
-                            ))
+                        .map((emotion) => ChartInfoList(emotion: emotion))
                         .toList(),
                   ),
                 ),
-                const Icon(Icons.arrow_forward_ios_outlined),
+                // const Icon(Icons.arrow_forward_ios_outlined), //TODO add this functionality
               ],
             ),
           ),
