@@ -7,7 +7,7 @@ class MoodEntry {
   MoodEntry({
     required this.mood,
     required this.trackedDay,
-  });
+  }) : super();
 
   factory MoodEntry.fromFirestore(
     Map<String, dynamic> data,
@@ -25,4 +25,9 @@ class MoodEntry {
       'trackedDay': trackedDay,
     };
   }
+
+  // Default constructor with default values
+  MoodEntry.defaultEntry()
+      : mood = 'Neutral', // Default mood
+        trackedDay = Timestamp.now();
 }

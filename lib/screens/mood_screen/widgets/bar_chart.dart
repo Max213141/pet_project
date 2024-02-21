@@ -4,6 +4,8 @@ import 'package:intl/intl.dart';
 import 'package:life_sync/entities/db_entities/db_entities.dart';
 import 'package:life_sync/utils/utils.dart';
 
+void _log(dynamic message) => Logger.projectLog(message, name: 'bar_chart');
+
 class BarChartSample extends StatefulWidget {
   final List<MoodEntry> userDailyMood;
 
@@ -18,14 +20,30 @@ class BarChartSample extends StatefulWidget {
 
 class BarChartSampleState extends State<BarChartSample> {
   List<String> datesWithAbbreviation = [];
+  DateTime now = DateTime.now();
+  late List<MoodEntry> moodEntriesByDays = [];
 
   @override
   initState() {
     super.initState();
 
-    DateTime now = DateTime.now();
     DateTime firstDayOfCurrentWeek =
         now.subtract(Duration(days: now.weekday - 1));
+    for (int i = 0; i < 7; i++) {
+      DateTime currentDate = firstDayOfCurrentWeek.add(Duration(days: i));
+      MoodEntry entryForCurrentDate = widget.userDailyMood.firstWhere(
+        (entry) {
+          final entryDate = entry.trackedDay.toDate();
+          return entryDate.year == currentDate.year &&
+              entryDate.month == currentDate.month &&
+              entryDate.day == currentDate.day;
+        },
+        orElse: () => MoodEntry.defaultEntry(),
+      ); // Assuming MoodEntry has a default constructor
+      _log('$i day entry - ${entryForCurrentDate.mood}');
+
+      moodEntriesByDays.add(entryForCurrentDate);
+    }
 
     for (int i = 0; i < 7; i++) {
       DateTime date = firstDayOfCurrentWeek.add(Duration(days: i));
@@ -211,18 +229,58 @@ class BarChartSampleState extends State<BarChartSample> {
     );
   }
 
+  List<double> mapMoodsToInt(List<MoodEntry> moodEntries) {
+    Map<String, double> moodToIntMapping = {
+      'Angry': 0.1,
+      'Sad': 1,
+      'Bored': 2,
+      'Meh': 3,
+      'Good': 4,
+      'Happy': 5,
+    };
+
+    List<double> mappedIntegers = [];
+    for (var entry in moodEntries) {
+      double mappedInt = moodToIntMapping[entry.mood] ??
+          0; // Default value if mood is not found
+      mappedIntegers.add(mappedInt);
+    }
+    _log(mappedIntegers);
+    return mappedIntegers;
+  }
+
+  List<Color> mapMoodsToColor(List<MoodEntry> moodEntries) {
+    Map<String, Color> moodToIntMapping = {
+      'Angry': AppColor.chartAngry.withOpacity(.5),
+      'Sad': AppColor.chartSad.withOpacity(.5),
+      'Bored': AppColor.chartBored.withOpacity(.5),
+      'Meh': AppColor.chartMeh.withOpacity(.5),
+      'Good': AppColor.chartsColor.withOpacity(.75),
+      'Happy': AppColor.chartHappy.withOpacity(.5),
+    };
+
+    List<Color> mappedColors = [];
+    for (var entry in moodEntries) {
+      Color mappedColor = moodToIntMapping[entry.mood] ??
+          Colors.transparent; // Default value if mood is not found
+      mappedColors.add(mappedColor);
+    }
+
+    return mappedColors;
+  }
+
   List<BarChartGroupData> getData(double barsWidth, double barsSpace) {
+    List<double> emotionBarsHeights = mapMoodsToInt(moodEntriesByDays);
+    List<Color> emotionBarsColors = mapMoodsToColor(moodEntriesByDays);
+
     return [
       BarChartGroupData(
         x: 0,
         barsSpace: barsSpace,
         barRods: [
           BarChartRodData(
-            color: AppColor.chartsColor.withOpacity(.75),
-            toY: 2,
-            // rodStackItems: [
-            //   BarChartRodStackItem(0, 200000, widget.dark),
-            // ],
+            color: emotionBarsColors[0],
+            toY: emotionBarsHeights[0],
             borderRadius: MentalHealthDecorations.borders.radiusC10,
             width: barsWidth,
           ),
@@ -233,11 +291,8 @@ class BarChartSampleState extends State<BarChartSample> {
         barsSpace: barsSpace,
         barRods: [
           BarChartRodData(
-            color: AppColor.chartsColor.withOpacity(.75),
-            toY: 1,
-            // rodStackItems: [
-            //   BarChartRodStackItem(0, 11000, widget.dark),
-            // ],
+            color: emotionBarsColors[1],
+            toY: emotionBarsHeights[1],
             borderRadius: MentalHealthDecorations.borders.radiusC10,
             width: barsWidth,
           ),
@@ -248,11 +303,8 @@ class BarChartSampleState extends State<BarChartSample> {
         barsSpace: barsSpace,
         barRods: [
           BarChartRodData(
-            color: AppColor.chartsColor.withOpacity(.75),
-            toY: 0,
-            // rodStackItems: [
-            //   BarChartRodStackItem(0, 60000, widget.dark),
-            // ],
+            color: emotionBarsColors[2],
+            toY: emotionBarsHeights[2],
             borderRadius: MentalHealthDecorations.borders.radiusC10,
             width: barsWidth,
           ),
@@ -263,11 +315,8 @@ class BarChartSampleState extends State<BarChartSample> {
         barsSpace: barsSpace,
         barRods: [
           BarChartRodData(
-            color: AppColor.chartsColor.withOpacity(.75),
-            toY: 1,
-            // rodStackItems: [
-            //   BarChartRodStackItem(0, 10000.5, widget.dark),
-            // ],
+            color: emotionBarsColors[3],
+            toY: emotionBarsHeights[3],
             borderRadius: MentalHealthDecorations.borders.radiusC10,
             width: barsWidth,
           ),
@@ -278,11 +327,8 @@ class BarChartSampleState extends State<BarChartSample> {
         barsSpace: barsSpace,
         barRods: [
           BarChartRodData(
-            color: AppColor.chartsColor.withOpacity(.75),
-            toY: 3,
-            // rodStackItems: [
-            //   BarChartRodStackItem(0, 10000.5, widget.dark),
-            // ],
+            color: emotionBarsColors[4],
+            toY: emotionBarsHeights[4],
             borderRadius: MentalHealthDecorations.borders.radiusC10,
             width: barsWidth,
           ),
@@ -293,12 +339,9 @@ class BarChartSampleState extends State<BarChartSample> {
         barsSpace: barsSpace,
         barRods: [
           BarChartRodData(
-            color: AppColor.chartsColor.withOpacity(.75),
-            toY: 4,
-            // rodStackItems: [
-            //   BarChartRodStackItem(0, 10000.5, widget.dark),
-
-            // ],
+            color: emotionBarsColors[5],
+            toY: emotionBarsHeights[5],
+            //
             borderRadius: MentalHealthDecorations.borders.radiusC10,
             width: barsWidth,
           ),
@@ -309,11 +352,8 @@ class BarChartSampleState extends State<BarChartSample> {
         barsSpace: barsSpace,
         barRods: [
           BarChartRodData(
-            color: AppColor.chartsColor.withOpacity(.75),
-            toY: 5,
-            // rodStackItems: [
-            //   BarChartRodStackItem(0, 10000.5, widget.dark),
-            // ],
+            color: emotionBarsColors[6],
+            toY: emotionBarsHeights[6],
             borderRadius: MentalHealthDecorations.borders.radiusC10,
             width: barsWidth,
           ),

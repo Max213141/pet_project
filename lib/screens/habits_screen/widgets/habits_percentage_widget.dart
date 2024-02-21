@@ -1,12 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:life_sync/entities/db_entities/db_entities.dart';
 import 'package:life_sync/screens/habits_screen/widgets/widgets.dart';
 import 'package:life_sync/utils/utils.dart';
 
 class HabitsPercentageWidget extends StatelessWidget {
-  const HabitsPercentageWidget({super.key});
+  final List<UserHabit> habitsList;
+  const HabitsPercentageWidget({
+    super.key,
+    required this.habitsList,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final int finishedHabits = habitsList
+        .where((habit) =>
+            habit.date.toDate().day == DateTime.now().day &&
+            habit.isDone == true)
+        .length;
+    final int unfinishedHabits = habitsList
+        .where((habit) =>
+            habit.date.toDate().day == DateTime.now().day &&
+            habit.isDone == false)
+        .length;
+    final int totalTodayHabits = finishedHabits + unfinishedHabits;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 10),
       child: DecoratedBox(
@@ -23,7 +40,9 @@ class HabitsPercentageWidget extends StatelessWidget {
             children: [
               Center(
                 child: Text(
-                  'Keep going!',
+                  finishedHabits == totalTodayHabits
+                      ? 'Well done! You are perfect!'
+                      : 'Keep going!',
                   style: MentalHealthTextStyles.text.signikaSecondaryFontF16,
                 ),
               ),
@@ -33,7 +52,7 @@ class HabitsPercentageWidget extends StatelessWidget {
                     text: TextSpan(
                       children: [
                         TextSpan(
-                          text: '2',
+                          text: '$finishedHabits',
                           style: MentalHealthTextStyles
                               .text.signikaSecondaryFontF42
                               .copyWith(
@@ -46,7 +65,7 @@ class HabitsPercentageWidget extends StatelessWidget {
                               .text.signikaSecondaryFontF42,
                         ),
                         TextSpan(
-                          text: '7',
+                          text: '$totalTodayHabits',
                           style: MentalHealthTextStyles
                               .text.signikaSecondaryFontF42,
                         ),
@@ -59,11 +78,10 @@ class HabitsPercentageWidget extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 60),
-                  const HabitsPercentageRadialDiagram(
-                    data: [
-                      5 / 7, // uncomplished
-                      2 / 7, // complited
-                    ],
+                  HabitsPercentageRadialDiagram(
+                    unfinishedHabits: unfinishedHabits,
+                    finishedHabits: finishedHabits,
+                    totalTodayHabits: totalTodayHabits,
                   ),
                 ],
               )

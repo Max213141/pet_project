@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:life_sync/blocs/blocs.dart';
 import 'package:life_sync/entities/db_entities/db_entities.dart';
 import 'package:life_sync/utils/utils.dart';
 
+void _log(dynamic message) => Logger.projectLog(message, name: 'habits_item');
+
 class HabitsItem extends StatefulWidget {
+  final String uid;
   final UserHabit habit;
+  final List<UserHabit> habitsList;
   const HabitsItem({
     super.key,
     required this.habit,
+    required this.uid,
+    required this.habitsList,
   });
 
   @override
@@ -17,9 +25,8 @@ class _HabitsItemState extends State<HabitsItem> {
   late bool isChecked;
   @override
   void initState() {
-    isChecked = widget.habit.isDone;
-    // TODO: implement initState
     super.initState();
+    isChecked = widget.habit.isDone;
   }
 
   @override
@@ -57,6 +64,19 @@ class _HabitsItemState extends State<HabitsItem> {
                   setState(() {
                     isChecked = value!;
                   });
+                  final index =
+                      widget.habitsList.toList().indexOf(widget.habit);
+                  _log(index);
+                  widget.habitsList[index] = widget.habit.copyWith(
+                    isDone: value!,
+                  );
+                  BlocProvider.of<HabitsBloc>(context).add(
+                    UploadHabits(
+                      userUID: widget.uid,
+                      userUpdatedHabits:
+                          UserHabitsList(userHabits: widget.habitsList),
+                    ),
+                  );
                 },
                 fillColor: MaterialStateProperty.all<Color>(
                   AppColor.primaryBackgroundColor.withOpacity(.7),

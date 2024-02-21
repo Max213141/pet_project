@@ -3,11 +3,17 @@ import 'package:life_sync/utils/utils.dart';
 import 'dart:math';
 
 class HabitsPercentageRadialDiagram extends StatelessWidget {
-  final List<double> data; // Пропорциональные данные (в виде долей)
+  // final List<double> data; // Пропорциональные данные (в виде долей)
+  final int unfinishedHabits;
+  final int finishedHabits;
+  final int totalTodayHabits;
 
   const HabitsPercentageRadialDiagram({
     super.key,
-    required this.data,
+    // required this.data,
+    required this.unfinishedHabits,
+    required this.finishedHabits,
+    required this.totalTodayHabits,
   });
 
   @override
@@ -19,7 +25,12 @@ class HabitsPercentageRadialDiagram extends StatelessWidget {
         child: Stack(children: [
           Positioned.fill(
             child: CustomPaint(
-              painter: CircleChartPainter(data),
+              painter: CircleChartPainter(
+                [
+                  unfinishedHabits / totalTodayHabits, // uncomplished
+                  finishedHabits / totalTodayHabits, // complited
+                ],
+              ),
             ),
           ),
           Positioned(
@@ -27,7 +38,7 @@ class HabitsPercentageRadialDiagram extends StatelessWidget {
             // left: 42 / 2,
             child: Center(
               child: Text(
-                '${((2 * 100) / 7).round()}%',
+                '${((finishedHabits * 100) / totalTodayHabits).round()}%',
                 style: MentalHealthTextStyles.text.signikaFontF22Bold,
               ),
             ),

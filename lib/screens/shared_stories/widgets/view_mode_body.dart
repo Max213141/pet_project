@@ -74,7 +74,8 @@ class _ViewModeBodyState extends State<ViewModeBody> {
                                         context: context,
                                         builder: (context) {
                                           return UserStoryBottomSheetBody(
-                                              story: story);
+                                            story: story,
+                                          );
                                         },
                                       ),
                                       child: DecoratedBox(

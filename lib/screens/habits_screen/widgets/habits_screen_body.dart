@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:life_sync/blocs/blocs.dart';
 import 'package:life_sync/common_widgets/widgets.dart';
 import 'package:life_sync/entities/db_entities/db_entities.dart';
@@ -18,6 +19,9 @@ class HabitsScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<UserHabit> sortedList = habitsList.toList()
+      ..sort((a, b) => b.date.toDate().compareTo(a.date.toDate()));
+
     return ScrollConfiguration(
       behavior: CustomBehavior(),
       child: ListView(
@@ -37,7 +41,9 @@ class HabitsScreenBody extends StatelessWidget {
               ),
             ),
           ),
-          const HorizontalDateList(),
+          HorizontalDateList(
+            habitsList: sortedList,
+          ),
           const SizedBox(height: 20),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -49,18 +55,51 @@ class HabitsScreenBody extends StatelessWidget {
               ),
             ),
           ),
-          const HabitsPercentageWidget(),
+          HabitsPercentageWidget(
+            habitsList: sortedList,
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 10),
-            child: SizedBox(
-              height: MediaQuery.of(context).size.height / 3.5,
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight: 35,
+                maxHeight: (habitsList.length * 45) >
+                        MediaQuery.of(context).size.height / 3
+                    ? MediaQuery.of(context).size.height / 3
+                    : (habitsList.length * 45),
+              ),
               child: ScrollConfiguration(
                 behavior: CustomBehavior(),
                 child: ListView.builder(
                   itemCount: habitsList.length,
-                  itemBuilder: (context, index) => HabitsItem(
-                    habit: habitsList[index],
-                  ),
+                  itemBuilder: (context, index) {
+                    // Check if the current item's date is different from the previous item's date
+                    if (index > 0 &&
+                        sortedList[index].date.toDate().day !=
+                            sortedList[index - 1].date.toDate().day) {
+                      return Column(
+                        children: [
+                          const Divider(),
+                          Text(
+                            ' ${DateFormat.MMMd().format(sortedList[index].date.toDate())}',
+                            style: MentalHealthTextStyles
+                                .text.signikaSecondaryFontF16,
+                          ),
+                          HabitsItem(
+                            uid: uid,
+                            habitsList: sortedList,
+                            habit: sortedList[index],
+                          ),
+                        ],
+                      );
+                    } else {
+                      return HabitsItem(
+                        uid: uid,
+                        habitsList: sortedList,
+                        habit: habitsList[index],
+                      );
+                    }
+                  },
                 ),
               ),
             ),

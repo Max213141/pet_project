@@ -29,4 +29,16 @@ class UserHabit {
       'isDone': isDone,
     };
   }
+
+  UserHabit copyWith({
+    String? task,
+    Timestamp? date,
+    bool? isDone,
+  }) {
+    return UserHabit(
+      task: task ?? this.task,
+      date: date ?? this.date,
+      isDone: isDone ?? this.isDone,
+    );
+  }
 }
