@@ -4,6 +4,7 @@ part of 'habits_bloc.dart';
 class HabitsEvent with _$HabitsEvent {
   const factory HabitsEvent.loadHabits({
     required String userUID,
+    bool? isHomeScreen,
   }) = LoadHabits;
 
   const factory HabitsEvent.uploadHabits({

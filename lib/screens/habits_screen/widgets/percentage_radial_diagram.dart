@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:life_sync/utils/utils.dart';
 import 'dart:math';
 
+void _log(dynamic message) =>
+    Logger.projectLog(message, name: 'percentage_radial_diagram');
+
 class HabitsPercentageRadialDiagram extends StatelessWidget {
   // final List<double> data; // Пропорциональные данные (в виде долей)
   final int unfinishedHabits;
@@ -22,28 +25,34 @@ class HabitsPercentageRadialDiagram extends StatelessWidget {
       child: SizedBox(
         height: MediaQuery.of(context).size.height > 710 ? 105 : 85,
         // width: 95
-        child: Stack(children: [
-          Positioned.fill(
-            child: CustomPaint(
-              painter: CircleChartPainter(
-                [
-                  unfinishedHabits / totalTodayHabits, // uncomplished
-                  finishedHabits / totalTodayHabits, // complited
-                ],
+        child: Stack(
+          children: [
+            Positioned.fill(
+              child: CustomPaint(
+                painter: CircleChartPainter(
+                  [
+                    totalTodayHabits == 0
+                        ? 1
+                        : unfinishedHabits / totalTodayHabits, // uncomplished
+                    totalTodayHabits == 0
+                        ? 0
+                        : finishedHabits / totalTodayHabits, // complited
+                  ],
+                ),
               ),
             ),
-          ),
-          Positioned(
-            // top: 42 / 2,
-            // left: 42 / 2,
-            child: Center(
-              child: Text(
-                '${((finishedHabits * 100) / totalTodayHabits).round()}%',
-                style: MentalHealthTextStyles.text.signikaFontF22Bold,
+            Positioned(
+              child: Center(
+                child: Text(
+                  totalTodayHabits == 0
+                      ? '0%'
+                      : '${((finishedHabits * 100) / totalTodayHabits).round()}%',
+                  style: MentalHealthTextStyles.text.signikaFontF22Bold,
+                ),
               ),
-            ),
-          )
-        ]),
+            )
+          ],
+        ),
       ),
     );
   }

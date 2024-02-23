@@ -35,9 +35,11 @@ class ActionButton extends StatelessWidget {
           surfaceTintColor: MaterialStateProperty.all<Color>(
               buttonColor ?? AppColor.primaryBackgroundColor),
           side: MaterialStateProperty.all<BorderSide>(
-            const BorderSide(
+            BorderSide(
               width: 1,
-              color: AppColor.habbitsTileBackground,
+              color: buttonColor == AppColor.primaryColor
+                  ? AppColor.primaryBackgroundColor
+                  : AppColor.habbitsTileBackground,
             ),
           ),
           elevation: MaterialStateProperty.all<double>(2.0),

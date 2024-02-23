@@ -37,6 +37,7 @@ class HabitsBloc extends Bloc<HabitsEvent, HabitsState> {
     try {
       final docSnapshot = await ref.get();
       final userHabits = docSnapshot.data();
+
       emit(
         HabitsState.habitsLoaded(userHabits: userHabits?.userHabits ?? []),
       );

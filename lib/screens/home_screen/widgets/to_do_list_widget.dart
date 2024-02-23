@@ -1,8 +1,11 @@
-// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-// import 'package:life_sync/entities/db_entities/db_entities.dart';
-// import 'package:life_sync/screens/habits_screen/widgets/habits_item.dart';
-import 'package:life_sync/utils/utils.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive/hive.dart';
+import 'package:life_sync/blocs/blocs.dart';
+import 'package:life_sync/common_widgets/widgets.dart';
+import 'package:life_sync/entities/hive_entities/hive_entities.dart';
+import 'package:life_sync/entities/hive_store.dart';
+import 'package:life_sync/screens/home_screen/widgets/widgets.dart';
 
 class ToDoListWidget extends StatefulWidget {
   const ToDoListWidget({super.key});
@@ -12,88 +15,56 @@ class ToDoListWidget extends StatefulWidget {
 }
 
 class _ToDoListWidgetState extends State<ToDoListWidget> {
+  late String uid;
+
+  @override
+  void initState() {
+    super.initState();
+
+    Box<UserData> userDataBox = HiveStore().getUserDataBox();
+    UserData? userData = userDataBox.getAt(0);
+    uid = userData?.uid ?? 'pEo04Rq6And1QOhyTaUOjkMczyy1';
+
+    BlocProvider.of<HabitsBloc>(context).add(
+      LoadHabits(
+        userUID: uid,
+        isHomeScreen: true,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return DecoratedBox(
-      decoration: const BoxDecoration(color: AppColor.primaryBackgroundColor),
-      child: SizedBox(
-        height: MediaQuery.of(context).size.height / 3.5,
-        width: MediaQuery.of(context).size.width,
-        child: DecoratedBox(
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.only(
-              topRight: Radius.circular(40),
-              bottomRight: Radius.circular(40),
-            ),
-            color: AppColor.primaryColor,
-          ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.white),
-                borderRadius: MentalHealthDecorations.borders.radiusBTRightC40,
-              ),
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 8, horizontal: 14),
-                child: Column(
-                  children: [
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        'Check out your habits',
-                        style:
-                            MentalHealthTextStyles.text.signikaSecondaryFontF16,
-                      ),
-                    ),
-                    Expanded(
-                      child: Center(
-                        child: Text(
-                          'Soon something great will be there',
-                          style: MentalHealthTextStyles
-                              .text.signikaSecondaryFontF16,
-                        ),
-                        //   child: Column(
-                        // mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        // children: [
-                        // HabitsItem(
-                        //   habit: UserHabit(
-                        //     task: 'Finish todod List',
-                        //     date: Timestamp.now(),
-                        //     isDone: true,
-                        //   ),
-                        // ),
-                        // HabitsItem(
-                        //   habit: UserHabit(
-                        //     task: 'Finish todod List',
-                        //     date: Timestamp.now(),
-                        //     isDone: true,
-                        //   ),
-                        // ),
-                        // HabitsItem(
-                        //   habit: UserHabit(
-                        //     task: 'Finish todod List',
-                        //     date: Timestamp.now(),
-                        //     isDone: true,
-                        //   ),
-                        // ),
-                        // ],
-                        // )
-                        // ListView.builder(
-                        //   itemCount: 3,
-                        //   itemBuilder: (context, index) => const HabbitsItem(),
-                        //   physics: const NeverScrollableScrollPhysics(),
-                        // ),
-                      ),
-                    ),
-                  ],
-                ),
+    Widget body = const SizedBox.shrink();
+    return BlocConsumer<HabitsBloc, HabitsState>(
+      listener: (context, state) {
+        state.whenOrNull();
+      },
+      builder: (context, state) {
+        state.when(
+          initial: () => body = const SizedBox.shrink(),
+          loading: () => body = const Center(
+            child: SizedBox(
+              height: 45,
+              width: 45,
+              child: RepaintBoundary(
+                child: Loader(size: 25),
               ),
             ),
           ),
-        ),
-      ),
+          habitsLoaded: (habitsList) => {
+            // _log('mood entries from state - $moodEntries'),
+            body = TodoListWidgetBody(uid: uid, habitsList: habitsList),
+          },
+          habitsUploaded: () {},
+          habitsLoadingError: (errorText) => body = Center(
+            child: ErrorDialogWidget(
+              message: errorText,
+            ),
+          ),
+        );
+        return body;
+      },
     );
   }
 }

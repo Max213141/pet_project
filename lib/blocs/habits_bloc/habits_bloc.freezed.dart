@@ -19,21 +19,21 @@ mixin _$HabitsEvent {
   String get userUID => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userUID) loadHabits,
+    required TResult Function(String userUID, bool? isHomeScreen) loadHabits,
     required TResult Function(String userUID, UserHabitsList userUpdatedHabits)
         uploadHabits,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userUID)? loadHabits,
+    TResult? Function(String userUID, bool? isHomeScreen)? loadHabits,
     TResult? Function(String userUID, UserHabitsList userUpdatedHabits)?
         uploadHabits,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userUID)? loadHabits,
+    TResult Function(String userUID, bool? isHomeScreen)? loadHabits,
     TResult Function(String userUID, UserHabitsList userUpdatedHabits)?
         uploadHabits,
     required TResult orElse(),
@@ -105,7 +105,7 @@ abstract class _$$LoadHabitsImplCopyWith<$Res>
       __$$LoadHabitsImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String userUID});
+  $Res call({String userUID, bool? isHomeScreen});
 }
 
 /// @nodoc
@@ -120,12 +120,17 @@ class __$$LoadHabitsImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userUID = null,
+    Object? isHomeScreen = freezed,
   }) {
     return _then(_$LoadHabitsImpl(
       userUID: null == userUID
           ? _value.userUID
           : userUID // ignore: cast_nullable_to_non_nullable
               as String,
+      isHomeScreen: freezed == isHomeScreen
+          ? _value.isHomeScreen
+          : isHomeScreen // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -133,14 +138,16 @@ class __$$LoadHabitsImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadHabitsImpl implements LoadHabits {
-  const _$LoadHabitsImpl({required this.userUID});
+  const _$LoadHabitsImpl({required this.userUID, this.isHomeScreen});
 
   @override
   final String userUID;
+  @override
+  final bool? isHomeScreen;
 
   @override
   String toString() {
-    return 'HabitsEvent.loadHabits(userUID: $userUID)';
+    return 'HabitsEvent.loadHabits(userUID: $userUID, isHomeScreen: $isHomeScreen)';
   }
 
   @override
@@ -148,11 +155,13 @@ class _$LoadHabitsImpl implements LoadHabits {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadHabitsImpl &&
-            (identical(other.userUID, userUID) || other.userUID == userUID));
+            (identical(other.userUID, userUID) || other.userUID == userUID) &&
+            (identical(other.isHomeScreen, isHomeScreen) ||
+                other.isHomeScreen == isHomeScreen));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userUID);
+  int get hashCode => Object.hash(runtimeType, userUID, isHomeScreen);
 
   @JsonKey(ignore: true)
   @override
@@ -163,33 +172,33 @@ class _$LoadHabitsImpl implements LoadHabits {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userUID) loadHabits,
+    required TResult Function(String userUID, bool? isHomeScreen) loadHabits,
     required TResult Function(String userUID, UserHabitsList userUpdatedHabits)
         uploadHabits,
   }) {
-    return loadHabits(userUID);
+    return loadHabits(userUID, isHomeScreen);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userUID)? loadHabits,
+    TResult? Function(String userUID, bool? isHomeScreen)? loadHabits,
     TResult? Function(String userUID, UserHabitsList userUpdatedHabits)?
         uploadHabits,
   }) {
-    return loadHabits?.call(userUID);
+    return loadHabits?.call(userUID, isHomeScreen);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userUID)? loadHabits,
+    TResult Function(String userUID, bool? isHomeScreen)? loadHabits,
     TResult Function(String userUID, UserHabitsList userUpdatedHabits)?
         uploadHabits,
     required TResult orElse(),
   }) {
     if (loadHabits != null) {
-      return loadHabits(userUID);
+      return loadHabits(userUID, isHomeScreen);
     }
     return orElse();
   }
@@ -227,10 +236,13 @@ class _$LoadHabitsImpl implements LoadHabits {
 }
 
 abstract class LoadHabits implements HabitsEvent {
-  const factory LoadHabits({required final String userUID}) = _$LoadHabitsImpl;
+  const factory LoadHabits(
+      {required final String userUID,
+      final bool? isHomeScreen}) = _$LoadHabitsImpl;
 
   @override
   String get userUID;
+  bool? get isHomeScreen;
   @override
   @JsonKey(ignore: true)
   _$$LoadHabitsImplCopyWith<_$LoadHabitsImpl> get copyWith =>
@@ -313,7 +325,7 @@ class _$UploadHabitsImpl implements UploadHabits {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userUID) loadHabits,
+    required TResult Function(String userUID, bool? isHomeScreen) loadHabits,
     required TResult Function(String userUID, UserHabitsList userUpdatedHabits)
         uploadHabits,
   }) {
@@ -323,7 +335,7 @@ class _$UploadHabitsImpl implements UploadHabits {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userUID)? loadHabits,
+    TResult? Function(String userUID, bool? isHomeScreen)? loadHabits,
     TResult? Function(String userUID, UserHabitsList userUpdatedHabits)?
         uploadHabits,
   }) {
@@ -333,7 +345,7 @@ class _$UploadHabitsImpl implements UploadHabits {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userUID)? loadHabits,
+    TResult Function(String userUID, bool? isHomeScreen)? loadHabits,
     TResult Function(String userUID, UserHabitsList userUpdatedHabits)?
         uploadHabits,
     required TResult orElse(),

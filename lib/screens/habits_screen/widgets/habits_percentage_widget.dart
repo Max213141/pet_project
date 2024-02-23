@@ -40,9 +40,11 @@ class HabitsPercentageWidget extends StatelessWidget {
             children: [
               Center(
                 child: Text(
-                  finishedHabits == totalTodayHabits
-                      ? 'Well done! You are perfect!'
-                      : 'Keep going!',
+                  totalTodayHabits != 0
+                      ? finishedHabits == totalTodayHabits
+                          ? 'Well done! You are perfect!'
+                          : 'Keep going!'
+                      : 'Add some habits to accomplish them!)',
                   style: MentalHealthTextStyles.text.signikaSecondaryFontF16,
                 ),
               ),
