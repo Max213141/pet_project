@@ -1,7 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:life_sync/blocs/blocs.dart';
+import 'package:life_sync/common_widgets/widgets.dart';
 import 'package:life_sync/entities/db_entities/db_entities.dart';
 import 'package:life_sync/screens/habits_screen/widgets/widgets.dart';
 import 'package:life_sync/utils/utils.dart';
+
+_log(dynamic message) =>
+    Logger.projectLog(message, name: 'todo_list_widget_body');
 
 class TodoListWidgetBody extends StatelessWidget {
   final String uid;
@@ -20,6 +27,8 @@ class TodoListWidgetBody extends StatelessWidget {
             element.date.toDate().month == DateTime.now().month))
         .take(3)
         .toList();
+
+    _log('is not empty ${currentUserHabits.isNotEmpty}');
 
     return DecoratedBox(
       decoration: const BoxDecoration(color: AppColor.primaryBackgroundColor),
@@ -55,27 +64,57 @@ class TodoListWidgetBody extends StatelessWidget {
                       ),
                     ),
                     Expanded(
-                      child: Center(
-                        child:
-                            //  Text(
-                            //   'Soon something great will be there',
-                            //   style: MentalHealthTextStyles
-                            //       .text.signikaSecondaryFontF16,
-                            // ),
-                            //         Column(
-                            //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            //   children: [],
-                            // )
-                            ListView.builder(
-                          itemCount: currentUserHabits.length,
-                          itemBuilder: (context, index) => HabitsItem(
-                            uid: uid,
-                            habitsList: habitsList,
-                            habit: currentUserHabits[index],
-                          ),
-                          physics: const NeverScrollableScrollPhysics(),
-                        ),
-                      ),
+                      child: currentUserHabits.length < 3
+                          ? Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                ...currentUserHabits.map(
+                                  (habit) => HabitsItem(
+                                    uid: uid,
+                                    habitsList: habitsList,
+                                    habit: habit,
+                                  ),
+                                ),
+                                ActionButton(
+                                  title: 'Add habit',
+                                  onPressed: () {
+                                    final updatedList = habitsList.toList();
+                                    updatedList.add(
+                                      UserHabit(
+                                        task: 'Finish todod List',
+                                        date: Timestamp.now(),
+                                        isDone: false,
+                                      ),
+                                    );
+                                    BlocProvider.of<HabitsBloc>(context).add(
+                                      UploadHabits(
+                                        userUID: uid,
+                                        userUpdatedHabits: UserHabitsList(
+                                          userHabits: updatedList,
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ],
+                            )
+                          : Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 8.0),
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: currentUserHabits
+                                    .map(
+                                      (habit) => HabitsItem(
+                                        uid: uid,
+                                        habitsList: habitsList,
+                                        habit: habit,
+                                      ),
+                                    )
+                                    .toList(),
+                              ),
+                            ),
                     ),
                   ],
                 ),
