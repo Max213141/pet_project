@@ -74,6 +74,12 @@ flutter:
     - assets/intro/
     - assets/tests/
     - assets/shared_stories/
+    - assets/fonts/Dosis/static/Dosis-Regular.ttf
+    - assets/fonts/Poppins/Poppins-Regular.ttf
+    - assets/fonts/Sansita/Sansita-Regular.ttf
+    - assets/fonts/Signika/static/Signika-Regular.ttf
+    - assets/fonts/Signika/static/Signika-Medium.ttf
+    - assets/fonts/MedievalSharp/MedievalSharp-Regular.ttf
 
 
   # assets:

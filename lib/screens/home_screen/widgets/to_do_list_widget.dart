@@ -22,10 +22,12 @@ class _ToDoListWidgetState extends State<ToDoListWidget> {
     UserData? userData = HiveStore().getUserData();
     uid = userData?.uid ?? 'pEo04Rq6And1QOhyTaUOjkMczyy1';
 
-    BlocProvider.of<HabitsBloc>(context).add(
-      LoadHabits(
-        userUID: uid,
-        isHomeScreen: true,
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => BlocProvider.of<HabitsBloc>(context).add(
+        LoadHabits(
+          userUID: uid,
+          isHomeScreen: true,
+        ),
       ),
     );
   }

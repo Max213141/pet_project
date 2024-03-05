@@ -60,9 +60,11 @@ class _BreathingTimerSwitcherState extends State<BreathingTimerSwitcher> {
                           alignment: Alignment.topCenter,
                           child: Text(
                             '12.35', //TODO _list[index].title
-                            style: selectedIndex == index
-                                ? MentalHealthTextStyles.text.mainCommonF20White
-                                : MentalHealthTextStyles.text.mainCommonF20,
+                            style:
+                                //  selectedIndex == index
+                                //     ? MentalHealthTextStyles.text.mainCommonF20White
+                                //     :
+                                MentalHealthTextStyles.text.mainCommonF20,
                           ),
                         ),
                       ),

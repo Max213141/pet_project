@@ -68,7 +68,7 @@ class _InitialHivePageState extends State<InitialHivePage> {
     return FutureBuilder(
       future: _firstLaunchHandler(),
       builder: (context, snapshot) {
-        //_log('is ifrst launch before snapshot done- $isFirstLaunch');
+        // //_log('is ifrst launch before snapshot done- $isFirstLaunch');
         if (snapshot.connectionState == ConnectionState.done) {
           // //_log('is ifrst launch after snapshot done - $isFirstLaunch');
           if (isFirstLaunch) {

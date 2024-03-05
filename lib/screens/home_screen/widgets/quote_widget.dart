@@ -3,14 +3,14 @@ import 'dart:convert';
 import 'package:life_sync/utils/utils.dart';
 import 'package:http/http.dart' as http;
 
+void _log(dynamic message) => Logger.projectLog(message, name: 'quote_widget');
+
 class QuoteWidget extends StatefulWidget {
   const QuoteWidget({super.key});
 
   @override
   State<QuoteWidget> createState() => _QuoteWidgetState();
 }
-
-void _log(dynamic message) => Logger.projectLog(message, name: 'quote_widget');
 
 class _QuoteWidgetState extends State<QuoteWidget> {
   late String quote;

@@ -37,7 +37,7 @@ class DrawerWidget extends StatelessWidget {
                   const LogOutEvent(),
                 );
               },
-              title: 'Open Settings',
+              title: 'Settings',
               buttonColor: AppColor.primaryColor,
             ),
           ),
