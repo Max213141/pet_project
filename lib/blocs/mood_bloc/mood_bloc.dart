@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:life_sync/entities/db_entities/db_entities.dart';
+import 'package:life_sync/entities/entities.dart';
 import 'package:life_sync/entities/hive_entities/hive_entities.dart';
 import 'package:life_sync/utils/utils.dart';
 
@@ -55,8 +55,7 @@ class MoodBloc extends Bloc<MoodEvent, MoodState> {
     UploadUserMoodData event,
     Emitter<MoodState> emit,
   ) async {
-    final Box<UserData> useDataBox = Hive.box<UserData>('user_data');
-    final UserData? userData = useDataBox.get(0);
+    final UserData? userData = HiveStore().getUserData();
     final String? uid = userData?.uid;
     final ref =
         FirebaseFirestore.instance.collection('users').doc(uid).withConverter(

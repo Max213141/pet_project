@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hive/hive.dart';
 import 'package:life_sync/blocs/habits_bloc/habits_bloc.dart';
 import 'package:life_sync/common_widgets/widgets.dart';
 import 'package:life_sync/entities/hive_entities/hive_entities.dart';
@@ -21,8 +20,7 @@ class _HabitsScreenState extends State<HabitsScreen> {
   late String uid;
   @override
   void initState() {
-    Box<UserData> userDataBox = HiveStore().getUserDataBox();
-    UserData? userData = userDataBox.getAt(0);
+    UserData? userData = HiveStore().getUserData();
     uid = userData?.uid ?? 'pEo04Rq6And1QOhyTaUOjkMczyy1';
     WidgetsBinding.instance.addPostFrameCallback(
       (_) => BlocProvider.of<HabitsBloc>(context).add(

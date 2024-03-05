@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hive/hive.dart';
 import 'package:life_sync/blocs/blocs.dart';
 import 'package:life_sync/common_widgets/widgets.dart';
 import 'package:life_sync/entities/db_entities/db_entities.dart';
@@ -29,8 +28,7 @@ class _SharedStoriesScreenState extends State<SharedStoriesScreen> {
   late String uid;
   @override
   void initState() {
-    Box<UserData> userDataBox = HiveStore().getUserDataBox();
-    UserData? userData = userDataBox.getAt(0);
+    UserData? userData = HiveStore().getUserData();
     uid = userData?.uid ?? 'pEo04Rq6And1QOhyTaUOjkMczyy1';
     // BlocProvider.of<SharedStoriesBloc>(context)
     //     .add(LoadUserStoriesEvent(userUID: uid));

@@ -95,14 +95,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           final dbData = docSnapShot.get('userData');
           DBUserData data = DBUserData.fromJson(dbData);
           _log('USERNAME - ${data.name}');
-          Box<UserData> userDataBox = HiveStore().getUserDataBox();
-          UserData? userData = userDataBox.getAt(0);
+          UserData? userData = HiveStore().getUserData();
           if (userData != null) {
             userData.userName = data.name;
             userData.uid = uid;
             userData.email = data.email;
             userData.password = data.password;
-            await userDataBox.put(0, userData);
+            await Hive.box<UserData>('user_data').put(0, userData);
           }
         } else {
           _log('Smth went wrong with name'); //TODO implement error handling

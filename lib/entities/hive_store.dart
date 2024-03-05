@@ -31,8 +31,9 @@ class HiveStore {
     return Hive.box<AppPreferences>('app_preferences');
   }
 
-  Box<UserData> getUserDataBox() {
-    return Hive.box<UserData>('user_data');
+  UserData? getUserData() {
+    Box<UserData> useDataBox = Hive.box<UserData>('user_data');
+    return useDataBox.get(0);
   }
 
   bool? getAppTheme() {
