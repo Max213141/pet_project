@@ -34,8 +34,13 @@ class _SharedStoriesScreenState extends State<SharedStoriesScreen> {
     uid = userData?.uid ?? 'pEo04Rq6And1QOhyTaUOjkMczyy1';
     // BlocProvider.of<SharedStoriesBloc>(context)
     //     .add(LoadUserStoriesEvent(userUID: uid));
-    BlocProvider.of<SharedStoriesBloc>(context)
-        .add(LoadRandomStoryEvent(userUID: uid));
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => BlocProvider.of<SharedStoriesBloc>(context).add(
+        LoadRandomStoryEvent(
+          userUID: uid,
+        ),
+      ),
+    );
     super.initState();
   }
 

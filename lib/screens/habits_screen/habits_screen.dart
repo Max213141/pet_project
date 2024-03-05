@@ -24,8 +24,10 @@ class _HabitsScreenState extends State<HabitsScreen> {
     Box<UserData> userDataBox = HiveStore().getUserDataBox();
     UserData? userData = userDataBox.getAt(0);
     uid = userData?.uid ?? 'pEo04Rq6And1QOhyTaUOjkMczyy1';
-    BlocProvider.of<HabitsBloc>(context).add(
-      LoadHabits(userUID: uid),
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => BlocProvider.of<HabitsBloc>(context).add(
+        LoadHabits(userUID: uid),
+      ),
     );
     // TODO: implement initState
     super.initState();

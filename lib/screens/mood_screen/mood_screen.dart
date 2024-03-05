@@ -28,7 +28,11 @@ class _MoodScreenState extends State<MoodScreen> {
     uid = userData?.uid ?? 'pEo04Rq6And1QOhyTaUOjkMczyy1';
     // BlocProvider.of<SharedStoriesBloc>(context)
     //     .add(LoadUserStoriesEvent(userUID: uid));
-    BlocProvider.of<MoodBloc>(context).add(LoadUserMoodData(userUID: uid));
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => BlocProvider.of<MoodBloc>(context).add(
+        LoadUserMoodData(userUID: uid),
+      ),
+    );
     super.initState();
   }
 

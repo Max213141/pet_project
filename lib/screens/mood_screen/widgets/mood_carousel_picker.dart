@@ -29,7 +29,6 @@ class _MoodCarouselPickerState extends State<MoodCarouselPicker> {
 
   @override
   void initState() {
-    // TODO: implement initState
     _log('current mood - ${widget.userCurrentMood?.mood}');
     if (widget.userCurrentMood != null) {
       setState(() {
