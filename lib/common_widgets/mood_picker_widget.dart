@@ -41,73 +41,75 @@ class _MoodPickerWidgetState extends State<MoodPickerWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height / 2,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 45, vertical: 5),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'How are you today?',
-              style: MentalHealthTextStyles.text.signikaFontF24,
-            ),
-            Expanded(
-              child: GridView.builder(
-                itemCount: emotions.length,
-                physics: const NeverScrollableScrollPhysics(),
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  mainAxisExtent: 115.0,
-                  crossAxisCount: 3,
-                ),
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: () => setState(() {
-                      selectedEmotion = emotions[index].emotionTitle;
-                    }),
-                    child: AnimatedSize(
-                      curve: Curves.easeInCirc,
-                      duration: const Duration(milliseconds: 20),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          RepaintBoundary(
-                            child: SizedBox(
-                              height: selectedEmotion ==
-                                      emotions[index].emotionTitle
-                                  ? 80
-                                  : 60,
-                              width: selectedEmotion ==
-                                      emotions[index].emotionTitle
-                                  ? 80
-                                  : 60,
-                              child: MentalHealthSvgPicture(
-                                picture: emotions[index].picturePath,
+    return RepaintBoundary(
+      child: SizedBox(
+        height: MediaQuery.of(context).size.height / 2,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 45, vertical: 5),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'How are you today?',
+                style: MentalHealthTextStyles.text.signikaFontF24,
+              ),
+              Expanded(
+                child: GridView.builder(
+                  itemCount: emotions.length,
+                  physics: const NeverScrollableScrollPhysics(),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    mainAxisExtent: 115.0,
+                    crossAxisCount: 3,
+                  ),
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () => setState(() {
+                        selectedEmotion = emotions[index].emotionTitle;
+                      }),
+                      child: AnimatedSize(
+                        curve: Curves.easeInCirc,
+                        duration: const Duration(milliseconds: 20),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RepaintBoundary(
+                              child: SizedBox(
+                                height: selectedEmotion ==
+                                        emotions[index].emotionTitle
+                                    ? 80
+                                    : 60,
+                                width: selectedEmotion ==
+                                        emotions[index].emotionTitle
+                                    ? 80
+                                    : 60,
+                                child: MentalHealthSvgPicture(
+                                  picture: emotions[index].picturePath,
+                                ),
                               ),
                             ),
-                          ),
-                          const SizedBox(
-                            height: 15,
-                          ),
-                          Text(
-                            emotions[index].emotionTitle,
-                            style: MentalHealthTextStyles
-                                .text.popinsSecondaryFontF14,
-                          )
-                        ],
+                            const SizedBox(
+                              height: 15,
+                            ),
+                            Text(
+                              emotions[index].emotionTitle,
+                              style: MentalHealthTextStyles
+                                  .text.popinsSecondaryFontF14,
+                            )
+                          ],
+                        ),
                       ),
-                    ),
-                  );
+                    );
+                  },
+                ),
+              ),
+              ActionButton(
+                title: 'Submit'.toUpperCase(),
+                onPressed: () {
+                  Navigator.of(context).pop();
                 },
               ),
-            ),
-            ActionButton(
-              title: 'Submit'.toUpperCase(),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

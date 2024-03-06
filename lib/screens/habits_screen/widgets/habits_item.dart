@@ -61,6 +61,7 @@ class _HabitsItemState extends State<HabitsItem> {
               child: Checkbox(
                 value: isChecked,
                 onChanged: (bool? value) {
+                  // modifiebleHabitsList = widget.habitsList;
                   setState(() {
                     isChecked = value!;
                   });

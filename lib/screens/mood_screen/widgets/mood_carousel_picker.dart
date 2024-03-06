@@ -83,14 +83,14 @@ class _MoodCarouselPickerState extends State<MoodCarouselPicker> {
                     onTap: () => setState(() {
                       selectedEmotion = emotion.emotionTitle;
                     }),
-                    child: AnimatedSize(
-                      curve: Curves.easeInCirc,
-                      duration: const Duration(milliseconds: 20),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          RepaintBoundary(
-                            child: SizedBox(
+                    child: RepaintBoundary(
+                      child: AnimatedSize(
+                        curve: Curves.easeInCirc,
+                        duration: const Duration(milliseconds: 20),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(
                               height: selectedEmotion == emotion.emotionTitle
                                   ? 80
                                   : 60,
@@ -102,14 +102,14 @@ class _MoodCarouselPickerState extends State<MoodCarouselPicker> {
                                 fit: BoxFit.contain,
                               ),
                             ),
-                          ),
-                          const SizedBox(height: 10),
-                          Text(
-                            emotion.emotionTitle,
-                            style: MentalHealthTextStyles
-                                .text.popinsSecondaryFontF14,
-                          )
-                        ],
+                            const SizedBox(height: 10),
+                            Text(
+                              emotion.emotionTitle,
+                              style: MentalHealthTextStyles
+                                  .text.popinsSecondaryFontF14,
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   );

@@ -41,16 +41,8 @@ class _ToDoListWidgetState extends State<ToDoListWidget> {
       },
       builder: (context, state) {
         state.when(
-          initial: () => body = const SizedBox.shrink(),
-          loading: () => body = const Center(
-            child: SizedBox(
-              height: 45,
-              width: 45,
-              child: RepaintBoundary(
-                child: Loader(size: 25),
-              ),
-            ),
-          ),
+          initial: () => body = const TodoListLoadingWidgetBody(),
+          loading: () => body = const TodoListLoadingWidgetBody(),
           habitsLoaded: (habitsList) => {
             // _log('mood entries from state - $moodEntries'),
             body = TodoListWidgetBody(uid: uid, habitsList: habitsList),

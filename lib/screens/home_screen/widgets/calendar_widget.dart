@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:life_sync/blocs/blocs.dart';
 import 'package:life_sync/common_widgets/widgets.dart';
-import 'package:life_sync/utils/app_colors.dart';
-import 'package:life_sync/utils/decorations.dart';
-import 'package:table_calendar/table_calendar.dart';
+import 'package:life_sync/entities/entities.dart';
+import 'package:life_sync/entities/hive_entities/hive_entities.dart';
+import 'package:life_sync/screens/home_screen/widgets/widgets.dart';
 
 class CalendarWidget extends StatefulWidget {
   const CalendarWidget({super.key});
@@ -12,61 +14,44 @@ class CalendarWidget extends StatefulWidget {
 }
 
 class _CalendarWidgetState extends State<CalendarWidget> {
-  CalendarFormat _calendarFormat = CalendarFormat.month;
+  late String uid;
+
+  @override
+  void initState() {
+    UserData? userData = HiveStore().getUserData();
+    uid = userData?.uid ?? 'pEo04Rq6And1QOhyTaUOjkMczyy1';
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => BlocProvider.of<MoodBloc>(context).add(
+        LoadUserMoodData(userUID: uid),
+      ),
+    );
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return DecoratedBox(
-      decoration: const BoxDecoration(color: AppColor.primaryBackgroundColor),
-      child: DecoratedBox(
-        decoration: const BoxDecoration(
-          color: AppColor.primaryColor,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(40),
-          ),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16),
-          child: DecoratedBox(
-            decoration: BoxDecoration(
-                borderRadius: MentalHealthDecorations.borders.radiusLeftC40,
-                border: Border.all(
-                  color: Colors.white,
-                  width: 3,
-                )),
-            child: Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: TableCalendar(
-                firstDay: DateTime.utc(2010, 10, 16),
-                lastDay: DateTime.utc(2030, 3, 14),
-                focusedDay: DateTime.now(),
-                calendarFormat: _calendarFormat,
-                onFormatChanged: (format) {
-                  setState(() {
-                    _calendarFormat = format;
-                  });
-                },
-                onDaySelected: (selectedDay, focusedDay) {
-                  showModalBottomSheet(
-                    useSafeArea: true,
-                    showDragHandle: true,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(40),
-                        topRight: Radius.circular(40),
-                      ),
-                    ),
-                    context: context,
-                    builder: (context) {
-                      return const MoodPickerWidget();
-                    },
-                  );
-                },
-              ),
+    Widget body = const SizedBox.shrink();
+    return BlocConsumer<MoodBloc, MoodState>(
+      listener: (context, state) {
+        state.whenOrNull();
+      },
+      builder: (context, state) {
+        state.when(
+          initial: () => body = const CalendarLoadingWidget(),
+          loading: () => body = const CalendarLoadingWidget(),
+          moodLoaded: (moodEntries) => {
+            // _log('mood entries from state - $moodEntries'),
+            body = CalendarBodyWidget(),
+          },
+          moodLoadingError: (errorText) => body = Center(
+            child: ErrorDialogWidget(
+              message: errorText,
             ),
           ),
-        ),
-      ),
+        );
+        return body;
+      },
     );
   }
 }
