@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:life_sync/common_widgets/widgets.dart';
+import 'package:life_sync/entities/db_entities/db_entities.dart';
 import 'package:life_sync/screens/home_screen/widgets/widgets.dart';
+import 'package:life_sync/utils/app_colors.dart';
+import 'package:life_sync/utils/decorations.dart';
+import 'package:life_sync/utils/styles/styles.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class CalendarBodyWidget extends StatefulWidget {
-  const CalendarBodyWidget({super.key});
+  final List<MoodEntry> moodEntries;
+  const CalendarBodyWidget({
+    super.key,
+    required this.moodEntries,
+  });
 
   @override
   State<CalendarBodyWidget> createState() => _CalendarBodyWidgetState();
@@ -26,7 +34,94 @@ class _CalendarBodyWidgetState extends State<CalendarBodyWidget> {
             _calendarFormat = format;
           });
         },
+        availableCalendarFormats: const {CalendarFormat.month: 'Month'},
+        startingDayOfWeek: StartingDayOfWeek.monday,
+        selectedDayPredicate: (day) => isSameDay(day, DateTime.now()),
+        calendarStyle: CalendarStyle(
+          outsideDaysVisible: false,
+          defaultTextStyle: MentalHealthTextStyles.text.popinsSecondaryFontF12
+              .copyWith(fontWeight: FontWeight.w400),
+          weekendTextStyle: MentalHealthTextStyles.text.popinsSecondaryFontF12
+              .copyWith(fontWeight: FontWeight.w400),
+          selectedDecoration: BoxDecoration(
+            shape: BoxShape.rectangle,
+            border: MentalHealthDecorations.borders.calendarDayDefaultBorder,
+            borderRadius: MentalHealthDecorations.borders.radiusC10,
+            color: AppColor.primaryBackgroundColor,
+          ),
+          defaultDecoration: BoxDecoration(
+            shape: BoxShape.rectangle,
+            border: MentalHealthDecorations.borders.calendarDayDefaultBorder,
+            borderRadius: MentalHealthDecorations.borders.radiusC10,
+            color: AppColor.sharedStoryChipColor,
+          ),
+          // todayDecoration: BoxDecoration(
+          //   shape: BoxShape.rectangle,
+          //   border: MentalHealthDecorations.borders.calendarDayDefaultBorder,
+          //   borderRadius: MentalHealthDecorations.borders.radiusC10,
+          //   color: AppColor.primaryBackgroundColor,
+          // ),
+          weekendDecoration: BoxDecoration(
+            shape: BoxShape.rectangle,
+            border: MentalHealthDecorations.borders.calendarDayDefaultBorder,
+            borderRadius: MentalHealthDecorations.borders.radiusC10,
+            color: AppColor.primaryBackgroundColor,
+          ),
+        ),
+        calendarBuilders: CalendarBuilders(
+          defaultBuilder: (context, date, events) {
+            // Customize the default day cell here
+            return SizedBox(
+              height: 40,
+              width: 40,
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  shape: BoxShape.rectangle,
+                  border:
+                      MentalHealthDecorations.borders.calendarDayDefaultBorder,
+                  borderRadius: MentalHealthDecorations.borders.radiusC10,
+                  color: getColorForDate(date, widget.moodEntries),
+                ),
+                child: Center(
+                  child: Text(
+                    '${date.day}',
+                    style: MentalHealthTextStyles.text.popinsSecondaryFontF12
+                        .copyWith(
+                      fontWeight: FontWeight.w400,
+                    ), // Customize the text color here
+                  ),
+                ),
+              ),
+            );
+          },
+          selectedBuilder: (context, date, events) {
+            // Customize the selected day cell here
+            return SizedBox(
+              height: 40,
+              width: 40,
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  shape: BoxShape.rectangle,
+                  border:
+                      MentalHealthDecorations.borders.calendarDayDefaultBorder,
+                  borderRadius: MentalHealthDecorations.borders.radiusC10,
+                  color: getColorForDate(date, widget.moodEntries),
+                ),
+                child: Center(
+                  child: Text(
+                    '${date.day}',
+                    style: MentalHealthTextStyles.text.popinsSecondaryFontF12
+                        .copyWith(
+                      fontWeight: FontWeight.w400,
+                    ), // Customize the text color here
+                  ),
+                ),
+              ),
+            );
+          },
+        ),
         onDaySelected: (selectedDay, focusedDay) {
+          // selectedDayPredicate = selectedDay;
           showModalBottomSheet(
             useSafeArea: true,
             showDragHandle: true,
@@ -45,4 +140,31 @@ class _CalendarBodyWidgetState extends State<CalendarBodyWidget> {
       ),
     );
   }
+}
+
+Color getColorForDate(DateTime date, List<MoodEntry> moodEntries) {
+  for (var entry in moodEntries) {
+    final convertedDate = entry.trackedDay.toDate();
+    if (convertedDate.year == date.year &&
+        convertedDate.month == date.month &&
+        convertedDate.day == date.day) {
+      switch (entry.mood) {
+        case 'Angry':
+          return AppColor.chartAngry;
+        case 'Sad':
+          return AppColor.chartSad;
+        case 'Bored':
+          return AppColor.chartBored;
+        case 'Meh':
+          return AppColor.chartMeh;
+        case 'Good':
+          return AppColor.chartsColor;
+        case 'Happy':
+          return AppColor.chartHappy;
+        default:
+          return AppColor.primaryColor;
+      } // Return the color from the MoodEntry
+    }
+  }
+  return AppColor.primaryColor;
 }

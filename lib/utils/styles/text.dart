@@ -81,10 +81,10 @@ class TextTextStyle {
   final TextStyle popinsSecondaryFontF12 = const TextStyle(
     fontFamily: 'Poppins-Regular',
     fontSize: 12,
-    height: 12 / 12,
+    height: 12 / 10,
     letterSpacing: -.41,
     color: AppColor.oneMoreDarkColor,
-    fontWeight: FontWeight.w200,
+    fontWeight: FontWeight.w300,
   );
   final TextStyle popinsSecondaryFontF14 = const TextStyle(
     fontFamily: 'Poppins-Regular',

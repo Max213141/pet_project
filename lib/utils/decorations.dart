@@ -68,7 +68,12 @@ class Borders {
           color: AppColor.primaryBackgroundColor,
         ),
       );
-
+  Border get calendarDayDefaultBorder => const Border.fromBorderSide(
+        BorderSide(
+          width: 1,
+          color: AppColor.habbitsTileBackground,
+        ),
+      );
   // Border get newNoteButton => const Border.fromBorderSide(
   //       BorderSide(
   //         width: 0.3,

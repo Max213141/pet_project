@@ -42,7 +42,9 @@ class _CalendarWidgetState extends State<CalendarWidget> {
           loading: () => body = const CalendarLoadingWidget(),
           moodLoaded: (moodEntries) => {
             // _log('mood entries from state - $moodEntries'),
-            body = CalendarBodyWidget(),
+            body = CalendarBodyWidget(
+              moodEntries: moodEntries,
+            ),
           },
           moodLoadingError: (errorText) => body = Center(
             child: ErrorDialogWidget(
