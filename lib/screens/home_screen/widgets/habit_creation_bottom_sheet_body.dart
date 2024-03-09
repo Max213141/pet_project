@@ -6,27 +6,21 @@ import 'package:life_sync/common_widgets/widgets.dart';
 import 'package:life_sync/entities/entities.dart';
 import 'package:life_sync/utils/utils.dart';
 
-class MoodPickerWidget extends StatefulWidget {
-  final DateTime selectedDay;
-  final List<MoodEntry> moodEntries;
-
-  const MoodPickerWidget({
+class HabitCreationBody extends StatefulWidget {
+  const HabitCreationBody({
     super.key,
-    required this.selectedDay,
-    required this.moodEntries,
   });
 
   @override
-  State<MoodPickerWidget> createState() => _MoodPickerWidgetState();
+  State<HabitCreationBody> createState() => _HabitCreationBodyState();
 }
 
-class _MoodPickerWidgetState extends State<MoodPickerWidget> {
+class _HabitCreationBodyState extends State<HabitCreationBody> {
   late List<MoodEntry> updatedMoodentries = [];
 
   @override
   void initState() {
     super.initState();
-    updatedMoodentries = widget.moodEntries.toList();
   }
 
   String selectedEmotion = 'Bored';
@@ -127,18 +121,14 @@ class _MoodPickerWidgetState extends State<MoodPickerWidget> {
                       element.trackedDay.toDate().day == DateTime.now().day);
                   if (index != -1) {
                     // Replace the existing MoodEntry with the new one
-                    updatedMoodentries[index] = MoodEntry(
-                      mood: selectedEmotion,
-                      trackedDay: Timestamp.fromDate(widget.selectedDay),
-                    );
                   } else {
                     // Add the new MoodEntry to the list
-                    updatedMoodentries.add(
-                      MoodEntry(
-                        mood: selectedEmotion,
-                        trackedDay: Timestamp.fromDate(widget.selectedDay),
-                      ),
-                    );
+                    // updatedMoodentries.add(
+                    //   MoodEntry(
+                    //     mood: selectedEmotion,
+                    //     trackedDay: Timestamp.fromDate(widget.selectedDay),
+                    //   ),
+                    // );
                   }
                   BlocProvider.of<MoodBloc>(context).add(
                     UploadUserMoodData(

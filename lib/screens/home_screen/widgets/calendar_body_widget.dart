@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:life_sync/common_widgets/widgets.dart';
 import 'package:life_sync/entities/db_entities/db_entities.dart';
 import 'package:life_sync/screens/home_screen/widgets/widgets.dart';
-import 'package:life_sync/utils/app_colors.dart';
-import 'package:life_sync/utils/decorations.dart';
-import 'package:life_sync/utils/styles/styles.dart';
+import 'package:life_sync/utils/utils.dart';
 import 'package:table_calendar/table_calendar.dart';
+
+void _log(dynamic message) =>
+    Logger.projectLog(message, name: 'calendar_body_widget');
 
 class CalendarBodyWidget extends StatefulWidget {
   final List<MoodEntry> moodEntries;
@@ -122,6 +123,7 @@ class _CalendarBodyWidgetState extends State<CalendarBodyWidget> {
         ),
         onDaySelected: (selectedDay, focusedDay) {
           // selectedDayPredicate = selectedDay;
+          _log('SelectedDate - $selectedDay');
           showModalBottomSheet(
             useSafeArea: true,
             showDragHandle: true,
@@ -133,7 +135,10 @@ class _CalendarBodyWidgetState extends State<CalendarBodyWidget> {
             ),
             context: context,
             builder: (context) {
-              return const MoodPickerWidget();
+              return MoodPickerWidget(
+                selectedDay: selectedDay,
+                moodEntries: widget.moodEntries,
+              );
             },
           );
         },

@@ -30,7 +30,11 @@ class CalendarFrameWidget extends StatelessWidget {
               ),
             ),
             child: Padding(
-              padding: const EdgeInsets.all(4.0),
+              padding: const EdgeInsets.only(
+                bottom: 12.0,
+                left: 6,
+                right: 6,
+              ),
               child: child,
             ),
           ),
