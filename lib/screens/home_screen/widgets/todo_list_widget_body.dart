@@ -1,4 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:life_sync/blocs/blocs.dart';
 import 'package:life_sync/common_widgets/widgets.dart';
 import 'package:life_sync/entities/db_entities/db_entities.dart';
 import 'package:life_sync/screens/habits_screen/widgets/widgets.dart';
@@ -66,7 +69,10 @@ class TodoListWidgetBody extends StatelessWidget {
                               ),
                               context: context,
                               builder: (context) {
-                                return HabitCreationBody();
+                                return HabitCreationBody(
+                                  uid: uid,
+                                  habitsList: habitsList,
+                                );
                               },
                             );
                             // final updatedList = habitsList.toList();

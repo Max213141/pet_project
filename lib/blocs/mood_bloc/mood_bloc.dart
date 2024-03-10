@@ -74,7 +74,7 @@ class MoodBloc extends Bloc<MoodEvent, MoodState> {
           password: userData.password!,
         ),
       );
-      await ref.set(updatedUserMoodInfo, SetOptions(merge: true));
+      await ref.set(updatedUserMoodInfo);
 
       add(MoodEvent.loadUserMoodData(userUID: uid!));
     } catch (e) {

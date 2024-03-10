@@ -6,6 +6,8 @@ import 'package:life_sync/common_widgets/widgets.dart';
 import 'package:life_sync/entities/entities.dart';
 import 'package:life_sync/utils/utils.dart';
 
+_log(dynamic message) => Logger.projectLog(message, name: 'mood_picker_widget');
+
 class MoodPickerWidget extends StatefulWidget {
   final DateTime selectedDay;
   final List<MoodEntry> moodEntries;
@@ -72,59 +74,65 @@ class _MoodPickerWidgetState extends State<MoodPickerWidget> {
                 style: MentalHealthTextStyles.text.signikaFontF24,
               ),
               Expanded(
-                child: GridView.builder(
-                  itemCount: emotions.length,
-                  physics: const NeverScrollableScrollPhysics(),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    mainAxisExtent: 115.0,
-                    crossAxisCount: 3,
-                  ),
-                  itemBuilder: (context, index) {
-                    return GestureDetector(
-                      onTap: () => setState(() {
-                        selectedEmotion = emotions[index].emotionTitle;
-                      }),
-                      child: AnimatedSize(
-                        curve: Curves.easeInCirc,
-                        duration: const Duration(milliseconds: 20),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            RepaintBoundary(
-                              child: SizedBox(
-                                height: selectedEmotion ==
-                                        emotions[index].emotionTitle
-                                    ? 80
-                                    : 60,
-                                width: selectedEmotion ==
-                                        emotions[index].emotionTitle
-                                    ? 80
-                                    : 60,
-                                child: MentalHealthSvgPicture(
-                                  picture: emotions[index].picturePath,
+                child: Center(
+                  child: GridView.builder(
+                    itemCount: emotions.length,
+                    physics: const NeverScrollableScrollPhysics(),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      mainAxisExtent: 115.0,
+                      crossAxisCount: 3,
+                    ),
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onTap: () => setState(() {
+                          selectedEmotion = emotions[index].emotionTitle;
+                        }),
+                        child: AnimatedSize(
+                          curve: Curves.easeInCirc,
+                          duration: const Duration(milliseconds: 20),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              RepaintBoundary(
+                                child: SizedBox(
+                                  height: selectedEmotion ==
+                                          emotions[index].emotionTitle
+                                      ? 80
+                                      : 60,
+                                  width: selectedEmotion ==
+                                          emotions[index].emotionTitle
+                                      ? 80
+                                      : 60,
+                                  child: MentalHealthSvgPicture(
+                                    picture: emotions[index].picturePath,
+                                  ),
                                 ),
                               ),
-                            ),
-                            const SizedBox(
-                              height: 15,
-                            ),
-                            Text(
-                              emotions[index].emotionTitle,
-                              style: MentalHealthTextStyles
-                                  .text.popinsSecondaryFontF14,
-                            )
-                          ],
+                              const SizedBox(
+                                height: 15,
+                              ),
+                              Text(
+                                emotions[index].emotionTitle,
+                                style: MentalHealthTextStyles
+                                    .text.popinsSecondaryFontF14,
+                              )
+                            ],
+                          ),
                         ),
-                      ),
-                    );
-                  },
+                      );
+                    },
+                  ),
                 ),
               ),
               ActionButton(
                 title: 'Submit'.toUpperCase(),
                 onPressed: () {
-                  int index = updatedMoodentries.indexWhere((element) =>
-                      element.trackedDay.toDate().day == DateTime.now().day);
+                  int index = updatedMoodentries.indexWhere((element) {
+                    final trackedDay = element.trackedDay.toDate();
+                    return trackedDay.day == widget.selectedDay.day &&
+                        trackedDay.month == widget.selectedDay.month;
+                  });
                   if (index != -1) {
                     // Replace the existing MoodEntry with the new one
                     updatedMoodentries[index] = MoodEntry(
@@ -139,12 +147,15 @@ class _MoodPickerWidgetState extends State<MoodPickerWidget> {
                         trackedDay: Timestamp.fromDate(widget.selectedDay),
                       ),
                     );
+                    // _log('after changes ${updatedMoodentries[index]}');
                   }
+
                   BlocProvider.of<MoodBloc>(context).add(
                     UploadUserMoodData(
                       updatedMoodTracker: updatedMoodentries,
                     ),
                   );
+                  Navigator.of(context).pop();
                 },
               ),
             ],
