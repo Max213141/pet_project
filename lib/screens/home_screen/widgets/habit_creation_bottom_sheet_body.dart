@@ -35,57 +35,60 @@ class _HabitCreationBodyState extends State<HabitCreationBody> {
 
   @override
   Widget build(BuildContext context) {
-    return RepaintBoundary(
-      child: SizedBox(
-        height: MediaQuery.of(context).size.height / 2,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 45, vertical: 5),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                'How are you today?',
-                style: MentalHealthTextStyles.text.signikaFontF24,
-              ),
-              Expanded(
-                child: RepaintBoundary(
-                  child: CustomFormFieldWidget(
-                    controller: habitController,
-                    title: 'Your habit',
-                    validator: (value) {
-                      if (value!.length > 30) {
-                        return 'Text length cannot exceed 30 characters';
-                      }
-                      return null; // Return null if the validation passes
-                    },
-                    maxLength: 30,
-                    maxLines: 3,
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      body: RepaintBoundary(
+        child: ScrollConfiguration(
+          behavior: CustomBehavior(),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 45, vertical: 5),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  'How are you today?',
+                  style: MentalHealthTextStyles.text.signikaFontF24,
+                ),
+                Expanded(
+                  child: RepaintBoundary(
+                    child: CustomFormFieldWidget(
+                      controller: habitController,
+                      title: 'Your habit',
+                      validator: (value) {
+                        if (value!.length > 30) {
+                          return 'Text length cannot exceed 30 characters';
+                        }
+                        return null; // Return null if the validation passes
+                      },
+                      maxLength: 30,
+                      maxLines: 3,
+                    ),
                   ),
                 ),
-              ),
-              ActionButton(
-                title: 'Submit'.toUpperCase(),
-                onPressed: () {
-                  final updatedList = widget.habitsList.toList();
-                  updatedList.add(
-                    UserHabit(
-                      task: habitController.text,
-                      date: Timestamp.now(),
-                      isDone: false,
-                    ),
-                  );
-                  BlocProvider.of<HabitsBloc>(context).add(
-                    UploadHabits(
-                      userUID: widget.uid,
-                      userUpdatedHabits: UserHabitsList(
-                        userHabits: updatedList.toList(),
+                ActionButton(
+                  title: 'Submit'.toUpperCase(),
+                  onPressed: () {
+                    final updatedList = widget.habitsList.toList();
+                    updatedList.add(
+                      UserHabit(
+                        task: habitController.text,
+                        date: Timestamp.now(),
+                        isDone: false,
                       ),
-                    ),
-                  );
-                },
-              ),
-            ],
+                    );
+                    BlocProvider.of<HabitsBloc>(context).add(
+                      UploadHabits(
+                        userUID: widget.uid,
+                        userUpdatedHabits: UserHabitsList(
+                          userHabits: updatedList.toList(),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),

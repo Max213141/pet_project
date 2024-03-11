@@ -61,6 +61,9 @@ class TodoListWidgetBody extends StatelessWidget {
                             showModalBottomSheet(
                               useSafeArea: true,
                               showDragHandle: true,
+                              // isScrollControlled: true,
+                              backgroundColor: AppColor.primaryColorDark,
+                              anchorPoint: const Offset(0.5, 0.0),
                               shape: const RoundedRectangleBorder(
                                 borderRadius: BorderRadius.only(
                                   topLeft: Radius.circular(40),
