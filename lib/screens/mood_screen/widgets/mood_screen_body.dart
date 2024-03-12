@@ -60,12 +60,6 @@ class MoodScreenBody extends StatelessWidget {
             MoodCarouselPicker(
               userCurrentMood: moodEntries.firstWhere(
                 (element) {
-                  // _log(
-                  //     'mood entry from state date - ${element.trackedDay.toDate().day}');
-                  // _log(
-                  //     'mood entry from state - ${element.trackedDay.toDate().day}');
-                  // _log('day - ${DateTime.now().day}');
-
                   return element.trackedDay.toDate().day == DateTime.now().day;
                 },
                 orElse: () => MoodEntry(
@@ -75,6 +69,7 @@ class MoodScreenBody extends StatelessWidget {
               ),
               moodEntries: moodEntries,
             ),
+            const SizedBox(height: 8),
           ],
         ),
       ),

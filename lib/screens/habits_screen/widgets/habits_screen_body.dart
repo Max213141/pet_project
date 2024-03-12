@@ -1,11 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:life_sync/blocs/blocs.dart';
 import 'package:life_sync/common_widgets/widgets.dart';
 import 'package:life_sync/entities/db_entities/db_entities.dart';
 import 'package:life_sync/screens/habits_screen/widgets/widgets.dart';
+import 'package:life_sync/screens/home_screen/widgets/widgets.dart';
 import 'package:life_sync/utils/utils.dart';
 
 class HabitsScreenBody extends StatelessWidget {
@@ -74,6 +72,27 @@ class HabitsScreenBody extends StatelessWidget {
                   itemCount: habitsList.length,
                   itemBuilder: (context, index) {
                     // Check if the current item's date is different from the previous item's date
+                    // if ((index > 0 &&
+                    //         sortedList[index].date.toDate().day !=
+                    //             sortedList[index - 1].date.toDate().day) &&
+                    //     sortedList[index].date.toDate().day !=
+                    //         DateTime.now().day) {
+                    //   return Column(
+                    //     children: [
+                    //       const Divider(),
+                    //       Text(
+                    //         ' ${DateFormat.MMMd().format(sortedList[index].date.toDate())}',
+                    //         style: MentalHealthTextStyles
+                    //             .text.signikaSecondaryFontF16,
+                    //       ),
+                    //       HabitsItem(
+                    //         uid: uid,
+                    //         habitsList: sortedList,
+                    //         habit: sortedList[index],
+                    //       ),
+                    //     ],
+                    //   );
+                    // } else
                     if (index > 0 &&
                         sortedList[index].date.toDate().day !=
                             sortedList[index - 1].date.toDate().day) {
@@ -105,44 +124,32 @@ class HabitsScreenBody extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 35.0),
+            padding: const EdgeInsets.symmetric(horizontal: 35.0, vertical: 6),
             child: ActionButton(
               title: 'Add new habit'.toUpperCase(),
               onPressed: () {
-                final updatedList = habitsList.toList();
-                updatedList.add(
-                  UserHabit(
-                    task: 'Finish todod List',
-                    date: Timestamp.now(),
-                    isDone: false,
+                showModalBottomSheet(
+                  useSafeArea: true,
+                  showDragHandle: true,
+                  isScrollControlled: true,
+                  backgroundColor: AppColor.primaryColorDark,
+                  anchorPoint: const Offset(0.5, 0.0),
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(40),
+                      topRight: Radius.circular(40),
+                    ),
                   ),
+                  context: context,
+                  builder: (context) {
+                    return RepaintBoundary(
+                      child: HabitCreationBody(
+                        uid: uid,
+                        habitsList: habitsList,
+                      ),
+                    );
+                  },
                 );
-                BlocProvider.of<HabitsBloc>(context).add(
-                  UploadHabits(
-                    userUID: uid,
-                    userUpdatedHabits: UserHabitsList(userHabits: updatedList),
-                  ),
-                );
-                // showModalBottomSheet(
-                //   useSafeArea: true,
-                //   showDragHandle: true,
-                //   shape: const RoundedRectangleBorder(
-                //     borderRadius: BorderRadius.only(
-                //       topLeft: Radius.circular(40),
-                //       topRight: Radius.circular(40),
-                //     ),
-                //   ),
-                //   context: context,
-                //   builder: (context) {
-                //     return Center(
-                //       child: Text(
-                //         ';)',
-                //         style:
-                //             MentalHealthTextStyles.text.signikaPrimaryFontF28,
-                //       ),
-                //     );
-                //   },
-                // );
               },
             ),
           ),

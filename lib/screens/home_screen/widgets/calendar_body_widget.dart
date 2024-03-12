@@ -163,7 +163,7 @@ Color getColorForDate(DateTime date, List<MoodEntry> moodEntries) {
         case 'Meh':
           return AppColor.chartMeh;
         case 'Good':
-          return AppColor.chartsColor;
+          return AppColor.chartGood;
         case 'Happy':
           return AppColor.chartHappy;
         default:

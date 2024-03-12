@@ -45,28 +45,29 @@ class _AuthModalBodyState extends State<AuthModalBody> {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         state.whenOrNull(
-            loading: () => setState(() {
-                  _showLoader = true;
-                }),
-            logInSuccess: (email, password) {
-              setState(() {
-                _showLoader = false;
-              });
-              GoRouter.of(context).go('/main');
-            },
-            authError: (errorText) {
-              setState(() {
-                _showLoader = false;
-              });
-              showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return ErrorDialogWidget(
-                    message: errorText,
-                  );
-                },
-              );
+          loading: () => setState(() {
+            _showLoader = true;
+          }),
+          logInSuccess: (email, password) {
+            setState(() {
+              _showLoader = false;
             });
+            GoRouter.of(context).go('/main');
+          },
+          authError: (errorText) {
+            setState(() {
+              _showLoader = false;
+            });
+            showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return ErrorDialogWidget(
+                  message: errorText,
+                );
+              },
+            );
+          },
+        );
       },
       child: Scaffold(
         backgroundColor: Colors.transparent,
