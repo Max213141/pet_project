@@ -36,7 +36,7 @@ class TextTextStyle {
   );
 
   final TextStyle signikaSecondaryFontF16 = const TextStyle(
-    fontFamily: 'Signika-Regular',
+    fontFamily: 'Signika-SemiBold',
     fontSize: 16,
     height: 16 / 14,
     letterSpacing: -.41,
@@ -110,6 +110,14 @@ class TextTextStyle {
     letterSpacing: -.41,
     color: AppColor.oneMoreDarkColor,
     fontWeight: FontWeight.w600,
+  );
+  final TextStyle popinsSecondaryFontF16FW300 = const TextStyle(
+    fontFamily: 'Poppins-Regular',
+    fontSize: 16,
+    height: 16 / 14,
+    letterSpacing: -.41,
+    color: AppColor.oneMoreDarkColor,
+    fontWeight: FontWeight.w300,
   );
   final TextStyle userName = const TextStyle(
     fontFamily: 'Signika-Regular',

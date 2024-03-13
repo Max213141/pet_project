@@ -55,4 +55,10 @@ class HiveStore {
     UserData? userData = useDataBox.get(0);
     return userData?.userName;
   }
+
+  String? getUserEmail() {
+    Box<UserData> useDataBox = Hive.box<UserData>('user_data');
+    UserData? userData = useDataBox.get(0);
+    return userData?.email;
+  }
 }

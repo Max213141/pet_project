@@ -35,88 +35,94 @@ class _CarouselWidgetState extends State<CarouselWidget> {
             child: Center(
               child: ScrollConfiguration(
                 behavior: CustomBehavior(),
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: _list.length,
-                  itemBuilder: (_, index) {
-                    return DecoratedBox(
-                      decoration: BoxDecoration(
-                        borderRadius: MentalHealthDecorations.borders.radiusC15,
-                      ),
-                      child: GestureDetector(
-                        onTap: () {
-                          if (selectedIndex == index) {
-                            switch (index) {
-                              case 0:
-                                GoRouter.of(context).go('/main/meditation');
-                                break;
-                              case 1:
-                                GoRouter.of(context).go('/main/breathing');
-                                break;
-                              case 2:
-                                GoRouter.of(context).go('/main/tests');
-                                break;
-                              default:
+                child: RepaintBoundary(
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: _list.length,
+                    itemBuilder: (_, index) {
+                      return DecoratedBox(
+                        decoration: BoxDecoration(
+                          borderRadius:
+                              MentalHealthDecorations.borders.radiusC15,
+                        ),
+                        child: GestureDetector(
+                          onTap: () {
+                            if (selectedIndex == index) {
+                              switch (index) {
+                                case 0:
+                                  GoRouter.of(context).go('/main/meditation');
+                                  break;
+                                case 1:
+                                  GoRouter.of(context).go('/main/breathing');
+                                  break;
+                                case 2:
+                                  GoRouter.of(context).go('/main/tests');
+                                  break;
+                                default:
+                              }
+                            } else {
+                              setState(() {
+                                selectedIndex = index;
+                              });
                             }
-                          } else {
-                            setState(() {
-                              selectedIndex = index;
-                            });
-                          }
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child: AnimatedContainer(
-                            duration: const Duration(milliseconds: 400),
-                            curve: Curves.linear,
-                            width: selectedIndex == index
-                                ? expandedWidth
-                                : expandedWidth / 2,
-                            child: Stack(
-                              children: [
-                                Positioned.fill(
-                                  child: ClipRRect(
-                                    borderRadius: MentalHealthDecorations
-                                        .borders.radiusC20,
-                                    child: DecoratedBox(
-                                      decoration: const BoxDecoration(
-                                        color: AppColor.primaryColor,
+                          },
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 8.0),
+                            child: AnimatedContainer(
+                              duration: const Duration(milliseconds: 400),
+                              curve: Curves.linear,
+                              width: selectedIndex == index
+                                  ? expandedWidth
+                                  : expandedWidth / 2,
+                              child: Stack(
+                                children: [
+                                  Positioned.fill(
+                                    child: ClipRRect(
+                                      borderRadius: MentalHealthDecorations
+                                          .borders.radiusC20,
+                                      child: DecoratedBox(
+                                        decoration: const BoxDecoration(
+                                          color: AppColor.primaryColor,
+                                        ),
+                                        child: getImage(index),
                                       ),
-                                      child: getImage(index),
                                     ),
                                   ),
-                                ),
-                                selectedIndex == index
-                                    ? Positioned(
-                                        bottom: 0,
-                                        left: 0,
-                                        child: DecoratedBox(
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  const BorderRadius.only(
-                                                topRight: Radius.circular(8),
-                                                bottomLeft: Radius.circular(18),
+                                  selectedIndex == index
+                                      ? Positioned(
+                                          bottom: 0,
+                                          left: 0,
+                                          child: DecoratedBox(
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    const BorderRadius.only(
+                                                  topRight: Radius.circular(8),
+                                                  bottomLeft:
+                                                      Radius.circular(18),
+                                                ),
+                                                color: AppColor
+                                                    .secondaryBackgroundColor
+                                                    .withOpacity(.5)),
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                vertical: 1,
+                                                horizontal: 8,
                                               ),
-                                              color: AppColor
-                                                  .secondaryBackgroundColor
-                                                  .withOpacity(.5)),
-                                          child: Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                              vertical: 1,
-                                              horizontal: 8,
+                                              child: getTitle(index),
                                             ),
-                                            child: getTitle(index),
                                           ),
-                                        ),
-                                      )
-                                    : const SizedBox.shrink()
-                              ],
+                                        )
+                                      : const SizedBox.shrink()
+                                ],
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    );
-                  },
+                      );
+                    },
+                  ),
                 ),
               ),
             ),

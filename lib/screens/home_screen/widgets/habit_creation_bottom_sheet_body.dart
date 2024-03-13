@@ -90,6 +90,7 @@ class _HabitCreationBodyState extends State<HabitCreationBody> {
                       ),
                     ),
                   );
+                  Navigator.of(context).pop();
                 }
               },
             ),

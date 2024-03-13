@@ -74,6 +74,7 @@ flutter:
     - assets/intro/
     - assets/tests/
     - assets/shared_stories/
+    - assets/menu_icons/
     - assets/fonts/Dosis/static/Dosis-Regular.ttf
     - assets/fonts/Poppins/Poppins-Regular.ttf
     - assets/fonts/Sansita/Sansita-Regular.ttf

@@ -80,7 +80,7 @@ class _MainScreenState extends State<MainScreen> {
         return Align(
           alignment: Alignment.centerLeft,
           child: Text(
-            'Cry',
+            'Shared Stories',
             style: MentalHealthTextStyles.text.signikaPrimaryFontF28
                 .copyWith(color: Colors.black),
           ),

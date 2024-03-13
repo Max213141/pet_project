@@ -10,3 +10,4 @@ export 'calendar_body_widget.dart';
 export 'calendar_frame_widget.dart';
 export 'calendar_loading_widget.dart';
 export 'habit_creation_bottom_sheet_body.dart';
+export 'drawer_item_widget.dart';

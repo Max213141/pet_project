@@ -50,40 +50,51 @@ class HabitsPercentageWidget extends StatelessWidget {
               ),
               Row(
                 children: [
-                  RichText(
-                    text: TextSpan(
-                      children: [
-                        TextSpan(
-                          text: '$finishedHabits',
-                          style: MentalHealthTextStyles
-                              .text.signikaSecondaryFontF42
-                              .copyWith(
-                            color: AppColor.primaryBackgroundColor,
-                          ),
+                  Flexible(
+                    flex: 1,
+                    child: FittedBox(
+                      // Wrap RichText with FittedBox
+                      fit: BoxFit.scaleDown,
+                      child: RichText(
+                        maxLines: 1,
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: '$finishedHabits',
+                              style: MentalHealthTextStyles
+                                  .text.signikaSecondaryFontF42
+                                  .copyWith(
+                                color: AppColor.primaryBackgroundColor,
+                              ),
+                            ),
+                            TextSpan(
+                              text: '/',
+                              style: MentalHealthTextStyles
+                                  .text.signikaSecondaryFontF42,
+                            ),
+                            TextSpan(
+                              text: '$totalTodayHabits',
+                              style: MentalHealthTextStyles
+                                  .text.signikaSecondaryFontF42,
+                            ),
+                            TextSpan(
+                              text: 'habits',
+                              style: MentalHealthTextStyles
+                                  .text.signikaSecondaryFontF16,
+                            ),
+                          ],
                         ),
-                        TextSpan(
-                          text: '/',
-                          style: MentalHealthTextStyles
-                              .text.signikaSecondaryFontF42,
-                        ),
-                        TextSpan(
-                          text: '$totalTodayHabits',
-                          style: MentalHealthTextStyles
-                              .text.signikaSecondaryFontF42,
-                        ),
-                        TextSpan(
-                          text: 'habits',
-                          style: MentalHealthTextStyles
-                              .text.signikaSecondaryFontF16,
-                        ),
-                      ],
+                      ),
                     ),
                   ),
                   const SizedBox(width: 60),
-                  HabitsPercentageRadialDiagram(
-                    unfinishedHabits: unfinishedHabits,
-                    finishedHabits: finishedHabits,
-                    totalTodayHabits: totalTodayHabits,
+                  Flexible(
+                    flex: 1,
+                    child: HabitsPercentageRadialDiagram(
+                      unfinishedHabits: unfinishedHabits,
+                      finishedHabits: finishedHabits,
+                      totalTodayHabits: totalTodayHabits,
+                    ),
                   ),
                 ],
               )
