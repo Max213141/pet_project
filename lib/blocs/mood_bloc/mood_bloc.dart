@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:life_sync/entities/db_entities/db_entities.dart';
 import 'package:life_sync/entities/entities.dart';
 import 'package:life_sync/entities/hive_entities/hive_entities.dart';
 import 'package:life_sync/utils/utils.dart';
@@ -40,7 +39,7 @@ class MoodBloc extends Bloc<MoodEvent, MoodState> {
       final docSnapshot = await ref.get();
 
       final userInfo = docSnapshot.data();
-      _log('Fucking mood entries ${userInfo}');
+      // _log('Fucking mood entries $userInfo');
       emit(
         MoodState.moodLoaded(
           userInfo?.moodTracker?.dailyMood ?? [],

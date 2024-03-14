@@ -106,8 +106,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         } else {
           _log('Smth went wrong with name'); //TODO implement error handling
         }
-      } catch (e) {
-        _log('Error $e'); //TODO implement error handling
+      } catch (error) {
+        emit(
+          const AuthState.authError(
+            errorText: 'Something went wrong. Please try again later.',
+          ),
+        );
+        _log('Error $error'); //TODO implement error handling
       }
 
       emit(const AuthState.logInSuccess());

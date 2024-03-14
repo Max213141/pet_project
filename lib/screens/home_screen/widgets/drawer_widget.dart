@@ -13,18 +13,17 @@ class DrawerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final String? username = HiveStore().getUserName();
     final String? email = HiveStore().getUserEmail();
-    final List<DrawerItem> _drawerItemsList = [
+    final List<DrawerItem> drawerItemsList = [
       DrawerItem(
         title: 'Profile',
         icon: 'assets/menu_icons/profile.svg',
-        onTap: () => GoRouter.of(context).pop(),
+        onTap: () => GoRouter.of(context).go('/main/profile_screen'),
       ),
       DrawerItem(
         title: 'About Us',
         icon: 'assets/menu_icons/about_us.svg',
-        onTap: () => GoRouter.of(context).pop(),
+        onTap: () => GoRouter.of(context).go('/main/about_us_screen'),
       ),
-
       // DrawerItem(
       //   title: 'Notifications',
       //   icon: 'assets/menu_icons/notifications.svg',
@@ -32,12 +31,12 @@ class DrawerWidget extends StatelessWidget {
       DrawerItem(
         title: 'Help and Support',
         icon: 'assets/menu_icons/support.svg',
-        onTap: () => GoRouter.of(context).pop(),
+        onTap: () => GoRouter.of(context).go('/main/support_screen'),
       ),
       DrawerItem(
         title: 'Settings',
         icon: 'assets/menu_icons/settings.svg',
-        onTap: () => GoRouter.of(context).pop(),
+        onTap: () => GoRouter.of(context).go('/main/settings_screen'),
       ),
       DrawerItem(
         title: 'Log out',
@@ -89,11 +88,11 @@ class DrawerWidget extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ..._drawerItemsList.getRange(0, 4).map(
+                  ...drawerItemsList.getRange(0, 4).map(
                         (drawerItem) => DrawerItemWidget(item: drawerItem),
                       ),
                   const Spacer(),
-                  DrawerItemWidget(item: _drawerItemsList.last),
+                  DrawerItemWidget(item: drawerItemsList.last),
                 ],
               ),
             )

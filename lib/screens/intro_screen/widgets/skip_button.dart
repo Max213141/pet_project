@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:life_sync/utils/utils.dart';
 
 class SkipButton extends StatelessWidget {
+  const SkipButton({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(

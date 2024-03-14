@@ -5,8 +5,8 @@ import 'package:life_sync/entities/db_entities/db_entities.dart';
 import 'package:life_sync/screens/shared_stories/widgets/widgets.dart';
 import 'package:life_sync/utils/utils.dart';
 
-void _log(dynamic message) =>
-    Logger.projectLog(message, name: 'view_mode_body');
+// void _log(dynamic message) =>
+//     Logger.projectLog(message, name: 'view_mode_body');
 
 class ViewModeBody extends StatefulWidget {
   final List<SharedStory> randomStories;
@@ -55,7 +55,6 @@ class _ViewModeBodyState extends State<ViewModeBody> {
                           padding: const EdgeInsets.all(6.0),
                           child: SingleChildScrollView(
                             child: Wrap(
-                              // alignment: WrapAlignment.spaceBetween,
                               spacing: 10,
                               runSpacing: 5,
                               children: widget.randomStories
@@ -111,10 +110,9 @@ class _ViewModeBodyState extends State<ViewModeBody> {
                   Center(
                     child: RefreshButton(
                       onPressed: () {
-                        _log('Load new random story button pressed');
                         BlocProvider.of<SharedStoriesBloc>(context).add(
                           LoadRandomStoryEvent(userUID: widget.uid),
-                        ); //TODO remove hardcode
+                        );
                       },
                       size: 100,
                     ),

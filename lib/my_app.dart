@@ -3,27 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-
+import 'package:life_sync/blocs/blocs.dart';
+import 'package:life_sync/entities/entities.dart';
 import 'package:life_sync/entities/hive_entities/hive_entities.dart';
 import 'package:life_sync/navigation/navigation_observer.dart';
-import 'package:life_sync/screens/breath_screen/breathe_screen.dart';
-import 'package:life_sync/screens/breathing_items_screen/breathing_items_screen.dart';
-import 'package:life_sync/blocs/blocs.dart';
-import 'package:life_sync/screens/breathing_screen/breathing_screen.dart';
-import 'package:life_sync/entities/hive_store.dart';
-import 'package:life_sync/screens/error_screen/error_screen.dart';
-import 'package:life_sync/screens/initial_hive_page.dart';
-import 'package:life_sync/screens/initial_page.dart';
-import 'package:life_sync/screens/home_screen/main_screen.dart';
-import 'package:life_sync/screens/intro_screen/intro_screen.dart';
-import 'package:life_sync/screens/meditation_screen/meditation_screen.dart';
-import 'package:life_sync/screens/mood_screen/mood_screen.dart';
-import 'package:life_sync/screens/tests_screen/tests_screen.dart';
-import 'package:life_sync/utils/theme_data.dart';
+import 'package:life_sync/screens/screens.dart';
+import 'package:life_sync/utils/utils.dart';
 
 class MyApp extends StatelessWidget {
   final FirebaseAuth auth;
   final HiveStore hiveStore = HiveStore();
+
+  MyApp({
+    super.key,
+    required this.auth,
+  });
 
   Future<void> _initHive() async {
     WidgetsFlutterBinding.ensureInitialized();
@@ -31,15 +25,8 @@ class MyApp extends StatelessWidget {
     final appPreferencesBox =
         await Hive.openBox<AppPreferences>('app_preferences');
     await Hive.openBox<UserData>('user_data');
-    //_log('app preferences box: $appPreferencesBox');
-    //_log('app preferences box is empty: ${appPreferencesBox.isEmpty}');
-
     if (appPreferencesBox.isEmpty) {
       await HiveStore().setInitialData();
-      // final appPreferencesBox = hiveStore.getAppPreferencesBox();
-
-      //_log(
-      // 'app preferences box is empty after setting to initial: ${appPreferencesBox.isEmpty}');
     } else {
       final appPreferences = appPreferencesBox.getAt(0);
       if (appPreferences != null) {
@@ -49,8 +36,6 @@ class MyApp extends StatelessWidget {
       }
     }
   }
-
-  MyApp({super.key, required this.auth});
 
   // This widget is the root of your application.
   @override
@@ -94,21 +79,50 @@ class MyApp extends StatelessWidget {
           },
           routes: <RouteBase>[
             GoRoute(
-              // name: 'breathing_item_screen',
-              path: 'mood_screen',
+              name: 'profile_screen',
+              path: 'profile_screen',
               builder: (BuildContext context, GoRouterState state) {
-                return const MoodScreen();
+                return const ProfileScreen();
               },
             ),
             GoRoute(
-              name: 'intro_screen',
-              path: 'intro_screen',
+              name: 'about_us_screen',
+              path: 'about_us_screen',
               builder: (BuildContext context, GoRouterState state) {
-                // return SplashScreen();
-
-                return const IntroScreen();
+                return const AboutUsScreen();
               },
             ),
+            GoRoute(
+              name: 'support_screen',
+              path: 'support_screen',
+              builder: (BuildContext context, GoRouterState state) {
+                return const SupportScreen();
+              },
+            ),
+            GoRoute(
+              name: 'settings_screen',
+              path: 'settings_screen',
+              builder: (BuildContext context, GoRouterState state) {
+                return const SettingsScreen();
+              },
+            ),
+
+            // GoRoute(
+            //   // name: 'breathing_item_screen',
+            //   path: 'mood_screen',
+            //   builder: (BuildContext context, GoRouterState state) {
+            //     return const MoodScreen();
+            //   },
+            // ),
+            // GoRoute(
+            //   name: 'intro_screen',
+            //   path: 'intro_screen',
+            //   builder: (BuildContext context, GoRouterState state) {
+            //     // return SplashScreen();
+
+            //     return const IntroScreen();
+            //   },
+            // ),
             GoRoute(
               name: 'breathing',
               path: 'breathing',
@@ -131,7 +145,8 @@ class MyApp extends StatelessWidget {
                       // name: 'breathing_item_screen',
                       path: 'breathe',
                       builder: (BuildContext context, GoRouterState state) {
-                        return const AnimatedCircleImageAnimation();
+                        return const SizedBox.shrink();
+                        //  const AnimatedCircleImageAnimation();
                       },
                     ),
                   ],
@@ -170,6 +185,7 @@ class MyApp extends StatelessWidget {
       errorBuilder: (context, state) => const ErrorScreen(),
       debugLogDiagnostics: true,
     );
+
     // TODO adapt Go_Router For BottomNavigation
     return FutureBuilder(
       future: _initHive(),

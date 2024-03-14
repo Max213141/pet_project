@@ -4,7 +4,7 @@ class AnimatedCircleImageAnimation extends StatefulWidget {
   const AnimatedCircleImageAnimation({super.key});
 
   @override
-  _AnimatedCircleImageAnimationState createState() =>
+  State<AnimatedCircleImageAnimation> createState() =>
       _AnimatedCircleImageAnimationState();
 }
 

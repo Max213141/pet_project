@@ -6,7 +6,7 @@ import 'package:life_sync/common_widgets/widgets.dart';
 import 'package:life_sync/entities/entities.dart';
 import 'package:life_sync/utils/utils.dart';
 
-_log(dynamic message) => Logger.projectLog(message, name: 'mood_picker_widget');
+// _log(dynamic message) => Logger.projectLog(message, name: 'mood_picker_widget');
 
 class MoodPickerWidget extends StatefulWidget {
   final DateTime selectedDay;

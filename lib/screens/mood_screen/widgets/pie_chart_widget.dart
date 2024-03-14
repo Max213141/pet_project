@@ -28,15 +28,15 @@ class MoodPieChartState extends State<MoodPieChart> {
     _moodEntriesThisMonth = widget.userDailyMood.where((entry) {
       return entry.trackedDay.toDate().month == DateTime.now().month;
     }).toList();
-    Map<String, int> _moodCount = {};
+    Map<String, int> moodCount = {};
     _moodEntriesThisMonth.forEach((entry) {
-      _moodCount[entry.mood] =
-          _moodCount.containsKey(entry.mood) ? _moodCount[entry.mood]! + 1 : 1;
+      moodCount[entry.mood] =
+          moodCount.containsKey(entry.mood) ? moodCount[entry.mood]! + 1 : 1;
     });
     int totalDaysInMonth =
         DateTime(DateTime.now().year, DateTime.now().month + 1, 0).day;
     _log('Total days in month $totalDaysInMonth');
-    _moodCount.forEach((mood, count) {
+    moodCount.forEach((mood, count) {
       moodPercentage[mood] = (count / totalDaysInMonth) * 100;
       //  = double.parse(percentage.toStringAsFixed(2)); // I dont know how necessary not rounded percentage
     });

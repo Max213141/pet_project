@@ -43,6 +43,15 @@ class TextTextStyle {
     color: AppColor.oneMoreDarkColor,
     fontWeight: FontWeight.w600,
   );
+
+  final TextStyle signikaSecondaryFontF16FW300 = const TextStyle(
+    fontFamily: 'Signika-SemiBold',
+    fontSize: 16,
+    height: 16 / 14,
+    letterSpacing: -.41,
+    color: AppColor.oneMoreDarkColor,
+    fontWeight: FontWeight.w300,
+  );
   final TextStyle signikaFontF24 = const TextStyle(
     fontFamily: 'Signika-Regular',
     fontSize: 22,

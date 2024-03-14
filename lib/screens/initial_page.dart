@@ -7,7 +7,7 @@ import 'package:life_sync/screens/home_screen/main_screen.dart';
 
 class InitialPage extends StatefulWidget {
   final FirebaseAuth auth;
-  const InitialPage({Key? key, required this.auth}) : super(key: key);
+  const InitialPage({super.key, required this.auth});
 
   @override
   State<InitialPage> createState() => _InitialPageState();

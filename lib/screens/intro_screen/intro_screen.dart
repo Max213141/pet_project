@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:intro_slider/intro_slider.dart';
 import 'package:life_sync/screens/intro_screen/widgets/widgets.dart';
 import 'package:life_sync/utils/utils.dart';
@@ -8,7 +7,7 @@ class IntroScreen extends StatefulWidget {
   const IntroScreen({super.key});
 
   @override
-  _IntroScreenState createState() => _IntroScreenState();
+  State<IntroScreen> createState() => _IntroScreenState();
 }
 
 class _IntroScreenState extends State<IntroScreen> {
@@ -59,16 +58,13 @@ class _IntroScreenState extends State<IntroScreen> {
     );
   }
 
-  void onDonePress() {
-    context.replace('/initial_page');
-    // TODO: Navigate to the home screen
-  }
+  // void onDonePress() {
+  //   context.replace('/initial_page');
+  // }
 
-  void onSkipPress() {
-    context.replace('/initial_page');
-
-    // TODO: Navigate to the home screen
-  }
+  // void onSkipPress() {
+  //   context.replace('/initial_page');
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -98,8 +94,8 @@ class _IntroScreenState extends State<IntroScreen> {
             typeIndicatorAnimation: TypeIndicatorAnimation.sliding,
           ),
           listCustomTabs: slides,
-          onDonePress: onDonePress,
-          onSkipPress: onSkipPress,
+          // onDonePress: onDonePress,
+          // onSkipPress: onSkipPress,
           doneButtonStyle:
               const ButtonStyle(splashFactory: NoSplash.splashFactory),
           nextButtonStyle:

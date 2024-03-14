@@ -20,9 +20,7 @@ class _QuoteWidgetState extends State<QuoteWidget> {
   @override
   void initState() {
     super.initState();
-
     quote = "";
-
     getQuote();
   }
 
@@ -45,7 +43,6 @@ class _QuoteWidgetState extends State<QuoteWidget> {
               .replaceAll("â", "")
               .replaceAll("", "")
               .replaceAll(".", "");
-          ;
           var res = jsonDecode(fixedResponse);
           _log('response quote - $res');
 
@@ -100,7 +97,7 @@ class _QuoteWidgetState extends State<QuoteWidget> {
                             // overflow: TextOverflow.ellipsis,
                             ),
                         TextSpan(
-                          text: '$quote',
+                          text: quote,
                           // textAlign: TextAlign.center,
                           style: quote.length < 100
                               ? MentalHealthTextStyles.text.signikaFontF24
