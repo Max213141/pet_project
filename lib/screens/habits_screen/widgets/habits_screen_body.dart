@@ -17,6 +17,8 @@ class HabitsScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = l10nOf(context);
+
     List<UserHabit> sortedList = habitsList.toList()
       ..sort((a, b) => b.date.toDate().compareTo(a.date.toDate()));
 
@@ -48,7 +50,7 @@ class HabitsScreenBody extends StatelessWidget {
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                'Daily check-in',
+                l10n.habitsScreenPhrase,
                 style: MentalHealthTextStyles.text.signikaSecondaryFontF16,
               ),
             ),
@@ -126,7 +128,7 @@ class HabitsScreenBody extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 35.0, vertical: 6),
             child: ActionButton(
-              title: 'Add new habit'.toUpperCase(),
+              title: l10n.habitsScreenAddHabit.toUpperCase(),
               onPressed: () {
                 showModalBottomSheet(
                   useSafeArea: true,

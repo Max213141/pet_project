@@ -7,11 +7,13 @@ import 'package:life_sync/utils/utils.dart';
 void _log(dynamic message) => Logger.projectLog(message, name: 'bar_chart');
 
 class BarChartSample extends StatefulWidget {
+  final AppLocalizations l10n;
   final List<MoodEntry> userDailyMood;
 
   const BarChartSample({
     super.key,
     required this.userDailyMood,
+    required this.l10n,
   });
 
   @override
@@ -192,26 +194,30 @@ class BarChartSampleState extends State<BarChartSample> {
     );
   }
 
-  Widget leftTitles(double value, TitleMeta meta) {
+  Widget leftTitles(
+    double value,
+    TitleMeta meta,
+  ) {
     String text;
+
     switch (value.toInt()) {
       case 0:
-        text = 'Angry';
+        text = widget.l10n.emotionAngry;
         break;
       case 1:
-        text = 'Sad';
+        text = widget.l10n.emotionSad;
         break;
       case 2:
-        text = 'Bored';
+        text = widget.l10n.emotionBored;
         break;
       case 3:
-        text = 'Meh';
+        text = widget.l10n.emotionMeh;
         break;
       case 4:
-        text = 'Good';
+        text = widget.l10n.emotionGood;
         break;
       case 5:
-        text = 'Happy';
+        text = widget.l10n.emotionHappy;
         break;
       default:
         text = '';

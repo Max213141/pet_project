@@ -19,17 +19,20 @@ class AppPreferencesAdapter extends TypeAdapter<AppPreferences> {
     return AppPreferences(
       isFirstLaunch: fields[0] as bool,
       isDarkTheme: fields[1] as bool,
+      locale: fields[2] as Locale,
     );
   }
 
   @override
   void write(BinaryWriter writer, AppPreferences obj) {
     writer
-      ..writeByte(2)
+      ..writeByte(3)
       ..writeByte(0)
       ..write(obj.isFirstLaunch)
       ..writeByte(1)
-      ..write(obj.isDarkTheme);
+      ..write(obj.isDarkTheme)
+      ..writeByte(2)
+      ..write(obj.locale);
   }
 
   @override

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intro_slider/intro_slider.dart';
 import 'package:life_sync/screens/intro_screen/widgets/widgets.dart';
 import 'package:life_sync/utils/utils.dart';
@@ -16,58 +17,20 @@ class _IntroScreenState extends State<IntroScreen> {
   @override
   void initState() {
     super.initState();
-    slides.addAll(
-      [
-        IntroScreenPart(
-          useProvidedChild: true,
-          text: "Helll yeah!!!",
-          image: 'assets/intro/first_slide.svg',
-          providedChild: RichText(
-              text: TextSpan(children: [
-            TextSpan(
-              text: 'Welcome to\n',
-              style: MentalHealthTextStyles.text.signikaFontF24,
-            ),
-            TextSpan(
-              text: 'LifeSync\n',
-              style: MentalHealthTextStyles.text.signikaFontF24Green,
-            ),
-            TextSpan(
-              text: 'our mental health app!\n',
-              style: MentalHealthTextStyles.text.signikaFontF24,
-            ),
-            TextSpan(
-              text: 'We\'re glad to have you here.\n',
-              style: MentalHealthTextStyles.text.signikaFontF24,
-            ),
-          ])),
-        ),
-        const IntroScreenPart(
-          text: 'Discover more about yourself with our psychological tests.',
-          image: 'assets/intro/second_slide.svg',
-        ),
-        const IntroScreenPart(
-          text: 'Engage in daily meditation sessions.',
-          image: 'assets/intro/third_slide.svg',
-        ),
-        const IntroScreenPart(
-          text: "Receive personalized recommendations and tips.",
-          image: 'assets/intro/forth_slide.svg',
-        ),
-      ],
-    );
   }
 
-  // void onDonePress() {
-  //   context.replace('/initial_page');
-  // }
+  void onDonePress() {
+    context.replace('/initial_page');
+  }
 
-  // void onSkipPress() {
-  //   context.replace('/initial_page');
-  // }
+  void onSkipPress() {
+    context.replace('/initial_page');
+  }
 
   @override
   Widget build(BuildContext context) {
+    final l10n = l10nOf(context);
+    createSlides(l10n);
     return Scaffold(
       body: ScrollConfiguration(
         behavior: CustomBehavior(),
@@ -94,8 +57,8 @@ class _IntroScreenState extends State<IntroScreen> {
             typeIndicatorAnimation: TypeIndicatorAnimation.sliding,
           ),
           listCustomTabs: slides,
-          // onDonePress: onDonePress,
-          // onSkipPress: onSkipPress,
+          onDonePress: onDonePress,
+          onSkipPress: onSkipPress,
           doneButtonStyle:
               const ButtonStyle(splashFactory: NoSplash.splashFactory),
           nextButtonStyle:
@@ -107,6 +70,54 @@ class _IntroScreenState extends State<IntroScreen> {
           // renderSkipBtn: this.renderSkipBtn(),
         ),
       ),
+    );
+  }
+
+  createSlides(AppLocalizations l10n) {
+    slides.addAll(
+      [
+        IntroScreenPart(
+          useProvidedChild: true,
+          text: "Hell yeah!!!",
+          image: 'assets/intro/first_slide.svg',
+          providedChild: RichText(
+              text: TextSpan(children: [
+            TextSpan(
+              //  '${l10n.welcome}\n',
+              text: 'Welcome to\n',
+              style: MentalHealthTextStyles.text.signikaFontF24,
+            ),
+            TextSpan(
+              // l10n.appTitle
+              text: 'LifeSync\n',
+              style: MentalHealthTextStyles.text.signikaFontF24Green,
+            ),
+            TextSpan(
+              //  '${l10n.introSlidePart1}\n',
+
+              text: 'our mental health app!\n',
+              style: MentalHealthTextStyles.text.signikaFontF24,
+            ),
+            TextSpan(
+              //  '${l10n.firstIntroSlidePart2}\n',
+              text: 'We\'re glad to have you here.\n',
+              style: MentalHealthTextStyles.text.signikaFontF24,
+            ),
+          ])),
+        ),
+        IntroScreenPart(
+          text: l10n.secondIntroSlide,
+          image: 'assets/intro/second_slide.svg',
+        ),
+        IntroScreenPart(
+          text: l10n.thirdIntroSlide,
+          image: 'assets/intro/third_slide.svg',
+        ),
+        IntroScreenPart(
+          text: l10n.forthIntroSlide,
+          image: 'assets/intro/forth_slide.svg',
+        ),
+      ],
     );
   }
 }

@@ -20,6 +20,8 @@ class TodoListWidgetBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = l10nOf(context);
+
     List<UserHabit>? currentUserHabits = habitsList
         .where((element) => (element.date.toDate().day == DateTime.now().day &&
             element.date.toDate().month == DateTime.now().month))
@@ -36,7 +38,7 @@ class TodoListWidgetBody extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                'Check out your habits',
+                l10n.homeScreenToDoListPhrase,
                 style: MentalHealthTextStyles.text.signikaSecondaryFontF16,
               ),
             ),
@@ -53,7 +55,7 @@ class TodoListWidgetBody extends StatelessWidget {
                           ),
                         ),
                         ActionButton(
-                          title: 'Add habit',
+                          title: l10n.homeScreenToDoListAdd,
                           onPressed: () {
                             showModalBottomSheet(
                               useSafeArea: true,

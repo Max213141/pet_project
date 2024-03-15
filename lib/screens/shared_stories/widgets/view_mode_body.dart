@@ -24,6 +24,8 @@ class ViewModeBody extends StatefulWidget {
 class _ViewModeBodyState extends State<ViewModeBody> {
   @override
   Widget build(BuildContext context) {
+    final l10n = l10nOf(context);
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: SizedBox(
@@ -33,7 +35,7 @@ class _ViewModeBodyState extends State<ViewModeBody> {
         child: widget.randomStories.isEmpty
             ? Center(
                 child: Text(
-                  'There is no user stories :(',
+                  l10n.sharedStoriesScreenNoUsersStories,
                   style: MentalHealthTextStyles.text.signikaPrimaryFontF22Black,
                 ),
               )

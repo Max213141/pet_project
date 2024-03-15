@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:life_sync/common_widgets/common_category_items_screen/widgets/category_description.dart';
 import 'package:life_sync/screens/breathing_screen/widgets/widgets.dart';
 import 'package:life_sync/utils/utils.dart';
@@ -37,7 +36,7 @@ class _BreathingItemsScreenState extends State<BreathingItemsScreen> {
             widget.title,
           ),
         ),
-        titleTextStyle: GoogleFonts.sansita(fontSize: 24, color: Colors.black),
+        titleTextStyle: MentalHealthTextStyles.text.mainTitleF24,
         backgroundColor: AppColor.primaryBackgroundColor,
         elevation: 0,
       ),

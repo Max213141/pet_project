@@ -12,14 +12,18 @@ class HabitsPercentageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = l10nOf(context);
+
     final int finishedHabits = habitsList
         .where((habit) =>
             habit.date.toDate().day == DateTime.now().day &&
+            habit.date.toDate().month == DateTime.now().month &&
             habit.isDone == true)
         .length;
     final int unfinishedHabits = habitsList
         .where((habit) =>
             habit.date.toDate().day == DateTime.now().day &&
+            habit.date.toDate().month == DateTime.now().month &&
             habit.isDone == false)
         .length;
     final int totalTodayHabits = finishedHabits + unfinishedHabits;
@@ -42,9 +46,9 @@ class HabitsPercentageWidget extends StatelessWidget {
                 child: Text(
                   totalTodayHabits != 0
                       ? finishedHabits == totalTodayHabits
-                          ? 'Well done! You are perfect!'
-                          : 'Keep going!'
-                      : 'Add some habits to accomplish them!)',
+                          ? l10n.habitsScreenFullCompletion
+                          : l10n.habitsScreenPartCompletion
+                      : l10n.habitsScreenPartEmptyHabits,
                   style: MentalHealthTextStyles.text.signikaSecondaryFontF16,
                 ),
               ),
@@ -78,7 +82,7 @@ class HabitsPercentageWidget extends StatelessWidget {
                                   .text.signikaSecondaryFontF42,
                             ),
                             TextSpan(
-                              text: 'habits',
+                              text: l10n.habits,
                               style: MentalHealthTextStyles
                                   .text.signikaSecondaryFontF16,
                             ),

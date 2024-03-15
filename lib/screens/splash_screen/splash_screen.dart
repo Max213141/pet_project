@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:life_sync/utils/utils.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -18,12 +17,12 @@ class SplashScreen extends StatelessWidget {
               shape: BoxShape.circle,
               border: Border.all(color: AppColor.primaryColor, width: 4),
             ),
-            child: Center(
+            child: const Center(
               child: Text(
                 'L\n S',
-
                 // textAlign: TextAlign.center,
-                style: GoogleFonts.signika(
+                style: TextStyle(
+                  fontFamily: 'Signika-Regular',
                   fontSize: 68,
                   height: 48 / 34,
                   letterSpacing: -.5,

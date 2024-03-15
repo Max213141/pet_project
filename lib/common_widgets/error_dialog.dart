@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:life_sync/utils/utils.dart';
 
 class ErrorDialogWidget extends StatelessWidget {
   final String message;
@@ -7,6 +8,7 @@ class ErrorDialogWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = l10nOf(context);
     return Dialog(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20.0),
@@ -46,9 +48,9 @@ class ErrorDialogWidget extends StatelessWidget {
                 ),
                 minimumSize: const Size(100.0, 50.0),
               ),
-              child: const Text(
-                "OK",
-                style: TextStyle(
+              child: Text(
+                l10n.ok,
+                style: const TextStyle(
                   fontSize: 18.0,
                   fontWeight: FontWeight.bold,
                 ),

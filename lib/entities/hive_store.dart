@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:life_sync/entities/hive_entities/app_preferences.dart';
@@ -48,6 +49,14 @@ class HiveStore {
         Hive.box<AppPreferences>('app_preferences');
     AppPreferences? appPrefs = appPrefsBox.get(0);
     return appPrefs?.isFirstLaunch;
+  }
+
+  Locale? getLocale() {
+    Box<AppPreferences> appPrefsBox =
+        Hive.box<AppPreferences>('app_preferences');
+    AppPreferences? appPrefs = appPrefsBox.get(0);
+    _log('appPrefs locale : ${appPrefs?.locale}');
+    return appPrefs?.locale;
   }
 
   String? getUserName() {

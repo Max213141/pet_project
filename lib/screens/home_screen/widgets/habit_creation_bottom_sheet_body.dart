@@ -35,6 +35,8 @@ class _HabitCreationBodyState extends State<HabitCreationBody> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = l10nOf(context);
+
     return Padding(
       padding: EdgeInsets.only(
         right: 45,
@@ -48,20 +50,20 @@ class _HabitCreationBodyState extends State<HabitCreationBody> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              'How are you today?',
+              l10n.howAreYou,
               style: MentalHealthTextStyles.text.signikaFontF24,
             ),
             const SizedBox(height: 8),
             RepaintBoundary(
               child: CustomFormFieldWidget(
                 controller: habitController,
-                title: 'Your habit',
+                title: l10n.homeScreenHabitCreationHabit,
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return 'Add your habit first';
+                    return l10n.homeScreenHabitCreationIsEmpty;
                   }
                   if (value.length > 30) {
-                    return 'Text length cannot exceed 30 characters';
+                    return l10n.homeScreenHabitCreationLenghtError;
                   }
                   return null; // Return null if the validation passes
                 },
@@ -71,7 +73,7 @@ class _HabitCreationBodyState extends State<HabitCreationBody> {
             ),
             const SizedBox(height: 8),
             ActionButton(
-              title: 'Submit'.toUpperCase(),
+              title: l10n.submit.toUpperCase(),
               onPressed: () {
                 if (formKey.currentState!.validate()) {
                   final updatedList = widget.habitsList.toList();

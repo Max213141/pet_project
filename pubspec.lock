@@ -390,6 +390,11 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.1"
+  flutter_localizations:
+    dependency: "direct main"
+    description: flutter
+    source: sdk
+    version: "0.0.0"
   flutter_svg:
     dependency: "direct main"
     description:
@@ -448,14 +453,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "13.0.1"
-  google_fonts:
-    dependency: "direct main"
-    description:
-      name: google_fonts
-      sha256: f0b8d115a13ecf827013ec9fc883390ccc0e87a96ed5347a3114cac177ef18e8
-      url: "https://pub.dev"
-    source: hosted
-    version: "6.1.0"
   graphs:
     dependency: transitive
     description:
@@ -941,22 +938,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.4.0"
-  welltested:
-    dependency: "direct main"
-    description:
-      name: welltested
-      sha256: "561b7da272cb8e81d9ffbf057c84095c202aeaf207d3252357dadc7d4c11f392"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.1"
-  welltested_gen:
-    dependency: transitive
-    description:
-      name: welltested_gen
-      sha256: "9421c92ac1c58b76b5a6566390db62e08a64774d42a20e5647c3b36d5ac5023e"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.1"
   win32:
     dependency: transitive
     description:

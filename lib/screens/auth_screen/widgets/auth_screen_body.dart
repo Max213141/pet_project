@@ -9,6 +9,7 @@ class AuthScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
+    // final l10n = l10nOf(context)!;
 
     return Center(
       child: SizedBox(
@@ -37,12 +38,14 @@ class AuthScreenBody extends StatelessWidget {
                     text: TextSpan(
                       children: [
                         TextSpan(
+                          //  '${l10n.welcome}\n',
                           text: 'Welcome to\n',
                           style: MentalHealthTextStyles
                               .text.signikaPrimaryFontF28
                               .copyWith(color: Colors.black),
                         ),
                         TextSpan(
+                          // l10n.appTitle
                           text: 'LifeSync',
                           style: MentalHealthTextStyles
                               .text.signikaPrimaryFontF28
@@ -58,16 +61,19 @@ class AuthScreenBody extends StatelessWidget {
                       children: [
                         TextSpan(
                           text:
-                              'We will help you to unlock your inner strength\n',
+                              //  '${l10n.authScreenTextPart1}\n',
+                              'We will help you to unlock your inner strength\n ',
                           style: MentalHealthTextStyles
                               .text.popinsSecondaryFontF14,
                         ),
                         TextSpan(
+                          //  l10n.authScreenTextPart2,
                           text: 'and prioritize ',
                           style: MentalHealthTextStyles
                               .text.popinsSecondaryFontF14,
                         ),
                         TextSpan(
+                          //  l10n.authScreenTextPart3,
                           text: 'Mental Health',
                           style: MentalHealthTextStyles
                               .text.popinsSecondaryFontF14
@@ -83,6 +89,7 @@ class AuthScreenBody extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   ActionButton(
+                    //  l10n.authGetStartedActionButtonTitle,
                     title: 'Get started'.toUpperCase(),
                     onPressed: () => trigerAuth(context),
                   ),

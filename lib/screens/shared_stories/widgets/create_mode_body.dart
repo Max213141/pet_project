@@ -20,6 +20,8 @@ class CreateModeBody extends StatefulWidget {
 class _CreateModeBodyState extends State<CreateModeBody> {
   @override
   Widget build(BuildContext context) {
+    final l10n = l10nOf(context);
+
     return widget.userStories.isEmpty
         ? SizedBox(
             height: MediaQuery.of(context).size.height -
@@ -31,7 +33,7 @@ class _CreateModeBodyState extends State<CreateModeBody> {
                 Expanded(
                   child: Center(
                     child: Text(
-                      'You have no stories, add some...',
+                      l10n.sharedStoriesScreenNoStories,
                       style: MentalHealthTextStyles
                           .text.signikaPrimaryFontF22Black,
                     ),
@@ -59,7 +61,7 @@ class _CreateModeBodyState extends State<CreateModeBody> {
                       );
                     },
                   ),
-                  title: 'Add Story',
+                  title: l10n.sharedStoriesScreenAddStory,
                 ),
               ],
             ),
@@ -104,7 +106,8 @@ class _CreateModeBodyState extends State<CreateModeBody> {
                                       context: context,
                                       builder: (context) {
                                         return UserStoryBottomSheetBody(
-                                            story: story);
+                                          story: story,
+                                        );
                                       },
                                     ),
                                     child: DecoratedBox(
@@ -152,7 +155,8 @@ class _CreateModeBodyState extends State<CreateModeBody> {
                     builder: (context) {
                       return Padding(
                         padding: EdgeInsets.only(
-                            bottom: MediaQuery.of(context).viewInsets.bottom),
+                          bottom: MediaQuery.of(context).viewInsets.bottom,
+                        ),
                         child: AddStoryBottomSheetBody(
                           userStories: widget.userStories,
                           uid: widget.uid,
@@ -161,7 +165,7 @@ class _CreateModeBodyState extends State<CreateModeBody> {
                     },
                   ),
                   buttonColor: AppColor.sharedStoryChipColor,
-                  title: 'Add Story',
+                  title: l10n.sharedStoriesScreenAddStory,
                 ),
               ],
             ),

@@ -18,6 +18,8 @@ class _CarouselWidgetState extends State<CarouselWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = l10nOf(context);
+
     final expandedWidth = (MediaQuery.of(context).size.width - 36 - 32) / 2;
     return DecoratedBox(
       decoration: const BoxDecoration(color: AppColor.primaryColor),
@@ -110,7 +112,7 @@ class _CarouselWidgetState extends State<CarouselWidget> {
                                                 vertical: 1,
                                                 horizontal: 8,
                                               ),
-                                              child: getTitle(index),
+                                              child: getTitle(index, l10n),
                                             ),
                                           ),
                                         )
@@ -160,24 +162,27 @@ class _CarouselWidgetState extends State<CarouselWidget> {
     }
   }
 
-  Widget getTitle(int index) {
+  Widget getTitle(
+    int index,
+    AppLocalizations l10n,
+  ) {
     switch (index) {
       case 0:
         return Text(
-          'Meditation',
+          l10n.homeScreenMeditation,
           style: MentalHealthTextStyles.text.signikaPrimaryFontF22N,
         );
 
       case 1:
         return Text(
-          'Breathing practice',
+          l10n.homeScreenBreathingPractice,
           style: MentalHealthTextStyles.text.signikaSecondaryFontF16
               .copyWith(color: AppColor.primaryColor),
         );
 
       case 2:
         return Text(
-          'Self Tests',
+          l10n.homeScreenSelfTests,
           style: MentalHealthTextStyles.text.signikaPrimaryFontF22N,
         );
 

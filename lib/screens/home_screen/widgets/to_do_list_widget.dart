@@ -45,7 +45,10 @@ class _ToDoListWidgetState extends State<ToDoListWidget> {
           loading: () => body = const TodoListLoadingWidgetBody(),
           habitsLoaded: (habitsList) => {
             // _log('mood entries from state - $moodEntries'),
-            body = TodoListWidgetBody(uid: uid, habitsList: habitsList),
+            body = TodoListWidgetBody(
+              uid: uid,
+              habitsList: habitsList,
+            ),
           },
           habitsUploaded: () {},
           habitsLoadingError: (errorText) => body = Center(

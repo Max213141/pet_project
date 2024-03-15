@@ -60,9 +60,11 @@ void main() async {
   // );
   // FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
-  runApp(MyApp(
-    auth: auth,
-  ));
+  runApp(
+    MyApp(
+      auth: auth,
+    ),
+  );
 }
 
 // Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {

@@ -1,0 +1,121 @@
+{
+    "@@locale": "ru",
+    "appTitle": "LifeSync",
+
+    "welcome": "Добро пожаловать в",
+
+    "welcomeSecond":"Добро пожаловать!",
+
+    "firstIntroSlidePart1": "наше приложение для психического здоровья!",
+    "firstIntroSlidePart2": "Мы рады, что вы здесь.",
+
+    "secondIntroSlide": "Узнайте больше о себе с нашими психологическими тестами.",
+
+    "thirdIntroSlide": "Учавствуйте в ежедневных медитациях.",
+
+    "forthIntroSlide": "Получайте персонализированные рекомендации и советы.",
+
+    "authScreenTextPart1": "Мы поможем вам разблокировать свой внутренний потенциал",
+    "authScreenTextPart2": "и приоризитировать ",
+    "authScreenTextPart3": "Психическую Безопасность",
+
+    "authGetStartedActionButtonTitle": "Начать",
+
+    "authUsername": "Имя пользователя",
+    "authUsernameIsEmpty": "Введите имя пользователя",
+
+    "authEmail": "Email",
+    "authEmailIsEmpty": "Введите ваш Email",
+
+    "authPassword": "Пароль",
+    "authPasswordIsEmpty": "Введите пароль",
+
+    "accountExists": "Уже есть аккаунт?",
+    "registerAccount": "Зарегистрируйте новый аккаунт!",
+
+    "register": "Зарегистрироваться",
+
+    "logIn": "Войти",
+
+    "mainScreenGoodDay": "Добрый день, ",
+
+    "mainScreenHabits": "Привычки",
+
+    "mainScreenMoodStatistic": "Статистика настроения",
+
+    "mainScreenSharedStories": "Истории",
+
+    "homeScreenQuestion": "Что вам делать сегодня?",
+
+    "homeScreenMeditation": "Медитация",
+
+    "homeScreenBreathingPractice": "Дыхательные практики",
+
+    "homeScreenSelfTests": "Тесты",
+
+    "homeScreenToDoListPhrase": "Проверьте свои привычки",
+
+    "homeScreenToDoListAdd": "Добавить привычку",
+
+    "homeScreenHabitCreationHabit": "Ваша привычка",
+    
+    "homeScreenHabitCreationIsEmpty": "Добавьте свою первую привычку",
+
+    "homeScreenHabitCreationLenghtError": "Длина текста не должна превышать 30 символов",
+
+    "homeScreenDefaultQuote": "Измените свои мысли, и измените мир",
+
+    "habitsScreenPhrase": "Ежедневный контрольный лист",
+    
+    "habitsScreenFullCompletion": "Отлично, вы справились!",
+
+    "habitsScreenPartCompletion": "Продолжайте в том же духе!",
+
+    "habitsScreenPartEmptyHabits": "Добавьте привычки для их выполнения!",
+
+
+    "habitsScreenAddHabit": "Добавьте новую привычку!",
+
+    "moodScreenPhrase": "Проверка настроения",
+
+    "sharedStoriesScreenNoUsersStories": "У нас нет историй пользователей...",
+    
+    "sharedStoriesScreenNoStories": "У вас нет историй, добавьте их...",
+
+    "sharedStoriesScreenAddStory": "Добавить историю",
+
+    "sharedStoriesScreenCreationStoryTitle": "Заголовок",
+
+    "sharedStoriesScreenCreationStoryTitleEmpty": "Введите заголовок",
+
+    "sharedStoriesScreenCreationStoryDescription": "Описание",
+
+    "sharedStoriesScreenCreationStoryDescriptionEmpty": "Введите описание",
+
+    "drawerProfile":"Профиль",
+    "drawerAboutUs":"О нас",
+    "drawerSupport":"Поддержка",
+    "drawerSettings":"Настройки",
+    "drawerLogOut":"Выйти",
+
+    "habits":"привычки",
+
+    "submit": "Отправить",
+
+    "create": "Создать",
+
+    "howAreYou": "Как ты сегодня?",
+
+    "emotionHappy":"Счастлив",
+    "emotionGood":"Хорошо",
+    "emotionMeh":"Мех",
+    "emotionBored":"Скучно",
+    "emotionSad":"Грустно",
+    "emotionAngry":"Зол",
+
+    
+    "russianLanguage": "Русский",
+    "englishLanguage": "Английский",
+
+    "ok": "OK"
+}

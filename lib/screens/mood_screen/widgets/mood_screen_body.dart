@@ -13,6 +13,8 @@ class MoodScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = l10nOf(context);
+
     return Center(
       child: ScrollConfiguration(
         behavior: CustomBehavior(),
@@ -38,12 +40,13 @@ class MoodScreenBody extends StatelessWidget {
               padding:
                   const EdgeInsets.only(left: 22.0, right: 22.0, bottom: 10),
               child: Text(
-                'Let\'s check up on your mood',
+                l10n.moodScreenPhrase,
                 style: MentalHealthTextStyles.text.signikaSecondaryFontF16,
               ),
             ),
             BarChartSample(
               userDailyMood: moodEntries,
+              l10n: l10n,
             ),
             const SizedBox(height: 10),
             CircularMoodScheme(
@@ -52,7 +55,7 @@ class MoodScreenBody extends StatelessWidget {
             const SizedBox(height: 10),
             Center(
               child: Text(
-                'How are you today?',
+                l10n.howAreYou,
                 style: MentalHealthTextStyles.text.signikaFontF24,
               ),
             ),
@@ -63,7 +66,7 @@ class MoodScreenBody extends StatelessWidget {
                   return element.trackedDay.toDate().day == DateTime.now().day;
                 },
                 orElse: () => MoodEntry(
-                  mood: 'Good',
+                  mood: l10n.emotionGood,
                   trackedDay: Timestamp.now(),
                 ),
               ),

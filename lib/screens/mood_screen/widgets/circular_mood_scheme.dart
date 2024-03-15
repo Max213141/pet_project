@@ -10,16 +10,33 @@ class CircularMoodScheme extends StatelessWidget {
     super.key,
     required this.userDailyMood,
   });
-  final List<ChartInfo> chartDescription = const [
-    ChartInfo(color: AppColor.chartHappy, title: 'Happy'),
-    ChartInfo(color: AppColor.chartGood, title: 'Good'),
-    ChartInfo(color: AppColor.chartMeh, title: 'Meh'),
-    ChartInfo(color: AppColor.chartBored, title: 'Bored'),
-    ChartInfo(color: AppColor.chartSad, title: 'Sad'),
-    ChartInfo(color: AppColor.chartAngry, title: 'Angry'),
-  ];
+
   @override
   Widget build(BuildContext context) {
+    final l10n = l10nOf(context);
+    final List<ChartInfo> chartDescription = [
+      ChartInfo(
+        color: AppColor.chartHappy,
+        title: l10n.emotionHappy,
+      ),
+      ChartInfo(
+        color: AppColor.chartGood,
+        title: l10n.emotionGood,
+      ),
+      ChartInfo(color: AppColor.chartMeh, title: l10n.emotionMeh),
+      ChartInfo(
+        color: AppColor.chartBored,
+        title: l10n.emotionBored,
+      ),
+      ChartInfo(
+        color: AppColor.chartSad,
+        title: l10n.emotionSad,
+      ),
+      ChartInfo(
+        color: AppColor.chartAngry,
+        title: l10n.emotionAngry,
+      ),
+    ];
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
       child: SizedBox(

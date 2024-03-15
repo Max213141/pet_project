@@ -35,7 +35,7 @@ class _MainScreenState extends State<MainScreen> {
     const MoodScreen(),
     const SharedStoriesScreen(),
   ];
-  getAppBarTitle() {
+  getAppBarTitle(AppLocalizations l10n) {
     final String? username = HiveStore().getUserName();
     switch (_selectedIndex) {
       case 0:
@@ -45,7 +45,7 @@ class _MainScreenState extends State<MainScreen> {
             text: TextSpan(
               children: [
                 TextSpan(
-                  text: 'Good day, ',
+                  text: l10n.mainScreenGoodDay,
                   style: MentalHealthTextStyles.text.signikaPrimaryFontF28
                       .copyWith(color: AppColor.oneMoreDarkColor),
                 ),
@@ -62,7 +62,7 @@ class _MainScreenState extends State<MainScreen> {
         return Align(
           alignment: Alignment.centerLeft,
           child: Text(
-            'Habits',
+            l10n.mainScreenHabits,
             style: MentalHealthTextStyles.text.signikaPrimaryFontF28
                 .copyWith(color: Colors.black),
           ),
@@ -71,7 +71,7 @@ class _MainScreenState extends State<MainScreen> {
         return Align(
           alignment: Alignment.centerLeft,
           child: Text(
-            'Mood statistic',
+            l10n.mainScreenMoodStatistic,
             style: MentalHealthTextStyles.text.signikaPrimaryFontF28
                 .copyWith(color: Colors.black),
           ),
@@ -80,7 +80,7 @@ class _MainScreenState extends State<MainScreen> {
         return Align(
           alignment: Alignment.centerLeft,
           child: Text(
-            'Shared Stories',
+            l10n.mainScreenSharedStories,
             style: MentalHealthTextStyles.text.signikaPrimaryFontF28
                 .copyWith(color: Colors.black),
           ),
@@ -90,6 +90,8 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = l10nOf(context);
+
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         state.whenOrNull(
@@ -111,7 +113,7 @@ class _MainScreenState extends State<MainScreen> {
         backgroundColor: AppColor.primaryColor,
         appBar: CustomAppBar(
           isHomeScreen: _selectedIndex == 0,
-          title: getAppBarTitle(),
+          title: getAppBarTitle(l10n),
           preferredSize: const Size.fromHeight(56),
         ),
         // floatingActionButton: ElevatedButton(

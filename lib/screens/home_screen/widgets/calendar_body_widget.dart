@@ -35,6 +35,7 @@ class _CalendarBodyWidgetState extends State<CalendarBodyWidget> {
             _calendarFormat = format;
           });
         },
+        locale: 'en_EN',
         availableCalendarFormats: const {CalendarFormat.month: 'Month'},
         startingDayOfWeek: StartingDayOfWeek.monday,
         selectedDayPredicate: (day) => isSameDay(day, DateTime.now()),

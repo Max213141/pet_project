@@ -11,16 +11,18 @@ class DrawerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = l10nOf(context);
+
     final String? username = HiveStore().getUserName();
     final String? email = HiveStore().getUserEmail();
     final List<DrawerItem> drawerItemsList = [
       DrawerItem(
-        title: 'Profile',
+        title: l10n.drawerProfile,
         icon: 'assets/menu_icons/profile.svg',
         onTap: () => GoRouter.of(context).go('/main/profile_screen'),
       ),
       DrawerItem(
-        title: 'About Us',
+        title: l10n.drawerAboutUs,
         icon: 'assets/menu_icons/about_us.svg',
         onTap: () => GoRouter.of(context).go('/main/about_us_screen'),
       ),
@@ -29,17 +31,17 @@ class DrawerWidget extends StatelessWidget {
       //   icon: 'assets/menu_icons/notifications.svg',
       // ),
       DrawerItem(
-        title: 'Help and Support',
+        title: l10n.drawerSupport,
         icon: 'assets/menu_icons/support.svg',
         onTap: () => GoRouter.of(context).go('/main/support_screen'),
       ),
       DrawerItem(
-        title: 'Settings',
+        title: l10n.drawerSettings,
         icon: 'assets/menu_icons/settings.svg',
         onTap: () => GoRouter.of(context).go('/main/settings_screen'),
       ),
       DrawerItem(
-        title: 'Log out',
+        title: l10n.drawerLogOut,
         icon: 'assets/menu_icons/log_out.svg',
         onTap: () => BlocProvider.of<AuthBloc>(context).add(
           const LogOutEvent(),

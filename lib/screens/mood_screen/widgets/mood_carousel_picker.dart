@@ -39,34 +39,35 @@ class _MoodCarouselPickerState extends State<MoodCarouselPicker> {
     super.initState();
   }
 
-  final List<Emotion> emotions = const [
-    Emotion(
-      emotionTitle: 'Angry',
-      picturePath: 'assets/emotions/angry.svg',
-    ),
-    Emotion(
-      emotionTitle: 'Bored',
-      picturePath: 'assets/emotions/bored.svg',
-    ),
-    Emotion(
-      emotionTitle: 'Good',
-      picturePath: 'assets/emotions/good.svg',
-    ),
-    Emotion(
-      emotionTitle: 'Happy',
-      picturePath: 'assets/emotions/happy.svg',
-    ),
-    Emotion(
-      emotionTitle: 'Meh',
-      picturePath: 'assets/emotions/meh.svg',
-    ),
-    Emotion(
-      emotionTitle: 'Sad',
-      picturePath: 'assets/emotions/sad.svg',
-    ),
-  ];
   @override
   Widget build(BuildContext context) {
+    final l10n = l10nOf(context);
+    final List<Emotion> emotions = [
+      Emotion(
+        emotionTitle: l10n.emotionHappy,
+        picturePath: 'assets/emotions/happy.svg',
+      ),
+      Emotion(
+        emotionTitle: l10n.emotionGood,
+        picturePath: 'assets/emotions/good.svg',
+      ),
+      Emotion(
+        emotionTitle: l10n.emotionMeh,
+        picturePath: 'assets/emotions/meh.svg',
+      ),
+      Emotion(
+        emotionTitle: l10n.emotionBored,
+        picturePath: 'assets/emotions/bored.svg',
+      ),
+      Emotion(
+        emotionTitle: l10n.emotionSad,
+        picturePath: 'assets/emotions/sad.svg',
+      ),
+      Emotion(
+        emotionTitle: l10n.emotionAngry,
+        picturePath: 'assets/emotions/angry.svg',
+      ),
+    ];
     return Column(
       children: [
         CarouselSlider(
@@ -122,7 +123,7 @@ class _MoodCarouselPickerState extends State<MoodCarouselPicker> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 35.0),
           child: ActionButton(
-            title: 'Submit'.toUpperCase(),
+            title: l10n.submit.toUpperCase(),
             onPressed: () {
               int index = updatedMoodentries.indexWhere((element) =>
                   element.trackedDay.toDate().day == DateTime.now().day);

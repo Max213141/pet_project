@@ -42,6 +42,8 @@ class _AuthModalBodyState extends State<AuthModalBody> {
 
   @override
   Widget build(BuildContext context) {
+    // final l10n = l10nOf(context)!;
+
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         state.whenOrNull(
@@ -82,6 +84,7 @@ class _AuthModalBodyState extends State<AuthModalBody> {
               children: [
                 Center(
                   child: Text(
+                    //  l10n.welcomeSecond,
                     'Welcome!',
                     style: MentalHealthTextStyles.text.signikaPrimaryFontF28,
                   ),
@@ -104,10 +107,12 @@ class _AuthModalBodyState extends State<AuthModalBody> {
                                           controller: usernameController,
                                           validator: (value) {
                                             if (value?.isEmpty ?? true) {
+                                              //  l10n.authUsernameIsEmpty,
                                               return 'Enter your username';
                                             }
                                             return null;
                                           },
+                                          //  l10n.authUsername,
                                           title: 'Username',
                                         ),
                                       )
@@ -122,10 +127,12 @@ class _AuthModalBodyState extends State<AuthModalBody> {
                                 controller: emailController,
                                 validator: (value) {
                                   if (value?.isEmpty ?? true) {
+                                    //  l10n.authEmailIsEmpty,
                                     return 'Enter email';
                                   }
                                   return null;
                                 },
+                                //  l10n.authEmail,
                                 title: 'Email',
                               ),
                             ),
@@ -135,10 +142,12 @@ class _AuthModalBodyState extends State<AuthModalBody> {
                                 controller: passwordController,
                                 validator: (value) {
                                   if (value?.isEmpty ?? true) {
+                                    //  l10n.authPasswordIsEmpty,
                                     return 'Enter password';
                                   }
                                   return null;
                                 },
+                                //  l10n.authPassword,
                                 title: 'Password',
                               ),
                             ),
@@ -159,7 +168,9 @@ class _AuthModalBodyState extends State<AuthModalBody> {
                 ),
                 ActionButton(
                   title: _switchedToRegister
+                      //  l10n.register,
                       ? 'Register'.toUpperCase()
+                      //  l10n.logIn,
                       : 'Log in'.toUpperCase(),
                   onPressed: () {
                     hideKeyBoard();
@@ -194,13 +205,20 @@ class _AuthModalBodyState extends State<AuthModalBody> {
                       children: [
                         TextSpan(
                           text: _switchedToRegister
+                              //  l10n.accountExists,
                               ? 'Already have an account?'
+                              //  l10n.registerAccount,
                               : 'Register new account!',
                           style: MentalHealthTextStyles
                               .text.popinsSecondaryFontF14,
                         ),
                         TextSpan(
-                          text: _switchedToRegister ? ' Log in' : ' Register',
+                          text: _switchedToRegister
+                              ?
+                              //  l10n.logIn,
+                              ' Log in'
+                              //  l10n.register,
+                              : ' Register',
                           style: MentalHealthTextStyles
                               .text.popinsSecondaryFontF14
                               .copyWith(

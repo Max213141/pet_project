@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:life_sync/blocs/blocs.dart';
 import 'package:life_sync/common_widgets/widgets.dart';
 import 'package:life_sync/entities/entities.dart';
+import 'package:life_sync/utils/utils.dart';
 
 class AddStoryBottomSheetBody extends StatefulWidget {
   final String uid;
@@ -32,6 +33,8 @@ class _AddStoryBottomSheetBodyState extends State<AddStoryBottomSheetBody> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = l10nOf(context);
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Column(
@@ -47,24 +50,24 @@ class _AddStoryBottomSheetBodyState extends State<AddStoryBottomSheetBody> {
           // ),
           // const SizedBox(height: 10),
           CustomFormFieldWidget(
-            title: 'Title',
+            title: l10n.sharedStoriesScreenCreationStoryTitle,
             controller: titleController,
             validator: (value) {
               if (value?.isEmpty ?? true) {
-                return 'Enter title';
+                return l10n.sharedStoriesScreenCreationStoryTitleEmpty;
               }
               return null;
             },
           ),
           const SizedBox(height: 15),
           CustomFormFieldWidget(
-            title: 'Description',
+            title: l10n.sharedStoriesScreenCreationStoryDescription,
             controller: descriptionController,
             maxLength: 150,
             maxLines: 3,
             validator: (value) {
               if (value?.isEmpty ?? true) {
-                return 'Enter description';
+                return l10n.sharedStoriesScreenCreationStoryDescriptionEmpty;
               }
               return null;
             },
@@ -86,7 +89,7 @@ class _AddStoryBottomSheetBodyState extends State<AddStoryBottomSheetBody> {
 
               GoRouter.of(context).pop();
             },
-            title: 'Create',
+            title: l10n.create,
           )
         ],
       ),

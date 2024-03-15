@@ -12,6 +12,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    final l10n = l10nOf(context);
+
     return Center(
       child: ScrollConfiguration(
         behavior: CustomBehavior(),
@@ -27,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 18.0),
                     child: Text(
-                      'What are you up to today?',
+                      l10n.homeScreenQuestion,
                       style: MentalHealthTextStyles.text.popinsSecondaryFontF16,
                     ),
                   ),
@@ -35,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               const CarouselWidget(),
               const ToDoListWidget(),
-              const QuoteWidget(),
+              QuoteWidget(l10n: l10n),
               const CalendarWidget(),
             ],
           ),

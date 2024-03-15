@@ -6,7 +6,12 @@ import 'package:http/http.dart' as http;
 void _log(dynamic message) => Logger.projectLog(message, name: 'quote_widget');
 
 class QuoteWidget extends StatefulWidget {
-  const QuoteWidget({super.key});
+  final AppLocalizations l10n;
+
+  const QuoteWidget({
+    super.key,
+    required this.l10n,
+  });
 
   @override
   State<QuoteWidget> createState() => _QuoteWidgetState();
@@ -59,6 +64,7 @@ class _QuoteWidgetState extends State<QuoteWidget> {
   // if it is offline, show a fixed Quote
   offline() {
     setState(() {
+      widget.l10n.homeScreenQuestion;
       quote = "Change your thoughts and you will change the world";
       working = false;
     });
@@ -90,81 +96,24 @@ class _QuoteWidgetState extends State<QuoteWidget> {
                       children: [
                         TextSpan(
                             text: '“ ',
-                            // textAlign: TextAlign.center,
-                            style: MentalHealthTextStyles.text.signikaFontF24
-                            // : MentalHealthTextStyles.text.signikaSecondaryFontF16,
-                            // maxLines: 3,
-                            // overflow: TextOverflow.ellipsis,
-                            ),
+                            style: MentalHealthTextStyles.text.signikaFontF24),
                         TextSpan(
                           text: quote,
-                          // textAlign: TextAlign.center,
                           style: quote.length < 100
                               ? MentalHealthTextStyles.text.signikaFontF24
                               : MentalHealthTextStyles
                                   .text.signikaSecondaryFontF16,
-                          // maxLines: 3,
-                          // overflow: TextOverflow.ellipsis,
                         ),
                         TextSpan(
                             text: ' ”',
-                            // textAlign: TextAlign.center,
-                            style: MentalHealthTextStyles.text.signikaFontF24
-                            // : MentalHealthTextStyles.text.signikaSecondaryFontF16,
-                            // maxLines: 3,
-                            // overflow: TextOverflow.ellipsis,
-                            ),
+                            style: MentalHealthTextStyles.text.signikaFontF24),
                       ],
                     ),
-                  )
-
-                  // RichText(
-                  //   textAlign: TextAlign.center,
-                  //   text:
-
-                  // TextSpan(
-                  //   text: quote.isNotEmpty ? '“ ' : "",
-                  //   style: MentalHealthTextStyles.text.signikaSecondaryFontF16
-                  //       .copyWith(
-                  //     fontSize: 30.0,
-                  //     fontWeight: FontWeight.w700,
-                  //   ),
-                  //   children: [
-                  //     TextSpan(
-                  //       text: quote.isNotEmpty ? quote : "",
-
-                  //       style: MentalHealthTextStyles.text.signikaQuoteFontF24,
-                  //     ),
-                  //     TextSpan(
-                  //       text: quote.isNotEmpty ? '”' : "",
-                  //       style: MentalHealthTextStyles
-                  //           .text.signikaSecondaryFontF16
-                  //           .copyWith(
-                  //         fontSize: 30.0,
-                  //         fontWeight: FontWeight.w700,
-                  //       ),
-                  //     )
-                  //   ],
-                  // ),
-                  ),
+                  )),
             ),
           ),
         ),
       ),
     );
-
-    //  Scaffold(
-    //   backgroundColor: grey,
-    //   body:
-    //   floatingActionButton: Row(
-    //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    //     children: <Widget>[
-    //       InkWell(
-    //         onTap: !working ? getQuote : null,
-    //         child: Icon(Icons.refresh, size: 35, color: Colors.white),
-    //       ),
-    //     ],
-    //   ),
-    // );
   }
 }
