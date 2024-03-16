@@ -3,6 +3,6 @@ part of 'locale_bloc.dart';
 class LocaleEvent {}
 
 class ChangeLocale extends LocaleEvent {
-  final Locale locale;
+  final String locale;
   ChangeLocale({required this.locale});
 }

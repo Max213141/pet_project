@@ -19,7 +19,7 @@ class AppPreferencesAdapter extends TypeAdapter<AppPreferences> {
     return AppPreferences(
       isFirstLaunch: fields[0] as bool,
       isDarkTheme: fields[1] as bool,
-      locale: fields[2] as Locale,
+      locale: fields[2] as String,
     );
   }
 

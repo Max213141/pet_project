@@ -3,12 +3,12 @@ part of 'locale_bloc.dart';
 class LocaleState {
   // const factory LocaleState.initial() = _Initial;
 
-  Locale locale = const Locale('en');
+  String locale = 'ru';
 
   LocaleState({required this.locale});
 
-  LocaleState copyWith({Locale? locale}) {
-    return LocaleState(locale: locale ?? const Locale('en'));
+  LocaleState copyWith({String? locale}) {
+    return LocaleState(locale: locale ?? 'ru');
   }
 
   // Future<Locale> getTheme() async {

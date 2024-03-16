@@ -234,12 +234,12 @@ class BarChartSampleState extends State<BarChartSample> {
 
   List<double> mapMoodsToInt(List<MoodEntry> moodEntries) {
     Map<String, double> moodToIntMapping = {
-      'Angry': 0.1,
-      'Sad': 1,
-      'Bored': 2,
-      'Meh': 3,
-      'Good': 4,
-      'Happy': 5,
+      widget.l10n.emotionAngry: 0.1,
+      widget.l10n.emotionSad: 1,
+      widget.l10n.emotionBored: 2,
+      widget.l10n.emotionMeh: 3,
+      widget.l10n.emotionGood: 4,
+      widget.l10n.emotionHappy: 5,
     };
 
     List<double> mappedIntegers = [];
@@ -254,12 +254,12 @@ class BarChartSampleState extends State<BarChartSample> {
 
   List<Color> mapMoodsToColor(List<MoodEntry> moodEntries) {
     Map<String, Color> moodToIntMapping = {
-      'Angry': AppColor.chartAngry.withOpacity(.5),
-      'Sad': AppColor.chartSad.withOpacity(.5),
-      'Bored': AppColor.chartBored.withOpacity(.5),
-      'Meh': AppColor.chartMeh.withOpacity(.5),
-      'Good': AppColor.chartsColor.withOpacity(.75),
-      'Happy': AppColor.chartHappy.withOpacity(.5),
+      widget.l10n.emotionAngry: AppColor.chartAngry.withOpacity(.5),
+      widget.l10n.emotionSad: AppColor.chartSad.withOpacity(.5),
+      widget.l10n.emotionBored: AppColor.chartBored.withOpacity(.5),
+      widget.l10n.emotionMeh: AppColor.chartMeh.withOpacity(.5),
+      widget.l10n.emotionGood: AppColor.chartsColor.withOpacity(.75),
+      widget.l10n.emotionHappy: AppColor.chartHappy.withOpacity(.5),
     };
 
     List<Color> mappedColors = [];

@@ -15,9 +15,9 @@ class MyApp extends StatelessWidget {
   final HiveStore hiveStore = HiveStore();
 
   MyApp({
-    super.key,
+    Key? key,
     required this.auth,
-  });
+  }) : super(key: key);
 
   Future<void> _initHive() async {
     WidgetsFlutterBinding.ensureInitialized();
@@ -211,7 +211,7 @@ class MyApp extends StatelessWidget {
             child: BlocBuilder<LocaleBloc, LocaleState>(
               builder: (context, state) {
                 return MyAppThemeWrapper(
-                  locale: Locale('ru'),
+                  locale: Locale(state.locale),
                   router: router,
                 );
               },

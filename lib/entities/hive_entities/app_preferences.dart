@@ -14,7 +14,7 @@ class AppPreferences extends HiveObject {
   // bool get isDarkThemeInApp => isDarkTheme;
 
   @HiveField(2)
-  Locale locale;
+  String locale;
 
   AppPreferences({
     required this.isFirstLaunch,
@@ -25,5 +25,5 @@ class AppPreferences extends HiveObject {
   AppPreferences.initial()
       : isFirstLaunch = true,
         isDarkTheme = false,
-        locale = const Locale('ru');
+        locale = 'ru';
 }

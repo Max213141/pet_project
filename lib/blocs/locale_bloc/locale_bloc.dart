@@ -10,9 +10,7 @@ part 'locale_state.dart';
 
 //TODO do smth with this at least imlement freezed
 class LocaleBloc extends Bloc<LocaleEvent, LocaleState> {
-  LocaleBloc()
-      : super(LocaleState(
-            locale: HiveStore().getLocale() ?? const Locale('en'))) {
+  LocaleBloc() : super(LocaleState(locale: HiveStore().getLocale() ?? 'ru')) {
     on<ChangeLocale>(
       (event, emit) async {
         Box<AppPreferences> preferencesBox = HiveStore().getAppPreferencesBox();

@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:life_sync/blocs/blocs.dart';
 import 'package:life_sync/common_widgets/widgets.dart';
 import 'package:life_sync/screens/settings_screen/widgets/widgets.dart';
+import 'package:life_sync/utils/localization/string_matcher.dart';
+import 'package:life_sync/utils/utils.dart';
+
+_log(dynamic message) => Logger.projectLog(message, name: 'settings_screen');
 
 class SettingsScreen extends StatefulWidget {
   // final String title;
@@ -15,9 +21,13 @@ class SettingsScreen extends StatefulWidget {
 class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
+    final l10n = l10nOf(context);
+    final locale = BlocProvider.of<LocaleBloc>(context).state.locale;
+
+    _log('locale from state - $locale');
     final size = MediaQuery.of(context).size;
     return DrawerScreensBody(
-      title: 'Settings',
+      title: l10n.drawerSettings,
       bodyWidgets: [
         SliverToBoxAdapter(
           child: Padding(
@@ -35,14 +45,30 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       const SizedBox(width: 4),
                       Expanded(
                         child: ActionButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            BlocProvider.of<LocaleBloc>(context).add(
+                              ChangeLocale(locale: 'en'),
+                            );
+                          },
                           title: 'English',
+                          // StringMatchers.localeTitle(
+                          //   context,
+                          //   locale,
+                          // ),
                         ),
                       ),
                       Expanded(
                         child: ActionButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            BlocProvider.of<LocaleBloc>(context).add(
+                              ChangeLocale(locale: 'ru'),
+                            );
+                          },
                           title: 'Russian',
+                          // StringMatchers.localeTitle(
+                          //   context,
+                          //   locale,
+                          // ),
                         ),
                       ),
                     ],

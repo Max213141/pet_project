@@ -49,11 +49,14 @@ class HiveStore {
   bool? getFirstLaunch() {
     Box<AppPreferences> appPrefsBox =
         Hive.box<AppPreferences>('app_preferences');
+
     AppPreferences? appPrefs = appPrefsBox.get(0);
+    _log('is first launch ${appPrefs?.isFirstLaunch}');
+
     return appPrefs?.isFirstLaunch;
   }
 
-  Locale? getLocale() {
+  String? getLocale() {
     Box<AppPreferences> appPrefsBox =
         Hive.box<AppPreferences>('app_preferences');
     AppPreferences? appPrefs = appPrefsBox.get(0);

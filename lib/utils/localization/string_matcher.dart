@@ -37,10 +37,10 @@ abstract class StringMatchers {
   //   }
   // }
 
-  static String localeTitle(BuildContext context, Locale locale) {
+  static String localeTitle(BuildContext context, String locale) {
     final l10n = l10nOf(context);
 
-    switch (locale.languageCode) {
+    switch (locale) {
       case 'ru':
         return l10n.russianLanguage;
       // case 'be':

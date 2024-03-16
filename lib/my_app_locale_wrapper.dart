@@ -30,7 +30,7 @@ class MyAppThemeWrapper extends StatelessWidget {
             Locale('ru'),
             Locale('be'),
           ],
-          locale: Locale('en'),
+          locale: locale,
           title: 'LifeSync',
           routerConfig: router,
           theme: state.isDarkTheme ? darkTheme : lightTheme,
