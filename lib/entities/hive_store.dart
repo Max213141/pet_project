@@ -41,6 +41,8 @@ class HiveStore {
     Box<AppPreferences> appPrefsBox =
         Hive.box<AppPreferences>('app_preferences');
     AppPreferences? appPrefs = appPrefsBox.get(0);
+    _log('is Dark theme ${appPrefs?.isDarkTheme}');
+
     return appPrefs?.isDarkTheme;
   }
 

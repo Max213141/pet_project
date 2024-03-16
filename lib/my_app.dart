@@ -1,16 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:life_sync/blocs/blocs.dart';
 import 'package:life_sync/entities/entities.dart';
 import 'package:life_sync/entities/hive_entities/hive_entities.dart';
+import 'package:life_sync/my_app_locale_wrapper.dart';
 import 'package:life_sync/navigation/navigation_observer.dart';
 import 'package:life_sync/screens/screens.dart';
-import 'package:life_sync/utils/localization/l10n.dart';
-import 'package:life_sync/utils/utils.dart';
 
 class MyApp extends StatelessWidget {
   final FirebaseAuth auth;
@@ -42,7 +40,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    Locale? locale;
     final router = GoRouter(
       observers: [MyNavigatorObserver()],
       routes: [
@@ -213,27 +210,10 @@ class MyApp extends StatelessWidget {
             ],
             child: BlocBuilder<LocaleBloc, LocaleState>(
               builder: (context, state) {
-                // return BlocBuilder<ThemeBloc, ThemeState>(
-                // builder: (context, state) {
-                return MaterialApp.router(
-                  localizationsDelegates: const [
-                    AppLocalizations.delegate,
-                    GlobalMaterialLocalizations.delegate,
-                    GlobalWidgetsLocalizations.delegate,
-                    GlobalCupertinoLocalizations.delegate,
-                  ],
-                  supportedLocales: const [
-                    Locale('en'),
-                    Locale('ru'),
-                    Locale('be'),
-                  ],
-                  locale: state.locale,
-                  title: 'LifeSync',
-                  routerConfig: router,
-                  // theme: state.isDarkTheme ? lightTheme : darkTheme,
+                return MyAppThemeWrapper(
+                  locale: Locale('ru'),
+                  router: router,
                 );
-                // },
-                // );
               },
             ),
           );

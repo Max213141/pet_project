@@ -42,7 +42,7 @@ class _AuthModalBodyState extends State<AuthModalBody> {
 
   @override
   Widget build(BuildContext context) {
-    // final l10n = l10nOf(context)!;
+    final l10n = l10nOf(context);
 
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
@@ -84,8 +84,7 @@ class _AuthModalBodyState extends State<AuthModalBody> {
               children: [
                 Center(
                   child: Text(
-                    //  l10n.welcomeSecond,
-                    'Welcome!',
+                    l10n.welcomeSecond,
                     style: MentalHealthTextStyles.text.signikaPrimaryFontF28,
                   ),
                 ),
@@ -107,13 +106,11 @@ class _AuthModalBodyState extends State<AuthModalBody> {
                                           controller: usernameController,
                                           validator: (value) {
                                             if (value?.isEmpty ?? true) {
-                                              //  l10n.authUsernameIsEmpty,
-                                              return 'Enter your username';
+                                              return l10n.authUsernameIsEmpty;
                                             }
                                             return null;
                                           },
-                                          //  l10n.authUsername,
-                                          title: 'Username',
+                                          title: l10n.authUsername,
                                         ),
                                       )
                                     : const SizedBox.shrink(),
@@ -127,13 +124,11 @@ class _AuthModalBodyState extends State<AuthModalBody> {
                                 controller: emailController,
                                 validator: (value) {
                                   if (value?.isEmpty ?? true) {
-                                    //  l10n.authEmailIsEmpty,
-                                    return 'Enter email';
+                                    return l10n.authEmailIsEmpty;
                                   }
                                   return null;
                                 },
-                                //  l10n.authEmail,
-                                title: 'Email',
+                                title: l10n.authEmail,
                               ),
                             ),
                             const SizedBox(height: 16.0),
@@ -142,13 +137,11 @@ class _AuthModalBodyState extends State<AuthModalBody> {
                                 controller: passwordController,
                                 validator: (value) {
                                   if (value?.isEmpty ?? true) {
-                                    //  l10n.authPasswordIsEmpty,
-                                    return 'Enter password';
+                                    return l10n.authPasswordIsEmpty;
                                   }
                                   return null;
                                 },
-                                //  l10n.authPassword,
-                                title: 'Password',
+                                title: l10n.authPassword,
                               ),
                             ),
                             const SizedBox(height: 32.0),
@@ -168,10 +161,8 @@ class _AuthModalBodyState extends State<AuthModalBody> {
                 ),
                 ActionButton(
                   title: _switchedToRegister
-                      //  l10n.register,
-                      ? 'Register'.toUpperCase()
-                      //  l10n.logIn,
-                      : 'Log in'.toUpperCase(),
+                      ? l10n.register.toUpperCase()
+                      : l10n.logIn.toUpperCase(),
                   onPressed: () {
                     hideKeyBoard();
 
@@ -205,20 +196,14 @@ class _AuthModalBodyState extends State<AuthModalBody> {
                       children: [
                         TextSpan(
                           text: _switchedToRegister
-                              //  l10n.accountExists,
-                              ? 'Already have an account?'
-                              //  l10n.registerAccount,
-                              : 'Register new account!',
+                              ? l10n.accountExists
+                              : l10n.registerAccount,
                           style: MentalHealthTextStyles
                               .text.popinsSecondaryFontF14,
                         ),
                         TextSpan(
-                          text: _switchedToRegister
-                              ?
-                              //  l10n.logIn,
-                              ' Log in'
-                              //  l10n.register,
-                              : ' Register',
+                          text:
+                              _switchedToRegister ? l10n.logIn : l10n.register,
                           style: MentalHealthTextStyles
                               .text.popinsSecondaryFontF14
                               .copyWith(

@@ -9,7 +9,7 @@ class AuthScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    // final l10n = l10nOf(context)!;
+    final l10n = l10nOf(context);
 
     return Center(
       child: SizedBox(
@@ -38,15 +38,13 @@ class AuthScreenBody extends StatelessWidget {
                     text: TextSpan(
                       children: [
                         TextSpan(
-                          //  '${l10n.welcome}\n',
-                          text: 'Welcome to\n',
+                          text: '${l10n.welcome}\n',
                           style: MentalHealthTextStyles
                               .text.signikaPrimaryFontF28
                               .copyWith(color: Colors.black),
                         ),
                         TextSpan(
-                          // l10n.appTitle
-                          text: 'LifeSync',
+                          text: l10n.appTitle,
                           style: MentalHealthTextStyles
                               .text.signikaPrimaryFontF28
                               .copyWith(color: AppColor.primaryBackgroundColor),
@@ -60,21 +58,17 @@ class AuthScreenBody extends StatelessWidget {
                     text: TextSpan(
                       children: [
                         TextSpan(
-                          text:
-                              //  '${l10n.authScreenTextPart1}\n',
-                              'We will help you to unlock your inner strength\n ',
+                          text: '${l10n.authScreenTextPart1} \n',
                           style: MentalHealthTextStyles
                               .text.popinsSecondaryFontF14,
                         ),
                         TextSpan(
-                          //  l10n.authScreenTextPart2,
-                          text: 'and prioritize ',
+                          text: l10n.authScreenTextPart2,
                           style: MentalHealthTextStyles
                               .text.popinsSecondaryFontF14,
                         ),
                         TextSpan(
-                          //  l10n.authScreenTextPart3,
-                          text: 'Mental Health',
+                          text: l10n.authScreenTextPart3,
                           style: MentalHealthTextStyles
                               .text.popinsSecondaryFontF14
                               .copyWith(color: AppColor.primaryBackgroundColor),
@@ -89,8 +83,7 @@ class AuthScreenBody extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   ActionButton(
-                    //  l10n.authGetStartedActionButtonTitle,
-                    title: 'Get started'.toUpperCase(),
+                    title: l10n.authGetStartedActionButtonTitle.toUpperCase(),
                     onPressed: () => trigerAuth(context),
                   ),
                   const SizedBox(height: 10),

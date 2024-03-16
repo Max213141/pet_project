@@ -194,10 +194,7 @@ class BarChartSampleState extends State<BarChartSample> {
     );
   }
 
-  Widget leftTitles(
-    double value,
-    TitleMeta meta,
-  ) {
+  Widget leftTitles(double value, TitleMeta meta) {
     String text;
 
     switch (value.toInt()) {

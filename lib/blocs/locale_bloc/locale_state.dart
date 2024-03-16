@@ -1,6 +1,5 @@
 part of 'locale_bloc.dart';
 
-// @freezed
 class LocaleState {
   // const factory LocaleState.initial() = _Initial;
 
@@ -12,7 +11,7 @@ class LocaleState {
     return LocaleState(locale: locale ?? const Locale('en'));
   }
 
-  Future<Locale> getTheme() async {
-    return HiveStore().getLocale() ?? const Locale('en');
-  }
+  // Future<Locale> getTheme() async {
+  //   return HiveStore().getLocale() ?? const Locale('en');
+  // }
 }

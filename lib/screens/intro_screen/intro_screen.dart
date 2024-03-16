@@ -83,24 +83,19 @@ class _IntroScreenState extends State<IntroScreen> {
           providedChild: RichText(
               text: TextSpan(children: [
             TextSpan(
-              //  '${l10n.welcome}\n',
-              text: 'Welcome to\n',
+              text: '${l10n.welcome}, \n',
               style: MentalHealthTextStyles.text.signikaFontF24,
             ),
             TextSpan(
-              // l10n.appTitle
-              text: 'LifeSync\n',
+              text: '${l10n.appTitle} \n',
               style: MentalHealthTextStyles.text.signikaFontF24Green,
             ),
             TextSpan(
-              //  '${l10n.introSlidePart1}\n',
-
-              text: 'our mental health app!\n',
+              text: '${l10n.firstIntroSlidePart1} \n',
               style: MentalHealthTextStyles.text.signikaFontF24,
             ),
             TextSpan(
-              //  '${l10n.firstIntroSlidePart2}\n',
-              text: 'We\'re glad to have you here.\n',
+              text: '${l10n.firstIntroSlidePart2}',
               style: MentalHealthTextStyles.text.signikaFontF24,
             ),
           ])),

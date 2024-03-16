@@ -1,121 +1,70 @@
 {
-    "@@locale": "en",
-
-    "appTitle": "LifeSync",
-
-    "welcome": "Welcome to",
-
-    "welcomeSecond":"Welcome!",
-
-    "firstIntroSlidePart1": "our mental health app!",
-    "firstIntroSlidePart2": "We're glad to have you here.",
-
-    "secondIntroSlide": "Discover more about yourself with our psychological tests.",
-
-    "thirdIntroSlide": "Engage in daily meditation sessions.",
-
-    "forthIntroSlide": "Receive personalized recommendations and tips.",
-
-    "authScreenTextPart1": "We will help you to unlock your inner strength",
-    "authScreenTextPart2": "and prioritize ",
-    "authScreenTextPart3": "Mental Health",
-
-    "authGetStartedActionButtonTitle": "Get started",
-
-    "authUsername": "Username",
-    "authUsernameIsEmpty": "Enter your username",
-
-    "authEmail": "Email",
-    "authEmailIsEmpty": "Enter your Email",
-
-    "authPassword": "Password",
-    "authPasswordIsEmpty": "Enter your password",
-
-    "accountExists": "Already have an account?",
-    "registerAccount": "Register new account!",
-
-    "register": "Register",
-
-    "logIn": "Log in",
-
-    "mainScreenGoodDay": "Good day, ",
-
-    "mainScreenHabits": "Habits",
-
-    "mainScreenMoodStatistic": "Mood statistic",
-
-    "mainScreenSharedStories": "Shared Stories",
-
-    "homeScreenQuestion": "What are you up to today?",
-
-    "homeScreenMeditation": "Meditation",
-
-    "homeScreenBreathingPractice": "Breathing practice",
-
-    "homeScreenSelfTests": "Self Tests",
-
-    "homeScreenToDoListPhrase": "Check out your habits",
-
-    "homeScreenToDoListAdd": "Add habit",
-
-    "homeScreenHabitCreationHabit": "Your habit",
-    
-    "homeScreenHabitCreationIsEmpty": "Add your habit first",
-
-    "homeScreenHabitCreationLenghtError": "Text length cannot exceed 30 characters",
-
-    "homeScreenDefaultQuote": "Change your thoughts and you will change the world",
-
-    "habitsScreenPhrase": "Daily check-in",
-    
-    "habitsScreenFullCompletion": "Well done! You are perfect!",
-
-    "habitsScreenPartCompletion": "Keep going!",
-
-    "habitsScreenPartEmptyHabits": "Add some habits to accomplish them!",
-
-    "habitsScreenAddHabit": "Add new habit",
-
-    "moodScreenPhrase": "Let's check up on your mood",
-
-    "sharedStoriesScreenNoUsersStories": "There is no user stories...",
-    
-    "sharedStoriesScreenNoStories": "You have no stories, add some...",
-
-    "sharedStoriesScreenAddStory": "Add Story",
-
-    "sharedStoriesScreenCreationStoryTitle": "Title",
-
-    "sharedStoriesScreenCreationStoryTitleEmpty": "Enter title",
-
-    "sharedStoriesScreenCreationStoryDescription": "Description",
-
-    "sharedStoriesScreenCreationStoryDescriptionEmpty": "Enter description",
-
-    "drawerProfile":"Profile",
-    "drawerAboutUs":"About Us",
-    "drawerSupport":"Help and Support",
-    "drawerSettings":"Settings",
-    "drawerLogOut":"Log out",
-
-
-    "habits":"habits",
-
-    "submit": "Submit",
-
-    "create": "Create",
-
-    "howAreYou": "How are you today?",
-
-    "emotionHappy":"Happy",
-    "emotionGood":"Good",
-    "emotionMeh":"Meh",
-    "emotionBored":"Bored",
-    "emotionSad":"Sad",
-    "emotionAngry":"Angry",
-
-    "russianLanguage": "Russian",
-    "englishLanguage": "English",
-
-    "ok": "OK"
+  "@@locale": "en",
+  "appTitle": "LifeSync",
+  "welcome": "Welcome to",
+  "welcomeSecond": "Welcome!",
+  "firstIntroSlidePart1": "our mental health app!",
+  "firstIntroSlidePart2": "We're glad to have you here.",
+  "secondIntroSlide": "Discover more about yourself with our psychological tests.",
+  "thirdIntroSlide": "Engage in daily meditation sessions.",
+  "forthIntroSlide": "Receive personalized recommendations and tips.",
+  "authScreenTextPart1": "We will help you to unlock your inner strength",
+  "authScreenTextPart2": "and prioritize ",
+  "authScreenTextPart3": "Mental Health",
+  "authGetStartedActionButtonTitle": "Get started",
+  "authUsername": "Username",
+  "authUsernameIsEmpty": "Enter your username",
+  "authEmail": "Email",
+  "authEmailIsEmpty": "Enter your Email",
+  "authPassword": "Password",
+  "authPasswordIsEmpty": "Enter your password",
+  "accountExists": "Already have an account? ",
+  "registerAccount": "Register new account! ",
+  "register": "Register",
+  "logIn": "Log in",
+  "mainScreenGoodDay": "Good day, ",
+  "mainScreenHabits": "Habits",
+  "mainScreenMoodStatistic": "Mood statistic",
+  "mainScreenSharedStories": "Shared Stories",
+  "homeScreenQuestion": "What are you up to today?",
+  "homeScreenMeditation": "Meditation",
+  "homeScreenBreathingPractice": "Breathing practice",
+  "homeScreenSelfTests": "Self Tests",
+  "homeScreenToDoListPhrase": "Check out your habits",
+  "homeScreenToDoListAdd": "Add habit",
+  "homeScreenHabitCreationHabit": "Your habit",
+  "homeScreenHabitCreationIsEmpty": "Add your habit first",
+  "homeScreenHabitCreationLenghtError": "Text length cannot exceed 30 characters",
+  "homeScreenDefaultQuote": "Change your thoughts and you will change the world",
+  "habitsScreenPhrase": "Daily check-in",
+  "habitsScreenFullCompletion": "Well done! You are perfect!",
+  "habitsScreenPartCompletion": "Keep going!",
+  "habitsScreenPartEmptyHabits": "Add some habits to accomplish them!",
+  "habitsScreenAddHabit": "Add new habit",
+  "moodScreenPhrase": "Let's check up on your mood",
+  "sharedStoriesScreenNoUsersStories": "There is no user stories...",
+  "sharedStoriesScreenNoStories": "You have no stories, add some...",
+  "sharedStoriesScreenAddStory": "Add Story",
+  "sharedStoriesScreenCreationStoryTitle": "Title",
+  "sharedStoriesScreenCreationStoryTitleEmpty": "Enter title",
+  "sharedStoriesScreenCreationStoryDescription": "Description",
+  "sharedStoriesScreenCreationStoryDescriptionEmpty": "Enter description",
+  "drawerProfile": "Profile",
+  "drawerAboutUs": "About Us",
+  "drawerSupport": "Help and Support",
+  "drawerSettings": "Settings",
+  "drawerLogOut": "Log out",
+  "habits": "habits",
+  "submit": "Submit",
+  "create": "Create",
+  "howAreYou": "How are you today?",
+  "emotionHappy": "Happy",
+  "emotionGood": "Good",
+  "emotionMeh": "Meh",
+  "emotionBored": "Bored",
+  "emotionSad": "Sad",
+  "emotionAngry": "Angry",
+  "russianLanguage": "Russian",
+  "englishLanguage": "English",
+  "ok": "OK"
 }
