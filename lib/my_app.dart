@@ -194,11 +194,12 @@ class MyApp extends StatelessWidget {
       future: _initHive(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
-          locale = HiveStore().getLocale();
+          // locale = HiveStore().getLocale();
 
           return MultiBlocProvider(
             providers: [
               BlocProvider<ThemeBloc>(create: (context) => ThemeBloc()),
+              BlocProvider<LocaleBloc>(create: (context) => LocaleBloc()),
               BlocProvider<AuthBloc>(create: (context) => AuthBloc(auth: auth)),
               BlocProvider<SharedStoriesBloc>(
                 create: (context) => SharedStoriesBloc(),
@@ -210,8 +211,10 @@ class MyApp extends StatelessWidget {
                 create: (context) => HabitsBloc(),
               )
             ],
-            child: BlocBuilder<ThemeBloc, ThemeState>(
+            child: BlocBuilder<LocaleBloc, LocaleState>(
               builder: (context, state) {
+                // return BlocBuilder<ThemeBloc, ThemeState>(
+                // builder: (context, state) {
                 return MaterialApp.router(
                   localizationsDelegates: const [
                     AppLocalizations.delegate,
@@ -224,11 +227,13 @@ class MyApp extends StatelessWidget {
                     Locale('ru'),
                     Locale('be'),
                   ],
-                  locale: locale,
+                  locale: state.locale,
                   title: 'LifeSync',
                   routerConfig: router,
-                  theme: state.isDarkTheme ? lightTheme : darkTheme,
+                  // theme: state.isDarkTheme ? lightTheme : darkTheme,
                 );
+                // },
+                // );
               },
             ),
           );
