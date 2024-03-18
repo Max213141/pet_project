@@ -2,23 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:life_sync/utils/utils.dart';
 
 class DeleteUserDialogBody extends StatelessWidget {
-  final String message;
   const DeleteUserDialogBody({
     super.key,
-    required this.message,
   });
 
   @override
   Widget build(BuildContext context) {
+    final l10n = l10nOf(context);
     return AlertDialog(
-      title: const Center(
+      title: Center(
         child: Text(
-          "Confirm Deletion",
+          l10n.settingsDataDeletionConfirm,
         ),
       ),
       titleTextStyle: MentalHealthTextStyles.text.signikaPrimaryFontF22Black,
       content: Text(
-        message,
+        l10n.settingsDataDeletionInfo,
         textAlign: TextAlign.center,
       ),
       contentTextStyle:
@@ -36,7 +35,7 @@ class DeleteUserDialogBody extends StatelessWidget {
               );
             },
             child: Text(
-              'Yes',
+              l10n.yes,
               style: MentalHealthTextStyles.text.popinsSecondaryFontF16FW300,
             ),
           ),
@@ -48,7 +47,7 @@ class DeleteUserDialogBody extends StatelessWidget {
               Navigator.of(context).pop();
             },
             child: Text(
-              'No',
+              l10n.no,
               style: MentalHealthTextStyles.text.popinsSecondaryFontF16FW300,
             ),
           ),

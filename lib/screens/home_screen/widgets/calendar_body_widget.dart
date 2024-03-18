@@ -165,6 +165,12 @@ String getCalendarLocale(String locale) {
     case 'ru':
       calendarLocale = 'ru_RU';
       break;
+    case 'be':
+      calendarLocale = 'be_BE';
+      break;
+    case 'pl':
+      calendarLocale = 'pl_PL';
+      break;
     case 'en':
     default:
       calendarLocale = 'en_EN';

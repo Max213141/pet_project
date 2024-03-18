@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:life_sync/common_widgets/widgets.dart';
+import 'package:life_sync/utils/utils.dart';
 
 class AboutUsScreen extends StatefulWidget {
   // final String title;
@@ -15,9 +16,10 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final l10n = l10nOf(context);
 
     return DrawerScreensBody(
-      title: 'About Us',
+      title: l10n.drawerAboutUs,
       bodyWidgets: [
         SliverToBoxAdapter(
           child: Padding(

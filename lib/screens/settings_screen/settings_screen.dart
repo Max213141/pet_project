@@ -3,8 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:life_sync/blocs/blocs.dart';
 import 'package:life_sync/common_widgets/widgets.dart';
 import 'package:life_sync/screens/settings_screen/widgets/widgets.dart';
-import 'package:life_sync/utils/localization/string_matcher.dart';
-import 'package:life_sync/utils/styles/styles.dart';
 import 'package:life_sync/utils/utils.dart';
 
 _log(dynamic message) => Logger.projectLog(message, name: 'settings_screen');
@@ -38,79 +36,24 @@ class _SettingsScreenState extends State<SettingsScreen> {
               width: size.width - 32,
               child: Column(
                 children: [
-                  // DeleteUserButtonWidget(),
-
-                  Column(
-                    children: [
-                      Text(
-                        'Change language:',
-                        style: MentalHealthTextStyles
-                            .text.signikaSecondaryFontF16FW300,
-                      ),
-                      const SizedBox(height: 4),
-                      Row(
-                        children: [
-                          for (final locale in AppConfig.supportedLocales) ...[
-                            Expanded(
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 4.0),
-                                child: ActionButton(
-                                  onPressed: () {
-                                    BlocProvider.of<LocaleBloc>(context).add(
-                                      ChangeLocale(locale: 'en'),
-                                    );
-                                  },
-                                  title: StringMatchers.localeTitle(
-                                    context,
-                                    locale.languageCode,
-                                  ),
-                                  // StringMatchers.localeTitle(
-                                  //   context,
-                                  //   locale,
-                                  // ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ],
-                      )
-                    ],
-                  ),
-                  const SizedBox(height: 8),
-
-                  Row(
-                    children: [
-                      const Text('Select theme:'),
-                      const SizedBox(width: 4),
-                      Expanded(
-                        child: ActionButton(
-                          onPressed: () {},
-                          title: 'Dark',
-                        ),
-                      ),
-                      Expanded(
-                        child: ActionButton(
-                          onPressed: () {},
-                          title: 'Light',
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 8),
+                  const SettingsLanguagePart(),
+                  const SizedBox(height: 4),
+                  const Divider(),
+                  const SizedBox(height: 4),
+                  const ThemeSettingsPart(),
+                  const SizedBox(height: 4),
+                  const Divider(),
+                  const SizedBox(height: 4),
                   ActionButton(
                     onPressed: () {
                       showDialog(
                         context: context,
                         builder: (BuildContext context) {
-                          return const DeleteUserDialogBody(
-                            message:
-                                'Data will be deleted, and cant be restored, are you sure?',
-                          );
+                          return const DeleteUserDialogBody();
                         },
                       );
                     },
-                    title: 'Delete User',
+                    title: l10n.settingsDeleteData,
                   ),
                 ],
               ),

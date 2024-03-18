@@ -5,6 +5,7 @@ class ActionButton extends StatelessWidget {
   final String title;
   final double? width;
   final Color? buttonColor;
+  final bool? buttonSelected;
   // final BuildContext context;
   final void Function() onPressed;
 
@@ -14,6 +15,7 @@ class ActionButton extends StatelessWidget {
     required this.title,
     this.width,
     this.buttonColor,
+    this.buttonSelected,
   });
 
   @override
@@ -42,12 +44,16 @@ class ActionButton extends StatelessWidget {
                   : AppColor.habbitsTileBackground,
             ),
           ),
-          elevation: MaterialStateProperty.all<double>(2.0),
+          elevation: MaterialStateProperty.all<double>(
+              (buttonSelected ?? false) ? 10.0 : 2.0),
         ),
-        child: Text(
-          title,
-          textAlign: TextAlign.center,
-          style: MentalHealthTextStyles.text.signikaPrimaryFontF22Black,
+        child: FittedBox(
+          child: Text(
+            title,
+            maxLines: 1,
+            textAlign: TextAlign.center,
+            style: MentalHealthTextStyles.text.signikaPrimaryFontF22Black,
+          ),
         ),
       ),
     );

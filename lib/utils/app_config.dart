@@ -8,9 +8,9 @@ abstract class AppConfig {
 
   static const supportedLocales = [
     Locale('en'),
-    // Locale('be'),
+    Locale('be'),
     Locale('ru'),
-    // Locale('pl'),
+    Locale('pl'),
   ];
 
   // static const allowedStatuses = [
