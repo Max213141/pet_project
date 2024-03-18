@@ -11,3 +11,5 @@ export 'scroll_behavior.dart';
 export 'keybord_hide.dart';
 export 'svg_preloader.dart';
 export './localization/l10n.dart';
+export 'emotion_parser.dart';
+export 'app_config.dart';

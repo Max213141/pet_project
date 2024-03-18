@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:life_sync/blocs/blocs.dart';
 import 'package:life_sync/common_widgets/widgets.dart';
 import 'package:life_sync/entities/db_entities/db_entities.dart';
 import 'package:life_sync/screens/home_screen/widgets/widgets.dart';
@@ -23,7 +25,15 @@ class _CalendarBodyWidgetState extends State<CalendarBodyWidget> {
   CalendarFormat _calendarFormat = CalendarFormat.month;
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final locale = BlocProvider.of<LocaleBloc>(context).state.locale;
+    final calendarLocale = getCalendarLocale(locale);
     return CalendarFrameWidget(
       child: TableCalendar(
         firstDay: DateTime.utc(2010, 10, 16),
@@ -35,7 +45,7 @@ class _CalendarBodyWidgetState extends State<CalendarBodyWidget> {
             _calendarFormat = format;
           });
         },
-        locale: 'en_EN',
+        locale: calendarLocale,
         availableCalendarFormats: const {CalendarFormat.month: 'Month'},
         startingDayOfWeek: StartingDayOfWeek.monday,
         selectedDayPredicate: (day) => isSameDay(day, DateTime.now()),
@@ -146,6 +156,21 @@ class _CalendarBodyWidgetState extends State<CalendarBodyWidget> {
       ),
     );
   }
+}
+
+String getCalendarLocale(String locale) {
+  _log('locale for calendar$locale');
+  final String calendarLocale;
+  switch (locale) {
+    case 'ru':
+      calendarLocale = 'ru_RU';
+      break;
+    case 'en':
+    default:
+      calendarLocale = 'en_EN';
+      break;
+  }
+  return calendarLocale;
 }
 
 Color getColorForDate(DateTime date, List<MoodEntry> moodEntries) {

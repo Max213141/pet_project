@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:life_sync/utils/utils.dart';
 
 class ErrorDialogWidget extends StatelessWidget {
@@ -21,18 +22,18 @@ class ErrorDialogWidget extends StatelessWidget {
           children: [
             const Icon(
               Icons.error,
-              color: Colors.red,
+              color: AppColor.primaryBackgroundColor,
               size: 50.0,
             ),
             const SizedBox(
               height: 20.0,
             ),
-            Text(
-              message,
-              style: const TextStyle(
-                fontSize: 18.0,
+            Flexible(
+              child: Text(
+                message,
+                style: MentalHealthTextStyles.text.signikaSecondaryFontF16FW300,
+                textAlign: TextAlign.center,
               ),
-              textAlign: TextAlign.center,
             ),
             const SizedBox(
               height: 20.0,
@@ -42,7 +43,7 @@ class ErrorDialogWidget extends StatelessWidget {
                 Navigator.of(context).pop();
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red,
+                backgroundColor: AppColor.primaryBackgroundColor,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
@@ -50,10 +51,7 @@ class ErrorDialogWidget extends StatelessWidget {
               ),
               child: Text(
                 l10n.ok,
-                style: const TextStyle(
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: MentalHealthTextStyles.text.signikaSecondaryFontF16FW300,
               ),
             ),
           ],

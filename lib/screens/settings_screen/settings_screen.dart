@@ -4,6 +4,7 @@ import 'package:life_sync/blocs/blocs.dart';
 import 'package:life_sync/common_widgets/widgets.dart';
 import 'package:life_sync/screens/settings_screen/widgets/widgets.dart';
 import 'package:life_sync/utils/localization/string_matcher.dart';
+import 'package:life_sync/utils/styles/styles.dart';
 import 'package:life_sync/utils/utils.dart';
 
 _log(dynamic message) => Logger.projectLog(message, name: 'settings_screen');
@@ -39,38 +40,41 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 children: [
                   // DeleteUserButtonWidget(),
 
-                  Row(
+                  Column(
                     children: [
-                      const Text('Change language:'),
-                      const SizedBox(width: 4),
-                      Expanded(
-                        child: ActionButton(
-                          onPressed: () {
-                            BlocProvider.of<LocaleBloc>(context).add(
-                              ChangeLocale(locale: 'en'),
-                            );
-                          },
-                          title: 'English',
-                          // StringMatchers.localeTitle(
-                          //   context,
-                          //   locale,
-                          // ),
-                        ),
+                      Text(
+                        'Change language:',
+                        style: MentalHealthTextStyles
+                            .text.signikaSecondaryFontF16FW300,
                       ),
-                      Expanded(
-                        child: ActionButton(
-                          onPressed: () {
-                            BlocProvider.of<LocaleBloc>(context).add(
-                              ChangeLocale(locale: 'ru'),
-                            );
-                          },
-                          title: 'Russian',
-                          // StringMatchers.localeTitle(
-                          //   context,
-                          //   locale,
-                          // ),
-                        ),
-                      ),
+                      const SizedBox(height: 4),
+                      Row(
+                        children: [
+                          for (final locale in AppConfig.supportedLocales) ...[
+                            Expanded(
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 4.0),
+                                child: ActionButton(
+                                  onPressed: () {
+                                    BlocProvider.of<LocaleBloc>(context).add(
+                                      ChangeLocale(locale: 'en'),
+                                    );
+                                  },
+                                  title: StringMatchers.localeTitle(
+                                    context,
+                                    locale.languageCode,
+                                  ),
+                                  // StringMatchers.localeTitle(
+                                  //   context,
+                                  //   locale,
+                                  // ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ],
+                      )
                     ],
                   ),
                   const SizedBox(height: 8),

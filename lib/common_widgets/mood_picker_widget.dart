@@ -31,35 +31,41 @@ class _MoodPickerWidgetState extends State<MoodPickerWidget> {
     updatedMoodentries = widget.moodEntries.toList();
   }
 
-  String selectedEmotion = 'Bored';
+  int selectedEmotion = 5;
 
   @override
   Widget build(BuildContext context) {
     final l10n = l10nOf(context);
     final List<Emotion> emotions = [
       Emotion(
-        emotionTitle: l10n.emotionAngry,
-        picturePath: 'assets/emotions/angry.svg',
-      ),
-      Emotion(
-        emotionTitle: l10n.emotionBored,
-        picturePath: 'assets/emotions/bored.svg',
+        emotionTitle: l10n.emotionHappy,
+        picturePath: 'assets/emotions/happy.svg',
+        emotionGrade: 6,
       ),
       Emotion(
         emotionTitle: l10n.emotionGood,
         picturePath: 'assets/emotions/good.svg',
-      ),
-      Emotion(
-        emotionTitle: l10n.emotionHappy,
-        picturePath: 'assets/emotions/happy.svg',
+        emotionGrade: 5,
       ),
       Emotion(
         emotionTitle: l10n.emotionMeh,
         picturePath: 'assets/emotions/meh.svg',
+        emotionGrade: 4,
+      ),
+      Emotion(
+        emotionTitle: l10n.emotionBored,
+        picturePath: 'assets/emotions/bored.svg',
+        emotionGrade: 3,
       ),
       Emotion(
         emotionTitle: l10n.emotionSad,
         picturePath: 'assets/emotions/sad.svg',
+        emotionGrade: 2,
+      ),
+      Emotion(
+        emotionTitle: l10n.emotionAngry,
+        picturePath: 'assets/emotions/angry.svg',
+        emotionGrade: 1,
       ),
     ];
 
@@ -88,7 +94,7 @@ class _MoodPickerWidgetState extends State<MoodPickerWidget> {
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () => setState(() {
-                          selectedEmotion = emotions[index].emotionTitle;
+                          selectedEmotion = emotions[index].emotionGrade;
                         }),
                         child: AnimatedSize(
                           curve: Curves.easeInCirc,
@@ -130,6 +136,7 @@ class _MoodPickerWidgetState extends State<MoodPickerWidget> {
               ActionButton(
                 title: l10n.submit.toUpperCase(),
                 onPressed: () {
+                  final emotionTitle = getEmotionTitle(selectedEmotion);
                   int index = updatedMoodentries.indexWhere((element) {
                     final trackedDay = element.trackedDay.toDate();
                     return trackedDay.day == widget.selectedDay.day &&
@@ -138,14 +145,14 @@ class _MoodPickerWidgetState extends State<MoodPickerWidget> {
                   if (index != -1) {
                     // Replace the existing MoodEntry with the new one
                     updatedMoodentries[index] = MoodEntry(
-                      mood: selectedEmotion,
+                      mood: emotionTitle,
                       trackedDay: Timestamp.fromDate(widget.selectedDay),
                     );
                   } else {
                     // Add the new MoodEntry to the list
                     updatedMoodentries.add(
                       MoodEntry(
-                        mood: selectedEmotion,
+                        mood: emotionTitle,
                         trackedDay: Timestamp.fromDate(widget.selectedDay),
                       ),
                     );

@@ -32,6 +32,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
               ),
             ),
       title: widget.title,
+      titleTextStyle: MentalHealthTextStyles.text.signikaSecondaryFontF16,
       elevation: 0,
       backgroundColor: AppColor.primaryBackgroundColor,
       automaticallyImplyLeading: false,

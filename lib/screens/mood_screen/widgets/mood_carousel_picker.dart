@@ -46,26 +46,32 @@ class _MoodCarouselPickerState extends State<MoodCarouselPicker> {
       Emotion(
         emotionTitle: l10n.emotionHappy,
         picturePath: 'assets/emotions/happy.svg',
+        emotionGrade: 6,
       ),
       Emotion(
         emotionTitle: l10n.emotionGood,
         picturePath: 'assets/emotions/good.svg',
+        emotionGrade: 5,
       ),
       Emotion(
         emotionTitle: l10n.emotionMeh,
         picturePath: 'assets/emotions/meh.svg',
+        emotionGrade: 4,
       ),
       Emotion(
         emotionTitle: l10n.emotionBored,
         picturePath: 'assets/emotions/bored.svg',
+        emotionGrade: 3,
       ),
       Emotion(
         emotionTitle: l10n.emotionSad,
         picturePath: 'assets/emotions/sad.svg',
+        emotionGrade: 2,
       ),
       Emotion(
         emotionTitle: l10n.emotionAngry,
         picturePath: 'assets/emotions/angry.svg',
+        emotionGrade: 1,
       ),
     ];
     return Column(

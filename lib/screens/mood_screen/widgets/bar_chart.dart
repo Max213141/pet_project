@@ -1,26 +1,28 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:life_sync/blocs/blocs.dart';
 import 'package:life_sync/entities/db_entities/db_entities.dart';
 import 'package:life_sync/utils/utils.dart';
 
 void _log(dynamic message) => Logger.projectLog(message, name: 'bar_chart');
 
-class BarChartSample extends StatefulWidget {
+class MentalHealthBarChart extends StatefulWidget {
   final AppLocalizations l10n;
   final List<MoodEntry> userDailyMood;
 
-  const BarChartSample({
+  const MentalHealthBarChart({
     super.key,
     required this.userDailyMood,
     required this.l10n,
   });
 
   @override
-  State<StatefulWidget> createState() => BarChartSampleState();
+  State<StatefulWidget> createState() => MentalHealthBarChartState();
 }
 
-class BarChartSampleState extends State<BarChartSample> {
+class MentalHealthBarChartState extends State<MentalHealthBarChart> {
   List<String> datesWithAbbreviation = [];
   DateTime now = DateTime.now();
   late List<MoodEntry> moodEntriesByDays = [];
@@ -63,6 +65,7 @@ class BarChartSampleState extends State<BarChartSample> {
   Widget build(BuildContext context) {
     const barsSpace = 15.0;
     const barsWidth = 30.0;
+    final locale = BlocProvider.of<LocaleBloc>(context).state.locale;
 
     return SizedBox(
       height: MediaQuery.of(context).size.height / 3.1,
@@ -101,7 +104,7 @@ class BarChartSampleState extends State<BarChartSample> {
                           leftTitles: AxisTitles(
                             sideTitles: SideTitles(
                               showTitles: true,
-                              reservedSize: 45,
+                              reservedSize: locale == 'en' ? 45 : 60,
                               interval: 1.0,
                               getTitlesWidget: leftTitles,
                             ),

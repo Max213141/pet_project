@@ -44,7 +44,7 @@ class MoodScreenBody extends StatelessWidget {
                 style: MentalHealthTextStyles.text.signikaSecondaryFontF16,
               ),
             ),
-            BarChartSample(
+            MentalHealthBarChart(
               userDailyMood: moodEntries,
               l10n: l10n,
             ),

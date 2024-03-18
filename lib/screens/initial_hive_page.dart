@@ -36,11 +36,11 @@ class _InitialHivePageState extends State<InitialHivePage> {
     // final appPreferencesBox = await Hive.box('app_preferences');
     final isFirstLaunchFromHive = HiveStore().getFirstLaunch();
 
-    _log('is app fisrst launch: $isFirstLaunchFromHive');
+    // _log('is app fisrst launch: $isFirstLaunchFromHive');
     // //_log('app preferences box is empty: ${appPreferencesBox.isEmpty}');
 
     if (isFirstLaunchFromHive ?? true) {
-      _log('hive data about first launch: $isFirstLaunchFromHive');
+      // _log('hive data about first launch: $isFirstLaunchFromHive');
 
       setState(() {
         isFirstLaunch = isFirstLaunchFromHive ?? true;

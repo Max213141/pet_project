@@ -33,7 +33,7 @@ class IntroScreenPart extends StatelessWidget {
           ),
           const SizedBox(height: 100),
           Padding(
-            padding: EdgeInsets.only(right: size.width / 6),
+            padding: EdgeInsets.only(right: size.width * .1),
             child: useProvidedChild
                 ? providedChild
                 : Text(

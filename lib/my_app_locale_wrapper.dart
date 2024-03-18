@@ -25,11 +25,7 @@ class MyAppThemeWrapper extends StatelessWidget {
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
           ],
-          supportedLocales: const [
-            Locale('en'),
-            Locale('ru'),
-            Locale('be'),
-          ],
+          supportedLocales: AppConfig.supportedLocales,
           locale: locale,
           title: 'LifeSync',
           routerConfig: router,
