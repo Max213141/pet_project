@@ -43,6 +43,10 @@ void main() async {
     'assets/menu_icons/support.svg',
     'assets/menu_icons/settings.svg',
     'assets/menu_icons/log_out.svg',
+    'assets/socials/telegram.svg',
+    'assets/socials/linkedin.svg',
+    'assets/socials/gmail.svg',
+    'assets/socials/dribbble.svg',
   ]);
 
   FirebaseApp app = await Firebase.initializeApp(

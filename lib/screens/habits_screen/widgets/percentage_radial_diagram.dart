@@ -21,38 +21,36 @@ class HabitsPercentageRadialDiagram extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: SizedBox(
-        height: MediaQuery.of(context).size.height > 710 ? 105 : 85,
-        // width: 95
-        child: Stack(
-          children: [
-            Positioned.fill(
-              child: CustomPaint(
-                painter: CircleChartPainter(
-                  [
-                    totalTodayHabits == 0
-                        ? 1
-                        : unfinishedHabits / totalTodayHabits, // uncomplished
-                    totalTodayHabits == 0
-                        ? 0
-                        : finishedHabits / totalTodayHabits, // complited
-                  ],
-                ),
+    return SizedBox(
+      height: MediaQuery.of(context).size.height > 710 ? 105 : 85,
+      // width: 95
+      child: Stack(
+        children: [
+          Positioned.fill(
+            child: CustomPaint(
+              painter: CircleChartPainter(
+                [
+                  totalTodayHabits == 0
+                      ? 1
+                      : unfinishedHabits / totalTodayHabits, // uncomplished
+                  totalTodayHabits == 0
+                      ? 0
+                      : finishedHabits / totalTodayHabits, // complited
+                ],
               ),
             ),
-            Positioned(
-              child: Center(
-                child: Text(
-                  totalTodayHabits == 0
-                      ? '0%'
-                      : '${((finishedHabits * 100) / totalTodayHabits).round()}%',
-                  style: MentalHealthTextStyles.text.signikaFontF22Bold,
-                ),
+          ),
+          Positioned(
+            child: Center(
+              child: Text(
+                totalTodayHabits == 0
+                    ? '0%'
+                    : '${((finishedHabits * 100) / totalTodayHabits).round()}%',
+                style: MentalHealthTextStyles.text.signikaFontF22Bold,
               ),
-            )
-          ],
-        ),
+            ),
+          )
+        ],
       ),
     );
   }

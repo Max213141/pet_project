@@ -34,6 +34,7 @@ dependencies:
   intl: ^0.18.1
   http: ^1.2.0
   cloud_firestore: ^4.14.0
+  url_launcher: ^6.2.5
   # welltested: ^0.0.1
 
   # firebase_messaging: ^14.6.0
@@ -46,11 +47,13 @@ flutter_launcher_icons:
   # image_path_ios: "assets/images/icon-1024x1024.png"
   android: true # can specify file name here e.g. "ic_launcher"
   ios: true # can specify file name here e.g. "My-Launcher-Icon"
-  # adaptive_icon_background: "assets/images/christmas-background.png" # only available for Android 8.0 devices and above
-  # adaptive_icon_foreground: "assets/images/icon-foreground-432x432.png" # only available for Android 8.0 devices and above
+  # adaptive_icon_background: "#9BCD8F" # only available for Android 8.0 devices and above
+  # adaptive_icon_foreground: "assets/app_icon/LifeSync-01.png" # only available for Android 8.0 devices and above
   min_sdk_android: 21 # android min sdk min:16, default 21
   remove_alpha_ios: true
-  background_color_ios: "#ffffff"
+  # background_color_ios: "#9BCD8F"
+
+
 
 dev_dependencies:
   flutter_test:
@@ -75,6 +78,7 @@ flutter:
     - assets/breathing_images/
     - assets/emotions/
     - assets/intro/
+    - assets/socials/
     - assets/tests/
     - assets/shared_stories/
     - assets/menu_icons/

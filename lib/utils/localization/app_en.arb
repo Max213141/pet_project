@@ -51,6 +51,8 @@
   "sharedStoriesScreenCreationStoryDescriptionEmpty": "Enter description",
   "drawerProfile": "Profile",
   "drawerAboutUs": "About Us",
+  "aboutUsDeveloper":"Developed by Maksim Kuptsov",
+  "aboutUsDesigner":"UI/UX Design by Kristina Khaurilava",
   "drawerSupport": "Help and Support",
   "supportInfo": "If you encounter any errors or want to leave feedback or suggestions, you can do so in the comments section in the app store, or here:",
   "drawerSettings": "Settings",

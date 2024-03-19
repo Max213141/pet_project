@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:life_sync/common_widgets/widgets.dart';
 import 'package:life_sync/utils/utils.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AboutUsScreen extends StatefulWidget {
   // final String title;
@@ -27,8 +28,84 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
             child: SizedBox(
               height: size.height - MediaQuery.viewPaddingOf(context).top - 45,
               width: size.width - 32,
-              child: Text(
-                  'Здесь наверное будет Инфа о тебе и мне и можно иконки сетей добавить типо линка беханса и тп чтобы при нажатии на них кидало на сайт'),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    l10n.aboutUsDeveloper,
+                    style:
+                        MentalHealthTextStyles.text.signikaPrimaryFontF22Black,
+                  ),
+                  Row(
+                    children: [
+                      SocialsButton(
+                        onTap: () {
+                          launchUrl(
+                            Uri.parse('https://t.me/Max2131'),
+                            mode: LaunchMode.platformDefault,
+                          );
+                        },
+                        picturePath: 'assets/socials/telegram.svg',
+                      ),
+                      const SizedBox(width: 4),
+                      SocialsButton(
+                        onTap: () {
+                          launchUrl(
+                            Uri.parse(
+                              'https://www.linkedin.com/in/maksim-kuptsov/',
+                            ),
+                            mode: LaunchMode.platformDefault,
+                          );
+                        },
+                        picturePath: 'assets/socials/linkedin.svg',
+                      ),
+                    ],
+                  ),
+                  const Divider(),
+                  Text(
+                    l10n.aboutUsDesigner,
+                    style:
+                        MentalHealthTextStyles.text.signikaPrimaryFontF22Black,
+                  ),
+                  Row(
+                    children: [
+                      SocialsButton(
+                        onTap: () {
+                          launchUrl(
+                            Uri.parse('https://t.me/Max2131'),
+                            mode: LaunchMode.platformDefault,
+                          );
+                        },
+                        picturePath: 'assets/socials/telegram.svg',
+                      ),
+                      const SizedBox(width: 4),
+                      SocialsButton(
+                        onTap: () {
+                          launchUrl(
+                            Uri.parse(
+                              'https://www.linkedin.com/in/maksim-kuptsov/',
+                            ),
+                            mode: LaunchMode.platformDefault,
+                          );
+                        },
+                        picturePath: 'assets/socials/linkedin.svg',
+                      ),
+                      const SizedBox(width: 4),
+                      SocialsButton(
+                        onTap: () {
+                          launchUrl(
+                            Uri.parse(
+                              'https://www.linkedin.com/in/maksim-kuptsov/',
+                            ),
+                            mode: LaunchMode.platformDefault,
+                          );
+                        },
+                        picturePath: 'assets/socials/dribbble.svg',
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),
