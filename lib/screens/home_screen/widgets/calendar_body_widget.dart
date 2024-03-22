@@ -186,17 +186,17 @@ Color getColorForDate(DateTime date, List<MoodEntry> moodEntries) {
         convertedDate.month == date.month &&
         convertedDate.day == date.day) {
       switch (entry.mood) {
-        case 'Angry':
+        case 1:
           return AppColor.chartAngry;
-        case 'Sad':
+        case 2:
           return AppColor.chartSad;
-        case 'Bored':
+        case 3:
           return AppColor.chartBored;
-        case 'Meh':
+        case 4:
           return AppColor.chartMeh;
-        case 'Good':
+        case 5:
           return AppColor.chartGood;
-        case 'Happy':
+        case 6:
           return AppColor.chartHappy;
         default:
           return AppColor.primaryColor;

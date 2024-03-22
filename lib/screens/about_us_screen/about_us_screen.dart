@@ -3,17 +3,9 @@ import 'package:life_sync/common_widgets/widgets.dart';
 import 'package:life_sync/utils/utils.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class AboutUsScreen extends StatefulWidget {
-  // final String title;
-  const AboutUsScreen({
-    super.key,
-    // required this.title,
-  });
-  @override
-  State<AboutUsScreen> createState() => _AboutUsScreenState();
-}
+class AboutUsScreen extends StatelessWidget {
+  const AboutUsScreen({super.key});
 
-class _AboutUsScreenState extends State<AboutUsScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -104,6 +96,25 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
                       ),
                     ],
                   ),
+                  const SizedBox(height: 4),
+                  Text(
+                    l10n.aboutUsSecondDesigner,
+                    style:
+                        MentalHealthTextStyles.text.signikaPrimaryFontF22Black,
+                  ),
+                  const SizedBox(width: 4),
+                  SocialsButton(
+                    onTap: () {
+                      launchUrl(
+                        Uri.parse(
+                          'https://www.instagram.com/dsgnvera?igsh=MWlkM3E2dWloYW0zNQ==',
+                        ),
+                        mode: LaunchMode.platformDefault,
+                      );
+                    },
+                    picturePath: 'assets/socials/instagram.svg',
+                  ),
+                  const Divider(),
                 ],
               ),
             ),

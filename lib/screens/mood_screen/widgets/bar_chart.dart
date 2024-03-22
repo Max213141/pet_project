@@ -11,11 +11,13 @@ void _log(dynamic message) => Logger.projectLog(message, name: 'bar_chart');
 class MentalHealthBarChart extends StatefulWidget {
   final AppLocalizations l10n;
   final List<MoodEntry> userDailyMood;
+  final String locale;
 
   const MentalHealthBarChart({
     super.key,
     required this.userDailyMood,
     required this.l10n,
+    required this.locale,
   });
 
   @override
@@ -51,7 +53,10 @@ class MentalHealthBarChartState extends State<MentalHealthBarChart> {
 
     for (int i = 0; i < 7; i++) {
       DateTime date = firstDayOfCurrentWeek.add(Duration(days: i));
-      String formattedDate = DateFormat('MMM d').format(date);
+      String formattedDate = DateFormat(
+        'MMM d',
+        widget.locale,
+      ).format(date);
       datesWithAbbreviation.add(formattedDate);
     }
   }
@@ -236,13 +241,13 @@ class MentalHealthBarChartState extends State<MentalHealthBarChart> {
   }
 
   List<double> mapMoodsToInt(List<MoodEntry> moodEntries) {
-    Map<String, double> moodToIntMapping = {
-      widget.l10n.emotionAngry: 0.1,
-      widget.l10n.emotionSad: 1,
-      widget.l10n.emotionBored: 2,
-      widget.l10n.emotionMeh: 3,
-      widget.l10n.emotionGood: 4,
-      widget.l10n.emotionHappy: 5,
+    Map<int, double> moodToIntMapping = {
+      1: 0.1,
+      2: 1,
+      3: 2,
+      4: 3,
+      5: 4,
+      6: 5,
     };
 
     List<double> mappedIntegers = [];
@@ -256,13 +261,13 @@ class MentalHealthBarChartState extends State<MentalHealthBarChart> {
   }
 
   List<Color> mapMoodsToColor(List<MoodEntry> moodEntries) {
-    Map<String, Color> moodToIntMapping = {
-      widget.l10n.emotionAngry: AppColor.chartAngry.withOpacity(.5),
-      widget.l10n.emotionSad: AppColor.chartSad.withOpacity(.5),
-      widget.l10n.emotionBored: AppColor.chartBored.withOpacity(.5),
-      widget.l10n.emotionMeh: AppColor.chartMeh.withOpacity(.5),
-      widget.l10n.emotionGood: AppColor.chartsColor.withOpacity(.75),
-      widget.l10n.emotionHappy: AppColor.chartHappy.withOpacity(.5),
+    Map<int, Color> moodToIntMapping = {
+      1: AppColor.chartAngry.withOpacity(.5),
+      2: AppColor.chartSad.withOpacity(.5),
+      3: AppColor.chartBored.withOpacity(.5),
+      4: AppColor.chartMeh.withOpacity(.5),
+      5: AppColor.chartsColor.withOpacity(.75),
+      6: AppColor.chartHappy.withOpacity(.5),
     };
 
     List<Color> mappedColors = [];

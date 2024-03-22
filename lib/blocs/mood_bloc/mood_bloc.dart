@@ -30,19 +30,23 @@ class MoodBloc extends Bloc<MoodEvent, MoodState> {
       const MoodState.loading(),
     );
     String uid = event.userUID;
-    final ref =
-        FirebaseFirestore.instance.collection('users').doc(uid).withConverter(
-              fromFirestore: UserInfo.fromFirestore,
-              toFirestore: (UserInfo userInfo, _) => userInfo.toFirestore(),
-            );
+    final ref = FirebaseFirestore.instance
+        .collection('users')
+        .doc(uid)
+        .collection('moodTracker')
+        .doc('userMood')
+        .withConverter(
+          fromFirestore: MoodTracker.fromFirestore,
+          toFirestore: (MoodTracker moodInfo, _) => moodInfo.toFirestore(),
+        );
     try {
       final docSnapshot = await ref.get();
 
-      final userInfo = docSnapshot.data();
+      final userMood = docSnapshot.data();
       // _log('Fucking mood entries $userInfo');
       emit(
         MoodState.moodLoaded(
-          userInfo?.moodTracker?.dailyMood ?? [],
+          userMood?.dailyMood ?? [],
         ),
       );
     } catch (e) {
@@ -56,22 +60,19 @@ class MoodBloc extends Bloc<MoodEvent, MoodState> {
   ) async {
     final UserData? userData = HiveStore().getUserData();
     final String? uid = userData?.uid;
-    final ref =
-        FirebaseFirestore.instance.collection('users').doc(uid).withConverter(
-              fromFirestore: UserInfo.fromFirestore,
-              toFirestore: (UserInfo userInfo, _) => userInfo.toFirestore(),
-            );
+    final ref = FirebaseFirestore.instance
+        .collection('users')
+        .doc(uid)
+        .collection('moodTracker')
+        .doc('userMood')
+        .withConverter(
+          fromFirestore: MoodTracker.fromFirestore,
+          toFirestore: (MoodTracker moodInfo, _) => moodInfo.toFirestore(),
+        );
 
     try {
-      final updatedUserMoodInfo = UserInfo(
-        moodTracker: MoodTracker(
-          dailyMood: event.updatedMoodTracker,
-        ),
-        userData: DBUserData(
-          email: userData!.email!,
-          name: userData.userName!,
-          password: userData.password!,
-        ),
+      final updatedUserMoodInfo = MoodTracker(
+        dailyMood: event.updatedMoodTracker,
       );
       await ref.set(updatedUserMoodInfo);
 

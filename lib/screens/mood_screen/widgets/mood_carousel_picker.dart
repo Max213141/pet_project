@@ -24,7 +24,7 @@ class MoodCarouselPicker extends StatefulWidget {
 }
 
 class _MoodCarouselPickerState extends State<MoodCarouselPicker> {
-  String? selectedEmotion;
+  int? selectedEmotion;
   List<MoodEntry> updatedMoodentries = [];
 
   @override
@@ -88,7 +88,7 @@ class _MoodCarouselPickerState extends State<MoodCarouselPicker> {
                 builder: (BuildContext context) {
                   return GestureDetector(
                     onTap: () => setState(() {
-                      selectedEmotion = emotion.emotionTitle;
+                      selectedEmotion = emotion.emotionGrade;
                     }),
                     child: RepaintBoundary(
                       child: AnimatedSize(
@@ -98,10 +98,10 @@ class _MoodCarouselPickerState extends State<MoodCarouselPicker> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             SizedBox(
-                              height: selectedEmotion == emotion.emotionTitle
+                              height: selectedEmotion == emotion.emotionGrade
                                   ? 80
                                   : 60,
-                              width: selectedEmotion == emotion.emotionTitle
+                              width: selectedEmotion == emotion.emotionGrade
                                   ? 80
                                   : 60,
                               child: MentalHealthSvgPicture(

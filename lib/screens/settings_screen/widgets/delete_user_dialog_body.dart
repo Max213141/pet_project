@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:life_sync/blocs/blocs.dart';
 import 'package:life_sync/utils/utils.dart';
 
 class DeleteUserDialogBody extends StatelessWidget {
@@ -10,6 +12,7 @@ class DeleteUserDialogBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = l10nOf(context);
     return AlertDialog(
+      backgroundColor: AppColor.primaryBackgroundColor,
       title: Center(
         child: Text(
           l10n.settingsDataDeletionConfirm,
@@ -28,11 +31,7 @@ class DeleteUserDialogBody extends StatelessWidget {
           child: TextButton(
             onPressed: () {
               // Add your code for deletion here
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text("User deleted"),
-                ),
-              );
+              BlocProvider.of<AuthBloc>(context).add(const DeleteUserEvent());
             },
             child: Text(
               l10n.yes,

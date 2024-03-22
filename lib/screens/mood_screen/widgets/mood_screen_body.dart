@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:life_sync/blocs/blocs.dart';
 import 'package:life_sync/entities/db_entities/db_entities.dart';
 import 'package:life_sync/screens/mood_screen/widgets/widgets.dart';
 import 'package:life_sync/utils/utils.dart';
@@ -14,6 +16,7 @@ class MoodScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = l10nOf(context);
+    final locale = BlocProvider.of<LocaleBloc>(context).state.locale;
 
     return Center(
       child: ScrollConfiguration(
@@ -47,6 +50,7 @@ class MoodScreenBody extends StatelessWidget {
             MentalHealthBarChart(
               userDailyMood: moodEntries,
               l10n: l10n,
+              locale: locale,
             ),
             const SizedBox(height: 10),
             CircularMoodScheme(
@@ -66,7 +70,7 @@ class MoodScreenBody extends StatelessWidget {
                   return element.trackedDay.toDate().day == DateTime.now().day;
                 },
                 orElse: () => MoodEntry(
-                  mood: l10n.emotionGood,
+                  mood: 5,
                   trackedDay: Timestamp.now(),
                 ),
               ),

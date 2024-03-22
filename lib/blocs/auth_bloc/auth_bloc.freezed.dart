@@ -21,6 +21,7 @@ mixin _$AuthEvent {
     required TResult Function(String email, String password, String username)
         createUser,
     required TResult Function(String email, String password) logIn,
+    required TResult Function() deleteUser,
     required TResult Function() logOut,
   }) =>
       throw _privateConstructorUsedError;
@@ -29,6 +30,7 @@ mixin _$AuthEvent {
     TResult? Function(String email, String password, String username)?
         createUser,
     TResult? Function(String email, String password)? logIn,
+    TResult? Function()? deleteUser,
     TResult? Function()? logOut,
   }) =>
       throw _privateConstructorUsedError;
@@ -37,6 +39,7 @@ mixin _$AuthEvent {
     TResult Function(String email, String password, String username)?
         createUser,
     TResult Function(String email, String password)? logIn,
+    TResult Function()? deleteUser,
     TResult Function()? logOut,
     required TResult orElse(),
   }) =>
@@ -45,6 +48,7 @@ mixin _$AuthEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(CreateUserEvent value) createUser,
     required TResult Function(LogInEvent value) logIn,
+    required TResult Function(DeleteUserEvent value) deleteUser,
     required TResult Function(LogOutEvent value) logOut,
   }) =>
       throw _privateConstructorUsedError;
@@ -52,6 +56,7 @@ mixin _$AuthEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CreateUserEvent value)? createUser,
     TResult? Function(LogInEvent value)? logIn,
+    TResult? Function(DeleteUserEvent value)? deleteUser,
     TResult? Function(LogOutEvent value)? logOut,
   }) =>
       throw _privateConstructorUsedError;
@@ -59,6 +64,7 @@ mixin _$AuthEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CreateUserEvent value)? createUser,
     TResult Function(LogInEvent value)? logIn,
+    TResult Function(DeleteUserEvent value)? deleteUser,
     TResult Function(LogOutEvent value)? logOut,
     required TResult orElse(),
   }) =>
@@ -169,6 +175,7 @@ class _$CreateUserEventImpl implements CreateUserEvent {
     required TResult Function(String email, String password, String username)
         createUser,
     required TResult Function(String email, String password) logIn,
+    required TResult Function() deleteUser,
     required TResult Function() logOut,
   }) {
     return createUser(email, password, username);
@@ -180,6 +187,7 @@ class _$CreateUserEventImpl implements CreateUserEvent {
     TResult? Function(String email, String password, String username)?
         createUser,
     TResult? Function(String email, String password)? logIn,
+    TResult? Function()? deleteUser,
     TResult? Function()? logOut,
   }) {
     return createUser?.call(email, password, username);
@@ -191,6 +199,7 @@ class _$CreateUserEventImpl implements CreateUserEvent {
     TResult Function(String email, String password, String username)?
         createUser,
     TResult Function(String email, String password)? logIn,
+    TResult Function()? deleteUser,
     TResult Function()? logOut,
     required TResult orElse(),
   }) {
@@ -205,6 +214,7 @@ class _$CreateUserEventImpl implements CreateUserEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(CreateUserEvent value) createUser,
     required TResult Function(LogInEvent value) logIn,
+    required TResult Function(DeleteUserEvent value) deleteUser,
     required TResult Function(LogOutEvent value) logOut,
   }) {
     return createUser(this);
@@ -215,6 +225,7 @@ class _$CreateUserEventImpl implements CreateUserEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CreateUserEvent value)? createUser,
     TResult? Function(LogInEvent value)? logIn,
+    TResult? Function(DeleteUserEvent value)? deleteUser,
     TResult? Function(LogOutEvent value)? logOut,
   }) {
     return createUser?.call(this);
@@ -225,6 +236,7 @@ class _$CreateUserEventImpl implements CreateUserEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CreateUserEvent value)? createUser,
     TResult Function(LogInEvent value)? logIn,
+    TResult Function(DeleteUserEvent value)? deleteUser,
     TResult Function(LogOutEvent value)? logOut,
     required TResult orElse(),
   }) {
@@ -325,6 +337,7 @@ class _$LogInEventImpl implements LogInEvent {
     required TResult Function(String email, String password, String username)
         createUser,
     required TResult Function(String email, String password) logIn,
+    required TResult Function() deleteUser,
     required TResult Function() logOut,
   }) {
     return logIn(email, password);
@@ -336,6 +349,7 @@ class _$LogInEventImpl implements LogInEvent {
     TResult? Function(String email, String password, String username)?
         createUser,
     TResult? Function(String email, String password)? logIn,
+    TResult? Function()? deleteUser,
     TResult? Function()? logOut,
   }) {
     return logIn?.call(email, password);
@@ -347,6 +361,7 @@ class _$LogInEventImpl implements LogInEvent {
     TResult Function(String email, String password, String username)?
         createUser,
     TResult Function(String email, String password)? logIn,
+    TResult Function()? deleteUser,
     TResult Function()? logOut,
     required TResult orElse(),
   }) {
@@ -361,6 +376,7 @@ class _$LogInEventImpl implements LogInEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(CreateUserEvent value) createUser,
     required TResult Function(LogInEvent value) logIn,
+    required TResult Function(DeleteUserEvent value) deleteUser,
     required TResult Function(LogOutEvent value) logOut,
   }) {
     return logIn(this);
@@ -371,6 +387,7 @@ class _$LogInEventImpl implements LogInEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CreateUserEvent value)? createUser,
     TResult? Function(LogInEvent value)? logIn,
+    TResult? Function(DeleteUserEvent value)? deleteUser,
     TResult? Function(LogOutEvent value)? logOut,
   }) {
     return logIn?.call(this);
@@ -381,6 +398,7 @@ class _$LogInEventImpl implements LogInEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CreateUserEvent value)? createUser,
     TResult Function(LogInEvent value)? logIn,
+    TResult Function(DeleteUserEvent value)? deleteUser,
     TResult Function(LogOutEvent value)? logOut,
     required TResult orElse(),
   }) {
@@ -401,6 +419,123 @@ abstract class LogInEvent implements AuthEvent {
   @JsonKey(ignore: true)
   _$$LogInEventImplCopyWith<_$LogInEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DeleteUserEventImplCopyWith<$Res> {
+  factory _$$DeleteUserEventImplCopyWith(_$DeleteUserEventImpl value,
+          $Res Function(_$DeleteUserEventImpl) then) =
+      __$$DeleteUserEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$DeleteUserEventImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$DeleteUserEventImpl>
+    implements _$$DeleteUserEventImplCopyWith<$Res> {
+  __$$DeleteUserEventImplCopyWithImpl(
+      _$DeleteUserEventImpl _value, $Res Function(_$DeleteUserEventImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$DeleteUserEventImpl implements DeleteUserEvent {
+  const _$DeleteUserEventImpl();
+
+  @override
+  String toString() {
+    return 'AuthEvent.deleteUser()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$DeleteUserEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email, String password, String username)
+        createUser,
+    required TResult Function(String email, String password) logIn,
+    required TResult Function() deleteUser,
+    required TResult Function() logOut,
+  }) {
+    return deleteUser();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email, String password, String username)?
+        createUser,
+    TResult? Function(String email, String password)? logIn,
+    TResult? Function()? deleteUser,
+    TResult? Function()? logOut,
+  }) {
+    return deleteUser?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String password, String username)?
+        createUser,
+    TResult Function(String email, String password)? logIn,
+    TResult Function()? deleteUser,
+    TResult Function()? logOut,
+    required TResult orElse(),
+  }) {
+    if (deleteUser != null) {
+      return deleteUser();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CreateUserEvent value) createUser,
+    required TResult Function(LogInEvent value) logIn,
+    required TResult Function(DeleteUserEvent value) deleteUser,
+    required TResult Function(LogOutEvent value) logOut,
+  }) {
+    return deleteUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CreateUserEvent value)? createUser,
+    TResult? Function(LogInEvent value)? logIn,
+    TResult? Function(DeleteUserEvent value)? deleteUser,
+    TResult? Function(LogOutEvent value)? logOut,
+  }) {
+    return deleteUser?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CreateUserEvent value)? createUser,
+    TResult Function(LogInEvent value)? logIn,
+    TResult Function(DeleteUserEvent value)? deleteUser,
+    TResult Function(LogOutEvent value)? logOut,
+    required TResult orElse(),
+  }) {
+    if (deleteUser != null) {
+      return deleteUser(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DeleteUserEvent implements AuthEvent {
+  const factory DeleteUserEvent() = _$DeleteUserEventImpl;
 }
 
 /// @nodoc
@@ -444,6 +579,7 @@ class _$LogOutEventImpl implements LogOutEvent {
     required TResult Function(String email, String password, String username)
         createUser,
     required TResult Function(String email, String password) logIn,
+    required TResult Function() deleteUser,
     required TResult Function() logOut,
   }) {
     return logOut();
@@ -455,6 +591,7 @@ class _$LogOutEventImpl implements LogOutEvent {
     TResult? Function(String email, String password, String username)?
         createUser,
     TResult? Function(String email, String password)? logIn,
+    TResult? Function()? deleteUser,
     TResult? Function()? logOut,
   }) {
     return logOut?.call();
@@ -466,6 +603,7 @@ class _$LogOutEventImpl implements LogOutEvent {
     TResult Function(String email, String password, String username)?
         createUser,
     TResult Function(String email, String password)? logIn,
+    TResult Function()? deleteUser,
     TResult Function()? logOut,
     required TResult orElse(),
   }) {
@@ -480,6 +618,7 @@ class _$LogOutEventImpl implements LogOutEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(CreateUserEvent value) createUser,
     required TResult Function(LogInEvent value) logIn,
+    required TResult Function(DeleteUserEvent value) deleteUser,
     required TResult Function(LogOutEvent value) logOut,
   }) {
     return logOut(this);
@@ -490,6 +629,7 @@ class _$LogOutEventImpl implements LogOutEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CreateUserEvent value)? createUser,
     TResult? Function(LogInEvent value)? logIn,
+    TResult? Function(DeleteUserEvent value)? deleteUser,
     TResult? Function(LogOutEvent value)? logOut,
   }) {
     return logOut?.call(this);
@@ -500,6 +640,7 @@ class _$LogOutEventImpl implements LogOutEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CreateUserEvent value)? createUser,
     TResult Function(LogInEvent value)? logIn,
+    TResult Function(DeleteUserEvent value)? deleteUser,
     TResult Function(LogOutEvent value)? logOut,
     required TResult orElse(),
   }) {

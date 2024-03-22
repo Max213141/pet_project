@@ -105,11 +105,11 @@ class _MoodPickerWidgetState extends State<MoodPickerWidget> {
                               RepaintBoundary(
                                 child: SizedBox(
                                   height: selectedEmotion ==
-                                          emotions[index].emotionTitle
+                                          emotions[index].emotionGrade
                                       ? 80
                                       : 60,
                                   width: selectedEmotion ==
-                                          emotions[index].emotionTitle
+                                          emotions[index].emotionGrade
                                       ? 80
                                       : 60,
                                   child: MentalHealthSvgPicture(
@@ -136,7 +136,7 @@ class _MoodPickerWidgetState extends State<MoodPickerWidget> {
               ActionButton(
                 title: l10n.submit.toUpperCase(),
                 onPressed: () {
-                  final emotionTitle = getEmotionTitle(selectedEmotion);
+                  // final emotionTitle = getEmotionTitle(selectedEmotion);
                   int index = updatedMoodentries.indexWhere((element) {
                     final trackedDay = element.trackedDay.toDate();
                     return trackedDay.day == widget.selectedDay.day &&
@@ -145,14 +145,14 @@ class _MoodPickerWidgetState extends State<MoodPickerWidget> {
                   if (index != -1) {
                     // Replace the existing MoodEntry with the new one
                     updatedMoodentries[index] = MoodEntry(
-                      mood: emotionTitle,
+                      mood: selectedEmotion,
                       trackedDay: Timestamp.fromDate(widget.selectedDay),
                     );
                   } else {
                     // Add the new MoodEntry to the list
                     updatedMoodentries.add(
                       MoodEntry(
-                        mood: emotionTitle,
+                        mood: selectedEmotion,
                         trackedDay: Timestamp.fromDate(widget.selectedDay),
                       ),
                     );

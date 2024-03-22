@@ -7,17 +7,9 @@ import 'package:life_sync/utils/utils.dart';
 
 _log(dynamic message) => Logger.projectLog(message, name: 'settings_screen');
 
-class SettingsScreen extends StatefulWidget {
-  // final String title;
-  const SettingsScreen({
-    super.key,
-    // required this.title,
-  });
-  @override
-  State<SettingsScreen> createState() => _SettingsScreenState();
-}
+class SettingsScreen extends StatelessWidget {
+  const SettingsScreen({super.key});
 
-class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     final l10n = l10nOf(context);
@@ -25,42 +17,60 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
     _log('locale from state - $locale');
     final size = MediaQuery.of(context).size;
-    return DrawerScreensBody(
-      title: l10n.drawerSettings,
-      bodyWidgets: [
-        SliverToBoxAdapter(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 2.0, horizontal: 16),
-            child: SizedBox(
-              height: size.height - MediaQuery.viewPaddingOf(context).top - 45,
-              width: size.width - 32,
-              child: Column(
-                children: [
-                  const SettingsLanguagePart(),
-                  const SizedBox(height: 4),
-                  const Divider(),
-                  const SizedBox(height: 4),
-                  const ThemeSettingsPart(),
-                  const SizedBox(height: 4),
-                  const Divider(),
-                  const SizedBox(height: 4),
-                  ActionButton(
-                    onPressed: () {
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return const DeleteUserDialogBody();
-                        },
-                      );
-                    },
-                    title: l10n.settingsDeleteData,
-                  ),
-                ],
+    return BlocListener<AuthBloc, AuthState>(
+      listener: (context, state) {
+        state.whenOrNull(
+          authError: (errorText) {
+            showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return ErrorDialogWidget(
+                  message: errorText,
+                );
+              },
+            );
+          },
+        );
+      },
+      child: DrawerScreensBody(
+        title: l10n.drawerSettings,
+        bodyWidgets: [
+          SliverToBoxAdapter(
+            child: Padding(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 2.0, horizontal: 16),
+              child: SizedBox(
+                height:
+                    size.height - MediaQuery.viewPaddingOf(context).top - 45,
+                width: size.width - 32,
+                child: Column(
+                  children: [
+                    const SettingsLanguagePart(),
+                    const SizedBox(height: 4),
+                    const Divider(),
+                    const SizedBox(height: 4),
+                    const ThemeSettingsPart(),
+                    const SizedBox(height: 4),
+                    const Divider(),
+                    const SizedBox(height: 4),
+                    ActionButton(
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return const DeleteUserDialogBody();
+                          },
+                        );
+                      },
+                      title: l10n.settingsDeleteData,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

@@ -3,15 +3,9 @@ import 'package:life_sync/common_widgets/widgets.dart';
 import 'package:life_sync/utils/utils.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class SupportScreen extends StatefulWidget {
-  const SupportScreen({
-    super.key,
-  });
-  @override
-  State<SupportScreen> createState() => _SupportScreenState();
-}
+class SupportScreen extends StatelessWidget {
+  const SupportScreen({super.key});
 
-class _SupportScreenState extends State<SupportScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;

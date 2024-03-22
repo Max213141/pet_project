@@ -22,6 +22,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         createUser: (event) async => await _createUser(event, emit),
         logIn: (event) async => await _logIn(event, emit),
         logOut: (event) async => await _logOut(event, emit),
+        deleteUser: (event) async => await _deleteUser(event, emit),
         // next: (_) async => await _next(emit),
         // previous: (_) async => await _previous(emit),
       );
@@ -123,6 +124,32 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(AuthState.authError(errorText: 'Ошибка: $e'));
       _log('UNHANDLED AUTH ERROR: $e');
     }
+  }
+
+  _deleteUser(DeleteUserEvent event, Emitter<AuthState> emit) async {
+    // emit(const AuthState.loading());
+
+    final userData = HiveStore().getUserData();
+    final userUID = userData!.uid;
+
+    try {
+      await auth.currentUser!.delete();
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(userUID)
+          .delete();
+      emit(const AuthState.logOutSuccess());
+    } on FirebaseAuthException catch (e) {
+      emit(AuthState.authError(
+          errorText:
+              'Ошибка: ${e.message}')); //TODO implement error and state handling
+      _log('DELETION EXCEPTION: $e');
+    } catch (e) {
+      emit(AuthState.authError(errorText: 'Ошибка: $e'));
+      _log('UNHANDLED DELETION ERROR: $e');
+    }
+
+    // await auth.signOut();
   }
 
   _logOut(LogOutEvent event, Emitter<AuthState> emit) async {

@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class MoodEntry {
-  final String
+  final int
       mood; //TODO change this to int emotionGrade to solve localized emotion trubles
   final Timestamp trackedDay;
 
@@ -29,6 +29,6 @@ class MoodEntry {
 
   // Default constructor with default values
   MoodEntry.defaultEntry()
-      : mood = 'Neutral', // Default mood
+      : mood = 0, // Default mood
         trackedDay = Timestamp.now();
 }

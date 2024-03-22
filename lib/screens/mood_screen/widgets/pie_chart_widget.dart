@@ -20,7 +20,7 @@ class MoodPieChart extends StatefulWidget {
 class MoodPieChartState extends State<MoodPieChart> {
   int touchedIndex = -1;
   late List<MoodEntry> _moodEntriesThisMonth;
-  late Map<String, double> moodPercentage = {};
+  late Map<int, double> moodPercentage = {};
 
   @override
   void initState() {
@@ -28,7 +28,7 @@ class MoodPieChartState extends State<MoodPieChart> {
     _moodEntriesThisMonth = widget.userDailyMood.where((entry) {
       return entry.trackedDay.toDate().month == DateTime.now().month;
     }).toList();
-    Map<String, int> moodCount = {};
+    Map<int, int> moodCount = {};
     _moodEntriesThisMonth.forEach((entry) {
       moodCount[entry.mood] =
           moodCount.containsKey(entry.mood) ? moodCount[entry.mood]! + 1 : 1;
@@ -36,8 +36,8 @@ class MoodPieChartState extends State<MoodPieChart> {
     int totalDaysInMonth =
         DateTime(DateTime.now().year, DateTime.now().month + 1, 0).day;
     _log('Total days in month $totalDaysInMonth');
-    moodCount.forEach((mood, count) {
-      moodPercentage[mood] = (count / totalDaysInMonth) * 100;
+    moodCount.forEach((moodGrade, count) {
+      moodPercentage[moodGrade] = (count / totalDaysInMonth) * 100;
       //  = double.parse(percentage.toStringAsFixed(2)); // I dont know how necessary not rounded percentage
     });
     _log('Total days in month $moodPercentage');
@@ -76,12 +76,12 @@ class MoodPieChartState extends State<MoodPieChart> {
 
   List<PieChartSectionData> showingSections() {
     double unfilledPercentage = 100 -
-        (moodPercentage['Meh'] ?? 0) +
-        (moodPercentage['Angry'] ?? 0) +
-        (moodPercentage['Happy'] ?? 0) +
-        (moodPercentage['Good'] ?? 0) +
-        (moodPercentage['Bored'] ?? 0) +
-        (moodPercentage['Sad'] ?? 0);
+        (moodPercentage[1] ?? 0) +
+        (moodPercentage[2] ?? 0) +
+        (moodPercentage[3] ?? 0) +
+        (moodPercentage[4] ?? 0) +
+        (moodPercentage[5] ?? 0) +
+        (moodPercentage[6] ?? 0);
     return List.generate(7, (i) {
       // final isTouched = i == touchedIndex;
       // final fontSize = isTouched ? 16.0 : 8.0;
@@ -91,7 +91,7 @@ class MoodPieChartState extends State<MoodPieChart> {
         case 0:
           return PieChartSectionData(
             color: AppColor.chartMeh,
-            value: moodPercentage['Meh'] ?? 0,
+            value: moodPercentage[4] ?? 0,
             showTitle: false,
             // title: '20%',
             // radius: radius,
@@ -100,7 +100,7 @@ class MoodPieChartState extends State<MoodPieChart> {
         case 1:
           return PieChartSectionData(
             color: AppColor.chartAngry,
-            value: moodPercentage['Angry'] ?? 0,
+            value: moodPercentage[1] ?? 0,
             showTitle: false,
             // title: '30%',
             // radius: radius,
@@ -109,7 +109,7 @@ class MoodPieChartState extends State<MoodPieChart> {
         case 2:
           return PieChartSectionData(
             color: AppColor.chartHappy,
-            value: moodPercentage['Happy'] ?? 0,
+            value: moodPercentage[6] ?? 0,
             showTitle: false,
             // title: '15%',
             // radius: radius,
@@ -118,7 +118,7 @@ class MoodPieChartState extends State<MoodPieChart> {
         case 3:
           return PieChartSectionData(
             color: AppColor.chartGood,
-            value: moodPercentage['Good'] ?? 0,
+            value: moodPercentage[5] ?? 0,
             showTitle: false,
             // title: '15%',
             // radius: radius,
@@ -127,7 +127,7 @@ class MoodPieChartState extends State<MoodPieChart> {
         case 4:
           return PieChartSectionData(
             color: AppColor.chartBored,
-            value: moodPercentage['Bored'] ?? 0,
+            value: moodPercentage[3] ?? 0,
             showTitle: false,
             // title: '15.5%',
             // radius: radius,
@@ -136,7 +136,7 @@ class MoodPieChartState extends State<MoodPieChart> {
         case 5:
           return PieChartSectionData(
             color: AppColor.chartSad,
-            value: moodPercentage['Sad'] ?? 0,
+            value: moodPercentage[2] ?? 0,
             showTitle: false,
 
             // title: '4.5%',
