@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'dart:convert';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:life_sync/blocs/blocs.dart';
+import 'package:life_sync/screens/home_screen/widgets/widgets.dart';
 import 'package:life_sync/utils/utils.dart';
-import 'package:http/http.dart' as http;
 
 void _log(dynamic message) => Logger.projectLog(message, name: 'quote_widget');
 
@@ -26,94 +27,30 @@ class _QuoteWidgetState extends State<QuoteWidget> {
   void initState() {
     super.initState();
     quote = "";
-    getQuote();
+    BlocProvider.of<QuoteBloc>(context).add(const LoadQuote());
   }
 
-  // get a random Quote from the API
-  getQuote() async {
-    _log('get quote triggered');
-    try {
-      setState(() {
-        working = true;
-        quote = "";
-      });
-      var response = await http.post(
-          Uri.parse('http://api.forismatic.com/api/1.0/'),
-          body: {"method": "getQuote", "format": "json", "lang": "en"});
-
-      setState(() {
-        try {
-          String fixedResponse = response.body
-              .replaceAll(r"\'", "'")
-              .replaceAll("â", "")
-              .replaceAll("", "")
-              .replaceAll(".", "");
-          var res = jsonDecode(fixedResponse);
-          _log('response quote - $res');
-
-          quote = res["quoteText"].replaceAll("â", " ");
-        } catch (e) {
-          getQuote();
-        }
-      });
-    } catch (e) {
-      offline();
-    }
-  }
-
-  // if it is offline, show a fixed Quote
-  offline() {
-    setState(() {
-      widget.l10n.homeScreenQuestion;
-      quote = "Change your thoughts and you will change the world";
-      working = false;
-    });
-  }
-
-  // Main build function
+// Main build function
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: working ? getQuote : null,
-      child: SizedBox(
-        height: MediaQuery.of(context).size.height / 7,
-        width: MediaQuery.of(context).size.width,
-        child: DecoratedBox(
-          decoration: const BoxDecoration(color: AppColor.primaryColor),
-          child: DecoratedBox(
-            decoration: const BoxDecoration(
-              color: AppColor.primaryBackgroundColor,
-              borderRadius: BorderRadius.only(
-                bottomRight: Radius.circular(40),
-              ),
-            ),
-            child: Center(
-              child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: RichText(
-                    textAlign: TextAlign.center,
-                    text: TextSpan(
-                      children: [
-                        TextSpan(
-                            text: '“ ',
-                            style: MentalHealthTextStyles.text.signikaFontF24),
-                        TextSpan(
-                          text: quote,
-                          style: quote.length < 100
-                              ? MentalHealthTextStyles.text.signikaFontF24
-                              : MentalHealthTextStyles
-                                  .text.signikaSecondaryFontF16,
-                        ),
-                        TextSpan(
-                            text: ' ”',
-                            style: MentalHealthTextStyles.text.signikaFontF24),
-                      ],
-                    ),
-                  )),
-            ),
-          ),
-        ),
-      ),
+    final l10n = l10nOf(context);
+
+    Widget body = const SizedBox.shrink();
+    return BlocConsumer<QuoteBloc, QuoteState>(
+      listener: (context, state) {
+        state.whenOrNull();
+      },
+      builder: (context, state) {
+        state.when(
+          initial: () =>
+              body = LoadedQuoteBody(quote: l10n.homeScreenDefaultQuote),
+          loading: () => body = const QuoteLoader(),
+          quoteLoaded: (quote) => body = LoadedQuoteBody(quote: quote),
+          quoteError: () =>
+              body = LoadedQuoteBody(quote: l10n.homeScreenDefaultQuote),
+        );
+        return body;
+      },
     );
   }
 }

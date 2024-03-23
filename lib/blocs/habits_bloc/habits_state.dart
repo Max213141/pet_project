@@ -12,5 +12,5 @@ class HabitsState with _$HabitsState {
   const factory HabitsState.habitsUploaded() = _HabitsUploaded;
   const factory HabitsState.habitsLoadingError({
     @Default('habits loading error') String errorText,
-  }) = HabitsLoadingError;
+  }) = _HabitsLoadingError;
 }

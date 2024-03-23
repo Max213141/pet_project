@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:life_sync/utils/utils.dart';
 
-class CategoryItem extends StatefulWidget {
+class CategoryItem extends StatelessWidget {
   const CategoryItem({super.key});
 
-  @override
-  State<CategoryItem> createState() => _CategoryItemState();
-}
-
-class _CategoryItemState extends State<CategoryItem> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(

@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:life_sync/common_widgets/common_category_items_screen/widgets/category_description.dart';
 import 'package:life_sync/utils/utils.dart';
 
-class CommonCategoryItemsScreen extends StatefulWidget {
+class CommonCategoryItemsScreen extends StatelessWidget {
   final String title;
   final Widget child;
   const CommonCategoryItemsScreen({
@@ -12,12 +12,6 @@ class CommonCategoryItemsScreen extends StatefulWidget {
     required this.child,
   });
 
-  @override
-  State<CommonCategoryItemsScreen> createState() =>
-      _CommonCategoryItemsScreenState();
-}
-
-class _CommonCategoryItemsScreenState extends State<CommonCategoryItemsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +28,7 @@ class _CommonCategoryItemsScreenState extends State<CommonCategoryItemsScreen> {
         title: Align(
           alignment: Alignment.centerLeft,
           child: Text(
-            widget.title,
+            title,
           ),
         ),
         titleTextStyle: MentalHealthTextStyles.text.mainTitleF24,
@@ -103,7 +97,7 @@ class _CommonCategoryItemsScreenState extends State<CommonCategoryItemsScreen> {
                       padding: const EdgeInsets.symmetric(vertical: 8.0),
                       child: GestureDetector(
                         onTap: () {},
-                        child: Center(child: widget.child),
+                        child: Center(child: child),
                       ),
                     );
                   },

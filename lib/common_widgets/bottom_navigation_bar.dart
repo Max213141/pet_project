@@ -2,20 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:life_sync/common_widgets/widgets.dart';
 import 'package:life_sync/utils/utils.dart';
 
-class BottomNavBar extends StatefulWidget {
+class BottomNavBar extends StatelessWidget {
   final int selectedIndex;
   final void Function(int) onPressed;
-  const BottomNavBar({
+  BottomNavBar({
     super.key,
     required this.selectedIndex,
     required this.onPressed,
   });
 
-  @override
-  State<BottomNavBar> createState() => _BottomNavBarState();
-}
-
-class _BottomNavBarState extends State<BottomNavBar> {
   final List<BottomNavigationBarItem> navIcons = <BottomNavigationBarItem>[
     const BottomNavigationBarItem(
       icon: MentalHealthSvgPicture(
@@ -86,8 +81,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
               const IconThemeData(color: Colors.black, size: 30),
           showUnselectedLabels: false,
           items: navIcons,
-          currentIndex: widget.selectedIndex,
-          onTap: (index) => widget.onPressed(index),
+          currentIndex: selectedIndex,
+          onTap: (index) => onPressed(index),
         ),
       ),
     );

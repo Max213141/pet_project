@@ -33,7 +33,6 @@ class _InitialHivePageState extends State<InitialHivePage> {
   }
 
   Future<void> _firstLaunchHandler() async {
-    // final appPreferencesBox = await Hive.box('app_preferences');
     final isFirstLaunchFromHive = HiveStore().getFirstLaunch();
 
     // _log('is app fisrst launch: $isFirstLaunchFromHive');
@@ -46,13 +45,6 @@ class _InitialHivePageState extends State<InitialHivePage> {
         isFirstLaunch = isFirstLaunchFromHive ?? true;
       });
     } else {
-      // final appPreferences = appPreferencesBox.getAt(0);
-
-      // if (appPreferences != null) {
-      //   // App has been launched before
-      //   appPreferences.isFirstLaunch = false;
-      //   await appPreferences.save();
-      // }
       setState(() {
         isFirstLaunch = false;
       });
@@ -68,14 +60,13 @@ class _InitialHivePageState extends State<InitialHivePage> {
     return FutureBuilder(
       future: _firstLaunchHandler(),
       builder: (context, snapshot) {
-        // //_log('is ifrst launch before snapshot done- $isFirstLaunch');
+        //_log('is ifrst launch before snapshot done- $isFirstLaunch');
         if (snapshot.connectionState == ConnectionState.done) {
-          // //_log('is ifrst launch after snapshot done - $isFirstLaunch');
+          //_log('is ifrst launch after snapshot done - $isFirstLaunch');
           if (isFirstLaunch) {
             return const IntroScreen();
           } else {
             if (widget.auth.currentUser != null) {
-              //TODO uncomment for uth porper flow
               return const MainScreen();
             } else {
               return const AuthScreen();

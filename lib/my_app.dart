@@ -206,6 +206,9 @@ class MyApp extends StatelessWidget {
               ),
               BlocProvider<HabitsBloc>(
                 create: (context) => HabitsBloc(),
+              ),
+              BlocProvider<QuoteBloc>(
+                create: (context) => QuoteBloc(),
               )
             ],
             child: BlocBuilder<LocaleBloc, LocaleState>(

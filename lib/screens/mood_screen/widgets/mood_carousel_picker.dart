@@ -24,8 +24,8 @@ class MoodCarouselPicker extends StatefulWidget {
 }
 
 class _MoodCarouselPickerState extends State<MoodCarouselPicker> {
-  int? selectedEmotion;
-  List<MoodEntry> updatedMoodentries = [];
+  late int? selectedEmotion;
+  late List<MoodEntry> updatedMoodentries = [];
 
   @override
   void initState() {

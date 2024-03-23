@@ -10,25 +10,14 @@ import 'package:table_calendar/table_calendar.dart';
 void _log(dynamic message) =>
     Logger.projectLog(message, name: 'calendar_body_widget');
 
-class CalendarBodyWidget extends StatefulWidget {
+class CalendarBodyWidget extends StatelessWidget {
   final List<MoodEntry> moodEntries;
   const CalendarBodyWidget({
     super.key,
     required this.moodEntries,
   });
 
-  @override
-  State<CalendarBodyWidget> createState() => _CalendarBodyWidgetState();
-}
-
-class _CalendarBodyWidgetState extends State<CalendarBodyWidget> {
-  CalendarFormat _calendarFormat = CalendarFormat.month;
-
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
-  }
+  final CalendarFormat _calendarFormat = CalendarFormat.month;
 
   @override
   Widget build(BuildContext context) {
@@ -40,11 +29,11 @@ class _CalendarBodyWidgetState extends State<CalendarBodyWidget> {
         lastDay: DateTime.utc(2030, 3, 14),
         focusedDay: DateTime.now(),
         calendarFormat: _calendarFormat,
-        onFormatChanged: (format) {
-          setState(() {
-            _calendarFormat = format;
-          });
-        },
+        // onFormatChanged: (format) {
+        //   setState(() {
+        //     _calendarFormat = format;
+        //   });
+        // },
         locale: calendarLocale,
         availableCalendarFormats: const {CalendarFormat.month: 'Month'},
         startingDayOfWeek: StartingDayOfWeek.monday,
@@ -92,7 +81,7 @@ class _CalendarBodyWidgetState extends State<CalendarBodyWidget> {
                   border:
                       MentalHealthDecorations.borders.calendarDayDefaultBorder,
                   borderRadius: MentalHealthDecorations.borders.radiusC10,
-                  color: getColorForDate(date, widget.moodEntries),
+                  color: getColorForDate(date, moodEntries),
                 ),
                 child: Center(
                   child: Text(
@@ -117,7 +106,7 @@ class _CalendarBodyWidgetState extends State<CalendarBodyWidget> {
                   border:
                       MentalHealthDecorations.borders.calendarDayDefaultBorder,
                   borderRadius: MentalHealthDecorations.borders.radiusC10,
-                  color: getColorForDate(date, widget.moodEntries),
+                  color: getColorForDate(date, moodEntries),
                 ),
                 child: Center(
                   child: Text(
@@ -148,7 +137,7 @@ class _CalendarBodyWidgetState extends State<CalendarBodyWidget> {
             builder: (context) {
               return MoodPickerWidget(
                 selectedDay: selectedDay,
-                moodEntries: widget.moodEntries,
+                moodEntries: moodEntries,
               );
             },
           );

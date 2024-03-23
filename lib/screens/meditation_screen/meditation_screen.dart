@@ -3,42 +3,37 @@ import 'package:life_sync/common_widgets/widgets.dart';
 import 'package:life_sync/entities/entities.dart';
 import 'package:life_sync/screens/meditation_screen/widget/widgets.dart';
 
-class MeditationScreen extends StatefulWidget {
+class MeditationScreen extends StatelessWidget {
   final String title;
   const MeditationScreen({
     super.key,
     required this.title,
   });
-  @override
-  State<MeditationScreen> createState() => _MeditationScreenState();
-}
-
-class _MeditationScreenState extends State<MeditationScreen> {
-  final List<MeditationEntity> testsList = [
-    const MeditationEntity(
-      image: 'assets/backgrounds/card_backgound.svg',
-      title: 'Breathing 4-7-8',
-    ),
-    const MeditationEntity(
-      image: 'assets/backgrounds/card_backgound.svg',
-      title: 'Diaphragmatic breathing',
-    ),
-    const MeditationEntity(
-      image: 'assets/backgrounds/card_backgound.svg',
-      title: 'Square breath',
-    ),
-    const MeditationEntity(
-      image: 'assets/backgrounds/card_backgound.svg',
-      title: 'Square breath',
-    ),
-    const MeditationEntity(
-      image: 'assets/backgrounds/card_backgound.svg',
-      title: 'Oxford Happiness Questionnaire',
-    ),
-  ];
 
   @override
   Widget build(BuildContext context) {
+    final List<MeditationEntity> testsList = [
+      const MeditationEntity(
+        image: 'assets/backgrounds/card_backgound.svg',
+        title: 'Breathing 4-7-8',
+      ),
+      const MeditationEntity(
+        image: 'assets/backgrounds/card_backgound.svg',
+        title: 'Diaphragmatic breathing',
+      ),
+      const MeditationEntity(
+        image: 'assets/backgrounds/card_backgound.svg',
+        title: 'Square breath',
+      ),
+      const MeditationEntity(
+        image: 'assets/backgrounds/card_backgound.svg',
+        title: 'Square breath',
+      ),
+      const MeditationEntity(
+        image: 'assets/backgrounds/card_backgound.svg',
+        title: 'Oxford Happiness Questionnaire',
+      ),
+    ];
     return DrawerScreensBody(
       title: 'Meditation',
       bodyWidgets: [

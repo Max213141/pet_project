@@ -41,14 +41,6 @@ class _AddStoryBottomSheetBodyState extends State<AddStoryBottomSheetBody> {
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          // Align(
-          //   alignment: Alignment.centerLeft,
-          //   child: Text(
-          //     'Title',
-          //     style: MentalHealthTextStyles.text.signikaFontF22Bold,
-          //   ),
-          // ),
-          // const SizedBox(height: 10),
           CustomFormFieldWidget(
             title: l10n.sharedStoriesScreenCreationStoryTitle,
             controller: titleController,

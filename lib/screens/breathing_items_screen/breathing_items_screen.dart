@@ -4,7 +4,7 @@ import 'package:life_sync/common_widgets/common_category_items_screen/widgets/ca
 import 'package:life_sync/screens/breathing_screen/widgets/widgets.dart';
 import 'package:life_sync/utils/utils.dart';
 
-class BreathingItemsScreen extends StatefulWidget {
+class BreathingItemsScreen extends StatelessWidget {
   final String title;
 
   const BreathingItemsScreen({
@@ -12,11 +12,6 @@ class BreathingItemsScreen extends StatefulWidget {
     required this.title,
   });
 
-  @override
-  State<BreathingItemsScreen> createState() => _BreathingItemsScreenState();
-}
-
-class _BreathingItemsScreenState extends State<BreathingItemsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +28,7 @@ class _BreathingItemsScreenState extends State<BreathingItemsScreen> {
         title: Align(
           alignment: Alignment.centerLeft,
           child: Text(
-            widget.title,
+            title,
           ),
         ),
         titleTextStyle: MentalHealthTextStyles.text.mainTitleF24,

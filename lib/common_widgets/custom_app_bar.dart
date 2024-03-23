@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:life_sync/utils/utils.dart';
 
-class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool isHomeScreen;
   final Widget title;
   const CustomAppBar({
@@ -12,26 +12,18 @@ class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
   });
 
   @override
-  State<CustomAppBar> createState() => _CustomAppBarState();
-
-  @override
-  final Size preferredSize;
-}
-
-class _CustomAppBarState extends State<CustomAppBar> {
-  @override
   Widget build(BuildContext context) {
     // bool isDarkTheme = BlocProvider.of<ThemeBloc>(context).state.isDarkTheme; //TODO dark theme can be used later;
 
     return AppBar(
-      shape: widget.isHomeScreen
+      shape: isHomeScreen
           ? const RoundedRectangleBorder()
           : const RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(40),
               ),
             ),
-      title: widget.title,
+      title: title,
       titleTextStyle: MentalHealthTextStyles.text.signikaSecondaryFontF16,
       elevation: 0,
       backgroundColor: AppColor.primaryBackgroundColor,
@@ -56,4 +48,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
       ],
     );
   }
+
+  @override
+  final Size preferredSize;
 }

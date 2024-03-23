@@ -5,20 +5,12 @@ import 'package:life_sync/blocs/auth_bloc/auth_bloc.dart';
 import 'package:life_sync/screens/auth_screen/auth_screen.dart';
 import 'package:life_sync/screens/home_screen/main_screen.dart';
 
-class InitialPage extends StatefulWidget {
+class InitialPage extends StatelessWidget {
   final FirebaseAuth auth;
   const InitialPage({super.key, required this.auth});
 
   @override
-  State<InitialPage> createState() => _InitialPageState();
-}
-
-class _InitialPageState extends State<InitialPage> {
-  bool themeState = false;
-  @override
   Widget build(BuildContext context) {
-    // bool val = true;
-
     return StreamBuilder<User?>(
       stream: BlocProvider.of<AuthBloc>(context).auth.authStateChanges(),
       builder: (context, snapshot) {

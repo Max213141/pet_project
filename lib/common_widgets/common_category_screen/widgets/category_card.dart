@@ -6,14 +6,9 @@ import 'package:life_sync/utils/utils.dart';
 
 void _log(dynamic message) => Logger.projectLog(message, name: 'category_card');
 
-class CategoryCard extends StatefulWidget {
+class CategoryCard extends StatelessWidget {
   const CategoryCard({super.key});
 
-  @override
-  State<CategoryCard> createState() => _CategoryCardState();
-}
-
-class _CategoryCardState extends State<CategoryCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(

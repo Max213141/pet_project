@@ -438,7 +438,7 @@ mixin _$HabitsState {
     required TResult Function(_Loading value) loading,
     required TResult Function(_HabitsLoaded value) habitsLoaded,
     required TResult Function(_HabitsUploaded value) habitsUploaded,
-    required TResult Function(HabitsLoadingError value) habitsLoadingError,
+    required TResult Function(_HabitsLoadingError value) habitsLoadingError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -447,7 +447,7 @@ mixin _$HabitsState {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_HabitsLoaded value)? habitsLoaded,
     TResult? Function(_HabitsUploaded value)? habitsUploaded,
-    TResult? Function(HabitsLoadingError value)? habitsLoadingError,
+    TResult? Function(_HabitsLoadingError value)? habitsLoadingError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -456,7 +456,7 @@ mixin _$HabitsState {
     TResult Function(_Loading value)? loading,
     TResult Function(_HabitsLoaded value)? habitsLoaded,
     TResult Function(_HabitsUploaded value)? habitsUploaded,
-    TResult Function(HabitsLoadingError value)? habitsLoadingError,
+    TResult Function(_HabitsLoadingError value)? habitsLoadingError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -562,7 +562,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Loading value) loading,
     required TResult Function(_HabitsLoaded value) habitsLoaded,
     required TResult Function(_HabitsUploaded value) habitsUploaded,
-    required TResult Function(HabitsLoadingError value) habitsLoadingError,
+    required TResult Function(_HabitsLoadingError value) habitsLoadingError,
   }) {
     return initial(this);
   }
@@ -574,7 +574,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_HabitsLoaded value)? habitsLoaded,
     TResult? Function(_HabitsUploaded value)? habitsUploaded,
-    TResult? Function(HabitsLoadingError value)? habitsLoadingError,
+    TResult? Function(_HabitsLoadingError value)? habitsLoadingError,
   }) {
     return initial?.call(this);
   }
@@ -586,7 +586,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Loading value)? loading,
     TResult Function(_HabitsLoaded value)? habitsLoaded,
     TResult Function(_HabitsUploaded value)? habitsUploaded,
-    TResult Function(HabitsLoadingError value)? habitsLoadingError,
+    TResult Function(_HabitsLoadingError value)? habitsLoadingError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -682,7 +682,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Loading value) loading,
     required TResult Function(_HabitsLoaded value) habitsLoaded,
     required TResult Function(_HabitsUploaded value) habitsUploaded,
-    required TResult Function(HabitsLoadingError value) habitsLoadingError,
+    required TResult Function(_HabitsLoadingError value) habitsLoadingError,
   }) {
     return loading(this);
   }
@@ -694,7 +694,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_HabitsLoaded value)? habitsLoaded,
     TResult? Function(_HabitsUploaded value)? habitsUploaded,
-    TResult? Function(HabitsLoadingError value)? habitsLoadingError,
+    TResult? Function(_HabitsLoadingError value)? habitsLoadingError,
   }) {
     return loading?.call(this);
   }
@@ -706,7 +706,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Loading value)? loading,
     TResult Function(_HabitsLoaded value)? habitsLoaded,
     TResult Function(_HabitsUploaded value)? habitsUploaded,
-    TResult Function(HabitsLoadingError value)? habitsLoadingError,
+    TResult Function(_HabitsLoadingError value)? habitsLoadingError,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -836,7 +836,7 @@ class _$HabitsLoadedImpl implements _HabitsLoaded {
     required TResult Function(_Loading value) loading,
     required TResult Function(_HabitsLoaded value) habitsLoaded,
     required TResult Function(_HabitsUploaded value) habitsUploaded,
-    required TResult Function(HabitsLoadingError value) habitsLoadingError,
+    required TResult Function(_HabitsLoadingError value) habitsLoadingError,
   }) {
     return habitsLoaded(this);
   }
@@ -848,7 +848,7 @@ class _$HabitsLoadedImpl implements _HabitsLoaded {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_HabitsLoaded value)? habitsLoaded,
     TResult? Function(_HabitsUploaded value)? habitsUploaded,
-    TResult? Function(HabitsLoadingError value)? habitsLoadingError,
+    TResult? Function(_HabitsLoadingError value)? habitsLoadingError,
   }) {
     return habitsLoaded?.call(this);
   }
@@ -860,7 +860,7 @@ class _$HabitsLoadedImpl implements _HabitsLoaded {
     TResult Function(_Loading value)? loading,
     TResult Function(_HabitsLoaded value)? habitsLoaded,
     TResult Function(_HabitsUploaded value)? habitsUploaded,
-    TResult Function(HabitsLoadingError value)? habitsLoadingError,
+    TResult Function(_HabitsLoadingError value)? habitsLoadingError,
     required TResult orElse(),
   }) {
     if (habitsLoaded != null) {
@@ -962,7 +962,7 @@ class _$HabitsUploadedImpl implements _HabitsUploaded {
     required TResult Function(_Loading value) loading,
     required TResult Function(_HabitsLoaded value) habitsLoaded,
     required TResult Function(_HabitsUploaded value) habitsUploaded,
-    required TResult Function(HabitsLoadingError value) habitsLoadingError,
+    required TResult Function(_HabitsLoadingError value) habitsLoadingError,
   }) {
     return habitsUploaded(this);
   }
@@ -974,7 +974,7 @@ class _$HabitsUploadedImpl implements _HabitsUploaded {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_HabitsLoaded value)? habitsLoaded,
     TResult? Function(_HabitsUploaded value)? habitsUploaded,
-    TResult? Function(HabitsLoadingError value)? habitsLoadingError,
+    TResult? Function(_HabitsLoadingError value)? habitsLoadingError,
   }) {
     return habitsUploaded?.call(this);
   }
@@ -986,7 +986,7 @@ class _$HabitsUploadedImpl implements _HabitsUploaded {
     TResult Function(_Loading value)? loading,
     TResult Function(_HabitsLoaded value)? habitsLoaded,
     TResult Function(_HabitsUploaded value)? habitsUploaded,
-    TResult Function(HabitsLoadingError value)? habitsLoadingError,
+    TResult Function(_HabitsLoadingError value)? habitsLoadingError,
     required TResult orElse(),
   }) {
     if (habitsUploaded != null) {
@@ -1033,7 +1033,7 @@ class __$$HabitsLoadingErrorImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$HabitsLoadingErrorImpl implements HabitsLoadingError {
+class _$HabitsLoadingErrorImpl implements _HabitsLoadingError {
   const _$HabitsLoadingErrorImpl({this.errorText = 'habits loading error'});
 
   @override
@@ -1111,7 +1111,7 @@ class _$HabitsLoadingErrorImpl implements HabitsLoadingError {
     required TResult Function(_Loading value) loading,
     required TResult Function(_HabitsLoaded value) habitsLoaded,
     required TResult Function(_HabitsUploaded value) habitsUploaded,
-    required TResult Function(HabitsLoadingError value) habitsLoadingError,
+    required TResult Function(_HabitsLoadingError value) habitsLoadingError,
   }) {
     return habitsLoadingError(this);
   }
@@ -1123,7 +1123,7 @@ class _$HabitsLoadingErrorImpl implements HabitsLoadingError {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_HabitsLoaded value)? habitsLoaded,
     TResult? Function(_HabitsUploaded value)? habitsUploaded,
-    TResult? Function(HabitsLoadingError value)? habitsLoadingError,
+    TResult? Function(_HabitsLoadingError value)? habitsLoadingError,
   }) {
     return habitsLoadingError?.call(this);
   }
@@ -1135,7 +1135,7 @@ class _$HabitsLoadingErrorImpl implements HabitsLoadingError {
     TResult Function(_Loading value)? loading,
     TResult Function(_HabitsLoaded value)? habitsLoaded,
     TResult Function(_HabitsUploaded value)? habitsUploaded,
-    TResult Function(HabitsLoadingError value)? habitsLoadingError,
+    TResult Function(_HabitsLoadingError value)? habitsLoadingError,
     required TResult orElse(),
   }) {
     if (habitsLoadingError != null) {
@@ -1145,8 +1145,8 @@ class _$HabitsLoadingErrorImpl implements HabitsLoadingError {
   }
 }
 
-abstract class HabitsLoadingError implements HabitsState {
-  const factory HabitsLoadingError({final String errorText}) =
+abstract class _HabitsLoadingError implements HabitsState {
+  const factory _HabitsLoadingError({final String errorText}) =
       _$HabitsLoadingErrorImpl;
 
   String get errorText;

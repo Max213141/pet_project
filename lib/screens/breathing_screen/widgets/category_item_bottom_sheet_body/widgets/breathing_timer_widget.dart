@@ -2,13 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:life_sync/screens/breathing_screen/widgets/category_item_bottom_sheet_body/widgets/widgets.dart';
 import 'package:life_sync/utils/utils.dart';
 
-class BreathingTimerWidget extends StatefulWidget {
+class BreathingTimerWidget extends StatelessWidget {
   const BreathingTimerWidget({super.key});
-  @override
-  State<BreathingTimerWidget> createState() => _BreathingTimerWidgetState();
-}
-
-class _BreathingTimerWidgetState extends State<BreathingTimerWidget> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(

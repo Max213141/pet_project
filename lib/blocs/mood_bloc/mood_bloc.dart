@@ -12,7 +12,7 @@ part 'mood_bloc.freezed.dart';
 void _log(dynamic message) => Logger.projectLog(message, name: 'mood_bloc');
 
 class MoodBloc extends Bloc<MoodEvent, MoodState> {
-  MoodBloc() : super(const Initial()) {
+  MoodBloc() : super(const _Initial()) {
     on<MoodEvent>(
       (events, emit) async {
         await events.map(

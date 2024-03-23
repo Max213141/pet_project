@@ -4,7 +4,7 @@ import 'package:life_sync/utils/utils.dart';
 
 import 'widgets/widgets.dart';
 
-class CommonCategoryScreen extends StatefulWidget {
+class CommonCategoryScreen extends StatelessWidget {
   final Widget child;
   final String title;
   const CommonCategoryScreen({
@@ -12,11 +12,6 @@ class CommonCategoryScreen extends StatefulWidget {
     required this.title,
     required this.child,
   });
-  @override
-  State<CommonCategoryScreen> createState() => _CommonCategoryScreenState();
-}
-
-class _CommonCategoryScreenState extends State<CommonCategoryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +33,7 @@ class _CommonCategoryScreenState extends State<CommonCategoryScreen> {
         title: Align(
           alignment: Alignment.centerLeft,
           child: Text(
-            widget.title,
+            title,
           ),
         ),
         titleTextStyle: MentalHealthTextStyles.text.signikaPrimaryFontF28
@@ -118,7 +113,7 @@ class _CommonCategoryScreenState extends State<CommonCategoryScreen> {
                                         child: Padding(
                                           padding: const EdgeInsets.symmetric(
                                               horizontal: 4.0, vertical: 4.0),
-                                          child: widget.child,
+                                          child: child,
                                         ),
                                       );
                                     },

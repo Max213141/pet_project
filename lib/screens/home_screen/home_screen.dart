@@ -2,19 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:life_sync/screens/home_screen/widgets/widgets.dart';
 import 'package:life_sync/utils/utils.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {

@@ -2,18 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:life_sync/common_widgets/common_category_screen/widgets/tag_tray/widgets/tag_tray_item.dart';
 import 'package:life_sync/utils/utils.dart';
 
-class TagTray extends StatefulWidget {
+class TagTray extends StatelessWidget {
   const TagTray({super.key});
 
   @override
-  State<TagTray> createState() => _TagTrayState();
-}
-
-class _TagTrayState extends State<TagTray> {
-  final List<String> titles = ['Anexiety', 'Stress', 'Sleep', 'Happyness'];
-
-  @override
   Widget build(BuildContext context) {
+    final List<String> titles = ['Anexiety', 'Stress', 'Sleep', 'Happyness'];
+
     return DecoratedBox(
       decoration: const BoxDecoration(color: AppColor.primaryColor),
       child: DecoratedBox(

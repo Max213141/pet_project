@@ -5,18 +5,12 @@ import 'package:life_sync/utils/utils.dart';
 
 import 'widgets/widgets.dart';
 
-class BreathingPracticeScreen extends StatefulWidget {
+class BreathingPracticeScreen extends StatelessWidget {
   final String title;
   const BreathingPracticeScreen({
     super.key,
     required this.title,
   });
-  @override
-  State<BreathingPracticeScreen> createState() =>
-      _BreathingPracticeScreenState();
-}
-
-class _BreathingPracticeScreenState extends State<BreathingPracticeScreen> {
   @override
   Widget build(BuildContext context) {
     return DrawerScreensBody(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:life_sync/utils/decorations.dart';
 import 'package:life_sync/utils/styles/styles.dart';
 
-class TagTrayItem extends StatefulWidget {
+class TagTrayItem extends StatelessWidget {
   final bool changeFirstPadding;
   final bool changeLastPadding;
   final String title;
@@ -14,16 +14,11 @@ class TagTrayItem extends StatefulWidget {
   });
 
   @override
-  State<TagTrayItem> createState() => _TagTrayItemState();
-}
-
-class _TagTrayItemState extends State<TagTrayItem> {
-  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-        left: widget.changeFirstPadding ? 0 : 10.0,
-        right: widget.changeLastPadding ? 10.0 : 0.0,
+        left: changeFirstPadding ? 0 : 10.0,
+        right: changeLastPadding ? 10.0 : 0.0,
       ),
       child: SizedBox(
         width: 100,
@@ -44,7 +39,7 @@ class _TagTrayItemState extends State<TagTrayItem> {
               padding:
                   const EdgeInsets.symmetric(vertical: 5.0, horizontal: 25),
               child: Text(
-                widget.title,
+                title,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: MentalHealthTextStyles.text.popinsSecondaryFontF14,
