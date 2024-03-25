@@ -127,7 +127,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   _deleteUser(DeleteUserEvent event, Emitter<AuthState> emit) async {
-    // emit(const AuthState.loading());
+    emit(const AuthState.loading());
 
     final userData = HiveStore().getUserData();
     final userUID = userData!.uid;

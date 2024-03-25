@@ -17,60 +17,42 @@ class SettingsScreen extends StatelessWidget {
 
     _log('locale from state - $locale');
     final size = MediaQuery.of(context).size;
-    return BlocListener<AuthBloc, AuthState>(
-      listener: (context, state) {
-        state.whenOrNull(
-          authError: (errorText) {
-            showDialog(
-              context: context,
-              builder: (BuildContext context) {
-                return ErrorDialogWidget(
-                  message: errorText,
-                );
-              },
-            );
-          },
-        );
-      },
-      child: DrawerScreensBody(
-        title: l10n.drawerSettings,
-        bodyWidgets: [
-          SliverToBoxAdapter(
-            child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 2.0, horizontal: 16),
-              child: SizedBox(
-                height:
-                    size.height - MediaQuery.viewPaddingOf(context).top - 45,
-                width: size.width - 32,
-                child: Column(
-                  children: [
-                    const SettingsLanguagePart(),
-                    const SizedBox(height: 4),
-                    const Divider(),
-                    const SizedBox(height: 4),
-                    const ThemeSettingsPart(),
-                    const SizedBox(height: 4),
-                    const Divider(),
-                    const SizedBox(height: 4),
-                    ActionButton(
-                      onPressed: () {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return const DeleteUserDialogBody();
-                          },
-                        );
-                      },
-                      title: l10n.settingsDeleteData,
-                    ),
-                  ],
-                ),
+    return DrawerScreensBody(
+      title: l10n.drawerSettings,
+      bodyWidgets: [
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 2.0, horizontal: 16),
+            child: SizedBox(
+              height: size.height - MediaQuery.viewPaddingOf(context).top - 45,
+              width: size.width - 32,
+              child: Column(
+                children: [
+                  const SettingsLanguagePart(),
+                  const SizedBox(height: 4),
+                  const Divider(),
+                  const SizedBox(height: 4),
+                  const ThemeSettingsPart(),
+                  const SizedBox(height: 4),
+                  const Divider(),
+                  const SizedBox(height: 4),
+                  ActionButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return const DeleteUserDialogBody();
+                        },
+                      );
+                    },
+                    title: l10n.settingsDeleteData,
+                  ),
+                ],
               ),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
