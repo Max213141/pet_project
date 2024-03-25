@@ -9,7 +9,7 @@ part 'quote_event.dart';
 part 'quote_state.dart';
 part 'quote_bloc.freezed.dart';
 
-void _log(dynamic message) => Logger.projectLog(message, name: 'theme_bloc');
+void _log(dynamic message) => Logger.projectLog(message, name: 'quote_bloc');
 
 class QuoteBloc extends Bloc<QuoteEvent, QuoteState> {
   QuoteBloc() : super(const _Initial()) {
@@ -36,6 +36,8 @@ class QuoteBloc extends Bloc<QuoteEvent, QuoteState> {
           .replaceAll("â", "")
           .replaceAll("", "")
           .replaceAll(".", "");
+      _log('response body - $fixedResponse');
+
       var res = jsonDecode(fixedResponse);
       _log('response quote - $res');
 

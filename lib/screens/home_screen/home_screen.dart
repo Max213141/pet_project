@@ -19,18 +19,33 @@ class HomeScreen extends StatelessWidget {
               SizedBox(
                 width: MediaQuery.of(context).size.width,
                 child: DecoratedBox(
-                  decoration: const BoxDecoration(
-                      color: AppColor.primaryBackgroundColor),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 18.0),
-                    child: Text(
-                      l10n.homeScreenQuestion,
-                      style: MentalHealthTextStyles.text.popinsSecondaryFontF16,
+                  decoration: const BoxDecoration(color: AppColor.primaryColor),
+                  child: SizedBox(
+                    height: 30,
+                    // MediaQuery.of(context).size.height / 6,
+                    child: DecoratedBox(
+                      decoration: const BoxDecoration(
+                        color: AppColor.primaryBackgroundColor,
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(40),
+                        ),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                          left: 18.0,
+                          bottom: 6,
+                        ),
+                        child: Text(
+                          l10n.homeScreenQuestion,
+                          style: MentalHealthTextStyles
+                              .text.popinsSecondaryFontF16,
+                        ),
+                      ),
                     ),
                   ),
                 ),
               ),
-              const CarouselWidget(),
+              // const CarouselWidget(),
               const ToDoListWidget(),
               QuoteWidget(l10n: l10n),
               const CalendarWidget(),

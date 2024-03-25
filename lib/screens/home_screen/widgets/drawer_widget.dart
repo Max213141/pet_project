@@ -16,11 +16,11 @@ class DrawerWidget extends StatelessWidget {
     final String? username = HiveStore().getUserName();
     final String? email = HiveStore().getUserEmail();
     final List<DrawerItem> drawerItemsList = [
-      DrawerItem(
-        title: l10n.drawerProfile,
-        icon: 'assets/menu_icons/profile.svg',
-        onTap: () => GoRouter.of(context).go('/main/profile_screen'),
-      ),
+      // DrawerItem(
+      //   title: l10n.drawerProfile,
+      //   icon: 'assets/menu_icons/profile.svg',
+      //   onTap: () => GoRouter.of(context).go('/main/profile_screen'),
+      // ),
       DrawerItem(
         title: l10n.drawerAboutUs,
         icon: 'assets/menu_icons/about_us.svg',
@@ -90,7 +90,7 @@ class DrawerWidget extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ...drawerItemsList.getRange(0, 4).map(
+                  ...drawerItemsList.getRange(0, 3).map(
                         (drawerItem) => DrawerItemWidget(item: drawerItem),
                       ),
                   const Spacer(),

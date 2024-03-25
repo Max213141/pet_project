@@ -94,6 +94,18 @@ class AboutUsScreen extends StatelessWidget {
                         },
                         picturePath: 'assets/socials/dribbble.svg',
                       ),
+                      const SizedBox(width: 4),
+                      SocialsButton(
+                        onTap: () {
+                          launchUrl(
+                            Uri.parse(
+                              'https://www.linkedin.com/in/maksim-kuptsov/',
+                            ),
+                            mode: LaunchMode.platformDefault,
+                          );
+                        },
+                        picturePath: 'assets/socials/behance.svg',
+                      ),
                     ],
                   ),
                   const SizedBox(height: 4),
