@@ -29,10 +29,10 @@ class SettingsScreen extends StatelessWidget {
               child: Column(
                 children: [
                   const SettingsLanguagePart(),
-                  const SizedBox(height: 4),
-                  const Divider(),
-                  const SizedBox(height: 4),
-                  const ThemeSettingsPart(),
+                  // const SizedBox(height: 4),
+                  // const Divider(),
+                  // const SizedBox(height: 4),
+                  // const ThemeSettingsPart(),
                   const SizedBox(height: 4),
                   const Divider(),
                   const SizedBox(height: 4),
