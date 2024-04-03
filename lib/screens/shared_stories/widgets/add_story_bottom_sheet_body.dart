@@ -44,6 +44,7 @@ class _AddStoryBottomSheetBodyState extends State<AddStoryBottomSheetBody> {
           CustomFormFieldWidget(
             title: l10n.sharedStoriesScreenCreationStoryTitle,
             controller: titleController,
+            maxLength: 16,
             validator: (value) {
               if (value?.isEmpty ?? true) {
                 return l10n.sharedStoriesScreenCreationStoryTitleEmpty;

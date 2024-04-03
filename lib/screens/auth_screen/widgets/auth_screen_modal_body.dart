@@ -77,6 +77,9 @@ class _AuthScreenModalBodyState extends State<AuthScreenModalBody> {
                                         validator: (value) {
                                           if (value?.isEmpty ?? true) {
                                             return l10n.authUsernameIsEmpty;
+                                          } else if (value?.isEmpty ?? true) {
+                                            return l10n
+                                                .authUsernameIsEmpty; //TODO create validator for not email looking string
                                           }
                                           return null;
                                         },

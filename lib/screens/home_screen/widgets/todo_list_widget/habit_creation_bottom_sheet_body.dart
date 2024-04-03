@@ -92,7 +92,11 @@ class _HabitCreationBodyState extends State<HabitCreationBody> {
                       ),
                     ),
                   );
-                  Navigator.of(context).pop();
+                  Future.delayed(
+                    //TODO check does it work out to solve problem with strange
+                    const Duration(milliseconds: 700),
+                    () => Navigator.of(context).pop(),
+                  );
                 }
               },
             ),

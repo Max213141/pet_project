@@ -66,7 +66,12 @@ class HabitsBloc extends Bloc<HabitsEvent, HabitsState> {
         event.userUpdatedHabits,
         SetOptions(merge: true),
       );
-      add(HabitsEvent.loadHabits(userUID: uid));
+
+      Future.delayed(
+        //TODO check does it work out to solve problem with strange habits accuaring and sorting
+        const Duration(milliseconds: 200),
+        () => add(HabitsEvent.loadHabits(userUID: uid)),
+      );
     } catch (e) {
       emit(
         HabitsState.habitsLoadingError(
