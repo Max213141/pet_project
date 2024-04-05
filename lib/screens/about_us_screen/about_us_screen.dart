@@ -61,33 +61,33 @@ class AboutUsScreen extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      SocialsButton(
-                        onTap: () {
-                          launchUrl(
-                            Uri.parse('https://t.me/Max2131'),
-                            mode: LaunchMode.platformDefault,
-                          );
-                        },
-                        picturePath: 'assets/socials/telegram.svg',
-                      ),
-                      const SizedBox(width: 4),
+                      // SocialsButton(
+                      //   onTap: () {
+                      //     launchUrl(
+                      //       Uri.parse('https://t.me/khaurilova'),
+                      //       mode: LaunchMode.platformDefault,
+                      //     );
+                      //   },
+                      //   picturePath: 'assets/socials/telegram.svg',
+                      // ),
+                      // const SizedBox(width: 4),
+                      // SocialsButton(
+                      //   onTap: () {
+                      //     launchUrl(
+                      //       Uri.parse(
+                      //         'https://www.linkedin.com/in/maksim-kuptsov/',
+                      //       ),
+                      //       mode: LaunchMode.platformDefault,
+                      //     );
+                      //   },
+                      //   picturePath: 'assets/socials/linkedin.svg',
+                      // ),
+                      // const SizedBox(width: 4),
                       SocialsButton(
                         onTap: () {
                           launchUrl(
                             Uri.parse(
-                              'https://www.linkedin.com/in/maksim-kuptsov/',
-                            ),
-                            mode: LaunchMode.platformDefault,
-                          );
-                        },
-                        picturePath: 'assets/socials/linkedin.svg',
-                      ),
-                      const SizedBox(width: 4),
-                      SocialsButton(
-                        onTap: () {
-                          launchUrl(
-                            Uri.parse(
-                              'https://www.linkedin.com/in/maksim-kuptsov/',
+                              'https://dribbble.com/Haurilova',
                             ),
                             mode: LaunchMode.platformDefault,
                           );
@@ -99,7 +99,7 @@ class AboutUsScreen extends StatelessWidget {
                         onTap: () {
                           launchUrl(
                             Uri.parse(
-                              'https://www.linkedin.com/in/maksim-kuptsov/',
+                              'https://www.behance.net/khaurilova',
                             ),
                             mode: LaunchMode.platformDefault,
                           );
