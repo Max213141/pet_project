@@ -96,8 +96,13 @@ class _AuthScreenModalBodyState extends State<AuthScreenModalBody> {
                             child: CustomFormFieldWidget(
                               controller: emailController,
                               validator: (value) {
+                                final RegExp emailRegExp = RegExp(
+                                    r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)*(\.[a-zA-Z]{2,})$');
                                 if (value?.isEmpty ?? true) {
                                   return l10n.authEmailIsEmpty;
+                                }
+                                if (!emailRegExp.hasMatch(value!)) {
+                                  return l10n.authEmailInvalid;
                                 }
                                 return null;
                               },
@@ -112,6 +117,7 @@ class _AuthScreenModalBodyState extends State<AuthScreenModalBody> {
                                 if (value?.isEmpty ?? true) {
                                   return l10n.authPasswordIsEmpty;
                                 }
+
                                 return null;
                               },
                               title: l10n.authPassword,
