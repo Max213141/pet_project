@@ -24,7 +24,7 @@ class _HabitsScreenState extends State<HabitsScreen> {
     uid = userData?.uid ?? 'pEo04Rq6And1QOhyTaUOjkMczyy1';
     WidgetsBinding.instance.addPostFrameCallback(
       (_) => BlocProvider.of<HabitsBloc>(context).add(
-        LoadHabits(userUID: uid),
+        StreamUserHabits(userUID: uid),
       ),
     );
     // TODO: implement initState
@@ -39,10 +39,10 @@ class _HabitsScreenState extends State<HabitsScreen> {
   @override
   Widget build(BuildContext context) {
     Widget body = const SizedBox.shrink();
-    return BlocConsumer<HabitsBloc, HabitsState>(
-      listener: (context, state) {
-        state.whenOrNull();
-      },
+    return BlocBuilder<HabitsBloc, HabitsState>(
+      // listener: (context, state) {
+      //   state.whenOrNull();
+      // },
       builder: (context, state) {
         state.when(
           initial: () => body = const SizedBox.shrink(),

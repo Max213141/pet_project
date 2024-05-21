@@ -1,8 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class MoodEntry {
-  final int
-      mood; //TODO change this to int emotionGrade to solve localized emotion trubles
+  final int mood;
   final Timestamp trackedDay;
 
   MoodEntry({

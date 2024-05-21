@@ -19,6 +19,7 @@ mixin _$HabitsEvent {
   String get userUID => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(String userUID) streamUserHabits,
     required TResult Function(String userUID, bool? isHomeScreen) loadHabits,
     required TResult Function(String userUID, UserHabitsList userUpdatedHabits)
         uploadHabits,
@@ -26,6 +27,7 @@ mixin _$HabitsEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String userUID)? streamUserHabits,
     TResult? Function(String userUID, bool? isHomeScreen)? loadHabits,
     TResult? Function(String userUID, UserHabitsList userUpdatedHabits)?
         uploadHabits,
@@ -33,6 +35,7 @@ mixin _$HabitsEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String userUID)? streamUserHabits,
     TResult Function(String userUID, bool? isHomeScreen)? loadHabits,
     TResult Function(String userUID, UserHabitsList userUpdatedHabits)?
         uploadHabits,
@@ -41,18 +44,21 @@ mixin _$HabitsEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(StreamUserHabits value) streamUserHabits,
     required TResult Function(LoadHabits value) loadHabits,
     required TResult Function(UploadHabits value) uploadHabits,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(StreamUserHabits value)? streamUserHabits,
     TResult? Function(LoadHabits value)? loadHabits,
     TResult? Function(UploadHabits value)? uploadHabits,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(StreamUserHabits value)? streamUserHabits,
     TResult Function(LoadHabits value)? loadHabits,
     TResult Function(UploadHabits value)? uploadHabits,
     required TResult orElse(),
@@ -95,6 +101,154 @@ class _$HabitsEventCopyWithImpl<$Res, $Val extends HabitsEvent>
               as String,
     ) as $Val);
   }
+}
+
+/// @nodoc
+abstract class _$$StreamUserHabitsImplCopyWith<$Res>
+    implements $HabitsEventCopyWith<$Res> {
+  factory _$$StreamUserHabitsImplCopyWith(_$StreamUserHabitsImpl value,
+          $Res Function(_$StreamUserHabitsImpl) then) =
+      __$$StreamUserHabitsImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String userUID});
+}
+
+/// @nodoc
+class __$$StreamUserHabitsImplCopyWithImpl<$Res>
+    extends _$HabitsEventCopyWithImpl<$Res, _$StreamUserHabitsImpl>
+    implements _$$StreamUserHabitsImplCopyWith<$Res> {
+  __$$StreamUserHabitsImplCopyWithImpl(_$StreamUserHabitsImpl _value,
+      $Res Function(_$StreamUserHabitsImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userUID = null,
+  }) {
+    return _then(_$StreamUserHabitsImpl(
+      userUID: null == userUID
+          ? _value.userUID
+          : userUID // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$StreamUserHabitsImpl implements StreamUserHabits {
+  const _$StreamUserHabitsImpl({required this.userUID});
+
+  @override
+  final String userUID;
+
+  @override
+  String toString() {
+    return 'HabitsEvent.streamUserHabits(userUID: $userUID)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$StreamUserHabitsImpl &&
+            (identical(other.userUID, userUID) || other.userUID == userUID));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, userUID);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$StreamUserHabitsImplCopyWith<_$StreamUserHabitsImpl> get copyWith =>
+      __$$StreamUserHabitsImplCopyWithImpl<_$StreamUserHabitsImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String userUID) streamUserHabits,
+    required TResult Function(String userUID, bool? isHomeScreen) loadHabits,
+    required TResult Function(String userUID, UserHabitsList userUpdatedHabits)
+        uploadHabits,
+  }) {
+    return streamUserHabits(userUID);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String userUID)? streamUserHabits,
+    TResult? Function(String userUID, bool? isHomeScreen)? loadHabits,
+    TResult? Function(String userUID, UserHabitsList userUpdatedHabits)?
+        uploadHabits,
+  }) {
+    return streamUserHabits?.call(userUID);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String userUID)? streamUserHabits,
+    TResult Function(String userUID, bool? isHomeScreen)? loadHabits,
+    TResult Function(String userUID, UserHabitsList userUpdatedHabits)?
+        uploadHabits,
+    required TResult orElse(),
+  }) {
+    if (streamUserHabits != null) {
+      return streamUserHabits(userUID);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(StreamUserHabits value) streamUserHabits,
+    required TResult Function(LoadHabits value) loadHabits,
+    required TResult Function(UploadHabits value) uploadHabits,
+  }) {
+    return streamUserHabits(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(StreamUserHabits value)? streamUserHabits,
+    TResult? Function(LoadHabits value)? loadHabits,
+    TResult? Function(UploadHabits value)? uploadHabits,
+  }) {
+    return streamUserHabits?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StreamUserHabits value)? streamUserHabits,
+    TResult Function(LoadHabits value)? loadHabits,
+    TResult Function(UploadHabits value)? uploadHabits,
+    required TResult orElse(),
+  }) {
+    if (streamUserHabits != null) {
+      return streamUserHabits(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class StreamUserHabits implements HabitsEvent {
+  const factory StreamUserHabits({required final String userUID}) =
+      _$StreamUserHabitsImpl;
+
+  @override
+  String get userUID;
+  @override
+  @JsonKey(ignore: true)
+  _$$StreamUserHabitsImplCopyWith<_$StreamUserHabitsImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -172,6 +326,7 @@ class _$LoadHabitsImpl implements LoadHabits {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(String userUID) streamUserHabits,
     required TResult Function(String userUID, bool? isHomeScreen) loadHabits,
     required TResult Function(String userUID, UserHabitsList userUpdatedHabits)
         uploadHabits,
@@ -182,6 +337,7 @@ class _$LoadHabitsImpl implements LoadHabits {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String userUID)? streamUserHabits,
     TResult? Function(String userUID, bool? isHomeScreen)? loadHabits,
     TResult? Function(String userUID, UserHabitsList userUpdatedHabits)?
         uploadHabits,
@@ -192,6 +348,7 @@ class _$LoadHabitsImpl implements LoadHabits {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String userUID)? streamUserHabits,
     TResult Function(String userUID, bool? isHomeScreen)? loadHabits,
     TResult Function(String userUID, UserHabitsList userUpdatedHabits)?
         uploadHabits,
@@ -206,6 +363,7 @@ class _$LoadHabitsImpl implements LoadHabits {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(StreamUserHabits value) streamUserHabits,
     required TResult Function(LoadHabits value) loadHabits,
     required TResult Function(UploadHabits value) uploadHabits,
   }) {
@@ -215,6 +373,7 @@ class _$LoadHabitsImpl implements LoadHabits {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(StreamUserHabits value)? streamUserHabits,
     TResult? Function(LoadHabits value)? loadHabits,
     TResult? Function(UploadHabits value)? uploadHabits,
   }) {
@@ -224,6 +383,7 @@ class _$LoadHabitsImpl implements LoadHabits {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(StreamUserHabits value)? streamUserHabits,
     TResult Function(LoadHabits value)? loadHabits,
     TResult Function(UploadHabits value)? uploadHabits,
     required TResult orElse(),
@@ -325,6 +485,7 @@ class _$UploadHabitsImpl implements UploadHabits {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(String userUID) streamUserHabits,
     required TResult Function(String userUID, bool? isHomeScreen) loadHabits,
     required TResult Function(String userUID, UserHabitsList userUpdatedHabits)
         uploadHabits,
@@ -335,6 +496,7 @@ class _$UploadHabitsImpl implements UploadHabits {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String userUID)? streamUserHabits,
     TResult? Function(String userUID, bool? isHomeScreen)? loadHabits,
     TResult? Function(String userUID, UserHabitsList userUpdatedHabits)?
         uploadHabits,
@@ -345,6 +507,7 @@ class _$UploadHabitsImpl implements UploadHabits {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String userUID)? streamUserHabits,
     TResult Function(String userUID, bool? isHomeScreen)? loadHabits,
     TResult Function(String userUID, UserHabitsList userUpdatedHabits)?
         uploadHabits,
@@ -359,6 +522,7 @@ class _$UploadHabitsImpl implements UploadHabits {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(StreamUserHabits value) streamUserHabits,
     required TResult Function(LoadHabits value) loadHabits,
     required TResult Function(UploadHabits value) uploadHabits,
   }) {
@@ -368,6 +532,7 @@ class _$UploadHabitsImpl implements UploadHabits {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(StreamUserHabits value)? streamUserHabits,
     TResult? Function(LoadHabits value)? loadHabits,
     TResult? Function(UploadHabits value)? uploadHabits,
   }) {
@@ -377,6 +542,7 @@ class _$UploadHabitsImpl implements UploadHabits {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(StreamUserHabits value)? streamUserHabits,
     TResult Function(LoadHabits value)? loadHabits,
     TResult Function(UploadHabits value)? uploadHabits,
     required TResult orElse(),

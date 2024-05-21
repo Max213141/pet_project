@@ -4,3 +4,4 @@ export 'percentage_radial_diagram.dart';
 export 'habits_item.dart';
 export 'habits_screen_body.dart';
 export 'habits_list.dart';
+export 'habits_checkbox.dart';

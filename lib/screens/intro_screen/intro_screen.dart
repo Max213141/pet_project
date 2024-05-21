@@ -57,6 +57,12 @@ class _IntroScreenState extends State<IntroScreen> {
             typeIndicatorAnimation: TypeIndicatorAnimation.sliding,
           ),
           listCustomTabs: slides,
+          // listContentConfig: [
+          //   ContentConfig(
+          //     widthImage: MediaQuery.of(context).size.width / 2,
+          //     heightImage: MediaQuery.of(context).size.height / 2.5,
+          //   )
+          // ],
           onDonePress: onDonePress,
           onSkipPress: onSkipPress,
           doneButtonStyle:

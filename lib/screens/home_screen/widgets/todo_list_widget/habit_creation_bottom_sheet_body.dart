@@ -6,6 +6,9 @@ import 'package:life_sync/common_widgets/widgets.dart';
 import 'package:life_sync/entities/entities.dart';
 import 'package:life_sync/utils/utils.dart';
 
+void _log(dynamic message) =>
+    Logger.projectLog(message, name: 'habit_creation_bottom_sheet_body');
+
 class HabitCreationBody extends StatefulWidget {
   final String uid;
   final List<UserHabit> habitsList;
@@ -76,14 +79,18 @@ class _HabitCreationBodyState extends State<HabitCreationBody> {
               title: l10n.submit.toUpperCase(),
               onPressed: () {
                 if (formKey.currentState!.validate()) {
+                  _log('OLD list -  ${widget.habitsList.last.task}');
                   final updatedList = widget.habitsList.toList();
-                  updatedList.add(
+                  updatedList.insert(
+                    0,
                     UserHabit(
                       task: habitController.text,
                       date: Timestamp.now(),
                       isDone: false,
                     ),
                   );
+                  _log('NEW list -  ${updatedList.last.task}');
+
                   BlocProvider.of<HabitsBloc>(context).add(
                     UploadHabits(
                       userUID: widget.uid,

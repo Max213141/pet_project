@@ -14,10 +14,38 @@ class HabitsBloc extends Bloc<HabitsEvent, HabitsState> {
     on<HabitsEvent>(
       (events, emit) async {
         await events.map(
+          streamUserHabits: (event) async =>
+              await _streamUserHabits(event, emit),
           loadHabits: (event) async => await _loadUserHabits(event, emit),
           uploadHabits: (event) async => await _uploadUserHabits(event, emit),
         );
       },
+    );
+  }
+
+  _streamUserHabits(StreamUserHabits event, Emitter<HabitsState> emit) async {
+    String uid = event.userUID;
+    // Stream<QuerySnapshot>  poemsStream =
+    await emit.forEach<DocumentSnapshot<UserHabitsList>>(
+      FirebaseFirestore.instance
+          .collection('users')
+          .doc(uid)
+          .collection('habits')
+          .doc('userHabits')
+          .withConverter(
+            fromFirestore: UserHabitsList.fromFirestore,
+            toFirestore: (UserHabitsList userHabits, _) =>
+                userHabits.toFirestore(),
+          )
+          .snapshots(),
+      onData: (data) {
+        final userHabits = data.data()?.userHabits ?? [];
+
+        return HabitsState.habitsLoaded(userHabits: userHabits);
+      },
+      onError: (error, stackTrace) => HabitsState.habitsLoadingError(
+        errorText: error.toString(),
+      ),
     );
   }
 
@@ -66,12 +94,15 @@ class HabitsBloc extends Bloc<HabitsEvent, HabitsState> {
         event.userUpdatedHabits,
         SetOptions(merge: true),
       );
-
-      Future.delayed(
-        //TODO check does it work out to solve problem with strange habits accuaring and sorting
-        const Duration(milliseconds: 200),
-        () => add(HabitsEvent.loadHabits(userUID: uid)),
+      await Future.delayed(
+        const Duration(milliseconds: 400),
+        () {},
       );
+      // Future.delayed(
+      //   //TODO check does it work out to solve problem with strange habits accuaring and sorting
+      //   const Duration(milliseconds: 200),
+      //   () => add(HabitsEvent.loadHabits(userUID: uid)),
+      // );
     } catch (e) {
       emit(
         HabitsState.habitsLoadingError(

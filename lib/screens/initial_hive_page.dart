@@ -33,7 +33,8 @@ class _InitialHivePageState extends State<InitialHivePage> {
   }
 
   Future<void> _firstLaunchHandler() async {
-    final isFirstLaunchFromHive = HiveStore().getFirstLaunch();
+    final isFirstLaunchFromHive = true;
+    // HiveStore().getFirstLaunch();
 
     // _log('is app fisrst launch: $isFirstLaunchFromHive');
     // //_log('app preferences box is empty: ${appPreferencesBox.isEmpty}');

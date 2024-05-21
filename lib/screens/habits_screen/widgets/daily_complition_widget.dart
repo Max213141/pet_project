@@ -36,18 +36,22 @@ class HorizontalDateList extends StatelessWidget {
     Map<int, double> completionPercentagePerDay = {};
 // Iterate through habitsList to calculate total and completed habits for each day
     for (var habit in habitsList) {
-      int habitDate =
-          habit.date.toDate().day; // Assuming habit.date is a DateTime object
-      final totalInSpecificDate = habitsList
-          .where((element) => element.date.toDate().day == habitDate)
-          .length;
-      final completedInSpecificDate = habitsList
-          .where((element) =>
-              element.date.toDate().day == habitDate && element.isDone)
-          .length;
+      int habitDate = habit.date.toDate().day;
+      int habitDateMonth = habit.date.toDate().month;
+      int currentMonth = DateTime.now().month;
+      if (habitDateMonth == currentMonth) {
+        // Assuming habit.date is a DateTime object
+        final totalInSpecificDate = habitsList
+            .where((element) => element.date.toDate().day == habitDate)
+            .length;
+        final completedInSpecificDate = habitsList
+            .where((element) =>
+                element.date.toDate().day == habitDate && element.isDone)
+            .length;
 
-      completedHabitsPerDay[habitDate] = completedInSpecificDate;
-      totalHabitsPerDay[habitDate] = totalInSpecificDate;
+        completedHabitsPerDay[habitDate] = completedInSpecificDate;
+        totalHabitsPerDay[habitDate] = totalInSpecificDate;
+      }
     }
 
 // Calculate completion percentage for each day
