@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:1601465953:android:53a9ce4ed64f1c74c84420",
         "android_client_info": {
-          "package_name": "com.example.pet_project"
+          "package_name": "by.lyfe_sync"
         }
       },
       "oauth_client": [
@@ -20,6 +20,14 @@
           "android_info": {
             "package_name": "com.example.pet_project",
             "certificate_hash": "5a8d914905c2081bb44bab1480377f7fd9d8ab96"
+          }
+        },
+        {
+          "client_id": "1601465953-v6q55r2vgvbkaje9g61r8ndiog7ajipu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.pet_project",
+            "certificate_hash": "f6ed5cb888b2d5bcb23241505c53f54dd9dd446c"
           }
         },
         {
