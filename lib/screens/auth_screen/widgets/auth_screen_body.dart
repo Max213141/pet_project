@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:life_sync/common_widgets/widgets.dart';
 import 'package:life_sync/screens/auth_screen/widgets/widgets.dart';
 import 'package:life_sync/utils/utils.dart';
@@ -77,9 +79,15 @@ class AuthScreenBody extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 20),
-                  const MentalHealthSvgPicture(
-                    picture: 'assets/images/auth_image.svg',
-                    fit: BoxFit.fill,
+                  Flexible(
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width / 1.5,
+                      height: MediaQuery.of(context).size.height / 2.5,
+                      child: MentalHealthSvgPicture(
+                        picture: 'assets/images/auth_image.svg',
+                        fit: BoxFit.scaleDown,
+                      ),
+                    ),
                   ),
                   const SizedBox(height: 20),
                   ActionButton(

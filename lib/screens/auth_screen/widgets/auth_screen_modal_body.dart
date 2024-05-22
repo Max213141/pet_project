@@ -192,7 +192,8 @@ class _AuthScreenModalBodyState extends State<AuthScreenModalBody> {
                   ),
                 ),
               ),
-              if (Platform.isAndroid)
+              if (Platform.isAndroid) ...[
+                const SizedBox(height: 5),
                 Center(
                   child: SocialsButton(
                     picturePath: 'assets/socials/gmail.svg',
@@ -203,6 +204,7 @@ class _AuthScreenModalBodyState extends State<AuthScreenModalBody> {
                     },
                   ),
                 ),
+              ]
             ],
           ),
         ),
