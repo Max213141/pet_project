@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:life_sync/entities/entities.dart';
 import 'package:life_sync/entities/hive_entities/user_data.dart';
@@ -15,11 +16,16 @@ void _log(dynamic message) => Logger.projectLog(message, name: 'auth_bloc');
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final FirebaseAuth auth;
+  final GoogleSignIn googleSignIn;
 
-  AuthBloc({required this.auth}) : super(const _Initial()) {
+  AuthBloc({
+    required this.auth,
+    required this.googleSignIn,
+  }) : super(const _Initial()) {
     on<AuthEvent>((events, emit) async {
       await events.map(
         createUser: (event) async => await _createUser(event, emit),
+        signInWithGoogle: (event) async => await _signInWithGoogle(event, emit),
         logIn: (event) async => await _logIn(event, emit),
         logOut: (event) async => await _logOut(event, emit),
         deleteUser: (event) async => await _deleteUser(event, emit),
@@ -73,6 +79,44 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     } catch (e) {
       emit(AuthState.authError(errorText: 'Ошибка: $e'));
       _log('UNHANDLED USER CREATION AUTH EXEPTION: $e');
+    }
+  }
+
+  _signInWithGoogle(SignInWithGoogle event, Emitter<AuthState> emit) async {
+    emit(const AuthState.loading());
+    try {
+      // Trigger the authentication flow
+      final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+
+      if (googleUser == null) {
+        // The user canceled the sign-in
+        emit(AuthState.authError(errorText: 'User canceled the sign-in'));
+        _log('User canceled the sign-in ');
+        return null;
+      }
+
+      // Obtain the auth details from the request
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
+
+      // Create a new credential
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+
+      // Once signed in, return the UserCredential
+      final UserCredential userCredential =
+          await auth.signInWithCredential(credential);
+      userCredential.additionalUserInfo?.profile
+          ?.forEach((key, value) => _log('Value - $key: $value'));
+      emit(const AuthState.logInSuccess());
+
+      // return userCredential.user;
+    } catch (e) {
+      emit(AuthState.authError(errorText: 'Ошибка: $e'));
+      _log('UNHANDLED USER CREATION AUTH EXEPTION: $e');
+      return null;
     }
   }
 

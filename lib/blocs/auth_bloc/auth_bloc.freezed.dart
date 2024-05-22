@@ -21,6 +21,7 @@ mixin _$AuthEvent {
     required TResult Function(String email, String password, String username)
         createUser,
     required TResult Function(String email, String password) logIn,
+    required TResult Function() signInWithGoogle,
     required TResult Function() deleteUser,
     required TResult Function() logOut,
   }) =>
@@ -30,6 +31,7 @@ mixin _$AuthEvent {
     TResult? Function(String email, String password, String username)?
         createUser,
     TResult? Function(String email, String password)? logIn,
+    TResult? Function()? signInWithGoogle,
     TResult? Function()? deleteUser,
     TResult? Function()? logOut,
   }) =>
@@ -39,6 +41,7 @@ mixin _$AuthEvent {
     TResult Function(String email, String password, String username)?
         createUser,
     TResult Function(String email, String password)? logIn,
+    TResult Function()? signInWithGoogle,
     TResult Function()? deleteUser,
     TResult Function()? logOut,
     required TResult orElse(),
@@ -48,6 +51,7 @@ mixin _$AuthEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(CreateUserEvent value) createUser,
     required TResult Function(LogInEvent value) logIn,
+    required TResult Function(SignInWithGoogle value) signInWithGoogle,
     required TResult Function(DeleteUserEvent value) deleteUser,
     required TResult Function(LogOutEvent value) logOut,
   }) =>
@@ -56,6 +60,7 @@ mixin _$AuthEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CreateUserEvent value)? createUser,
     TResult? Function(LogInEvent value)? logIn,
+    TResult? Function(SignInWithGoogle value)? signInWithGoogle,
     TResult? Function(DeleteUserEvent value)? deleteUser,
     TResult? Function(LogOutEvent value)? logOut,
   }) =>
@@ -64,6 +69,7 @@ mixin _$AuthEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CreateUserEvent value)? createUser,
     TResult Function(LogInEvent value)? logIn,
+    TResult Function(SignInWithGoogle value)? signInWithGoogle,
     TResult Function(DeleteUserEvent value)? deleteUser,
     TResult Function(LogOutEvent value)? logOut,
     required TResult orElse(),
@@ -175,6 +181,7 @@ class _$CreateUserEventImpl implements CreateUserEvent {
     required TResult Function(String email, String password, String username)
         createUser,
     required TResult Function(String email, String password) logIn,
+    required TResult Function() signInWithGoogle,
     required TResult Function() deleteUser,
     required TResult Function() logOut,
   }) {
@@ -187,6 +194,7 @@ class _$CreateUserEventImpl implements CreateUserEvent {
     TResult? Function(String email, String password, String username)?
         createUser,
     TResult? Function(String email, String password)? logIn,
+    TResult? Function()? signInWithGoogle,
     TResult? Function()? deleteUser,
     TResult? Function()? logOut,
   }) {
@@ -199,6 +207,7 @@ class _$CreateUserEventImpl implements CreateUserEvent {
     TResult Function(String email, String password, String username)?
         createUser,
     TResult Function(String email, String password)? logIn,
+    TResult Function()? signInWithGoogle,
     TResult Function()? deleteUser,
     TResult Function()? logOut,
     required TResult orElse(),
@@ -214,6 +223,7 @@ class _$CreateUserEventImpl implements CreateUserEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(CreateUserEvent value) createUser,
     required TResult Function(LogInEvent value) logIn,
+    required TResult Function(SignInWithGoogle value) signInWithGoogle,
     required TResult Function(DeleteUserEvent value) deleteUser,
     required TResult Function(LogOutEvent value) logOut,
   }) {
@@ -225,6 +235,7 @@ class _$CreateUserEventImpl implements CreateUserEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CreateUserEvent value)? createUser,
     TResult? Function(LogInEvent value)? logIn,
+    TResult? Function(SignInWithGoogle value)? signInWithGoogle,
     TResult? Function(DeleteUserEvent value)? deleteUser,
     TResult? Function(LogOutEvent value)? logOut,
   }) {
@@ -236,6 +247,7 @@ class _$CreateUserEventImpl implements CreateUserEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CreateUserEvent value)? createUser,
     TResult Function(LogInEvent value)? logIn,
+    TResult Function(SignInWithGoogle value)? signInWithGoogle,
     TResult Function(DeleteUserEvent value)? deleteUser,
     TResult Function(LogOutEvent value)? logOut,
     required TResult orElse(),
@@ -337,6 +349,7 @@ class _$LogInEventImpl implements LogInEvent {
     required TResult Function(String email, String password, String username)
         createUser,
     required TResult Function(String email, String password) logIn,
+    required TResult Function() signInWithGoogle,
     required TResult Function() deleteUser,
     required TResult Function() logOut,
   }) {
@@ -349,6 +362,7 @@ class _$LogInEventImpl implements LogInEvent {
     TResult? Function(String email, String password, String username)?
         createUser,
     TResult? Function(String email, String password)? logIn,
+    TResult? Function()? signInWithGoogle,
     TResult? Function()? deleteUser,
     TResult? Function()? logOut,
   }) {
@@ -361,6 +375,7 @@ class _$LogInEventImpl implements LogInEvent {
     TResult Function(String email, String password, String username)?
         createUser,
     TResult Function(String email, String password)? logIn,
+    TResult Function()? signInWithGoogle,
     TResult Function()? deleteUser,
     TResult Function()? logOut,
     required TResult orElse(),
@@ -376,6 +391,7 @@ class _$LogInEventImpl implements LogInEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(CreateUserEvent value) createUser,
     required TResult Function(LogInEvent value) logIn,
+    required TResult Function(SignInWithGoogle value) signInWithGoogle,
     required TResult Function(DeleteUserEvent value) deleteUser,
     required TResult Function(LogOutEvent value) logOut,
   }) {
@@ -387,6 +403,7 @@ class _$LogInEventImpl implements LogInEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CreateUserEvent value)? createUser,
     TResult? Function(LogInEvent value)? logIn,
+    TResult? Function(SignInWithGoogle value)? signInWithGoogle,
     TResult? Function(DeleteUserEvent value)? deleteUser,
     TResult? Function(LogOutEvent value)? logOut,
   }) {
@@ -398,6 +415,7 @@ class _$LogInEventImpl implements LogInEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CreateUserEvent value)? createUser,
     TResult Function(LogInEvent value)? logIn,
+    TResult Function(SignInWithGoogle value)? signInWithGoogle,
     TResult Function(DeleteUserEvent value)? deleteUser,
     TResult Function(LogOutEvent value)? logOut,
     required TResult orElse(),
@@ -419,6 +437,129 @@ abstract class LogInEvent implements AuthEvent {
   @JsonKey(ignore: true)
   _$$LogInEventImplCopyWith<_$LogInEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SignInWithGoogleImplCopyWith<$Res> {
+  factory _$$SignInWithGoogleImplCopyWith(_$SignInWithGoogleImpl value,
+          $Res Function(_$SignInWithGoogleImpl) then) =
+      __$$SignInWithGoogleImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SignInWithGoogleImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$SignInWithGoogleImpl>
+    implements _$$SignInWithGoogleImplCopyWith<$Res> {
+  __$$SignInWithGoogleImplCopyWithImpl(_$SignInWithGoogleImpl _value,
+      $Res Function(_$SignInWithGoogleImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$SignInWithGoogleImpl implements SignInWithGoogle {
+  const _$SignInWithGoogleImpl();
+
+  @override
+  String toString() {
+    return 'AuthEvent.signInWithGoogle()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$SignInWithGoogleImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email, String password, String username)
+        createUser,
+    required TResult Function(String email, String password) logIn,
+    required TResult Function() signInWithGoogle,
+    required TResult Function() deleteUser,
+    required TResult Function() logOut,
+  }) {
+    return signInWithGoogle();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email, String password, String username)?
+        createUser,
+    TResult? Function(String email, String password)? logIn,
+    TResult? Function()? signInWithGoogle,
+    TResult? Function()? deleteUser,
+    TResult? Function()? logOut,
+  }) {
+    return signInWithGoogle?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String password, String username)?
+        createUser,
+    TResult Function(String email, String password)? logIn,
+    TResult Function()? signInWithGoogle,
+    TResult Function()? deleteUser,
+    TResult Function()? logOut,
+    required TResult orElse(),
+  }) {
+    if (signInWithGoogle != null) {
+      return signInWithGoogle();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CreateUserEvent value) createUser,
+    required TResult Function(LogInEvent value) logIn,
+    required TResult Function(SignInWithGoogle value) signInWithGoogle,
+    required TResult Function(DeleteUserEvent value) deleteUser,
+    required TResult Function(LogOutEvent value) logOut,
+  }) {
+    return signInWithGoogle(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CreateUserEvent value)? createUser,
+    TResult? Function(LogInEvent value)? logIn,
+    TResult? Function(SignInWithGoogle value)? signInWithGoogle,
+    TResult? Function(DeleteUserEvent value)? deleteUser,
+    TResult? Function(LogOutEvent value)? logOut,
+  }) {
+    return signInWithGoogle?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CreateUserEvent value)? createUser,
+    TResult Function(LogInEvent value)? logIn,
+    TResult Function(SignInWithGoogle value)? signInWithGoogle,
+    TResult Function(DeleteUserEvent value)? deleteUser,
+    TResult Function(LogOutEvent value)? logOut,
+    required TResult orElse(),
+  }) {
+    if (signInWithGoogle != null) {
+      return signInWithGoogle(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SignInWithGoogle implements AuthEvent {
+  const factory SignInWithGoogle() = _$SignInWithGoogleImpl;
 }
 
 /// @nodoc
@@ -462,6 +603,7 @@ class _$DeleteUserEventImpl implements DeleteUserEvent {
     required TResult Function(String email, String password, String username)
         createUser,
     required TResult Function(String email, String password) logIn,
+    required TResult Function() signInWithGoogle,
     required TResult Function() deleteUser,
     required TResult Function() logOut,
   }) {
@@ -474,6 +616,7 @@ class _$DeleteUserEventImpl implements DeleteUserEvent {
     TResult? Function(String email, String password, String username)?
         createUser,
     TResult? Function(String email, String password)? logIn,
+    TResult? Function()? signInWithGoogle,
     TResult? Function()? deleteUser,
     TResult? Function()? logOut,
   }) {
@@ -486,6 +629,7 @@ class _$DeleteUserEventImpl implements DeleteUserEvent {
     TResult Function(String email, String password, String username)?
         createUser,
     TResult Function(String email, String password)? logIn,
+    TResult Function()? signInWithGoogle,
     TResult Function()? deleteUser,
     TResult Function()? logOut,
     required TResult orElse(),
@@ -501,6 +645,7 @@ class _$DeleteUserEventImpl implements DeleteUserEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(CreateUserEvent value) createUser,
     required TResult Function(LogInEvent value) logIn,
+    required TResult Function(SignInWithGoogle value) signInWithGoogle,
     required TResult Function(DeleteUserEvent value) deleteUser,
     required TResult Function(LogOutEvent value) logOut,
   }) {
@@ -512,6 +657,7 @@ class _$DeleteUserEventImpl implements DeleteUserEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CreateUserEvent value)? createUser,
     TResult? Function(LogInEvent value)? logIn,
+    TResult? Function(SignInWithGoogle value)? signInWithGoogle,
     TResult? Function(DeleteUserEvent value)? deleteUser,
     TResult? Function(LogOutEvent value)? logOut,
   }) {
@@ -523,6 +669,7 @@ class _$DeleteUserEventImpl implements DeleteUserEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CreateUserEvent value)? createUser,
     TResult Function(LogInEvent value)? logIn,
+    TResult Function(SignInWithGoogle value)? signInWithGoogle,
     TResult Function(DeleteUserEvent value)? deleteUser,
     TResult Function(LogOutEvent value)? logOut,
     required TResult orElse(),
@@ -579,6 +726,7 @@ class _$LogOutEventImpl implements LogOutEvent {
     required TResult Function(String email, String password, String username)
         createUser,
     required TResult Function(String email, String password) logIn,
+    required TResult Function() signInWithGoogle,
     required TResult Function() deleteUser,
     required TResult Function() logOut,
   }) {
@@ -591,6 +739,7 @@ class _$LogOutEventImpl implements LogOutEvent {
     TResult? Function(String email, String password, String username)?
         createUser,
     TResult? Function(String email, String password)? logIn,
+    TResult? Function()? signInWithGoogle,
     TResult? Function()? deleteUser,
     TResult? Function()? logOut,
   }) {
@@ -603,6 +752,7 @@ class _$LogOutEventImpl implements LogOutEvent {
     TResult Function(String email, String password, String username)?
         createUser,
     TResult Function(String email, String password)? logIn,
+    TResult Function()? signInWithGoogle,
     TResult Function()? deleteUser,
     TResult Function()? logOut,
     required TResult orElse(),
@@ -618,6 +768,7 @@ class _$LogOutEventImpl implements LogOutEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(CreateUserEvent value) createUser,
     required TResult Function(LogInEvent value) logIn,
+    required TResult Function(SignInWithGoogle value) signInWithGoogle,
     required TResult Function(DeleteUserEvent value) deleteUser,
     required TResult Function(LogOutEvent value) logOut,
   }) {
@@ -629,6 +780,7 @@ class _$LogOutEventImpl implements LogOutEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CreateUserEvent value)? createUser,
     TResult? Function(LogInEvent value)? logIn,
+    TResult? Function(SignInWithGoogle value)? signInWithGoogle,
     TResult? Function(DeleteUserEvent value)? deleteUser,
     TResult? Function(LogOutEvent value)? logOut,
   }) {
@@ -640,6 +792,7 @@ class _$LogOutEventImpl implements LogOutEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CreateUserEvent value)? createUser,
     TResult Function(LogInEvent value)? logIn,
+    TResult Function(SignInWithGoogle value)? signInWithGoogle,
     TResult Function(DeleteUserEvent value)? deleteUser,
     TResult Function(LogOutEvent value)? logOut,
     required TResult orElse(),

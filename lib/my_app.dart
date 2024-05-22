@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:life_sync/blocs/blocs.dart';
 import 'package:life_sync/entities/entities.dart';
@@ -12,12 +13,14 @@ import 'package:life_sync/screens/screens.dart';
 
 class MyApp extends StatelessWidget {
   final FirebaseAuth auth;
+  final GoogleSignIn googleSignIn;
   final HiveStore hiveStore = HiveStore();
 
   MyApp({
-    Key? key,
+    super.key,
     required this.auth,
-  }) : super(key: key);
+    required this.googleSignIn,
+  });
 
   Future<void> _initHive() async {
     WidgetsFlutterBinding.ensureInitialized();
@@ -173,14 +176,6 @@ class MyApp extends StatelessWidget {
             ),
           ],
         ),
-        // GoRoute(
-        //   path: '/auth',
-        //   builder: (BuildContext context, GoRouterState state) {
-        //     return AuthScreen(
-        //       auth: auth,
-        //     );
-        //   },
-        // ),
       ],
       errorBuilder: (context, state) => const ErrorScreen(),
       debugLogDiagnostics: true,
@@ -197,7 +192,9 @@ class MyApp extends StatelessWidget {
             providers: [
               BlocProvider<ThemeBloc>(create: (context) => ThemeBloc()),
               BlocProvider<LocaleBloc>(create: (context) => LocaleBloc()),
-              BlocProvider<AuthBloc>(create: (context) => AuthBloc(auth: auth)),
+              BlocProvider<AuthBloc>(
+                  create: (context) =>
+                      AuthBloc(auth: auth, googleSignIn: googleSignIn)),
               BlocProvider<SharedStoriesBloc>(
                 create: (context) => SharedStoriesBloc(),
               ),

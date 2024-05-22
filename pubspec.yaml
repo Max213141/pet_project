@@ -33,6 +33,7 @@ dependencies:
   http: ^1.2.0
   cloud_firestore: ^4.14.0
   url_launcher: ^6.2.5
+  google_sign_in: ^6.2.1
   # welltested: ^0.0.1
 
   # firebase_messaging: ^14.6.0

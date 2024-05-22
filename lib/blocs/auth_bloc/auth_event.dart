@@ -13,6 +13,8 @@ class AuthEvent with _$AuthEvent {
     required String password,
   }) = LogInEvent;
 
+  const factory AuthEvent.signInWithGoogle() = SignInWithGoogle;
+
   const factory AuthEvent.deleteUser() = DeleteUserEvent;
 
   const factory AuthEvent.logOut() = LogOutEvent;

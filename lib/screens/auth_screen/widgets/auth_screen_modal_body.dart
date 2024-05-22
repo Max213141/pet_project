@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:life_sync/blocs/auth_bloc/auth_bloc.dart';
 import 'package:life_sync/blocs/blocs.dart';
 import 'package:life_sync/common_widgets/widgets.dart';
 import 'package:life_sync/utils/utils.dart';
@@ -77,9 +78,6 @@ class _AuthScreenModalBodyState extends State<AuthScreenModalBody> {
                                         validator: (value) {
                                           if (value?.isEmpty ?? true) {
                                             return l10n.authUsernameIsEmpty;
-                                          } else if (value?.isEmpty ?? true) {
-                                            return l10n
-                                                .authUsernameIsEmpty; //TODO create validator for not email looking string
                                           }
                                           return null;
                                         },
@@ -163,6 +161,14 @@ class _AuthScreenModalBodyState extends State<AuthScreenModalBody> {
                   }
                 },
                 width: MediaQuery.of(context).size.width - 70,
+              ),
+              ActionButton(
+                onPressed: () {
+                  BlocProvider.of<AuthBloc>(context).add(
+                    const SignInWithGoogle(),
+                  );
+                },
+                title: 'Google SignIn',
               ),
               const SizedBox(height: 10),
               GestureDetector(
