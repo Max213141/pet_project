@@ -8,26 +8,26 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1601465953:android:53a9ce4ed64f1c74c84420",
+        "mobilesdk_app_id": "1:1601465953:android:69f58c45603ac97ec84420",
         "android_client_info": {
-          "package_name": "by.lyfe_sync"
+          "package_name": "by.life_sync"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1601465953-k8js2mhnb020q8ct350247999kcmbh60.apps.googleusercontent.com",
+          "client_id": "1601465953-b45p7rml30ffc362pjgv7paabua3nl7e.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.pet_project",
-            "certificate_hash": "5a8d914905c2081bb44bab1480377f7fd9d8ab96"
+            "package_name": "by.life_sync",
+            "certificate_hash": "f6ed5cb888b2d5bcb23241505c53f54dd9dd446c"
           }
         },
         {
-          "client_id": "1601465953-v6q55r2vgvbkaje9g61r8ndiog7ajipu.apps.googleusercontent.com",
+          "client_id": "1601465953-p7e9j9obv2b17f6gqteolb2b8sq9a7k5.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.pet_project",
-            "certificate_hash": "f6ed5cb888b2d5bcb23241505c53f54dd9dd446c"
+            "package_name": "by.life_sync",
+            "certificate_hash": "5a8d914905c2081bb44bab1480377f7fd9d8ab96"
           }
         },
         {
