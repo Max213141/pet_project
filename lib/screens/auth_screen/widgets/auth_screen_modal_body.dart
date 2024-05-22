@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:life_sync/blocs/auth_bloc/auth_bloc.dart';
@@ -162,14 +164,6 @@ class _AuthScreenModalBodyState extends State<AuthScreenModalBody> {
                 },
                 width: MediaQuery.of(context).size.width - 70,
               ),
-              ActionButton(
-                onPressed: () {
-                  BlocProvider.of<AuthBloc>(context).add(
-                    const SignInWithGoogle(),
-                  );
-                },
-                title: 'Google SignIn',
-              ),
               const SizedBox(height: 10),
               GestureDetector(
                 onTap: () => setState(() {
@@ -198,6 +192,17 @@ class _AuthScreenModalBodyState extends State<AuthScreenModalBody> {
                   ),
                 ),
               ),
+              if (Platform.isAndroid)
+                Center(
+                  child: SocialsButton(
+                    picturePath: 'assets/socials/gmail.svg',
+                    onTap: () {
+                      BlocProvider.of<AuthBloc>(context).add(
+                        const SignInWithGoogle(),
+                      );
+                    },
+                  ),
+                ),
             ],
           ),
         ),

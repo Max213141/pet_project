@@ -90,8 +90,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
       if (googleUser == null) {
         // The user canceled the sign-in
-        emit(AuthState.authError(errorText: 'User canceled the sign-in'));
-        _log('User canceled the sign-in ');
+        emit(const AuthState.authError(errorText: 'User canceled the sign-in'));
         return null;
       }
 
@@ -108,8 +107,49 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       // Once signed in, return the UserCredential
       final UserCredential userCredential =
           await auth.signInWithCredential(credential);
+      final String uid = userCredential.user!.uid;
+      final DocumentSnapshot userDoc =
+          await FirebaseFirestore.instance.collection('users').doc(uid).get();
+
       userCredential.additionalUserInfo?.profile
           ?.forEach((key, value) => _log('Value - $key: $value'));
+
+      if (!userDoc.exists) {
+        // User doesn't exist, create a new document
+        await FirebaseFirestore.instance.collection('users').doc(uid).set({
+          'userData': {
+            'name': googleUser.displayName ?? 'Unknown',
+            'email': googleUser.email,
+            'password':
+                '12345678901', // As password is not required for Google Sign-In
+          },
+        });
+        DocumentSnapshot docSnapShot =
+            await FirebaseFirestore.instance.collection('users').doc(uid).get();
+        final dbData = docSnapShot.get('userData');
+        DBUserData data = DBUserData.fromJson(dbData);
+        UserData? userData = HiveStore().getUserData();
+        if (userData != null) {
+          userData.userName = data.name;
+          userData.uid = uid;
+          userData.email = data.email;
+          userData.password = data.password;
+          await Hive.box<UserData>('user_data').put(0, userData);
+        }
+        _log('New user created in Firestore with uid: $uid');
+      } else {
+        // User exists, handle data from doc
+        final dbData = userDoc.get('userData');
+        DBUserData data = DBUserData.fromJson(dbData);
+        UserData? userData = HiveStore().getUserData();
+        if (userData != null) {
+          userData.userName = data.name;
+          userData.uid = uid;
+          userData.email = data.email;
+          userData.password = data.password;
+          await Hive.box<UserData>('user_data').put(0, userData);
+        }
+      }
       emit(const AuthState.logInSuccess());
 
       // return userCredential.user;
@@ -124,8 +164,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     emit(const AuthState.loading());
 
     try {
-      _log('User login: ${event.email.trim()}');
-      _log('User password: ${event.password.trim()}');
+      // _log('User login: ${event.email.trim()}');
+      // _log('User password: ${event.password.trim()}');
       final userCredential = await auth.signInWithEmailAndPassword(
         email: event.email.trim(),
         password: event.password.trim(),
