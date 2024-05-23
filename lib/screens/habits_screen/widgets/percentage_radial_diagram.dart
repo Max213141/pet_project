@@ -21,8 +21,9 @@ class HabitsPercentageRadialDiagram extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height / 8;
     return SizedBox(
-      height: MediaQuery.of(context).size.height > 710 ? 105 : 85,
+      height: MediaQuery.of(context).size.height > 710 ? height : 85,
       // width: 95
       child: Stack(
         children: [

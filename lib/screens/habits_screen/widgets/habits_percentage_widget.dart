@@ -94,6 +94,7 @@ class HabitsPercentageWidget extends StatelessWidget {
                   const SizedBox(width: 60),
                   Flexible(
                     flex: 1,
+                    fit: FlexFit.loose,
                     child: HabitsPercentageRadialDiagram(
                       unfinishedHabits: unfinishedHabits,
                       finishedHabits: finishedHabits,

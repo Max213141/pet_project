@@ -79,7 +79,7 @@ class _HabitCreationBodyState extends State<HabitCreationBody> {
               title: l10n.submit.toUpperCase(),
               onPressed: () {
                 if (formKey.currentState!.validate()) {
-                  _log('OLD list -  ${widget.habitsList.last.task}');
+                  // _log('OLD list -  ${widget.habitsList.last.task}');
                   final updatedList = widget.habitsList.toList();
                   updatedList.insert(
                     0,
@@ -89,7 +89,7 @@ class _HabitCreationBodyState extends State<HabitCreationBody> {
                       isDone: false,
                     ),
                   );
-                  _log('NEW list -  ${updatedList.last.task}');
+                  // _log('NEW list -  ${updatedList.last.task}');habts
 
                   BlocProvider.of<HabitsBloc>(context).add(
                     UploadHabits(

@@ -25,19 +25,18 @@ class HabitsBloc extends Bloc<HabitsEvent, HabitsState> {
 
   _streamUserHabits(StreamUserHabits event, Emitter<HabitsState> emit) async {
     String uid = event.userUID;
-    // Stream<QuerySnapshot>  poemsStream =
+    final ref = FirebaseFirestore.instance
+        .collection('users')
+        .doc(uid)
+        .collection('habits')
+        .doc('userHabits')
+        .withConverter(
+          fromFirestore: UserHabitsList.fromFirestore,
+          toFirestore: (UserHabitsList userHabits, _) =>
+              userHabits.toFirestore(),
+        );
     await emit.forEach<DocumentSnapshot<UserHabitsList>>(
-      FirebaseFirestore.instance
-          .collection('users')
-          .doc(uid)
-          .collection('habits')
-          .doc('userHabits')
-          .withConverter(
-            fromFirestore: UserHabitsList.fromFirestore,
-            toFirestore: (UserHabitsList userHabits, _) =>
-                userHabits.toFirestore(),
-          )
-          .snapshots(),
+      ref.snapshots(),
       onData: (data) {
         final userHabits = data.data()?.userHabits ?? [];
 

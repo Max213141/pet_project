@@ -2,6 +2,8 @@
 
 import 'dart:developer' as developer;
 
+import 'package:flutter/foundation.dart';
+
 class Logger {
   static void projectLog(
     dynamic message, {
@@ -10,12 +12,14 @@ class Logger {
     StackTrace? stacktrace,
     int level = 84,
   }) {
-    developer.log(
-      message is String ? message : message?.toString() ?? 'null',
-      time: DateTime.now(),
-      level: level,
-      stackTrace: stacktrace,
-      name: name,
-    );
+    if (kDebugMode) {
+      developer.log(
+        message is String ? message : message?.toString() ?? 'null',
+        time: DateTime.now(),
+        level: level,
+        stackTrace: stacktrace,
+        name: name,
+      );
+    }
   }
 }
