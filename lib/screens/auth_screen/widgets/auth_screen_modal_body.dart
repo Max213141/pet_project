@@ -34,7 +34,6 @@ class _AuthScreenModalBodyState extends State<AuthScreenModalBody> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     emailController.dispose();
     passwordController.dispose();
     usernameController.dispose();

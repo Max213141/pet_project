@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:life_sync/entities/db_entities/db_entities.dart';
 import 'package:life_sync/utils/utils.dart';
