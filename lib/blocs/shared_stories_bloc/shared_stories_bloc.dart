@@ -31,7 +31,7 @@ class SharedStoriesBloc extends Bloc<SharedStoriesEvent, SharedStoriesState> {
     );
   }
 
-  _loadRandomStory(
+  Future<void> _loadRandomStory(
     LoadRandomStoryEvent event,
     Emitter<SharedStoriesState> emit,
   ) async {
@@ -79,7 +79,7 @@ class SharedStoriesBloc extends Bloc<SharedStoriesEvent, SharedStoriesState> {
     }
   }
 
-  _loadUserStories(
+  Future<void> _loadUserStories(
     LoadUserStoriesEvent event,
     Emitter<SharedStoriesState> emit,
   ) async {
@@ -113,7 +113,7 @@ class SharedStoriesBloc extends Bloc<SharedStoriesEvent, SharedStoriesState> {
     }
   }
 
-  _uploadSharedStories(
+  Future<void> _uploadSharedStories(
     AddSharedStoriesEvent event,
     Emitter<SharedStoriesState> emit,
   ) async {
@@ -158,7 +158,7 @@ class SharedStoriesBloc extends Bloc<SharedStoriesEvent, SharedStoriesState> {
     }
   }
 
-  _addNewStory(
+  Future<void> _addNewStory(
       SharedStoriesEvent event, Emitter<SharedStoriesState> emit) async {
     emit(const SharedStoriesState.loading());
 
@@ -183,6 +183,8 @@ class SharedStoriesBloc extends Bloc<SharedStoriesEvent, SharedStoriesState> {
     }
   }
 
-  _removeStory(
-      SharedStoriesEvent event, Emitter<SharedStoriesState> emit) async {}
+  Future<void> _removeStory(
+    SharedStoriesEvent event,
+    Emitter<SharedStoriesState> emit,
+  ) async {}
 }

@@ -50,7 +50,7 @@ class _SearchFieldState extends State<SearchField> {
         decoration: InputDecoration(
           filled: true,
 
-          fillColor: const Color(0xFFEEEEEE).withOpacity(.75),
+          fillColor: const Color(0xFFEEEEEE).withValues(alpha: .75),
           isDense: true,
           floatingLabelBehavior: FloatingLabelBehavior.never,
           alignLabelWithHint: false,

@@ -3,8 +3,8 @@ import 'package:intl/intl.dart';
 import 'package:life_sync/entities/db_entities/db_entities.dart';
 import 'package:life_sync/utils/utils.dart';
 
-void _log(dynamic message) =>
-    Logger.projectLog(message, name: 'daily_complition_widget');
+// void _log(dynamic message) =>
+//     Logger.projectLog(message, name: 'daily_complition_widget');
 
 class HorizontalDateList extends StatelessWidget {
   final List<UserHabit> habitsList;
@@ -120,7 +120,7 @@ class HorizontalDateList extends StatelessWidget {
                           decoration: BoxDecoration(
                             border: Border.all(
                               color: AppColor.habbitsTileBackground
-                                  .withOpacity(.9),
+                                  .withValues(alpha: .9),
                               width: 2,
                             ),
                             borderRadius:

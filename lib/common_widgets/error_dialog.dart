@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:life_sync/utils/utils.dart';
 
 class ErrorDialogWidget extends StatelessWidget {

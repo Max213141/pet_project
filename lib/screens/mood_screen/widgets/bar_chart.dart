@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:life_sync/blocs/blocs.dart';
 import 'package:life_sync/entities/db_entities/db_entities.dart';
+import 'package:life_sync/utils/localization/app_localizations.dart';
 import 'package:life_sync/utils/utils.dart';
 
 void _log(dynamic message) => Logger.projectLog(message, name: 'bar_chart');
@@ -125,7 +126,7 @@ class MentalHealthBarChartState extends State<MentalHealthBarChart> {
                           show: true,
                           // checkToShowHorizontalLine: (value) => value % 10 == 0,
                           getDrawingHorizontalLine: (value) => FlLine(
-                            color: AppColor.chartsColor.withOpacity(.5),
+                            color: AppColor.chartsColor.withValues(alpha: .5),
                             strokeWidth: 1,
                           ),
 
@@ -135,12 +136,12 @@ class MentalHealthBarChartState extends State<MentalHealthBarChart> {
                           horizontalLines: [
                             HorizontalLine(
                               y: 0,
-                              color: AppColor.chartsColor.withOpacity(.5),
+                              color: AppColor.chartsColor.withValues(alpha: .5),
                               strokeWidth: 1,
                             ),
                             HorizontalLine(
                               y: 5,
-                              color: AppColor.chartsColor.withOpacity(.5),
+                              color: AppColor.chartsColor.withValues(alpha: .5),
                               strokeWidth: 1,
                             )
                           ],
@@ -192,7 +193,7 @@ class MentalHealthBarChartState extends State<MentalHealthBarChart> {
         break;
     }
     return SideTitleWidget(
-      axisSide: meta.axisSide,
+      meta: meta,
       child: Text(
         text,
         style: MentalHealthTextStyles.text.popinsSecondaryFontF12.copyWith(
@@ -230,7 +231,7 @@ class MentalHealthBarChartState extends State<MentalHealthBarChart> {
     }
 
     return SideTitleWidget(
-      axisSide: meta.axisSide,
+      meta: meta,
       child: Text(
         text,
         style: MentalHealthTextStyles.text.popinsSecondaryFontF12.copyWith(
@@ -262,12 +263,12 @@ class MentalHealthBarChartState extends State<MentalHealthBarChart> {
 
   List<Color> mapMoodsToColor(List<MoodEntry> moodEntries) {
     Map<int, Color> moodToIntMapping = {
-      1: AppColor.chartAngry.withOpacity(.5),
-      2: AppColor.chartSad.withOpacity(.5),
-      3: AppColor.chartBored.withOpacity(.5),
-      4: AppColor.chartMeh.withOpacity(.5),
-      5: AppColor.chartsColor.withOpacity(.75),
-      6: AppColor.chartHappy.withOpacity(.5),
+      1: AppColor.chartAngry.withValues(alpha: .5),
+      2: AppColor.chartSad.withValues(alpha: .5),
+      3: AppColor.chartBored.withValues(alpha: .5),
+      4: AppColor.chartMeh.withValues(alpha: .5),
+      5: AppColor.chartsColor.withValues(alpha: .75),
+      6: AppColor.chartHappy.withValues(alpha: .5),
     };
 
     List<Color> mappedColors = [];

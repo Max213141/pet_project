@@ -84,7 +84,7 @@ class DrawerWidget extends StatelessWidget {
               ),
             ),
             Divider(
-              color: AppColor.drawerDividerColor.withOpacity(.2),
+              color: AppColor.drawerDividerColor.withValues(alpha: .2),
             ),
             Expanded(
               child: Column(

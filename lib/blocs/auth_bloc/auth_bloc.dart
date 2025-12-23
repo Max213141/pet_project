@@ -35,7 +35,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     });
   }
 
-  _createUser(CreateUserEvent event, Emitter<AuthState> emit) async {
+  Future<void> _createUser(
+      CreateUserEvent event, Emitter<AuthState> emit) async {
     emit(const AuthState.loading());
 
     try {
@@ -82,25 +83,25 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
   }
 
-  _signInWithGoogle(SignInWithGoogle event, Emitter<AuthState> emit) async {
+  Future<void> _signInWithGoogle(
+      SignInWithGoogle event, Emitter<AuthState> emit) async {
     emit(const AuthState.loading());
     try {
       // Trigger the authentication flow
-      final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+      final GoogleSignInAccount? googleUser = await googleSignIn.authenticate();
 
       if (googleUser == null) {
         // The user canceled the sign-in
         emit(const AuthState.authError(errorText: 'User canceled the sign-in'));
-        return null;
+        return;
       }
 
       // Obtain the auth details from the request
-      final GoogleSignInAuthentication googleAuth =
-          await googleUser.authentication;
+      final GoogleSignInAuthentication googleAuth = googleUser.authentication;
 
       // Create a new credential
       final AuthCredential credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth.accessToken,
+        accessToken: googleAuth.idToken,
         idToken: googleAuth.idToken,
       );
 
@@ -156,11 +157,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     } catch (e) {
       emit(AuthState.authError(errorText: 'Ошибка: $e'));
       _log('UNHANDLED USER CREATION AUTH EXEPTION: $e');
-      return null;
+      return;
     }
   }
 
-  _logIn(LogInEvent event, Emitter<AuthState> emit) async {
+  Future<void> _logIn(LogInEvent event, Emitter<AuthState> emit) async {
     emit(const AuthState.loading());
 
     try {
@@ -210,7 +211,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
   }
 
-  _deleteUser(DeleteUserEvent event, Emitter<AuthState> emit) async {
+  Future<void> _deleteUser(
+      DeleteUserEvent event, Emitter<AuthState> emit) async {
     emit(const AuthState.loading());
 
     final userData = HiveStore().getUserData();
@@ -236,7 +238,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     // await auth.signOut();
   }
 
-  _logOut(LogOutEvent event, Emitter<AuthState> emit) async {
+  Future<void> _logOut(LogOutEvent event, Emitter<AuthState> emit) async {
     emit(const AuthState.loading());
 
     try {

@@ -1,15 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:life_sync/blocs/blocs.dart';
 import 'package:life_sync/entities/entities.dart';
 import 'package:life_sync/entities/hive_entities/hive_entities.dart';
 import 'package:life_sync/my_app_locale_wrapper.dart';
-import 'package:life_sync/navigation/navigation_observer.dart';
-import 'package:life_sync/screens/screens.dart';
+
+import 'utils/router/app_router.dart';
 
 class MyApp extends StatelessWidget {
   final FirebaseAuth auth;
@@ -43,143 +42,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    final router = GoRouter(
-      observers: [MyNavigatorObserver()],
-      routes: [
-        // GoRoute(
-        //   path: '/',
-        //   builder: (BuildContext context, GoRouterState state) {
-        //     return IntroScreen();
-        //   },
-        // ),
-        GoRoute(
-          name: 'initial_settings',
-          path: '/',
-          builder: (BuildContext context, GoRouterState state) {
-            // return SplashScreen();
-
-            return InitialHivePage(
-              auth: auth,
-            );
-          },
-        ),
-
-        GoRoute(
-          name: 'initial_page',
-          path: '/initial_page',
-          builder: (BuildContext context, GoRouterState state) {
-            // return SplashScreen();
-            return InitialPage(
-              auth: auth,
-            );
-          },
-        ),
-        GoRoute(
-          name: 'main',
-          path: '/main',
-          builder: (BuildContext context, GoRouterState state) {
-            return const MainScreen();
-          },
-          routes: <RouteBase>[
-            GoRoute(
-              name: 'profile_screen',
-              path: 'profile_screen',
-              builder: (BuildContext context, GoRouterState state) {
-                return const ProfileScreen();
-              },
-            ),
-            GoRoute(
-              name: 'about_us_screen',
-              path: 'about_us_screen',
-              builder: (BuildContext context, GoRouterState state) {
-                return const AboutUsScreen();
-              },
-            ),
-            GoRoute(
-              name: 'support_screen',
-              path: 'support_screen',
-              builder: (BuildContext context, GoRouterState state) {
-                return const SupportScreen();
-              },
-            ),
-            GoRoute(
-              name: 'settings_screen',
-              path: 'settings_screen',
-              builder: (BuildContext context, GoRouterState state) {
-                return const SettingsScreen();
-              },
-            ),
-
-            // GoRoute(
-            //   // name: 'breathing_item_screen',
-            //   path: 'mood_screen',
-            //   builder: (BuildContext context, GoRouterState state) {
-            //     return const MoodScreen();
-            //   },
-            // ),
-            // GoRoute(
-            //   name: 'intro_screen',
-            //   path: 'intro_screen',
-            //   builder: (BuildContext context, GoRouterState state) {
-            //     // return SplashScreen();
-
-            //     return const IntroScreen();
-            //   },
-            // ),
-            GoRoute(
-              name: 'breathing',
-              path: 'breathing',
-              builder: (BuildContext context, GoRouterState state) {
-                return const BreathingPracticeScreen(
-                  title: 'Breathing Practice',
-                );
-              },
-              routes: [
-                GoRoute(
-                  name: 'breathing_items',
-                  path: 'breathing_items',
-                  builder: (BuildContext context, GoRouterState state) {
-                    return const BreathingItemsScreen(
-                      title: 'Meta Meditation',
-                    );
-                  },
-                  routes: [
-                    GoRoute(
-                      // name: 'breathing_item_screen',
-                      path: 'breathe',
-                      builder: (BuildContext context, GoRouterState state) {
-                        return const SizedBox.shrink();
-                        //  const AnimatedCircleImageAnimation();
-                      },
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            GoRoute(
-              name: 'tests',
-              path: 'tests',
-              builder: (BuildContext context, GoRouterState state) {
-                return const TestsScreen(
-                  title: 'Psychological tests',
-                );
-              },
-            ),
-            GoRoute(
-              name: 'meditation',
-              path: 'meditation',
-              builder: (BuildContext context, GoRouterState state) {
-                return const MeditationScreen(
-                  title: 'Meditations',
-                );
-              },
-            ),
-          ],
-        ),
-      ],
-      errorBuilder: (context, state) => const ErrorScreen(),
-      debugLogDiagnostics: true,
-    );
+    final router = createRouter(auth: auth);
 
     // TODO adapt Go_Router For BottomNavigation
     return FutureBuilder(

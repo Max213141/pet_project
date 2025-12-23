@@ -33,7 +33,7 @@ class HabitsPercentageWidget extends StatelessWidget {
       child: DecoratedBox(
         decoration: BoxDecoration(
           border: Border.all(
-            color: AppColor.habbitsTileBackground.withOpacity(.9),
+            color: AppColor.habbitsTileBackground.withValues(alpha: .9),
             width: 2,
           ),
           borderRadius: MentalHealthDecorations.borders.radiusC15,

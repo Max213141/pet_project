@@ -3,13 +3,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:life_sync/entities/entities.dart';
 import 'package:life_sync/entities/hive_entities/hive_entities.dart';
-import 'package:life_sync/utils/utils.dart';
+// import 'package:life_sync/utils/utils.dart';
 
 part 'mood_event.dart';
 part 'mood_state.dart';
 part 'mood_bloc.freezed.dart';
 
-void _log(dynamic message) => Logger.projectLog(message, name: 'mood_bloc');
+// void _log(dynamic message) => Logger.projectLog(message, name: 'mood_bloc');
 
 class MoodBloc extends Bloc<MoodEvent, MoodState> {
   MoodBloc() : super(const _Initial()) {
@@ -25,7 +25,10 @@ class MoodBloc extends Bloc<MoodEvent, MoodState> {
     );
   }
 
-  _loadUserMoodData(LoadUserMoodData event, Emitter<MoodState> emit) async {
+  Future<void> _loadUserMoodData(
+    LoadUserMoodData event,
+    Emitter<MoodState> emit,
+  ) async {
     emit(
       const MoodState.loading(),
     );
@@ -54,7 +57,7 @@ class MoodBloc extends Bloc<MoodEvent, MoodState> {
     }
   }
 
-  _uploadUserMoodData(
+  Future<void> _uploadUserMoodData(
     UploadUserMoodData event,
     Emitter<MoodState> emit,
   ) async {

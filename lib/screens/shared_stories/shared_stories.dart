@@ -5,9 +5,9 @@ import 'package:life_sync/common_widgets/widgets.dart';
 import 'package:life_sync/entities/hive_entities/user_data.dart';
 import 'package:life_sync/entities/hive_store.dart';
 import 'package:life_sync/screens/shared_stories/widgets/widgets.dart';
-import 'package:life_sync/utils/utils.dart';
+// import 'package:life_sync/utils/utils.dart';
 
-void _log(dynamic message) => Logger.projectLog(message, name: 'wall_screen');
+// void _log(dynamic message) => Logger.projectLog(message, name: 'wall_screen');
 
 class SharedStoriesScreen extends StatefulWidget {
   const SharedStoriesScreen({

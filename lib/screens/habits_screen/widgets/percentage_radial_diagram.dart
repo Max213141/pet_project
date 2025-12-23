@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:life_sync/utils/utils.dart';
 import 'dart:math';
 
-void _log(dynamic message) =>
-    Logger.projectLog(message, name: 'percentage_radial_diagram');
+// void _log(dynamic message) =>
+//     Logger.projectLog(message, name: 'percentage_radial_diagram');
 
 class HabitsPercentageRadialDiagram extends StatelessWidget {
   // final List<double> data; // Пропорциональные данные (в виде долей)

@@ -5,8 +5,8 @@ import 'package:life_sync/screens/habits_screen/widgets/widgets.dart';
 import 'package:life_sync/screens/home_screen/widgets/widgets.dart';
 import 'package:life_sync/utils/utils.dart';
 
-_log(dynamic message) =>
-    Logger.projectLog(message, name: 'todo_list_widget_body');
+// _log(dynamic message) =>
+//     Logger.projectLog(message, name: 'todo_list_widget_body');
 
 class TodoListWidgetBody extends StatelessWidget {
   final String uid;

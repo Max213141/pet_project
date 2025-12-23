@@ -9,9 +9,10 @@ import 'package:life_sync/screens/home_screen/home_screen.dart';
 import 'package:life_sync/screens/home_screen/widgets/widgets.dart';
 import 'package:life_sync/screens/mood_screen/mood_screen.dart';
 import 'package:life_sync/screens/shared_stories/shared_stories.dart';
+import 'package:life_sync/utils/localization/app_localizations.dart';
 import 'package:life_sync/utils/utils.dart';
 
-void _log(dynamic message) => Logger.projectLog(message, name: 'main_screen');
+// void _log(dynamic message) => Logger.projectLog(message, name: 'main_screen');
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -35,6 +36,7 @@ class _MainScreenState extends State<MainScreen> {
     const MoodScreen(),
     const SharedStoriesScreen(),
   ];
+
   getAppBarTitle(AppLocalizations l10n) {
     final String? username = HiveStore().getUserName();
     switch (_selectedIndex) {

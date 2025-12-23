@@ -19,22 +19,22 @@ class RefreshButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ButtonStyle(
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+          shape: WidgetStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
             ),
           ),
           backgroundColor:
-              MaterialStateProperty.all<Color>(AppColor.sharedStoryChipColor),
+              WidgetStateProperty.all<Color>(AppColor.sharedStoryChipColor),
           surfaceTintColor:
-              MaterialStateProperty.all<Color>(AppColor.sharedStoryChipColor),
-          side: MaterialStateProperty.all<BorderSide>(
+              WidgetStateProperty.all<Color>(AppColor.sharedStoryChipColor),
+          side: WidgetStateProperty.all<BorderSide>(
             const BorderSide(
               width: 1,
               color: AppColor.habbitsTileBackground,
             ),
           ),
-          elevation: MaterialStateProperty.all<double>(2.0),
+          elevation: WidgetStateProperty.all<double>(2.0),
         ),
         child: const Icon(
           Icons.refresh,

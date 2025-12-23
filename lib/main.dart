@@ -7,7 +7,7 @@ import 'package:life_sync/utils/utils.dart';
 
 import 'firebase_options.dart';
 
-void _log(dynamic message) => Logger.projectLog(message, name: 'main');
+// void _log(dynamic message) => Logger.projectLog(message, name: 'main');
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -59,7 +59,7 @@ void main() async {
   );
 
   final FirebaseAuth auth = FirebaseAuth.instanceFor(app: app);
-  final GoogleSignIn googleSignIn = GoogleSignIn();
+  final GoogleSignIn googleSignIn = GoogleSignIn.instance;
   //_log('Initialized auth $auth');
 
   // await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(

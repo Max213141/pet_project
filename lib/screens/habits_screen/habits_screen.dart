@@ -5,9 +5,9 @@ import 'package:life_sync/common_widgets/widgets.dart';
 import 'package:life_sync/entities/hive_entities/hive_entities.dart';
 import 'package:life_sync/entities/hive_store.dart';
 import 'package:life_sync/screens/habits_screen/widgets/widgets.dart';
-import 'package:life_sync/utils/utils.dart';
+// import 'package:life_sync/utils/utils.dart';
 
-void _log(dynamic message) => Logger.projectLog(message, name: 'habits_screen');
+// void _log(dynamic message) => Logger.projectLog(message, name: 'habits_screen');
 
 class HabitsScreen extends StatefulWidget {
   const HabitsScreen({super.key});
@@ -27,7 +27,7 @@ class _HabitsScreenState extends State<HabitsScreen> {
         StreamUserHabits(userUID: uid),
       ),
     );
-    // TODO: implement initState
+
     super.initState();
   }
 

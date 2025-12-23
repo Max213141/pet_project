@@ -5,7 +5,8 @@ import 'package:life_sync/common_widgets/widgets.dart';
 import 'package:life_sync/screens/settings_screen/widgets/widgets.dart';
 import 'package:life_sync/utils/utils.dart';
 
-_log(dynamic message) => Logger.projectLog(message, name: 'settings_screen');
+void _log(dynamic message) =>
+    Logger.projectLog(message, name: 'settings_screen');
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});

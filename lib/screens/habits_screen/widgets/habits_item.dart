@@ -79,8 +79,8 @@ class _HabitsItemState extends State<HabitsItem> {
                     ),
                   );
                 },
-                fillColor: MaterialStateProperty.all<Color>(
-                  AppColor.primaryBackgroundColor.withOpacity(.7),
+                fillColor: WidgetStateProperty.all<Color>(
+                  AppColor.primaryBackgroundColor.withValues(alpha: .7),
                 ),
                 side: const BorderSide(
                   color: AppColor.habbitsTileBackground,

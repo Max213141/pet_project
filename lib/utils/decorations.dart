@@ -34,15 +34,15 @@ class Shadows {
       );
 
   // BoxShadow get categoryButton =>
-  //     BoxShadow(color: SlivkiColors.black.withOpacity(0.1), blurRadius: 10);
+  //     BoxShadow(color: SlivkiColors.black.withValues(0.1), blurRadius: 10);
 
   // BoxShadow get blur40spread0offset4 => BoxShadow(
-  //       color: SlivkiColors.black.withOpacity(0.1),
+  //       color: SlivkiColors.black.withValues(0.1),
   //       offset: const Offset(0, 4),
   //       blurRadius: 30,
   //     );
   // BoxShadow get whiteblur40spread0offset4 => BoxShadow(
-  //       color: SlivkiColors.white.withOpacity(0.8),
+  //       color: SlivkiColors.white.withValues(0.8),
   //       offset: const Offset(2, 2),
   //       blurRadius: 30,
   //     );

@@ -6,8 +6,8 @@ import 'package:life_sync/common_widgets/widgets.dart';
 import 'package:life_sync/entities/entities.dart';
 import 'package:life_sync/utils/utils.dart';
 
-void _log(dynamic message) =>
-    Logger.projectLog(message, name: 'habit_creation_bottom_sheet_body');
+// void _log(dynamic message) =>
+//     Logger.projectLog(message, name: 'habit_creation_bottom_sheet_body');
 
 class HabitCreationBody extends StatefulWidget {
   final String uid;

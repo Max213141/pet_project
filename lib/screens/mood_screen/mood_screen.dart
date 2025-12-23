@@ -5,9 +5,9 @@ import 'package:life_sync/common_widgets/widgets.dart';
 import 'package:life_sync/entities/hive_entities/hive_entities.dart';
 import 'package:life_sync/entities/hive_store.dart';
 import 'package:life_sync/screens/mood_screen/widgets/widgets.dart';
-import 'package:life_sync/utils/utils.dart';
+// import 'package:life_sync/utils/utils.dart';
 
-void _log(dynamic message) => Logger.projectLog(message, name: 'mood_screen');
+// void _log(dynamic message) => Logger.projectLog(message, name: 'mood_screen');
 
 class MoodScreen extends StatefulWidget {
   const MoodScreen({super.key});

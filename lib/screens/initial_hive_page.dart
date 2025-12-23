@@ -5,10 +5,10 @@ import 'package:life_sync/screens/auth_screen/auth_screen.dart';
 import 'package:life_sync/screens/intro_screen/intro_screen.dart';
 import 'package:life_sync/screens/home_screen/main_screen.dart';
 import 'package:life_sync/screens/splash_screen/splash_screen.dart';
-import 'package:life_sync/utils/loger.dart';
+// import 'package:life_sync/utils/loger.dart';
 
-void _log(dynamic message) =>
-    Logger.projectLog(message, name: 'initial_hive_page');
+// void _log(dynamic message) =>
+//     Logger.projectLog(message, name: 'initial_hive_page');
 
 class InitialHivePage extends StatefulWidget {
   final FirebaseAuth auth;

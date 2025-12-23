@@ -26,17 +26,17 @@ class ActionButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ButtonStyle(
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+          shape: WidgetStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
               borderRadius: MentalHealthDecorations.borders.radiusC20,
               // side: BorderSide(color: Colors.red)
             ),
           ),
-          backgroundColor: MaterialStateProperty.all<Color>(
+          backgroundColor: WidgetStateProperty.all<Color>(
               buttonColor ?? AppColor.primaryBackgroundColor),
-          surfaceTintColor: MaterialStateProperty.all<Color>(
+          surfaceTintColor: WidgetStateProperty.all<Color>(
               buttonColor ?? AppColor.primaryBackgroundColor),
-          side: MaterialStateProperty.all<BorderSide>(
+          side: WidgetStateProperty.all<BorderSide>(
             BorderSide(
               width: 1,
               color: buttonColor == AppColor.primaryColor
@@ -44,7 +44,7 @@ class ActionButton extends StatelessWidget {
                   : AppColor.habbitsTileBackground,
             ),
           ),
-          elevation: MaterialStateProperty.all<double>(
+          elevation: WidgetStateProperty.all<double>(
               (buttonSelected ?? false) ? 10.0 : 2.0),
         ),
         child: FittedBox(

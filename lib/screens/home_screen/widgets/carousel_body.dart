@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:life_sync/common_widgets/widgets.dart';
+import 'package:life_sync/utils/localization/app_localizations.dart';
 import 'package:life_sync/utils/utils.dart';
 
 class CarouselBody extends StatefulWidget {
@@ -81,12 +82,13 @@ class _CarouselBodyState extends State<CarouselBody> {
                             left: 0,
                             child: DecoratedBox(
                               decoration: BoxDecoration(
-                                  borderRadius: const BorderRadius.only(
-                                    topRight: Radius.circular(8),
-                                    bottomLeft: Radius.circular(18),
-                                  ),
-                                  color: AppColor.secondaryBackgroundColor
-                                      .withOpacity(.5)),
+                                borderRadius: const BorderRadius.only(
+                                  topRight: Radius.circular(8),
+                                  bottomLeft: Radius.circular(18),
+                                ),
+                                color: AppColor.secondaryBackgroundColor
+                                    .withValues(alpha: .5),
+                              ),
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(
                                   vertical: 1,

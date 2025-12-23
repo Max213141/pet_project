@@ -72,7 +72,8 @@ class BottomNavBar extends StatelessWidget {
         child: BottomNavigationBar(
           elevation: 0,
           type: BottomNavigationBarType.fixed,
-          backgroundColor: AppColor.primaryBackgroundColor.withOpacity(0.2),
+          backgroundColor:
+              AppColor.primaryBackgroundColor.withValues(alpha: 0.2),
           // iconSize: 50,
           showSelectedLabels: false,
           selectedIconTheme: const IconThemeData(

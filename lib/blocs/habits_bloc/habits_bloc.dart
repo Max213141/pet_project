@@ -23,7 +23,8 @@ class HabitsBloc extends Bloc<HabitsEvent, HabitsState> {
     );
   }
 
-  _streamUserHabits(StreamUserHabits event, Emitter<HabitsState> emit) async {
+  Future<void> _streamUserHabits(
+      StreamUserHabits event, Emitter<HabitsState> emit) async {
     String uid = event.userUID;
     final ref = FirebaseFirestore.instance
         .collection('users')
@@ -48,7 +49,8 @@ class HabitsBloc extends Bloc<HabitsEvent, HabitsState> {
     );
   }
 
-  _loadUserHabits(LoadHabits event, Emitter<HabitsState> emit) async {
+  Future<void> _loadUserHabits(
+      LoadHabits event, Emitter<HabitsState> emit) async {
     String uid = event.userUID;
     final ref = FirebaseFirestore.instance
         .collection('users')
@@ -76,7 +78,8 @@ class HabitsBloc extends Bloc<HabitsEvent, HabitsState> {
     }
   }
 
-  _uploadUserHabits(UploadHabits event, Emitter<HabitsState> emit) async {
+  Future<void> _uploadUserHabits(
+      UploadHabits event, Emitter<HabitsState> emit) async {
     String uid = event.userUID;
     final ref = FirebaseFirestore.instance
         .collection('users')

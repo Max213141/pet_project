@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:life_sync/blocs/blocs.dart';
 import 'package:life_sync/screens/home_screen/widgets/widgets.dart';
+import 'package:life_sync/utils/localization/app_localizations.dart';
 import 'package:life_sync/utils/utils.dart';
 
-void _log(dynamic message) => Logger.projectLog(message, name: 'quote_widget');
+// void _log(dynamic message) => Logger.projectLog(message, name: 'quote_widget');
 
 class QuoteWidget extends StatefulWidget {
   final AppLocalizations l10n;

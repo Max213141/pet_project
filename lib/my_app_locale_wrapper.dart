@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:life_sync/blocs/blocs.dart';
+import 'package:life_sync/utils/localization/app_localizations.dart';
 
 import 'utils/utils.dart';
 

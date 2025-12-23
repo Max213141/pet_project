@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:life_sync/common_widgets/widgets.dart';
 import 'package:life_sync/screens/auth_screen/widgets/widgets.dart';
 import 'package:life_sync/utils/utils.dart';

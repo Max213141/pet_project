@@ -20,7 +20,7 @@ class QuoteBloc extends Bloc<QuoteEvent, QuoteState> {
     });
   }
 
-  _loadQuote(LoadQuote event, Emitter<QuoteState> emit) async {
+  Future<void> _loadQuote(LoadQuote event, Emitter<QuoteState> emit) async {
     // get a random Quote from the API
 
     emit(const QuoteState.loading());

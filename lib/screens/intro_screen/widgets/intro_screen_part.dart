@@ -9,12 +9,12 @@ class IntroScreenPart extends StatelessWidget {
   final Widget? providedChild;
 
   const IntroScreenPart({
-    Key? key,
+    super.key,
     required this.text,
     required this.image,
     this.useProvidedChild = false,
     this.providedChild,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

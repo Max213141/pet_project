@@ -20,7 +20,7 @@ class Loader extends StatelessWidget {
     return DecoratedBox(
       decoration: BoxDecoration(
           borderRadius: MentalHealthDecorations.borders.radiusC10,
-          color: backgroundColor.withOpacity(.5)),
+          color: backgroundColor.withValues(alpha: .5)),
       child: Padding(
         padding: const EdgeInsets.all(12.0),
         child: SizedBox(
